@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Doa Pendek</a></li>
+                <li><a href="tahlil.html">Bacaan Zikir</a></li>
+                <li><a href="hadis.html">Kumpulan Hadis</a></li>
+                <li><a href="rating.html">Comment</a></li>
+                <li><a href="contact.html">Tentang Pembuat</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Halaman Komen</h1> 
+        <p><strong> Ayo Di Comment :</strong></p>
+        <div class="commentForm">  
+            <form id="commentForm">  
+                <label for="name">Nama:</label>  
+                <input type="text" id="name" name="name" required>  
+                <br>  
+                <label for="comment">Komen:</label>  
+                <textarea id="comment" name="comment" required></textarea>  
+                <br>  
+                <button type="submit">Kirim Komen</button>  
+            </form>  
+        </div>
+            <script>  
+                document.getElementById('commentForm').addEventListener('submit', function(event) {  
+                    event.preventDefault(); // Mencegah form untuk melakukan submit secara default  
+                    
+                    const name = document.getElementById('name').value;  
+                    const comment = document.getElementById('comment').value;  
+        
+                    // Menentukan nomor WhatsApp tujuan  
+                    const phoneNumber = '6285167089251'; // Ganti dengan nomor Anda  
+                    
+                    // Membuat pesan untuk WhatsApp  
+                    const message = `Komentar dari ${name}: ${comment}`;  
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;  
+        
+                    // Mengarahkan pengguna ke WhatsApp  
+                    window.location.href = whatsappUrl;  
+                });  
+            </script>  
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Website Islami. Dibuat dengan ❤️ oleh Muhammad Rian Akbar.</p>
+    </footer>
+</body>
+</html>
