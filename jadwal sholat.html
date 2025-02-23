@@ -111,29 +111,6 @@ tbody tr:nth-child(even) {
                 <!-- Data jadwal sholat akan ditambahkan di sini oleh JavaScript -->  
             </tbody>  
         </table>  
-
-        <h2>Tambah Jadwal Sholat</h2>  
-        <form id="formJadwal">  
-            <label for="tanggal">Tanggal:</label>  
-            <input type="date" id="tanggal" name="tanggal" required><br><br>  
-
-            <label for="fajar">Fajar:</label>  
-            <input type="time" id="fajar" name="fajar" required><br><br>  
-
-            <label for="dzuhur">Dzuhur:</label>  
-            <input type="time" id="dzuhur" name="dzuhur" required><br><br>  
-
-            <label for="ashar">Ashar:</label>  
-            <input type="time" id="ashar" name="ashar" required><br><br>  
-
-            <label for="maghrib">Maghrib:</label>  
-            <input type="time" id="maghrib" name="maghrib" required><br><br>  
-
-            <label for="isya">Isya:</label>  
-            <input type="time" id="isya" name="isya" required><br><br>  
-
-            <button type="submit">Tambah Jadwal</button>  
-        </form>  
     </div>  
     <script>
         window.setTimeout("waktu()", 1000);
@@ -242,37 +219,22 @@ tbody tr:nth-child(even) {
     "2025-04-30": ["04:03", "12:37", "16:19", "18:53", "20:08"],
     };  
 
-    // Menampilkan jadwal sholat otomatis  
-        function getPrayerTimes(date) {  
-        const dateString = date.toISOString().slice(0, 10); // Format: YYYY-MM-DD  
-        return prayerTimesData[dateString];  
-    }  
+ // Menampilkan jadwal sholat otomatis  
+    for (const [tanggal, waktu] of Object.entries(jadwalSholat)) {  
+        const newRow = jadwalSholatTable.insertRow();  
+        newRow.innerHTML = `  
+            <td>${tanggal}</td>  
+            <td>${waktu[0]}</td>  
+            <td>${waktu[1]}</td>  
+            <td>${waktu[2]}</td>  
+            <td>${waktu[3]}</td>  
+            <td>${waktu[4]}</td>  
+            <td><button class="deleteButton">Hapus</button></td>  
+        `;  
 
-    function displayPrayerTimes() {  
-        const now = new Date();  
-        const prayerTimes = getPrayerTimes(now);  
-
-        if (prayerTimes) {  
-            const prayerNames = ["Subuh", "Dzuhur", "Ashar", "Maghrib", "Isya"];  
-            const prayerTimesDiv = document.getElementById("prayer-times");  
-            prayerTimesDiv.innerHTML = ""; // Clear previous data  
-
-            for (let i = 0; i < prayerNames.length; i++) {  
-                const prayerTime = document.createElement("p");  
-                prayerTime.textContent = `${prayerNames[i]}: ${prayerTimes[i]}`;  
-                prayerTimesDiv.appendChild(prayerTime);  
-            }  
-        } else {  
-            document.getElementById("prayer-times").textContent = "Jadwal sholat tidak tersedia untuk hari ini.";  
-        }  
-    }  
-
-    // Tampilkan jadwal sholat saat halaman dimuat  
-    displayPrayerTimes();  
-
-    // Perbarui jadwal sholat setiap hari (opsional)  
-    // setInterval(displayPrayerTimes, 24 * 60 * 60 * 1000); // Update setiap 24 jam  
-});  
+        newRow.querySelector(".deleteButton").addEventListener("click", () => {  
+            jadwalSholatTable.deleteRow(newRow.rowIndex - 1);  
+        });   
     </script>
     </body>
 </html>
