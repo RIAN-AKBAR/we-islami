@@ -116,12 +116,39 @@ tbody tr:nth-child(even) {
             <p id="detik"></p>
         </div>
     </div> 
-	<table class="jadwal-sholat">
-   <h1>Jadwal Sholat Hari Ini</h1>  
-    <div id="prayer-times">  
-        <!-- Jadwal sholat akan ditampilkan di sini -->  
-    </div>  
-	    </table>
+	 <h1>Jadwal Sholat Hari Ini</h1>
+    <div id="prayer-times">
+        <table class="jadwal-sholat">
+            <thead>
+                <tr>
+                    <th>Nama Sholat</th>
+                    <th>Waktu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Subuh</td>
+                    <td id="subuh-time"></td>
+                </tr>
+                <tr>
+                    <td>Dzuhur</td>
+                    <td id="dzuhur-time"></td>
+                </tr>
+                <tr>
+                    <td>Ashar</td>
+                    <td id="ashar-time"></td>
+                </tr>
+                <tr>
+                    <td>Maghrib</td>
+                    <td id="maghrib-time"></td>
+                </tr>
+                <tr>
+                    <td>Isya</td>
+                    <td id="isya-time"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
         window.setTimeout("waktu()", 1000);
  
@@ -481,7 +508,7 @@ tbody tr:nth-child(even) {
         const prayerTimes = getPrayerTimes(now);  
 
         if (prayerTimes) {  
-            const prayerNames = ["Subuh", "Dzuhur", "Ashar", "Maghrib", "Isya"];  
+            const prayerNames = ["Subuh-time", "Dzuhur-time", "Ashar-time", "Maghrib-time", "Isya-time"];  
             const prayerTimesDiv = document.getElementById("prayer-times");  
             prayerTimesDiv.innerHTML = ""; // Clear previous data  
 
