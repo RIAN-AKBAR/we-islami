@@ -98,19 +98,17 @@ tbody tr:nth-child(even) {
     </div>  
     <script>
         window.setTimeout("waktu()", 1000);
-
-        function waktu(){
-            var waktu = new Date ()
-            setTimeout("waktu()", 1000);
-            document.getElementById("jam").innerHTML = waktu.getHours();
-            document.getElementById("menit").innerHTML = waktu.getMinutes();
-            document.getElementById("detik").innerHTML = waktu.getSeconds();
-
-        }
+ 
+	function waktu() {
+		var waktu = new Date();
+		setTimeout("waktu()", 1000);
+		document.getElementById("jam").innerHTML = waktu.getHours();
+		document.getElementById("menit").innerHTML = waktu.getMinutes();
+		document.getElementById("detik").innerHTML = waktu.getSeconds();
+	}
 	   document.addEventListener('DOMContentLoaded', function() {  
     // Data jadwal sholat statis (gantilah dengan data Anda)  
     const prayerTimesData = {  
-   {
     "2025-02-01": ["04:41", "05:54", "11:29", "12:06", "15:26", "16:32", "18:18", "19:04", "19:30"],
     "2025-02-02": ["04:41", "05:55", "11:29", "12:06", "15:26", "16:31", "18:18", "19:04", "19:29"],
     "2025-02-03": ["04:41", "05:55", "11:29", "12:06", "15:26", "16:31", "18:18", "19:04", "19:29"],
