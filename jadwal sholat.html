@@ -46,41 +46,10 @@
 		text-align: center;
 		margin-top: 30px;
 	}
-	      body {  
-    font-family: sans-serif;  
-    background-color: #f4f4f4;  
-    margin: 0;  
-    padding: 0;  
-    display: flex;  
-    justify-content: center;  
-    align-items: center;  
-    min-height: 100vh;  
-}  
-
-.container {  
-    background-color: #fff;  
-    border-radius: 8px;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
-    padding: 20px;  
-    width: 80%;  
-    max-width: 600px;  
-    text-align: center;  
-}  
-
-h1 {  
-    color: #333;  
-}  
-
-#location, #date {  
-    margin-bottom: 10px;  
-    font-style: italic;  
-    color: #777;  
-}  
-
 table {  
     width: 100%;  
     border-collapse: collapse;  
-    margin-top: 20px;  
+    margin-bottom: 20px;  
 }  
 
 th, td {  
@@ -90,12 +59,26 @@ th, td {
 }  
 
 th {  
-    background-color: #f2f2f2;  
-    font-weight: bold;  
+    background-color: #3498db;  
+    color: white;  
 }  
 
 tbody tr:nth-child(even) {  
-    background-color: #f9f9f9;  
+    background-color: #f2f2f2;  
+}  
+
+.deleteButton {  
+    background-color: #e74c3c;  
+    color: white;  
+    padding: 10px 15px;  
+    border: none;  
+    border-radius: 4px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+}  
+
+.deleteButton:hover {  
+    background-color: #c0392b;  
 }
     </style>
     <div class="jam-digital-malasngoding">
@@ -108,41 +91,49 @@ tbody tr:nth-child(even) {
         <div class="kotak">
             <p id="detik"></p>
         </div>
-    </div>
-	    <div class="container">  
-        <h1>Jadwal Sholat</h1>  
-        <div id="location">Memuat Lokasi...</div>  
-        <div id="date">Memuat Tanggal...</div>  
-        <table id="prayer-times">  
+    </div> 
+    <div class="container">  
+        <h1>Jadwal Sholat Tahun 2025</h1>  
+
+        <table id="jadwalSholat">  
             <thead>  
                 <tr>  
-                    <th>Sholat</th>  
-                    <th>Waktu</th>  
+                    <th>Tanggal</th>  
+                    <th>Fajar</th>  
+                    <th>Dzuhur</th>  
+                    <th>Ashar</th>  
+                    <th>Maghrib</th>  
+                    <th>Isya</th>  
+                    <th>Aksi</th>  
                 </tr>  
             </thead>  
             <tbody>  
-                <tr>  
-                    <td>Subuh</td>  
-                    <td id="fajr"></td>  
-                </tr>  
-                <tr>  
-                    <td>Dzuhur</td>  
-                    <td id="dhuhr"></td>  
-                </tr>  
-                <tr>  
-                    <td>Ashar</td>  
-                    <td id="asr"></td>  
-                </tr>  
-                <tr>  
-                    <td>Maghrib</td>  
-                    <td id="maghrib"></td>  
-                </tr>  
-                <tr>  
-                    <td>Isya</td>  
-                    <td id="isha"></td>  
-                </tr>  
+                <!-- Data jadwal sholat akan ditambahkan di sini oleh JavaScript -->  
             </tbody>  
         </table>  
+
+        <h2>Tambah Jadwal Sholat</h2>  
+        <form id="formJadwal">  
+            <label for="tanggal">Tanggal:</label>  
+            <input type="date" id="tanggal" name="tanggal" required><br><br>  
+
+            <label for="fajar">Fajar:</label>  
+            <input type="time" id="fajar" name="fajar" required><br><br>  
+
+            <label for="dzuhur">Dzuhur:</label>  
+            <input type="time" id="dzuhur" name="dzuhur" required><br><br>  
+
+            <label for="ashar">Ashar:</label>  
+            <input type="time" id="ashar" name="ashar" required><br><br>  
+
+            <label for="maghrib">Maghrib:</label>  
+            <input type="time" id="maghrib" name="maghrib" required><br><br>  
+
+            <label for="isya">Isya:</label>  
+            <input type="time" id="isya" name="isya" required><br><br>  
+
+            <button type="submit">Tambah Jadwal</button>  
+        </form>  
     </div>  
     <script>
         window.setTimeout("waktu()", 1000);
@@ -155,72 +146,133 @@ tbody tr:nth-child(even) {
             document.getElementById("detik").innerHTML = waktu.getSeconds();
 
         }
-	    document.addEventListener('DOMContentLoaded', function() {  
-    function getLocation() {  
-        if (navigator.geolocation) {  
-            navigator.geolocation.getCurrentPosition(getPrayerTimes, locationError, {  
-                enableHighAccuracy: true,  
-                timeout: 5000,  
-                maximumAge: 0  
-            });  
+	    document.addEventListener("DOMContentLoaded", () => {  
+    const jadwalSholatTable = document.getElementById("jadwalSholat").getElementsByTagName('tbody')[0];  
+
+    // Data waktu sholat untuk bulan Februari 2025  
+    const jadwalSholat = {  
+    "2025-02-01": ["04:49", "12:07", "15:35", "18:09", "19:24"],  
+    "2025-02-02": ["04:49", "12:08", "15:35", "18:09", "19:24"],  
+    "2025-02-03": ["04:48", "12:08", "15:36", "18:10", "19:25"],  
+    "2025-02-04": ["04:48", "12:08", "15:36", "18:10", "19:25"],  
+    "2025-02-05": ["04:47", "12:09", "15:37", "18:11", "19:26"],  
+    "2025-02-06": ["04:47", "12:09", "15:37", "18:11", "19:26"],  
+    "2025-02-07": ["04:46", "12:09", "15:38", "18:12", "19:27"],  
+    "2025-02-08": ["04:46", "12:10", "15:38", "18:12", "19:27"],  
+    "2025-02-09": ["04:45", "12:10", "15:39", "18:13", "19:28"],  
+    "2025-02-10": ["04:45", "12:10", "15:39", "18:13", "19:28"],  
+    "2025-02-11": ["04:44", "12:11", "15:40", "18:14", "19:29"],  
+    "2025-02-12": ["04:44", "12:11", "15:40", "18:14", "19:29"],  
+    "2025-02-13": ["04:43", "12:11", "15:41", "18:15", "19:30"],  
+    "2025-02-14": ["04:43", "12:12", "15:41", "18:15", "19:30"],  
+    "2025-02-15": ["04:42", "12:12", "15:42", "18:16", "19:31"],  
+    "2025-02-16": ["04:42", "12:12", "15:42", "18:16", "19:31"],  
+    "2025-02-17": ["04:41", "12:13", "15:43", "18:17", "19:32"],  
+    "2025-02-18": ["04:41", "12:13", "15:43", "18:17", "19:32"],  
+    "2025-02-19": ["04:40", "12:13", "15:44", "18:18", "19:33"],  
+    "2025-02-20": ["04:40", "12:14", "15:44", "18:18", "19:33"],  
+    "2025-02-21": ["04:39", "12:14", "15:45", "18:19", "19:34"],  
+    "2025-02-22": ["04:39", "12:14", "15:45", "18:19", "19:34"],  
+    "2025-02-23": ["04:38", "12:15", "15:46", "18:20", "19:35"],  
+    "2025-02-24": ["04:38", "12:15", "15:46", "18:20", "19:35"],  
+    "2025-02-25": ["04:37", "12:15", "15:47", "18:21", "19:36"],  
+    "2025-02-26": ["04:37", "12:16", "15:47", "18:21", "19:36"],  
+    "2025-02-27": ["04:36", "12:16", "15:48", "18:22", "19:37"],  
+    "2025-02-28": ["04:36", "12:16", "15:48", "18:22", "19:37"],  
+    "2025-03-01": ["04:35", "12:17", "15:49", "18:23", "19:38"],  
+    "2025-03-02": ["04:35", "12:17", "15:49", "18:23", "19:38"],  
+    "2025-03-03": ["04:34", "12:17", "15:50", "18:24", "19:39"],  
+    "2025-03-04": ["04:34", "12:18", "15:50", "18:24", "19:39"],  
+    "2025-03-05": ["04:33", "12:18", "15:51", "18:25", "19:40"],  
+    "2025-03-06": ["04:33", "12:18", "15:51", "18:25", "19:40"],  
+    "2025-03-07": ["04:32", "12:19", "15:52", "18:26", "19:41"],  
+    "2025-03-08": ["04:32", "12:19", "15:52", "18:26", "19:41"],  
+    "2025-03-09": ["04:31", "12:19", "15:53", "18:27", "19:42"],  
+    "2025-03-10": ["04:31", "12:20", "15:53", "18:27", "19:42"],  
+    "2025-03-11": ["04:30", "12:20", "15:54", "18:28", "19:43"],  
+    "2025-03-12": ["04:30", "12:20", "15:54", "18:28", "19:43"],  
+    "2025-03-13": ["04:29", "12:21", "15:55", "18:29", "19:44"],  
+    "2025-03-14": ["04:29", "12:21", "15:55", "18:29", "19:44"],  
+    "2025-03-15": ["04:28", "12:21", "15:56", "18:30", "19:45"],  
+    "2025-03-16": ["04:28", "12:22", "15:56", "18:30", "19:45"],  
+    "2025-03-17": ["04:30", "12:22", "15:57", "18:31", "19:46"],  
+    "2025-03-18": ["04:27", "12:22", "15:57", "18:31", "19:46"],  
+    "2025-03-19": ["04:26", "12:23", "15:58", "18:32", "19:47"],  
+    "2025-03-20": ["04:26", "12:23", "15:58", "18:32", "19:47"],  
+    "2025-03-21": ["04:25", "12:23", "15:59", "18:33", "19:48"],  
+    "2025-03-22": ["04:25", "12:24", "15:59", "18:33", "19:48"],  
+    "2025-03-23": ["04:24", "12:24", "16:00", "18:34", "19:49"],  
+    "2025-03-24": ["04:24", "12:24", "16:00", "18:34", "19:49"],  
+    "2025-03-25": ["04:23", "12:25", "16:01", "18:35", "19:50"],  
+    "2025-03-26": ["04:23", "12:25", "16:01", "18:35", "19:50"],  
+    "2025-03-27": ["04:22", "12:25", "16:02", "18:36", "19:51"],  
+    "2025-03-28": ["04:22", "12:26", "16:02", "18:36", "19:51"],  
+    "2025-03-29": ["04:21", "12:26", "16:03", "18:37", "19:52"],  
+    "2025-03-30": ["04:21", "12:26", "16:03", "18:37", "19:52"],  
+    "2025-03-31": ["04:20", "12:27", "16:04", "18:38", "19:53"],  
+    "2025-04-01": ["04:19", "12:27", "16:04", "18:38", "19:53"],  
+    "2025-04-02": ["04:19", "12:27", "16:05", "18:39", "19:54"],  
+    "2025-04-03": ["04:18", "12:28", "16:05", "18:39", "19:54"],  
+    "2025-04-04": ["04:18", "12:28", "16:06", "18:40", "19:55"],  
+    "2025-04-05": ["04:17", "12:28", "16:06", "18:40", "19:55"],  
+    "2025-04-06": ["04:17", "12:29", "16:07", "18:41", "19:56"],  
+    "2025-04-07": ["04:16", "12:29", "16:07", "18:41", "19:56"],  
+    "2025-04-08": ["04:15", "12:29", "16:08", "18:42", "19:57"],  
+    "2025-04-09": ["04:15", "12:30", "16:08", "18:42", "19:57"],  
+    "2025-04-10": ["04:14", "12:30", "16:09", "18:43", "19:58"],  
+    "2025-04-11": ["04:14", "12:30", "16:09", "18:43", "19:58"],  
+    "2025-04-12": ["04:13", "12:31", "16:10", "18:44", "19:59"],  
+    "2025-04-13": ["04:13", "12:31", "16:10", "18:44", "19:59"],  
+    "2025-04-14": ["04:12", "12:31", "16:11", "18:45", "20:00"],  
+    "2025-04-15": ["04:12", "12:32", "16:11", "18:45", "20:00"],  
+    "2025-04-16": ["04:11", "12:32", "16:12", "18:46", "20:01"],  
+    "2025-04-17": ["04:10", "12:32", "16:12", "18:46", "20:01"],  
+    "2025-04-18": ["04:10", "12:33", "16:13", "18:47", "20:02"],  
+    "2025-04-19": ["04:09", "12:33", "16:13", "18:47", "20:02"],  
+    "2025-04-20": ["04:09", "12:33", "16:14", "18:48", "20:03"],  
+    "2025-04-21": ["04:08", "12:34", "16:14", "18:48", "20:03"],  
+    "2025-04-22": ["04:08", "12:34", "16:15", "18:49", "20:04"],  
+    "2025-04-23": ["04:07", "12:34", "16:15", "18:49", "20:04"],  
+    "2025-04-24": ["04:06", "12:35", "16:16", "18:50", "20:05"],  
+    "2025-04-25": ["04:06", "12:35", "16:16", "18:50", "20:05"],  
+    "2025-04-26": ["04:05", "12:35", "16:17", "18:51", "20:06"],  
+    "2025-04-27": ["04:05", "12:36", "16:17", "18:51", "20:06"],  
+    "2025-04-28": ["04:04", "12:36", "16:18", "18:52", "20:07"],  
+    "2025-04-29": ["04:04", "12:36", "16:18", "18:52", "20:07"],  
+    "2025-04-30": ["04:03", "12:37", "16:19", "18:53", "20:08"],
+    };  
+
+    // Menampilkan jadwal sholat otomatis  
+        function getPrayerTimes(date) {  
+        const dateString = date.toISOString().slice(0, 10); // Format: YYYY-MM-DD  
+        return prayerTimesData[dateString];  
+    }  
+
+    function displayPrayerTimes() {  
+        const now = new Date();  
+        const prayerTimes = getPrayerTimes(now);  
+
+        if (prayerTimes) {  
+            const prayerNames = ["Subuh", "Dzuhur", "Ashar", "Maghrib", "Isya"];  
+            const prayerTimesDiv = document.getElementById("prayer-times");  
+            prayerTimesDiv.innerHTML = ""; // Clear previous data  
+
+            for (let i = 0; i < prayerNames.length; i++) {  
+                const prayerTime = document.createElement("p");  
+                prayerTime.textContent = `${prayerNames[i]}: ${prayerTimes[i]}`;  
+                prayerTimesDiv.appendChild(prayerTime);  
+            }  
         } else {  
-            document.getElementById('location').innerText = "Geolocation tidak didukung oleh browser Anda.";  
+            document.getElementById("prayer-times").textContent = "Jadwal sholat tidak tersedia untuk hari ini.";  
         }  
     }  
 
-    function getPrayerTimes(position) {  
-        const latitude = position.coords.latitude;  
-        const longitude = position.coords.longitude;  
+    // Tampilkan jadwal sholat saat halaman dimuat  
+    displayPrayerTimes();  
 
-        // Mendapatkan zona waktu pengguna  
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;  
-
-        const apiUrl = `https://api.aladhan.com/v1/timingsByLatLon?latitude=${latitude}&longitude=${longitude}&method=2&timezone=${timezone}`;  
-
-        fetch(apiUrl)  
-            .then(response => response.json())  
-            .then(data => {  
-                if (data.code === 200) {  
-                    const timings = data.data.timings;  
-                    document.getElementById('location').innerText = `Latitude: ${latitude}, Longitude: ${longitude}, Zona Waktu: ${timezone}`;  
-                    document.getElementById('date').innerText = `Tanggal: ${data.data.date.readable}`;  
-
-                    document.getElementById('fajr').innerText = timings.Fajr;  
-                    document.getElementById('dhuhr').innerText = timings.Dhuhr;  
-                    document.getElementById('asr').innerText = timings.Asr;  
-                    document.getElementById('maghrib').innerText = timings.Maghrib;  
-                    document.getElementById('isha').innerText = timings.Isha;  
-                } else {  
-                    document.getElementById('prayer-times').innerHTML = "Gagal memuat jadwal sholat.";  
-                }  
-            })  
-            .catch(error => {  
-                console.error('Error:', error);  
-                document.getElementById('prayer-times').innerHTML = "Terjadi kesalahan saat memuat jadwal sholat.";  
-            });  
-    }  
-
-    function locationError(error) {  
-        let message;  
-        switch(error.code) {  
-            case error.PERMISSION_DENIED:  
-                message = "Izin akses lokasi ditolak.";  
-                break;  
-            case error.POSITION_UNAVAILABLE:  
-                message = "Informasi lokasi tidak tersedia.";  
-                break;
-                case error.TIMEOUT:  
-                message = "Waktu permintaan lokasi habis.";  
-                break;  
-            case error.UNKNOWN_ERROR:  
-                message = "Terjadi kesalahan yang tidak diketahui.";  
-                break;  
-        }  
-        document.getElementById('location').innerText = "Error: " + message;  
-    }  
-
-    getLocation();  
-});
+    // Perbarui jadwal sholat setiap hari (opsional)  
+    // setInterval(displayPrayerTimes, 24 * 60 * 60 * 1000); // Update setiap 24 jam  
+});  
     </script>
     </body>
 </html>
