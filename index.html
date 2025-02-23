@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doa Pendek</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        h1,h2,p,a{
+		font-family: sans-serif;
+		font-weight: normal;
+	}
+ 
+	.jam-digital-malasngoding {
+		overflow: hidden;
+		width: 330px;
+		margin: 20px auto;
+		border: 5px solid #efefef;
+	}
+	.kotak{
+		float: left;
+		width: 110px;
+		height: 100px;
+		background-color: #189fff;
+	}
+	.jam-digital-malasngoding p {
+		color: #fff;
+		font-size: 36px;
+		text-align: center;
+		margin-top: 30px;
+	}
+    </style>
 </head>
 <body>
     <header>
@@ -21,6 +46,17 @@
 
     <main>
         <section>
+            <div class="jam-digital-malasngoding">
+        <div class="kotak">
+            <p id="jam"></p>
+        </div>
+        <div class="kotak">
+            <p id="menit"></p>
+        </div>
+        <div class="kotak">
+            <p id="detik"></p>
+        </div>
+    </div>
             <h1>Doa Pendek</h1>
             <p>Berikut adalah Doa Doa Pendek :</p>
             <ul>
@@ -108,6 +144,18 @@
             </ul>
         </section>
     </main>
+    <script>
+        window.setTimeout("waktu()", 1000);
+
+        function waktu(){
+            var waktu = new Date ()
+            setTimeout("waktu()", 1000);
+            document.getElementById("jam").innerHTML = waktu.getHours();
+            document.getElementById("menit").innerHTML = waktu.getMinutes();
+            document.getElementById("detik").innerHTML = waktu.getSeconds();
+
+        }
+    </script>
 
     <footer>
         <p>&copy; 2025 Website Islami. Dibuat dengan ❤️ oleh Muhammad Rian Akbar.</p>
