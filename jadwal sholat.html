@@ -107,11 +107,9 @@ tbody tr:nth-child(even) {
             document.getElementById("detik").innerHTML = waktu.getSeconds();
 
         }
-	    document.addEventListener("DOMContentLoaded", () => {  
-    const jadwalSholatTable = document.getElementById("jadwalSholat").getElementsByTagName('tbody')[0];  
-
-    // Data waktu sholat untuk bulan Februari 2025  
-    const jadwalSholat = {  
+	   document.addEventListener('DOMContentLoaded', function() {  
+    // Data jadwal sholat statis (gantilah dengan data Anda)  
+    const prayerTimesData = {  
     "2025-02-01": ["04:49", "12:07", "15:35", "18:09", "19:24"],  
     "2025-02-02": ["04:49", "12:08", "15:35", "18:09", "19:24"],  
     "2025-02-03": ["04:48", "12:08", "15:36", "18:10", "19:25"],  
