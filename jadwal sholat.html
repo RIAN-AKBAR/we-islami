@@ -106,7 +106,7 @@ tbody tr:nth-child(even) {
             document.getElementById("menit").innerHTML = waktu.getMinutes();
             document.getElementById("detik").innerHTML = waktu.getSeconds();
 
-        };
+        }
 	   document.addEventListener('DOMContentLoaded', function() {  
     // Data jadwal sholat statis (gantilah dengan data Anda)  
     const prayerTimesData = {  
@@ -139,7 +139,7 @@ tbody tr:nth-child(even) {
     "2025-02-26": ["04:47", "05:58", "11:29", "12:06", "15:15", "16:27", "18:13", "18:58", "19:23"],
     "2025-02-27": ["04:47", "05:58", "11:29", "12:06", "15:14", "16:26", "18:13", "18:58", "19:23"],
     "2025-02-28": ["04:47", "05:58", "11:29", "12:06", "15:14", "16:26", "18:13", "18:58", "19:23"],    
-     };  
+     }
 
     function getPrayerTimes(date) {  
         const dateString = date.toISOString().slice(0, 10); // Format: YYYY-MM-DD  
