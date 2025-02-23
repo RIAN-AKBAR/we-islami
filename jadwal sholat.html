@@ -219,7 +219,7 @@ tbody tr:nth-child(even) {
     "2025-04-30": ["04:03", "12:37", "16:19", "18:53", "20:08"],
     };  
 
- // Menampilkan jadwal sholat otomatis  
+  // Menampilkan jadwal sholat otomatis  
     for (const [tanggal, waktu] of Object.entries(jadwalSholat)) {  
         const newRow = jadwalSholatTable.insertRow();  
         newRow.innerHTML = `  
@@ -234,7 +234,40 @@ tbody tr:nth-child(even) {
 
         newRow.querySelector(".deleteButton").addEventListener("click", () => {  
             jadwalSholatTable.deleteRow(newRow.rowIndex - 1);  
-        });   
+        });  
+    }  
+
+    // Menangani form untuk menambah jadwal  
+    const formJadwal = document.getElementById("formJadwal");  
+    formJadwal.addEventListener("submit", (e) => {  
+        e.preventDefault();  
+
+        const tanggal = document.getElementById("tanggal").value;  
+        const fajar = document.getElementById("fajar").value;  
+        const dzuhur = document.getElementById("dzuhur").value;  
+        const ashar = document.getElementById("ashar").value;  
+        const maghrib = document.getElementById("maghrib").value;  
+        const isya = document.getElementById("isya").value;  
+
+        const newRow = jadwalSholatTable.insertRow();  
+        newRow.innerHTML = `  
+            <td>${tanggal}</td>  
+            <td>${fajar}</td>  
+            <td>${dzuhur}</td>  
+            <td>${ashar}</td>  
+            <td>${maghrib}</td>  
+            <td>${isya}</td>  
+            <td><button class="deleteButton">Hapus</button></td>  
+        `;  
+
+        newRow.querySelector(".deleteButton").addEventListener("click", () => {  
+            jadwalSholatTable.deleteRow(newRow.rowIndex - 1);  
+        });  
+
+        formJadwal.reset();  
+    });  
+});  
+Ca  
     </script>
     </body>
 </html>
