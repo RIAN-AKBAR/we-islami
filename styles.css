@@ -1,9 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    width: 1200px; /* Sesuaikan dengan lebar desktop yang diinginkan */
+    margin: 0 auto;
+    transform: scale(0.8); /* Sesuaikan skala agar sesuai dengan layar ponsel */
+    transform-origin: top left;
+    /* Tambahkan CSS lain sesuai kebutuhan */
 }
 
 header {
