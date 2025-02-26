@@ -83,8 +83,26 @@ footer {
         margin: 0 auto; /* Form diposisikan di tengah */
     }
 
-    .commentForm {
-        height: auto; /* Tinggi menyesuaikan konten */
-        padding: 20px 0; /* Padding untuk ruang lebih baik */
-    }
+    button {  
+    margin-top: 10px; /* Jarak atas untuk tombol */  
+    background-color: #4CAF50; /* Warna tombol */  
+    color: white; /* Teks putih */  
+    border: none; /* Tanpa border */  
+    padding: 10px; /* Ruang dalam tombol */  
+    cursor: pointer; /* Pointer saat hover */  
+    border-radius: 5px; /* Sudut radius tombol */  
+    width: 100%; /* Lebar tombol penuh */  
+}  
+button:hover {  
+    background-color: #45a049; /* Warna tombol saat hover */  
+}  
+.commentForm{
+    display: flex;  
+    justify-content: center; /* Memusatkan horizontal */  
+    align-items: center; /* Memusatkan vertical */  
+    height: 30vh; /* Mengisi tinggi layar */  
+    margin: 0; /* Menghapus margin default */  
+    font-family: Arial, sans-serif; /* Mengatur font */  
+    background-color: #f0f0f0; /* Warna latar belakang */  
+}
 }
