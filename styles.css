@@ -4,73 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
-    color: #333;
-        }
-
-        .container {
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Style untuk ponsel (lebar layar <= 600px) */
-        @media (max-width: 600px) {
-            .container {
-                background-color: lightblue;
-                padding: 10px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Style untuk tablet (lebar layar 601px - 1024px) */
-        @media (min-width: 601px) and (max-width: 1024px) {
-            .container {
-                background-color: lightgreen;
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            p {
-                font-size: 1rem;
-            }
-
-        /* Style untuk desktop (lebar layar >= 1025px) */
-        @media (min-width: 1025px) {
-            .container {
-                background-color: lightcoral;
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
-            p {
-                font-size: 1.1rem;
-            }
+}
 
 header {
     background-color: #2c3e50;
