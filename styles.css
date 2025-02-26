@@ -49,7 +49,7 @@ footer {
     text-align: center;
     padding: 10px 0; /* Padding diperbesar untuk kenyamanan */
     position: fixed;
-    width: 100%;
+    width: 100vh;
     bottom: 0;
     font-size: 14px; /* Ukuran font disesuaikan */
     z-index: 1000; /* Pastikan footer selalu di atas elemen lain */
