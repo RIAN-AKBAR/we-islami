@@ -3,12 +3,9 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    width: 1200px; /* Sesuaikan dengan lebar desktop yang diinginkan */
+    width: 100%; /* Lebar penuh untuk mobile */
     margin: 0 auto;
-    transform: scale(0.8); /* Sesuaikan skala agar sesuai dengan layar ponsel */
-    transform-origin: top left;
-    /* Tambahkan CSS lain sesuai kebutuhan */
-    height: 100vh;
+    /* Hapus transform: scale(0.8); */
 }
 
 header {
@@ -24,10 +21,11 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Agar menu bisa wrap di layar kecil */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 5px 10px; /* Jarak antar menu diperkecil */
 }
 
 nav ul li a {
@@ -42,55 +40,51 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
+    width: 100%; /* Lebar penuh untuk mobile */
+    box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar */
 }
 
 footer {
     background-color: #2c3e50;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0; /* Padding lebih kecil untuk mobile */
     position: fixed;
     width: 100%;
     bottom: 0;
     font-size: 14px;
     z-index: 1000;
+    height: auto; /* Tinggi footer menyesuaikan konten */
+    box-sizing: border-box;
 }
 
 /* Media query untuk layar kecil (misalnya, smartphone) */
 @media (max-width: 600px) {
-    footer {
-        padding: 5px 0;
-        font-size: 12px;
+    body {
+        width: 100%; /* Lebar penuh untuk mobile */
     }
-}
-h1 {  
-    text-align: center; /* Memusatkan judul */  
-}  
-p {
-    text-align: center;
-}
-label {  
-    margin-top: 10px; /* Jarak atas untuk label */  
-}  
-button {  
-    margin-top: 10px; /* Jarak atas untuk tombol */  
-    background-color: #4CAF50; /* Warna tombol */  
-    color: white; /* Teks putih */  
-    border: none; /* Tanpa border */  
-    padding: 10px; /* Ruang dalam tombol */  
-    cursor: pointer; /* Pointer saat hover */  
-    border-radius: 5px; /* Sudut radius tombol */  
-    width: 100%; /* Lebar tombol penuh */  
-}  
-button:hover {  
-    background-color: #45a049; /* Warna tombol saat hover */  
-}  
-.commentForm{
-    display: flex;  
-    justify-content: center; /* Memusatkan horizontal */  
-    align-items: center; /* Memusatkan vertical */  
-    height: 30vh; /* Mengisi tinggi layar */  
-    margin: 0; /* Menghapus margin default */  
-    font-family: Arial, sans-serif; /* Mengatur font */  
-    background-color: #f0f0f0; /* Warna latar belakang */  
+
+    nav ul {
+        flex-direction: column; /* Menu vertikal di layar kecil */
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Jarak antar menu diperkecil */
+    }
+
+    footer {
+        padding: 8px 0; /* Padding lebih kecil untuk mobile */
+        font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+    }
+
+    form {
+        width: 90%; /* Lebar form lebih kecil untuk mobile */
+        margin: 0 auto; /* Form diposisikan di tengah */
+    }
+
+    .commentForm {
+        height: auto; /* Tinggi menyesuaikan konten */
+        padding: 20px 0; /* Padding untuk ruang lebih baik */
+    }
 }
