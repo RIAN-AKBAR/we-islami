@@ -53,7 +53,7 @@ footer {
     bottom: 0;
     font-size: 14px;
     z-index: 1000;
-    height: 50px; /* Tinggi footer diatur */
+    height: 0px; /* Tinggi footer diatur */
     box-sizing: border-box; /* Memastikan padding tidak mempengaruhi tinggi total */
 }
 
@@ -62,7 +62,7 @@ footer {
     footer {
         padding: 10px 0; /* Padding lebih kecil untuk layar kecil */
         font-size: 12px; /* Ukuran font lebih kecil untuk layar kecil */
-        height: 40px; /* Tinggi footer lebih kecil untuk layar kecil */
+        height: 0px; /* Tinggi footer lebih kecil untuk layar kecil */
     }
 }
 form {  
