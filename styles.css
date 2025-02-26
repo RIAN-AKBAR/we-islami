@@ -55,13 +55,10 @@ footer {
     z-index: 1000; /* Pastikan footer selalu di atas elemen lain */
 }
 
-/* Media query untuk layar kecil (misalnya, smartphone) */
-@media (max-width: 600px) {
     footer {
         padding: 5px 0; /* Padding lebih kecil untuk layar kecil */
         font-size: 12px; /* Ukuran font lebih kecil untuk layar kecil */
     }
-}
 form {  
     background: white; /* Warna latar belakang form */  
     padding: 20px; /* Ruang di dalam form */  
