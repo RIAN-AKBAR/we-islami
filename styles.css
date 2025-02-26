@@ -8,6 +8,7 @@ body {
     transform: scale(0.8); /* Sesuaikan skala agar sesuai dengan layar ponsel */
     transform-origin: top left;
     /* Tambahkan CSS lain sesuai kebutuhan */
+    height: 100vh;
 }
 
 header {
