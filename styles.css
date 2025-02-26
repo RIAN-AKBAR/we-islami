@@ -42,6 +42,8 @@ main {
     padding: 20px;
     width: 100%; /* Lebar penuh untuk mobile */
     box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar */
+    max-width: 1200px;/* untuk dekstop */
+    margin: 0 auto;
 }
 
 footer {
