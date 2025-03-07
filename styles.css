@@ -1,31 +1,37 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset CSS */
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-    width: 100%; /* Lebar penuh untuk mobile */
+    width: 100%;
     margin: 0 auto;
-    /* Hapus transform: scale(0.8); */
 }
 
 header {
     background-color: #2c3e50;
-    color: white;
+    color: #fff;
     padding: 10px 0;
     text-align: center;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Agar menu bisa wrap di layar kecil */
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 5px 10px; /* Jarak antar menu diperkecil */
+    margin: 5px 10px;
 }
 
 nav ul li a {
@@ -40,9 +46,9 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
-    width: 100%; /* Lebar penuh untuk mobile */
-    box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar */
-    max-width: 1200px;/* untuk dekstop */
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -50,61 +56,220 @@ footer {
     background-color: #2c3e50;
     color: white;
     text-align: center;
-    padding: 10px 0; /* Padding lebih kecil untuk mobile */
+    padding: 10px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
     font-size: 14px;
     z-index: 1000;
-    height: auto; /* Tinggi footer menyesuaikan konten */
+    height: auto;
     box-sizing: border-box;
 }
 
-/* Media query untuk layar kecil (misalnya, smartphone) */
-@media (max-width: 600px) {
-    body {
-        width: 100%; /* Lebar penuh untuk mobile */
-    }
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
 
-    nav ul {
-        flex-direction: column; /* Menu vertikal di layar kecil */
-        align-items: center;
+#home {
+    background-color: #ebe8e8;
+}
+
+#dasbor {
+    background-color: #d1d1d1;
+}
+
+#contact {
+    background-color: #c1c1c1;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Container untuk input tugas */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    width: calc(100% - 44px);
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+li:hover {
+    background: #f8f9fa;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.commentForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Tampilan untuk layar kecil (mobile) */
+    header {
+        padding: 15px 0;
     }
 
     nav ul li {
-        margin: 5px 0; /* Jarak antar menu diperkecil */
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        padding: 15px;
+    }
+
+    button {
+        padding: 15px;
+    }
+
+    .task-buttons {
+        flex-direction: column;
+    }
+
+    .edit-btn, .delete-btn {
+        width: 100%;
+        margin: 5px 0;
     }
 
     footer {
-        padding: 8px 0; /* Padding lebih kecil untuk mobile */
-        font-size: 12px; /* Ukuran font lebih kecil untuk mobile */
+        padding: 8px 0;
+        font-size: 12px;
     }
 
     form {
-        width: 90%; /* Lebar form lebih kecil untuk mobile */
-        margin: 0 auto; /* Form diposisikan di tengah */
+        width: 90%;
+        margin: 0 auto;
     }
 
-    button {  
-    margin-top: 10px; /* Jarak atas untuk tombol */  
-    background-color: #4CAF50; /* Warna tombol */  
-    color: white; /* Teks putih */  
-    border: none; /* Tanpa border */  
-    padding: 10px; /* Ruang dalam tombol */  
-    cursor: pointer; /* Pointer saat hover */  
-    border-radius: 5px; /* Sudut radius tombol */  
-    width: 100%; /* Lebar tombol penuh */  
-}  
-button:hover {  
-    background-color: #45a049; /* Warna tombol saat hover */  
-}  
-.commentForm{
-    display: flex;  
-    justify-content: center; /* Memusatkan horizontal */  
-    align-items: center; /* Memusatkan vertical */  
-    height: 30vh; /* Mengisi tinggi layar */  
-    margin: 0; /* Menghapus margin default */  
-    font-family: Arial, sans-serif; /* Mengatur font */  
-    background-color: #f0f0f0; /* Warna latar belakang */  
+    button {
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
 }
+
+@media (min-width: 769px) {
+    /* Tampilan untuk layar besar (desktop) */
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    .task-buttons {
+        flex-direction: row;
+    }
+
+    .edit-btn, .delete-btn {
+        width: auto;
+        margin-right: 10px;
+    }
 }
