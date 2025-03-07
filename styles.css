@@ -236,7 +236,17 @@ li:hover {
     font-family: 'Arial', sans-serif;
     width: 100%; /* Memastikan teks memenuhi lebar kotak */
 }
-/* Tables */
+
+/* Detik dalam satu kotak */
+.kotak.detik {
+    display: flex;
+    justify-content: space-around; /* Menyebarkan detik secara merata */
+}
+
+.kotak.detik p {
+    font-size: 24px; /* Ukuran font yang lebih kecil untuk detik */
+    margin: 0 5px; /* Jarak antar detik */
+}/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
