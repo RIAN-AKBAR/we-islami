@@ -202,15 +202,15 @@ li:hover {
     background-color: #f0f0f0;
 }
 
-/* Digital Clock */
+/* Digital Clock Styles */
 .jam-digital-malasngoding {
     overflow: hidden;
     width: 330px;
     margin: 20px auto;
     border: 5px solid #efefef;
-    border-radius: 10px; /* Menambahkan border-radius untuk tampilan yang lebih halus */
-    background-color: #f9f9f9; /* Menambahkan latar belakang untuk kontras */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan shadow untuk efek kedalaman */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .kotak {
@@ -221,22 +221,21 @@ li:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 2px solid #efefef; /* Garis pemisah antar kotak */
+    border-right: 2px solid #efefef;
 }
 
 .kotak:last-child {
-    border-right: none; /* Menghilangkan garis pemisah di kotak terakhir */
+    border-right: none;
 }
 
 .jam-digital-malasngoding p {
     color: #fff;
     font-size: 36px;
-    font-weight: bold; /* Menambahkan ketebalan font */
+    font-weight: bold;
     text-align: center;
-    margin: 0; /* Menghilangkan margin default */
-    font-family: 'Arial', sans-serif; /* Menambahkan font-family untuk konsistensi */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
-
 /* Tables */
 table {
     width: 100%;
