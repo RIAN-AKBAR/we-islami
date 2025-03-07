@@ -208,6 +208,9 @@ li:hover {
     width: 330px;
     margin: 20px auto;
     border: 5px solid #efefef;
+    border-radius: 10px; /* Menambahkan border-radius untuk tampilan yang lebih halus */
+    background-color: #f9f9f9; /* Menambahkan latar belakang untuk kontras */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan shadow untuk efek kedalaman */
 }
 
 .kotak {
@@ -215,13 +218,23 @@ li:hover {
     width: 110px;
     height: 100px;
     background-color: #189fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #efefef; /* Garis pemisah antar kotak */
+}
+
+.kotak:last-child {
+    border-right: none; /* Menghilangkan garis pemisah di kotak terakhir */
 }
 
 .jam-digital-malasngoding p {
     color: #fff;
     font-size: 36px;
+    font-weight: bold; /* Menambahkan ketebalan font */
     text-align: center;
-    margin-top: 30px;
+    margin: 0; /* Menghilangkan margin default */
+    font-family: 'Arial', sans-serif; /* Menambahkan font-family untuk konsistensi */
 }
 
 /* Tables */
