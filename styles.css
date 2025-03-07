@@ -201,7 +201,6 @@ li:hover {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
-
 /* Digital Clock Styles */
 .jam-digital-malasngoding {
     overflow: hidden;
@@ -211,11 +210,11 @@ li:hover {
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Menggunakan flexbox untuk penataan yang lebih baik */
 }
 
 .kotak {
-    float: left;
-    width: 110px;
+    flex: 1; /* Membagi lebar kotak secara merata */
     height: 100px;
     background-color: #189fff;
     display: flex;
@@ -225,7 +224,7 @@ li:hover {
 }
 
 .kotak:last-child {
-    border-right: none;
+    border-right: none; /* Menghilangkan garis pemisah di kotak terakhir */
 }
 
 .jam-digital-malasngoding p {
@@ -235,6 +234,7 @@ li:hover {
     text-align: center;
     margin: 0;
     font-family: 'Arial', sans-serif;
+    width: 100%; /* Memastikan teks memenuhi lebar kotak */
 }
 /* Tables */
 table {
