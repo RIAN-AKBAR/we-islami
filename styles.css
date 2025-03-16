@@ -486,7 +486,7 @@ tbody tr:nth-child(even) {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 868px) {
     /* Mobile View */
     header {
         padding: 15px 0;
@@ -544,7 +544,7 @@ tbody tr:nth-child(even) {
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 869px) {
     /* Desktop View */
     nav ul li {
         display: inline;
