@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zikir pagi</title>
+    <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Doa Pendek</a></li>
+                <li><a href="tahlil.html">Bacaan Zikir</a></li>
+                <li><a href="zikir pagi.html">Zikir Pagi</a></li>
+                <li><a href="hadis.html">Kumpulan Hadis</a></li>
+		            <li><a href="jadwal sholat.html">Jadwal sholat</a></li>
+                <li><a href="rating.html">Comment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <div class="container">
+        <h1>Zikir Pagi</h1>
+        <div class="zikir-list">
+            <!-- Daftar zikir akan dimasukkan melalui JavaScript -->
+        </div>
+    </div>
+    <script>
+      const zikirList = [
+    {
+        title: "Membaca Ta'awwudz",
+        arab: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+        latin: "A'udzu billahi minasy syaithonir rojiim",
+        arti: "Aku berlindung kepada Allah dari godaan setan yang terkutuk."
+    },
+    {
+        title: "Membaca Basmalah",
+        arab: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+        latin: "Bismillahir rohmanir rohim",
+        arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+    },
+    {
+        title: "Membaca Ayat Kursi",
+        arab: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...",
+        latin: "Allahu laa ilaaha illaa huwal hayyul qoyyuum...",
+        arti: "Allah, tidak ada Tuhan selain Dia. Yang Maha Hidup, Yang terus-menerus mengurus (makhluk-Nya)..."
+    },
+    {
+        title: "Membaca Surah Al-Ikhlas (3 kali)",
+        arab: "قُلْ هُوَ اللَّهُ أَحَدٌ...",
+        latin: "Qul huwallahu ahad...",
+        arti: "Katakanlah (Muhammad), Dialah Allah, Yang Maha Esa..."
+    },
+    {
+        title: "Membaca Surah Al-Falaq (3 kali)",
+        arab: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...",
+        latin: "Qul a'udzu birobbil falaq...",
+        arti: "Katakanlah (Muhammad), Aku berlindung kepada Tuhan yang menguasai subuh (fajar)..."
+    },
+    {
+        title: "Membaca Surah An-Nas (3 kali)",
+        arab: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ...",
+        latin: "Qul a'udzu birobbin naas...",
+        arti: "Katakanlah (Muhammad), Aku berlindung kepada Tuhan (yang memelihara dan menguasai) manusia..."
+    },
+    {
+        title: "Doa Perlindungan di Pagi Hari",
+        arab: "اللَّهُمَّ بِكَ أَصْبَحْنَا...",
+        latin: "Allahumma bika ashbahnaa...",
+        arti: "Ya Allah, dengan-Mu kami memasuki pagi..."
+    },
+    {
+        title: "Doa Berserah Diri di Pagi Hari",
+        arab: "اللَّهُمَّ إِنِّي أَسْلَمْتُ نَفْسِي إِلَيْكَ...",
+        latin: "Allahumma innii aslamtu nafsii ilaika...",
+        arti: "Ya Allah, sesungguhnya aku menyerahkan diriku kepada-Mu..."
+    },
+    {
+        title: "Sayyidul Istighfar",
+        arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ...",
+        latin: "Allahumma anta robbii...",
+        arti: "Ya Allah, Engkau adalah Tuhanku, tidak ada Tuhan selain Engkau..."
+    },
+    {
+        title: "Doa Memohon Ridho Allah",
+        arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ رِضَاكَ وَالْجَنَّةَ...",
+        latin: "Allahumma innii as'aluka ridhooka wal jannah...",
+        arti: "Ya Allah, sesungguhnya aku memohon ridha-Mu dan surga..."
+    },
+    {
+        title: "Doa Memohon Ilmu, Rezeki, dan Amal",
+        arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا...",
+        latin: "Allahumma innii as'aluka 'ilman naafi'an...",
+        arti: "Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat..."
+    }
+];
+
+const zikirListElement = document.querySelector('.zikir-list');
+
+zikirList.forEach((zikir, index) => {
+    const zikirItem = document.createElement('div');
+    zikirItem.classList.add('zikir-item');
+    zikirItem.innerHTML = `
+        <span>${zikir.title}</span>
+        <i class="fas fa-chevron-down"></i>
+    `;
+
+    const details = document.createElement('div');
+    details.classList.add('details');
+    details.innerHTML = `
+        <p><strong>Arab:</strong> ${zikir.arab}</p>
+        <p><strong>Latin:</strong> ${zikir.latin}</p>
+        <p><strong>Arti:</strong> ${zikir.arti}</p>
+    `;
+
+    zikirItem.addEventListener('click', () => {
+        details.classList.toggle('show');
+        zikirItem.classList.toggle('completed');
+        const icon = zikirItem.querySelector('i');
+        icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+
+    zikirListElement.appendChild(zikirItem);
+    zikirListElement.appendChild(details);
+});
+    </script>
+  </body>
+</html>
