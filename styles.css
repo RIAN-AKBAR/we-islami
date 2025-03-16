@@ -15,6 +15,9 @@ body {
     margin: 0 auto;
     min-height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1, h2, p, a {
@@ -366,6 +369,114 @@ tbody tr:nth-child(even) {
 }
 
 .details.show {
+    display: block;
+}
+
+/* Doa List Styles */
+.doa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.doa-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doa-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.doa-item.completed {
+    background: rgba(0, 255, 0, 0.2);
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.doa-item i {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.doa-item.completed i {
+    color: #4caf50;
+    opacity: 1;
+}
+
+.doa-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.doa-details.show {
+    display: block;
+}
+
+/* Hadis List Styles */
+.hadis-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hadis-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hadis-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.hadis-item.completed {
+    background: rgba(0, 255, 0, 0.2);
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hadis-item i {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.hadis-item.completed i {
+    color: #4caf50;
+    opacity: 1;
+}
+
+.hadis-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.hadis-details.show {
     display: block;
 }
 
