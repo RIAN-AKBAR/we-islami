@@ -47,31 +47,18 @@ nav ul {
 }
 
 nav ul li {
-    margin: 5px 10px;
+    margin: 10px 15px; /* Memberi jarak antar item navbar */
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px; /* Ukuran font yang nyaman di mobile */
 }
 
 nav ul li a:hover {
     text-decoration: underline;
-}
-
-/* Hamburger Menu */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    height: 3px;
-    width: 25px;
-    background-color: white;
-    margin: 4px 0;
 }
 
 /* Main Content */
@@ -101,405 +88,6 @@ footer {
     box-sizing: border-box;
 }
 
-/* Sections */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-#home {
-    background-color: #ebe8e8;
-}
-
-#dasbor {
-    background-color: #d1d1d1;
-}
-
-#contact {
-    background-color: #c1c1c1;
-}
-
-/* Container for Task Input */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-input[type="text"] {
-    width: calc(100% - 44px);
-    padding: 20px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #218838;
-}
-
-/* Task List */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-    border-radius: 4px;
-    transition: background 0.3s;
-}
-
-li:hover {
-    background: #f8f9fa;
-}
-
-.task-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.checkbox {
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.task-buttons {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    margin-top: 5px;
-}
-
-.edit-btn, .delete-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.edit-btn {
-    background-color: #ffc107;
-    color: white;
-}
-
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.edit-btn:hover {
-    background-color: #e0a800;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
-/* Comment Form */
-.commentForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
-
-/* Digital Clock Styles */
-.jam-digital-malasngoding {
-    overflow: hidden;
-    width: 330px;
-    margin: 20px auto;
-    border: 5px solid #efefef;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-}
-
-.kotak {
-    flex: 1;
-    height: 100px;
-    background-color: #189fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid #efefef;
-}
-
-.kotak:last-child {
-    border-right: none;
-}
-
-.jam-digital-malasngoding p {
-    color: #fff;
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    width: 100%;
-}
-
-/* Detik dalam satu kotak */
-.kotak.detik {
-    display: flex;
-    justify-content: space-around;
-}
-
-.kotak.detik p {
-    font-size: 24px;
-    margin: 0 5px;
-}
-
-/* Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #3498db;
-    color: white;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.deleteButton {
-    background-color: #e74c3c;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.deleteButton:hover {
-    background-color: #c0392b;
-}
-
-/* Prayer Schedule Table */
-.jadwal-sholat {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.jadwal-sholat th, .jadwal-sholat td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.jadwal-sholat th {
-    background-color: #3A7DFF;
-    color: white;
-}
-
-.jadwal-sholat tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.jadwal-sholat tr:hover {
-    background-color: #d1e0ff;
-}
-
-/* Zikir List Styles */
-.zikir-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.zikir-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.zikir-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.zikir-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.zikir-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.zikir-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.details.show {
-    display: block;
-}
-
-/* Doa List Styles */
-.doa-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.doa-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.doa-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.doa-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.doa-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.doa-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.doa-details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.doa-details.show {
-    display: block;
-}
-
-/* Hadis List Styles */
-.hadis-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.hadis-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hadis-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.hadis-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.hadis-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.hadis-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.hadis-details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.hadis-details.show {
-    display: block;
-}
-
 /* Responsive Design */
 @media (max-width: 868px) {
     /* Mobile View */
@@ -508,19 +96,21 @@ tbody tr:nth-child(even) {
     }
 
     nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #2c3e50;
+        flex-direction: column; /* Menampilkan navbar secara vertikal */
+        align-items: center; /* Memusatkan item navbar */
+        background-color: #2c3e50; /* Warna latar belakang navbar */
+        padding: 10px 0; /* Memberi padding atas dan bawah */
     }
 
     nav ul li {
-        margin: 10px 0;
-        text-align: center;
+        margin: 10px 0; /* Memberi jarak antar item navbar */
     }
 
-    .menu-toggle {
-        display: flex;
+    nav ul li a {
+        font-size: 18px; /* Ukuran font yang lebih besar untuk mobile */
+        padding: 10px 20px; /* Memberi padding pada link */
+        display: block; /* Membuat link memenuhi lebar */
+        text-align: center; /* Memusatkan teks */
     }
 
     .container {
