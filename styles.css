@@ -16,9 +16,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px; /* Memberi ruang untuk navbar */
+    flex-direction: column;
 }
 
 h1, h2, p, a {
@@ -65,11 +63,13 @@ nav ul li a:hover {
 /* Main Content */
 main {
     padding: 20px;
-    padding-top: 20px; /* Jarak antara navbar dan konten */
+    padding-top: 80px; /* Jarak antara navbar dan konten */
+    padding-bottom: 60px; /* Jarak antara konten dan footer */
     width: 100%;
     box-sizing: border-box;
     max-width: 1200px;
     margin: 0 auto;
+    flex: 1; /* Memastikan konten memenuhi ruang yang tersedia */
 }
 
 /* Footer */
