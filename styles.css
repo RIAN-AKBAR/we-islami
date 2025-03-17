@@ -28,7 +28,7 @@ h1, h2, p, a {
 header {
     background-color: #2c3e50;
     color: #fff;
-    padding: 10px 0;
+    padding: 5px 0; /* Mengurangi padding navbar */
     text-align: center;
     position: fixed; /* Navbar tetap di atas */
     top: 0; /* Menempel di bagian atas */
@@ -47,14 +47,15 @@ nav ul {
 }
 
 nav ul li {
-    margin: 10px 15px; /* Memberi jarak antar item navbar */
+    margin: 5px 10px; /* Memberi jarak antar item navbar */
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px; /* Ukuran font yang nyaman di mobile */
+    font-size: 14px; /* Mengurangi ukuran font */
+    padding: 5px 10px; /* Mengurangi padding pada link */
 }
 
 nav ul li a:hover {
@@ -64,7 +65,7 @@ nav ul li a:hover {
 /* Main Content */
 main {
     padding: 20px;
-    padding-top: 80px; /* Jarak antara navbar dan konten */
+    padding-top: 60px; /* Mengurangi jarak antara navbar dan konten */
     padding-bottom: 60px; /* Jarak antara konten dan footer */
     width: 100%;
     box-sizing: border-box;
@@ -88,29 +89,208 @@ footer {
     box-sizing: border-box;
 }
 
+/* Prayer Schedule Table */
+.jadwal-sholat {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.jadwal-sholat th, .jadwal-sholat td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.jadwal-sholat th {
+    background-color: #3A7DFF;
+    color: white;
+}
+
+.jadwal-sholat tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.jadwal-sholat tr:hover {
+    background-color: #d1e0ff;
+}
+
+/* Zikir List Styles */
+.zikir-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.zikir-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.zikir-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.zikir-item.completed {
+    background: rgba(0, 255, 0, 0.2);
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.zikir-item i {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.zikir-item.completed i {
+    color: #4caf50;
+    opacity: 1;
+}
+
+.details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.details.show {
+    display: block;
+}
+
+/* Doa List Styles */
+.doa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.doa-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doa-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.doa-item.completed {
+    background: rgba(0, 255, 0, 0.2);
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.doa-item i {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.doa-item.completed i {
+    color: #4caf50;
+    opacity: 1;
+}
+
+.doa-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.doa-details.show {
+    display: block;
+}
+
+/* Hadis List Styles */
+.hadis-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hadis-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hadis-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+.hadis-item.completed {
+    background: rgba(0, 255, 0, 0.2);
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hadis-item i {
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.hadis-item.completed i {
+    color: #4caf50;
+    opacity: 1;
+}
+
+.hadis-details {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.hadis-details.show {
+    display: block;
+}
+
 /* Responsive Design */
 @media (max-width: 868px) {
     /* Mobile View */
     header {
-        padding: 15px 0;
-    }
-
-    nav ul {
-        flex-direction: column; /* Menampilkan navbar secara vertikal */
-        align-items: center; /* Memusatkan item navbar */
-        background-color: #2c3e50; /* Warna latar belakang navbar */
-        padding: 10px 0; /* Memberi padding atas dan bawah */
+        padding: 10px 0; /* Mengurangi padding navbar di mobile */
     }
 
     nav ul li {
-        margin: 10px 0; /* Memberi jarak antar item navbar */
+        margin: 5px 8px; /* Mengurangi jarak antar item navbar di mobile */
     }
 
     nav ul li a {
-        font-size: 18px; /* Ukuran font yang lebih besar untuk mobile */
-        padding: 10px 20px; /* Memberi padding pada link */
-        display: block; /* Membuat link memenuhi lebar */
-        text-align: center; /* Memusatkan teks */
+        font-size: 13px; /* Mengurangi ukuran font di mobile */
+        padding: 5px 8px; /* Mengurangi padding pada link di mobile */
     }
 
     .container {
@@ -164,7 +344,7 @@ footer {
     /* Desktop View */
     nav ul li {
         display: inline;
-        margin: 0 15px;
+        margin: 0 10px; /* Mengurangi jarak antar item navbar di desktop */
     }
 
     .container {
