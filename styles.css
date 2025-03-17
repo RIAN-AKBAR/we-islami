@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 60px; /* Memberi ruang untuk navbar */
+    padding-top: 20px; /* Memberi ruang untuk navbar */
 }
 
 h1, h2, p, a {
@@ -65,7 +65,7 @@ nav ul li a:hover {
 /* Main Content */
 main {
     padding: 20px;
-    padding-top: 80px; /* Jarak antara navbar dan konten */
+    padding-top: 20px; /* Jarak antara navbar dan konten */
     width: 100%;
     box-sizing: border-box;
     max-width: 1200px;
