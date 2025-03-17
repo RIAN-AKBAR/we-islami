@@ -115,6 +115,53 @@ footer {
     background-color: #d1e0ff;
 }
 
+/* Digital Clock Styles */
+.jam-digital-malasngoding {
+    overflow: hidden;
+    width: 330px;
+    margin: 20px auto;
+    border: 5px solid #efefef;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.kotak {
+    flex: 1;
+    height: 100px;
+    background-color: #189fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #efefef;
+}
+
+.kotak:last-child {
+    border-right: none;
+}
+
+.jam-digital-malasngoding p {
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+}
+
+/* Detik dalam satu kotak */
+.kotak.detik {
+    display: flex;
+    justify-content: space-around;
+}
+
+.kotak.detik p {
+    font-size: 24px;
+    margin: 0 5px;
+}
+
 /* Zikir List Styles */
 .zikir-list {
     display: flex;
