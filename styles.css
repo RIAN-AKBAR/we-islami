@@ -65,6 +65,7 @@ nav ul li a:hover {
 /* Main Content */
 main {
     padding: 20px;
+    padding-top: 80px; /* Jarak antara navbar dan konten */
     width: 100%;
     box-sizing: border-box;
     max-width: 1200px;
