@@ -1,413 +1,191 @@
-/* Reset CSS */
-* {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
-    width: 100%;
-    margin: 0 auto;
-    min-height: 100vh;
-    overflow-x: hidden;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-h1, h2, p, a {
-    font-family: sans-serif;
-    font-weight: normal;
-}
-
-/* Header */
 header {
     background-color: #2c3e50;
-    color: #fff;
-    padding: 5px 0; /* Mengurangi padding navbar */
+    color: white;
+    padding: 10px 0;
     text-align: center;
-    position: fixed; /* Navbar tetap di atas */
-    top: 0; /* Menempel di bagian atas */
-    width: 100%; /* Lebar penuh */
-    z-index: 1000; /* Memastikan navbar selalu di atas elemen lain */
 }
 
-/* Navigation */
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 5px 10px; /* Memberi jarak antar item navbar */
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px; /* Mengurangi ukuran font */
-    padding: 5px 10px; /* Mengurangi padding pada link */
 }
 
 nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Main Content */
 main {
     padding: 20px;
-    padding-top: 60px; /* Mengurangi jarak antara navbar dan konten */
-    padding-bottom: 60px; /* Jarak antara konten dan footer */
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex: 1; /* Memastikan konten memenuhi ruang yang tersedia */
 }
 
-/* Footer */
 footer {
     background-color: #2c3e50;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 0px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
-    font-size: 14px;
-    z-index: 1000;
-    height: auto;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
-/* Prayer Schedule Table */
-.jadwal-sholat {
+button {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.jadwal-sholat th, .jadwal-sholat td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.jadwal-sholat th {
-    background-color: #3A7DFF;
+    padding: 0.75rem;
+    background-color: #007bff;
     color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.jadwal-sholat tr:nth-child(even) {
-    background-color: #f2f2f2;
+button:hover {
+    background-color: #0056b3;
 }
 
-.jadwal-sholat tr:hover {
-    background-color: #d1e0ff;
-}
-
-/* Digital Clock Styles */
-.jam-digital-malasngoding {
-    overflow: hidden;
-    width: 330px;
-    margin: 20px auto;
-    border: 5px solid #efefef;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    padding: 10px; /* Menambahkan padding di dalam kotak */
-    background-color: #2c3e50; /* Warna latar belakang kotak */
-}
-
-.kotak {
-    flex: 1;
-    height: 100px;
-    background-color: #189fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 2px solid #efefef;
-    border-radius: 8px; /* Membuat sudut kotak lebih melengkung */
-    margin: 5px; /* Memberi jarak antar kotak */
-}
-
-.kotak:last-child {
-    border-right: none;
-}
-
-.jam-digital-malasngoding p {
-    color: #fff;
-    font-size: 36px;
-    font-weight: bold;
+.message {
     text-align: center;
+    margin-top: 1rem;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tech Login Animation Styles */
+@keyframes form-entry {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tech-login form {
+    animation: form-entry 3s ease-in-out;
+    background: #111;
+    background: linear-gradient(#004746, #111111);
+    border: 6px solid #00a4a2;
+    box-shadow: 0 0 15px #00ffff;
+    border-radius: 5px;
+    display: inline-block;
+    height: 220px;
+    margin: 200px auto 0;
+    position: relative;
+    z-index: 4;
+    width: 500px;
+    transition: 1s all;
+    padding: 20px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.tech-login form:hover {
+    border: 6px solid #00ffff;
+    box-shadow: 0 0 25px #00ffff;
+    transition: 0.5s all;
+}
+
+.tech-login input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00a4a2;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.tech-login button {
+    display: block;
+    width: 85%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #00a4a2;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.tech-login button:hover {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.commentForm {
+    display: flex;  
+    justify-content: center;
+    align-items: center;  
+    height: 30vh;
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    width: 100%;
-}
-
-/* Detik dalam satu kotak */
-.kotak.detik {
-    display: flex;
-    justify-content: space-around;
-}
-
-.kotak.detik p {
-    font-size: 24px;
-    margin: 0 5px;
-}
-
-/* Zikir List Styles */
-.zikir-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.zikir-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.zikir-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.zikir-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.zikir-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.zikir-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.details.show {
-    display: block;
-}
-
-/* Doa List Styles */
-.doa-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.doa-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.doa-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.doa-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.doa-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.doa-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.doa-details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.doa-details.show {
-    display: block;
-}
-
-/* Hadis List Styles */
-.hadis-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.hadis-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hadis-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.hadis-item.completed {
-    background: rgba(0, 255, 0, 0.2);
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.hadis-item i {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.hadis-item.completed i {
-    color: #4caf50;
-    opacity: 1;
-}
-
-.hadis-details {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: left;
-}
-
-.hadis-details.show {
-    display: block;
-}
-
-/* Responsive Design */
-@media (max-width: 868px) {
-    /* Mobile View */
-    header {
-        padding: 10px 0; /* Mengurangi padding navbar di mobile */
-    }
-
-    nav ul li {
-        margin: 5px 8px; /* Mengurangi jarak antar item navbar di mobile */
-    }
-
-    nav ul li a {
-        font-size: 13px; /* Mengurangi ukuran font di mobile */
-        padding: 5px 8px; /* Mengurangi padding pada link di mobile */
-    }
-
-    .container {
-        padding: 20px;
-    }
-
-    input[type="text"] {
-        padding: 15px;
-    }
-
-    button {
-        padding: 15px;
-    }
-
-    .task-buttons {
-        flex-direction: column;
-    }
-
-    .edit-btn, .delete-btn {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    footer {
-        padding: 8px 0;
-        font-size: 12px;
-    }
-
-    form {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    button {
-        margin-top: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-        width: 100%;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-}
-
-@media (min-width: 869px) {
-    /* Desktop View */
-    nav ul li {
-        display: inline;
-        margin: 0 10px; /* Mengurangi jarak antar item navbar di desktop */
-    }
-
-    .container {
-        padding: 40px;
-    }
-
-    .task-buttons {
-        flex-direction: row;
-    }
-
-    .edit-btn, .delete-btn {
-        width: auto;
-        margin-right: 10px;
-    }
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
