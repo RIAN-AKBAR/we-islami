@@ -1,13 +1,12 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    width: 1200px; /* Sesuaikan dengan lebar desktop yang diinginkan */
-    margin: 0 auto;
-    transform: scale(0.8); /* Sesuaikan skala agar sesuai dengan layar ponsel */
-    transform-origin: top left;
-    /* Tambahkan CSS lain sesuai kebutuhan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 header {
@@ -52,41 +51,141 @@ footer {
     width: 100%;
     bottom: 0;
 }
-form {  
-    background: white; /* Warna latar belakang form */  
-    padding: 20px; /* Ruang di dalam form */  
-    border-radius: 8px; /* Sudut radius */  
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bayangan */  
-    width: 300px; /* Lebar maksimum form */  
-}  
-h1 {  
-    text-align: center; /* Memusatkan judul */  
-}  
-p {
-    text-align: center;
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
-label {  
-    margin-top: 10px; /* Jarak atas untuk label */  
-}  
-button {  
-    margin-top: 10px; /* Jarak atas untuk tombol */  
-    background-color: #4CAF50; /* Warna tombol */  
-    color: white; /* Teks putih */  
-    border: none; /* Tanpa border */  
-    padding: 10px; /* Ruang dalam tombol */  
-    cursor: pointer; /* Pointer saat hover */  
-    border-radius: 5px; /* Sudut radius tombol */  
-    width: 100%; /* Lebar tombol penuh */  
-}  
-button:hover {  
-    background-color: #45a049; /* Warna tombol saat hover */  
-}  
-.commentForm{
-    display: flex;  
-    justify-content: center; /* Memusatkan horizontal */  
-    align-items: center; /* Memusatkan vertical */  
-    height: 30vh; /* Mengisi tinggi layar */  
-    margin: 0; /* Menghapus margin default */  
-    font-family: Arial, sans-serif; /* Mengatur font */  
-    background-color: #f0f0f0; /* Warna latar belakang */  
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tech Login Animation Styles */
+@keyframes form-entry {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
     }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tech-login form {
+    animation: form-entry 3s ease-in-out;
+    background: #111;
+    background: linear-gradient(#004746, #111111);
+    border: 6px solid #00a4a2;
+    box-shadow: 0 0 15px #00ffff;
+    border-radius: 5px;
+    display: inline-block;
+    height: 220px;
+    margin: 200px auto 0;
+    position: relative;
+    z-index: 4;
+    width: 500px;
+    transition: 1s all;
+    padding: 20px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.tech-login form:hover {
+    border: 6px solid #00ffff;
+    box-shadow: 0 0 25px #00ffff;
+    transition: 0.5s all;
+}
+
+.tech-login input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00a4a2;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.tech-login button {
+    display: block;
+    width: 85%;
+    margin: 20px auto;
+    padding: 10px;
+    background: #00a4a2;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.tech-login button:hover {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.commentForm {
+    display: flex;  
+    justify-content: center;
+    align-items: center;  
+    height: 30vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
