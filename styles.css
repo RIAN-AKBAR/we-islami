@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 0;
-    background-color: #f4f4f4; /* Changed to match the first block */
+    background-color: #f4f4f4; /* Background color from the first block */
     color: #333;
     width: 1200px; /* Adjust for desktop width */
     margin: 0 auto;
@@ -68,6 +68,7 @@ footer {
 h1 {
     text-align: center;
     color: #333;
+    margin-top: 0; /* Ensure no extra margin */
 }
 
 p {
@@ -166,36 +167,4 @@ a:hover {
     width: 80%;
     margin: 10px auto;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #00a4a2;
-    border-radius: 3px;
-    color: #fff;
-}
-
-.tech-login button {
-    display: block;
-    width: 85%;
-    margin: 20px auto;
-    padding: 10px;
-    background: #00a4a2;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s all;
-}
-
-.tech-login button:hover {
-    background: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
-}
-
-.commentForm {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 30vh; /* Fill screen height */
-    margin: 0; /* Remove default margin */
-    font-family: Arial, sans-serif; /* Set font */
-    background-color: #f0f0f0; /* Background color */
-}
+    background: rgba(0, 0, 0, 0
