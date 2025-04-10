@@ -110,7 +110,7 @@ if (document.getElementById('logoutBtn')) {
 }
 
 // Cek status login saat mengakses dashboard
-if (window.location.pathname.includes('dashboard.html')) {
+if (window.location.pathname.includes('index1.html')) {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
         window.location.href = 'index.html';
