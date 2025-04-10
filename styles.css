@@ -1,12 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
     padding: 0;
+    background-color: #f4f4f4; /* Changed to match the first block */
+    color: #333;
+    width: 1200px; /* Adjust for desktop width */
+    margin: 0 auto;
+    transform: scale(0.8); /* Adjust scale for mobile */
+    transform-origin: top left;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Full height for centering */
 }
 
 header {
@@ -62,9 +66,12 @@ footer {
 }
 
 h1 {
-    margin-top: 0;
     text-align: center;
     color: #333;
+}
+
+p {
+    text-align: center;
 }
 
 .form-group {
@@ -73,6 +80,7 @@ h1 {
 
 label {
     display: block;
+    margin-top: 10px; /* Added margin for consistency */
     margin-bottom: 0.5rem;
     color: #555;
 }
@@ -86,9 +94,10 @@ input {
 }
 
 button {
+    margin-top: 10px; /* Consistent margin */
     width: 100%;
     padding: 0.75rem;
-    background-color: #007bff;
+    background-color: #4CAF50; /* Default button color */
     color: white;
     border: none;
     border-radius: 4px;
@@ -97,7 +106,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #45a049; /* Default hover color */
 }
 
 .message {
@@ -114,7 +123,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Tech Login Animation Styles */
+/* Animation for form entry */
 @keyframes form-entry {
     0% {
         opacity: 0;
@@ -126,9 +135,9 @@ a:hover {
     }
 }
 
+/* Style for login form */
 .tech-login form {
     animation: form-entry 3s ease-in-out;
-    background: #111;
     background: linear-gradient(#004746, #111111);
     border: 6px solid #00a4a2;
     box-shadow: 0 0 15px #00ffff;
@@ -142,15 +151,16 @@ a:hover {
     transition: 1s all;
     padding: 20px;
     color: #fff;
-    font-family: Arial, sans-serif;
 }
 
+/* Hover effect on form */
 .tech-login form:hover {
     border: 6px solid #00ffff;
     box-shadow: 0 0 25px #00ffff;
     transition: 0.5s all;
 }
 
+/* Additional styles for input and button in tech-login */
 .tech-login input {
     display: block;
     width: 80%;
@@ -181,11 +191,11 @@ a:hover {
 }
 
 .commentForm {
-    display: flex;  
-    justify-content: center;
-    align-items: center;  
-    height: 30vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 30vh; /* Fill screen height */
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Set font */
+    background-color: #f0f0f0; /* Background color */
 }
