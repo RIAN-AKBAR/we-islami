@@ -147,6 +147,37 @@ h1 {
     box-shadow: 0 0 10px #00ffff;
 }
 
+.jam-digital-malasngoding {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.kotak {
+    background-color: #f0f0f0; /* Warna latar belakang kotak jam */
+    border: 2px solid #ccc; /* Warna border kotak */
+    border-radius: 5px; /* Sudut melengkung */
+    padding: 20px;
+    margin: 0 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.jadwal-sholat {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.jadwal-sholat th, .jadwal-sholat td {
+    border: 1px solid #ccc; /* Border untuk tabel */
+    padding: 10px;
+    text-align: center;
+}
+
+.jadwal-sholat td {
+    background-color: #e0f7fa; /* Warna latar belakang untuk waktu sholat */
+}
 /* ... (keep all your other existing styles) ... */
 
 /* Responsive adjustments */
