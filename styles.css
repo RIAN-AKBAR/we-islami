@@ -95,10 +95,9 @@ h1 {
 
 .tech-login form {
     animation: form-entry 3s ease-in-out;
-    background: #111;
-    background: linear-gradient(#004746, #111111);
-    border: 6px solid #00a4a2;
-    box-shadow: 0 0 15px #00ffff;
+    background: linear-gradient(135deg, #2c3e50, #1e2a38); /* Same as navbar */
+    border: 6px solid #3498db; /* Matching the navbar's accent color */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7); /* Blue tint instead of cyan */
     border-radius: 5px;
     display: inline-block;
     height: 220px;
@@ -113,8 +112,8 @@ h1 {
 }
 
 .tech-login form:hover {
-    border: 6px solid #00ffff;
-    box-shadow: 0 0 25px #00ffff;
+    border: 6px solid #3498db;
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.9);
     transition: 0.5s all;
 }
 
@@ -123,8 +122,8 @@ h1 {
     width: 80%;
     margin: 10px auto;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid #00a4a2;
+    background: rgba(255, 255, 255, 0.1); /* Lighter input background */
+    border: 1px solid #3498db; /* Blue border */
     border-radius: 3px;
     color: #fff;
 }
@@ -134,7 +133,7 @@ h1 {
     width: 85%;
     margin: 20px auto;
     padding: 10px;
-    background: #00a4a2;
+    background: #3498db; /* Blue button */
     border: none;
     border-radius: 3px;
     color: #fff;
@@ -143,8 +142,8 @@ h1 {
 }
 
 .tech-login button:hover {
-    background: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
+    background: #2980b9; /* Darker blue on hover */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
 
 .jam-digital-malasngoding {
