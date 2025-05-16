@@ -112,17 +112,23 @@
         <p id="registerMessage" class="message"></p>
     </div>
     <script>
-      // Simpan data user di localStorage
-let users = JSON.parse(localStorage.getItem('users')) || [];
+     let users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Fungsi untuk registrasi
 if (document.getElementById('registerForm')) {
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const newUsername = document.getElementById('newUsername').value;
+        const newUsername = document.getElementById('newUsername').value.trim();
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        // Validasi input
+        if (!newUsername || !newPassword || !confirmPassword) {
+            document.getElementById('registerMessage').textContent = 'Semua field harus diisi!';
+            document.getElementById('registerMessage').style.color = 'red';
+            return;
+        }
         
         // Validasi password
         if (newPassword !== confirmPassword) {
@@ -166,111 +172,36 @@ if (document.getElementById('loginForm')) {
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const username = document.getElementById('username').value;
+        const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
         
-        // Cari user yang sesuai
-        const user = users.find(user => user.username === username && user.password === password);
+        // Validasi input
+        if (!username || !password) {
+            document.getElementById('loginMessage').textContent = 'Semua field harus diisi!';
+            document.getElementById('loginMessage').style.color = 'red';
+            return;
+        }
+        
+        // Cari user yang sesuai (case sensitive)
+        const user = users.find(user => 
+            user.username.trim() === username && 
+            user.password === password
+        );
         
         if (user) {
             // Simpan status login di sessionStorage
             sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('currentUser ', username);
-            
-            // Redirect ke dashboard</style>
-</head>
-<body>
-    <div class="container">
-        <h1>Register</h1>
-        <form id="registerForm">
-            <div class="form-group">
-                <label for="newUsername">Username</label>
-                <input type="text" id="newUsername" required>
-            </div>
-            <div class="form-group">
-                <label for="newPassword">Password</label>
-                <input type="password" id="newPassword" required>
-            </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" required>
-            </div>
-            <button type="submit">Register</button>
-        </form>
-        <p>Sudah punya akun? <a href="index.html">Login disini</a></p>
-        <p id="registerMessage" class="message"></p>
-    </div>
-    <script>
-      // Simpan data user di localStorage
-let users = JSON.parse(localStorage.getItem('users')) || [];
-
-// Fungsi untuk registrasi
-if (document.getElementById('registerForm')) {
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const newUsername = document.getElementById('newUsername').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        
-        // Validasi password
-        if (newPassword !== confirmPassword) {
-            document.getElementById('registerMessage').textContent = 'Password tidak cocok!';
-            document.getElementById('registerMessage').style.color = 'red';
-            return;
-        }
-        
-        // Cek apakah username sudah ada
-        const userExists = users.some(user => user.username === newUsername);
-        if (userExists) {
-            document.getElementById('registerMessage').textContent = 'Username sudah digunakan!';
-            document.getElementById('registerMessage').style.color = 'red';
-            return;
-        }
-        
-        // Tambahkan user baru
-        users.push({
-            username: newUsername,
-            password: newPassword
-        });
-        
-        // Simpan ke localStorage
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        document.getElementById('registerMessage').textContent = 'Registrasi berhasil! Silakan login.';
-        document.getElementById('registerMessage').style.color = 'green';
-        
-        // Kosongkan form
-        document.getElementById('registerForm').reset();
-        
-        // Redirect ke halaman login setelah 2 detik
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 2000);
-    });
-}
-
-// Fungsi untuk login
-if (document.getElementById('loginForm')) {
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        // Cari user yang sesuai
-        const user = users.find(user => user.username === username && user.password === password);
-        
-        if (user) {
-            // Simpan status login di sessionStorage
-            sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('currentUser', username);
+            sessionStorage.setItem('currentUser', username); // Perbaikan: menghilangkan spasi setelah 'currentUser'
             
             // Redirect ke dashboard
-            window.location.href = 'dashboard.html';
+            window.location.href = 'index1.html';
         } else {
             document.getElementById('loginMessage').textContent = 'Username atau password salah!';
             document.getElementById('loginMessage').style.color = 'red';
+            
+            // Debugging: Tampilkan data users di console
+            console.log('Users in storage:', users);
+            console.log('Attempted login with:', { username, password });
         }
     });
 }
@@ -280,7 +211,7 @@ if (document.getElementById('logoutBtn')) {
     document.getElementById('logoutBtn').addEventListener('click', function() {
         // Hapus status login
         sessionStorage.removeItem('isLoggedIn');
-        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser'); // Perbaikan: menghilangkan spasi setelah 'currentUser'
         
         // Redirect ke halaman login
         window.location.href = 'index.html';
@@ -288,10 +219,11 @@ if (document.getElementById('logoutBtn')) {
 }
 
 // Cek status login saat mengakses dashboard
-if (window.location.pathname.includes('dashboard.html')) {
+if (window.location.pathname.includes('index1.html')) {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-        window.location.href = 'index1.html';
+        // Jika tidak login, redirect ke halaman login
+        window.location.href = 'index.html';
     }
 }
     </script>
