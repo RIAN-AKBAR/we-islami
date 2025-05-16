@@ -104,9 +104,16 @@ if (document.getElementById('registerForm')) {
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const newUsername = document.getElementById('newUsername').value;
+        const newUsername = document.getElementById('newUsername').value.trim();
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        // Validasi input
+        if (!newUsername || !newPassword || !confirmPassword) {
+            document.getElementById('registerMessage').textContent = 'Semua field harus diisi!';
+            document.getElementById('registerMessage').style.color = 'red';
+            return;
+        }
         
         // Validasi password
         if (newPassword !== confirmPassword) {
@@ -140,7 +147,7 @@ if (document.getElementById('registerForm')) {
         
         // Redirect ke halaman login setelah 2 detik
         setTimeout(() => {
-            window.location.href = 'index.html'; // Pastikan ini mengarah ke halaman login
+            window.location.href = 'index.html';
         }, 2000);
     });
 }
@@ -150,22 +157,36 @@ if (document.getElementById('loginForm')) {
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const username = document.getElementById('username').value;
+        const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
         
-        // Cari user yang sesuai
-        const user = users.find(user => user.username === username && user.password === password);
+        // Validasi input
+        if (!username || !password) {
+            document.getElementById('loginMessage').textContent = 'Semua field harus diisi!';
+            document.getElementById('loginMessage').style.color = 'red';
+            return;
+        }
+        
+        // Cari user yang sesuai (case sensitive)
+        const user = users.find(user => 
+            user.username.trim() === username && 
+            user.password === password
+        );
         
         if (user) {
             // Simpan status login di sessionStorage
             sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('currentUser ', username);
+            sessionStorage.setItem('currentUser', username); // Perbaikan: menghilangkan spasi setelah 'currentUser'
             
             // Redirect ke dashboard
             window.location.href = 'index1.html';
         } else {
             document.getElementById('loginMessage').textContent = 'Username atau password salah!';
             document.getElementById('loginMessage').style.color = 'red';
+            
+            // Debugging: Tampilkan data users di console
+            console.log('Users in storage:', users);
+            console.log('Attempted login with:', { username, password });
         }
     });
 }
@@ -175,7 +196,7 @@ if (document.getElementById('logoutBtn')) {
     document.getElementById('logoutBtn').addEventListener('click', function() {
         // Hapus status login
         sessionStorage.removeItem('isLoggedIn');
-        sessionStorage.removeItem('currentUser ');
+        sessionStorage.removeItem('currentUser'); // Perbaikan: menghilangkan spasi setelah 'currentUser'
         
         // Redirect ke halaman login
         window.location.href = 'index.html';
