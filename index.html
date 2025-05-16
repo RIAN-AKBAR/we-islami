@@ -97,8 +97,7 @@ a:hover {
         <p>Belum punya akun? <a href="index2.html">Daftar disini</a></p>
         <p id="loginMessage" class="message"></p>
     </div>
-    <script>// Simpan data user di localStorage
-let users = JSON.parse(localStorage.getItem('users')) || [];
+    <script>let users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Fungsi untuk registrasi
 if (document.getElementById('registerForm')) {
@@ -141,7 +140,7 @@ if (document.getElementById('registerForm')) {
         
         // Redirect ke halaman login setelah 2 detik
         setTimeout(() => {
-            window.location.href = 'index1.html';
+            window.location.href = 'index.html'; // Pastikan ini mengarah ke halaman login
         }, 2000);
     });
 }
@@ -160,7 +159,7 @@ if (document.getElementById('loginForm')) {
         if (user) {
             // Simpan status login di sessionStorage
             sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('currentUser', username);
+            sessionStorage.setItem('currentUser ', username);
             
             // Redirect ke dashboard
             window.location.href = 'index1.html';
@@ -176,7 +175,7 @@ if (document.getElementById('logoutBtn')) {
     document.getElementById('logoutBtn').addEventListener('click', function() {
         // Hapus status login
         sessionStorage.removeItem('isLoggedIn');
-        sessionStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser ');
         
         // Redirect ke halaman login
         window.location.href = 'index.html';
@@ -187,8 +186,10 @@ if (document.getElementById('logoutBtn')) {
 if (window.location.pathname.includes('index1.html')) {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-        window.location.href = 'index1.html';
+        // Jika tidak login, redirect ke halaman login
+        window.location.href = 'index.html';
     }
-}</script>
+}
+</script>
 </body>
 </html>
