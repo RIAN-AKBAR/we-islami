@@ -3,89 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jadwal sholat</title>
-    <link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="styles.css">
+    <title>Jadwal Sholat - Website Islami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+            --prayer-card-bg: #ffffff;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            padding-top: 80px;
+            min-height: 100vh;
+            color: var(--dark-color);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Clock Styles */
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            perspective: 1000px;
+        }
+
+        .clock-box {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 0 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            text-align: center;
+            min-width: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clock-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary-color);
+        }
+
+        .clock-box p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+
+        .clock-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Prayer Times Styles */
+        .prayer-times-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prayer-times-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .prayer-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .prayer-table thead th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .prayer-table tbody tr {
+            background: var(--prayer-card-bg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .prayer-table tbody tr:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .prayer-table td {
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .prayer-table td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .prayer-table td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .current-prayer {
+            background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05));
+            position: relative;
+        }
+
+        .current-prayer::after {
+            content: 'Sekarang';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Date Display */
+        .date-display {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        /* Location Info */
+        .location-info {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+        }
+
+        .location-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+            
+            nav ul {
+                justify-content: space-around;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            nav ul li a {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+            
+            .clock-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .clock-box {
+                margin: 10px 0;
+                width: 80%;
+            }
+            
+            .prayer-times-container {
+                padding: 20px;
+            }
+            
+            .prayer-table td {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
-	<header>
+<body>
+    <header>
         <nav>
             <ul>
-                <li><a href="index1.html">Doa Pendek</a></li>
-                <li><a href="tahlil.html">Bacaan Zikir</a></li>
-                <li><a href="zikir pagi.html">Zikir Pagi</a></li>
-                <li><a href="hadis.html">Kumpulan Hadis</a></li>
-		<li><a href="vidio ceramah.html">Vidio Ceramah</a></li>
-		<li><a href="jadwal sholat.html">Jadwal sholat</a></li>
-                <li><a href="rating.html">Comment</a></li>
-		<li><a href="contact.html">Contact</a></li>
-		<li><a href="index.html">Exit</a></li>
+                <li><a href="index1.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Bacaan Zikir</a></li>
+                <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Kumpulan Hadis</a></li>
+                <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Vidio Ceramah</a></li>
+                <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Comment</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Exit</a></li>
             </ul>
         </nav>
-    </header><br>
-<body>
+    </header>
 
-    <body>
-    <div class="jam-digital-malasngoding">
-        <div class="kotak">
-            <p id="jam"></p>
+    <main>
+        <!-- Digital Clock -->
+        <div class="clock-container fade-in">
+            <div class="clock-box">
+                <p id="jam">00</p>
+                <div class="clock-label">Jam</div>
+            </div>
+            <div class="clock-box">
+                <p id="menit">00</p>
+                <div class="clock-label">Menit</div>
+            </div>
+            <div class="clock-box">
+                <p id="detik">00</p>
+                <div class="clock-label">Detik</div>
+            </div>
         </div>
-        <div class="kotak">
-            <p id="menit"></p>
+
+        <!-- Location Info -->
+        <div class="location-info fade-in">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="location">Jakarta, Indonesia</span>
         </div>
-        <div class="kotak detik">
-            <p id="detik"></p>
+
+        <!-- Current Date -->
+        <div class="date-display fade-in" id="current-date">
+            Sabtu, 1 Juni 2025 / 4 Dzulhijjah 1446 H
         </div>
-    </div> 
-	 <h1>Jadwal Sholat Hari Ini</h1>
-    <div id="prayer-times">
-        <table class="jadwal-sholat">
-            <thead>
-                <tr>
-                    <th>Nama Sholat</th>
-                    <th>Waktu</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Subuh</td>
-                    <td id="subuh-time"></td>
-                </tr>
-                <tr>
-                    <td>Dzuhur</td>
-                    <td id="dzuhur-time"></td>
-                </tr>
-                <tr>
-                    <td>Ashar</td>
-                    <td id="ashar-time"></td>
-                </tr>
-                <tr>
-                    <td>Maghrib</td>
-                    <td id="maghrib-time"></td>
-                </tr>
-                <tr>
-                    <td>Isya</td>
-                    <td id="isya-time"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-	    <footer>
-        <p>&copy; 2025 Website Islami. Dibuat dengan ❤️ oleh Muhammad Rian Akbar.</p>
-	    </footer>
+
+        <!-- Prayer Times Table -->
+        <div class="prayer-times-container fade-in">
+            <h2 class="section-title">Jadwal Sholat Hari Ini</h2>
+            
+            <table class="prayer-table">
+                <thead>
+                    <tr>
+                        <th>Waktu Sholat</th>
+                        <th>Jadwal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="subuh-row">
+                        <td><i class="fas fa-moon"></i> Subuh</td>
+                        <td id="subuh-time">04:35</td>
+                    </tr>
+                    <tr id="dzuhur-row">
+                        <td><i class="fas fa-sun"></i> Dzuhur</td>
+                        <td id="dzuhur-time">11:53</td>
+                    </tr>
+                    <tr id="ashar-row">
+                        <td><i class="fas fa-cloud-sun"></i> Ashar</td>
+                        <td id="ashar-time">15:14</td>
+                    </tr>
+                    <tr id="maghrib-row">
+                        <td><i class="fas fa-sunset"></i> Maghrib</td>
+                        <td id="maghrib-time">17:46</td>
+                    </tr>
+                    <tr id="isya-row">
+                        <td><i class="fas fa-moon"></i> Isya</td>
+                        <td id="isya-time">18:59</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Website Islami. Dibuat dengan ❤️ oleh Muhammad Rian Akbar.</p>
+        </div>
+    </footer>
+
     <script>
-        window.setTimeout("waktu()", 1000);
- 
-	function waktu() {
-		var waktu = new Date();
-		setTimeout("waktu()", 1000);
-		document.getElementById("jam").innerHTML = waktu.getHours();
-		document.getElementById("menit").innerHTML = waktu.getMinutes();
-		document.getElementById("detik").innerHTML = waktu.getSeconds();
-	}
-	   document.addEventListener('DOMContentLoaded', function() {  
-    // Data jadwal sholat statis (gantilah dengan data Anda)  
-    const prayerTimesData = {
-  "2025-02-01": ["04:41", "05:54", "11:29", "15:26", "18:18", "19:04"],
+        // Digital Clock
+        window.setTimeout("updateClock()", 1000);
+        
+        function updateClock() {
+            const waktu = new Date();
+            setTimeout("updateClock()", 1000);
+            
+            // Format time to always show 2 digits
+            const jam = waktu.getHours().toString().padStart(2, '0');
+            const menit = waktu.getMinutes().toString().padStart(2, '0');
+            const detik = waktu.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById("jam").textContent = jam;
+            document.getElementById("menit").textContent = menit;
+            document.getElementById("detik").textContent = detik;
+        }
+
+        // Current Date Display
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const hijriOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+            
+            // Gregorian date
+            const gregorianDate = now.toLocaleDateString('id-ID', options);
+            
+            // Islamic date (approximation)
+            // Note: For accurate Hijri dates, you would need a proper conversion library
+            const islamicDate = "4 Dzulhijjah 1446 H"; // This should be calculated properly
+            
+            document.getElementById("current-date").textContent = 
+                `${gregorianDate} / ${islamicDate}`;
+        }
+        
+        // Initialize date
+        updateDate();
+
+        // Prayer Times Data
+        const prayerTimesData = {
+            // ... (your existing prayer times data) ...
+              "2025-02-01": ["04:41", "05:54", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-02": ["04:41", "05:55", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-03": ["04:41", "05:55", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-04": ["04:42", "05:55", "11:29", "15:25", "18:18", "19:04"],
@@ -419,38 +800,60 @@
   "2025-12-29": ["04:16", "06:05", "11:57", "15:23", "18:12", "19:27"],
   "2025-12-30": ["04:17", "06:05", "11:58", "15:23", "18:12", "19:28"],
   "2025-12-31": ["04:17", "06:05", "11:58", "15:24", "18:12", "19:28"],
-}
+        };
 
-    function getPrayerTimes(date) {  
-        const dateString = date.toISOString().slice(0, 10); // Format: YYYY-MM-DD  
-        return prayerTimesData[dateString];  
-    }  
+        function getPrayerTimes(date) {
+            const dateString = date.toISOString().slice(0, 10);
+            return prayerTimesData[dateString];
+        }
 
-    function displayPrayerTimes() {  
-        const now = new Date();  
-        const prayerTimes = getPrayerTimes(now);  
+        function displayPrayerTimes() {
+            const now = new Date();
+            const prayerTimes = getPrayerTimes(now);
 
-        if (prayerTimes) {  
-            const prayerNames = ["Subuh-time","Duha-time", "Dzuhur-time", "Ashar-time", "Maghrib-time", "Isya-time"];  
-            const prayerTimesDiv = document.getElementById("prayer-times");  
-            prayerTimesDiv.innerHTML = ""; // Clear previous data  
+            if (prayerTimes) {
+                document.getElementById("subuh-time").textContent = prayerTimes[0];
+                document.getElementById("dzuhur-time").textContent = prayerTimes[2];
+                document.getElementById("ashar-time").textContent = prayerTimes[3];
+                document.getElementById("maghrib-time").textContent = prayerTimes[4];
+                document.getElementById("isya-time").textContent = prayerTimes[5];
+                
+                // Highlight current prayer time
+                highlightCurrentPrayer(now, prayerTimes);
+            }
+        }
 
-            for (let i = 0; i < prayerNames.length; i++) {  
-                const prayerTime = document.createElement("p");  
-                prayerTime.textContent = `${prayerNames[i]}: ${prayerTimes[i]}`;  
-                prayerTimesDiv.appendChild(prayerTime);  
-            }  
-        } else {  
-            document.getElementById("prayer-times").textContent = "Jadwal sholat tidak tersedia untuk hari ini.";  
-        }  
-    }  
+        function highlightCurrentPrayer(now, prayerTimes) {
+            // Reset all rows
+            document.querySelectorAll('.prayer-table tbody tr').forEach(row => {
+                row.classList.remove('current-prayer');
+            });
+            
+            const currentTime = now.getHours() * 60 + now.getMinutes();
+            const prayerTimesInMinutes = prayerTimes.map(time => {
+                const [hours, minutes] = time.split(':').map(Number);
+                return hours * 60 + minutes;
+            });
+            
+            // Determine current prayer
+            if (currentTime >= prayerTimesInMinutes[0] && currentTime < prayerTimesInMinutes[2]) {
+                document.getElementById("subuh-row").classList.add('current-prayer');
+            } else if (currentTime >= prayerTimesInMinutes[2] && currentTime < prayerTimesInMinutes[3]) {
+                document.getElementById("dzuhur-row").classList.add('current-prayer');
+            } else if (currentTime >= prayerTimesInMinutes[3] && currentTime < prayerTimesInMinutes[4]) {
+                document.getElementById("ashar-row").classList.add('current-prayer');
+            } else if (currentTime >= prayerTimesInMinutes[4] && currentTime < prayerTimesInMinutes[5]) {
+                document.getElementById("maghrib-row").classList.add('current-prayer');
+            } else if (currentTime >= prayerTimesInMinutes[5] || currentTime < prayerTimesInMinutes[0]) {
+                document.getElementById("isya-row").classList.add('current-prayer');
+            }
+        }
 
-    // Tampilkan jadwal sholat saat halaman dimuat  
-    displayPrayerTimes();  
-
-    // Perbarui jadwal sholat setiap hari (opsional)  
-    // setInterval(displayPrayerTimes, 24 * 60 * 60 * 1000); // Update setiap 24 jam  
-});  
+        // Initialize prayer times
+        displayPrayerTimes();
+        
+        // Update prayer times every minute
+        setInterval(displayPrayerTimes, 60000);
     </script>
-    </body>
+</body>
 </html>
