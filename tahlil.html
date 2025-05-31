@@ -6,64 +6,140 @@
     <title>Bacaan Tahlil</title>
     <link rel="stylesheet" href="styles.css">
 </head>
- <header>
+<body>
+    <header>
         <nav>
             <ul>
                 <li><a href="index1.html">Doa Pendek</a></li>
                 <li><a href="tahlil.html">Bacaan Zikir</a></li>
                 <li><a href="zikir pagi.html">Zikir Pagi</a></li>
                 <li><a href="hadis.html">Kumpulan Hadis</a></li>
-		<li><a href="vidio ceramah.html">Vidio Ceramah</a></li>
-		<li><a href="jadwal sholat.html">Jadwal sholat</a></li>
+                <li><a href="vidio ceramah.html">Vidio Ceramah</a></li>
+                <li><a href="jadwal sholat.html">Jadwal sholat</a></li>
                 <li><a href="rating.html">Comment</a></li>
-		<li><a href="contact.html">Contact</a></li>
-		<li><a href="index.html">Exit</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Exit</a></li>
             </ul>
         </nav>
     </header><br>	
-<body>
     <main>
-        <section>
-            <h1>Bacaan Zikir Setelah Sholat</h1>  
-<p>  
-    <em>بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</em> - <strong>(Bismillahir Rahmanir Rahim)</strong> - "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang"  
-</p>  
-<p>  
-    <em>الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</em> - <strong>(Alhamdulillah Rabbil Alamin)</strong> - "Segala puji bagi Allah, Tuhan semesta alam"  
-</p>  
-<p>  
-    <em>اللَّهُ أَكْبَرُ</em> - <strong>(Allahu Akbar)</strong> - "Allah Maha Besar"  
-</p>  
-<p>  
-    <em>سُبْحَانَ اللَّهِ</em> - <strong>(Subhanallah)</strong> - "Maha Suci Allah"  
-</p>  
-<p>  
-    <em>الْحَمْدُ لِلَّهِ</em> - <strong>(Alhamdulillah)</strong> - "Segala puji bagi Allah"  
-</p>  
-<p>  
-    <em>اللَّهُ أَكْبَرُ</em> - <strong>(Allahu Akbar)</strong> - "Allah Maha Besar"  
-</p>  
-<p>  
-    <em>أَسْتَغْفِرُ اللَّهَ رَبِّي وَأَتُوبُ إِلَيْهِ</em> - <strong>(Astaghfirullah Rabbiy wa atubu ilayh)</strong> - "Aku mohon ampun kepada Allah, Tuhanku, dan aku bertaubat kepada-Nya"  
-</p>  
-<p>  
-    <em>اللَّهُمَّ أَعِزَّ الْإِسْلَامَ وَالْمُسْلِمِينَ</em> - <strong>(Allahumma aizzal Islam wal Muslimin)</strong> - "Ya Allah, muliakanlah Islam dan kaum Muslimin"  
-</p><br>
-<h1>Zikir Pagi</h1>  
-<p>  
-    <em>أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ</em> - <strong>(Asbaha alnaa ala fitratil Islam)</strong> - "Kami masuk pagi dalam fitrah Islam"  
-</p>  
-<p>  
-    <em>اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا</em> - <strong>(Allahumma inni as'aluka ilma nafian)</strong> - "Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat"  
-</p><br>
-<h1>Zikir Petang</h1>  
-<p>  
-    <em>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَزَعِ الْوَجَعِ</em> - <strong>(Allahumma inni a'udhu bika min jazaa'il wajah)</strong> - "Ya Allah, aku berlindung kepada-Mu dari rasa putus asa"  
-</p>  
-<p>  
-    <em>اللَّهُمَّ أَحْطِني بِرَحْمَتِكَ</em> - <strong>(Allahumma ahti ni bi rahmatika)</strong> - "Ya Allah, lindungilah aku dengan rahmat-Mu"  
-</p>
-        </section><br>
+        <div class="container">
+            <h1>Bacaan Zikir</h1>
+            <p>Berikut adalah Bacaan-Bacaan Zikir:</p>
+            <div class="zikir-list">
+                <!-- Daftar zikir akan dimasukkan melalui JavaScript -->
+            </div>
+        </div><br>
+        <script>
+            const zikirList = [
+                {
+                    title: "Zikir Setelah Sholat",
+                    items: [
+                        {
+                            arab: "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+                            latin: "Bismillahir Rahmanir Rahim",
+                            arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang"
+                        },
+                        {
+                            arab: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+                            latin: "Alhamdulillah Rabbil Alamin",
+                            arti: "Segala puji bagi Allah, Tuhan semesta alam"
+                        },
+                        {
+                            arab: "اللَّهُ أَكْبَرُ",
+                            latin: "Allahu Akbar",
+                            arti: "Allah Maha Besar"
+                        },
+                        {
+                            arab: "سُبْحَانَ اللَّهِ",
+                            latin: "Subhanallah",
+                            arti: "Maha Suci Allah"
+                        },
+                        {
+                            arab: "الْحَمْدُ لِلَّهِ",
+                            latin: "Alhamdulillah",
+                            arti: "Segala puji bagi Allah"
+                        },
+                        {
+                            arab: "أَسْتَغْفِرُ اللَّهَ رَبِّي وَأَتُوبُ إِلَيْهِ",
+                            latin: "Astaghfirullah Rabbiy wa atubu ilayh",
+                            arti: "Aku mohon ampun kepada Allah, Tuhanku, dan aku bertaubat kepada-Nya"
+                        },
+                        {
+                            arab: "اللَّهُمَّ أَعِزَّ الْإِسْلَامَ وَالْمُسْلِمِينَ",
+                            latin: "Allahumma aizzal Islam wal Muslimin",
+                            arti: "Ya Allah, muliakanlah Islam dan kaum Muslimin"
+                        }
+                    ]
+                },
+                {
+                    title: "Zikir Pagi",
+                    items: [
+                        {
+                            arab: "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ",
+                            latin: "Asbaha alnaa ala fitratil Islam",
+                            arti: "Kami masuk pagi dalam fitrah Islam"
+                        },
+                        {
+                            arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا",
+                            latin: "Allahumma inni as'aluka ilma nafian",
+                            arti: "Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat"
+                        }
+                    ]
+                },
+                {
+                    title: "Zikir Petang",
+                    items: [
+                        {
+                            arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَزَعِ الْوَجَعِ",
+                            latin: "Allahumma inni a'udhu bika min jazaa'il wajah",
+                            arti: "Ya Allah, aku berlindung kepada-Mu dari rasa putus asa"
+                        },
+                        {
+                            arab: "اللَّهُمَّ أَحْطِني بِرَحْمَتِكَ",
+                            latin: "Allahumma ahti ni bi rahmatika",
+                            arti: "Ya Allah, lindungilah aku dengan rahmat-Mu"
+                        }
+                    ]
+                }
+            ];
+
+            const zikirListElement = document.querySelector('.zikir-list');
+
+            zikirList.forEach((zikirGroup, index) => {
+                // Create group header
+                const groupHeader = document.createElement('h2');
+                groupHeader.textContent = zikirGroup.title;
+                zikirListElement.appendChild(groupHeader);
+
+                // Create items for each group
+                zikirGroup.items.forEach((zikir, itemIndex) => {
+                    const zikirItem = document.createElement('div');
+                    zikirItem.classList.add('zikir-item');
+                    zikirItem.innerHTML = `
+                        <span>${zikir.arab}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    `;
+
+                    const details = document.createElement('div');
+                    details.classList.add('details');
+                    details.innerHTML = `
+                        <p><strong>Latin:</strong> ${zikir.latin}</p>
+                        <p><strong>Arti:</strong> ${zikir.arti}</p>
+                    `;
+
+                    zikirItem.addEventListener('click', () => {
+                        details.classList.toggle('show');
+                        zikirItem.classList.toggle('completed');
+                        const icon = zikirItem.querySelector('i');
+                        icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    });
+
+                    zikirListElement.appendChild(zikirItem);
+                    zikirListElement.appendChild(details);
+                });
+            });
+        </script>
     </main>
 
     <footer>
