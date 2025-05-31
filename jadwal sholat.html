@@ -221,7 +221,7 @@
         }
 
         .current-prayer {
-            background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05));
+            background: linear-gradient(to right, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.05));
             position: relative;
         }
 
@@ -377,9 +377,9 @@
             <span id="location">Jakarta, Indonesia</span>
         </div>
 
-        <!-- Current Date -->
+        <!-- Current Date - Will be updated automatically -->
         <div class="date-display fade-in" id="current-date">
-            Sabtu, 1 Juni 2025 / 4 Dzulhijjah 1446 H
+            <!-- Date will be inserted here by JavaScript -->
         </div>
 
         <!-- Prayer Times Table -->
@@ -447,26 +447,48 @@
         function updateDate() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const hijriOptions = { day: 'numeric', month: 'long', year: 'numeric' };
             
             // Gregorian date
             const gregorianDate = now.toLocaleDateString('id-ID', options);
             
             // Islamic date (approximation)
             // Note: For accurate Hijri dates, you would need a proper conversion library
-            const islamicDate = "4 Dzulhijjah 1446 H"; // This should be calculated properly
+            const islamicDate = calculateHijriDate(now);
             
             document.getElementById("current-date").textContent = 
                 `${gregorianDate} / ${islamicDate}`;
         }
         
-        // Initialize date
-        updateDate();
+        // Simple Hijri date calculation (approximation)
+        function calculateHijriDate(gregorianDate) {
+            // This is a simplified conversion - for precise dates use a library like moment-hijri
+            const gregorianYear = gregorianDate.getFullYear();
+            const hijriYear = Math.floor((gregorianYear - 622) * (33/32));
+            
+            // Get day of year (1-365)
+            const start = new Date(gregorianDate.getFullYear(), 0, 0);
+            const diff = gregorianDate - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const dayOfYear = Math.floor(diff / oneDay);
+            
+            // Approximate Hijri month and day
+            const hijriMonths = [
+                'Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir',
+                'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban',
+                'Ramadhan', 'Syawal', 'Dzulqaidah', 'Dzulhijjah'
+            ];
+            
+            const hijriDay = (dayOfYear % 30) + 1;
+            let hijriMonth = Math.floor(dayOfYear / 30) + 1;
+            if (hijriMonth > 12) hijriMonth -= 12;
+            
+            return `${hijriDay} ${hijriMonths[hijriMonth-1]} ${hijriYear} H`;
+        }
 
         // Prayer Times Data
         const prayerTimesData = {
-            // ... (your existing prayer times data) ...
-              "2025-02-01": ["04:41", "05:54", "11:29", "15:26", "18:18", "19:04"],
+            // ... (your existing prayer times data remains the same) ...
+   "2025-02-01": ["04:41", "05:54", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-02": ["04:41", "05:55", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-03": ["04:41", "05:55", "11:29", "15:26", "18:18", "19:04"],
   "2025-02-04": ["04:42", "05:55", "11:29", "15:25", "18:18", "19:04"],
@@ -800,6 +822,7 @@
   "2025-12-29": ["04:16", "06:05", "11:57", "15:23", "18:12", "19:27"],
   "2025-12-30": ["04:17", "06:05", "11:58", "15:23", "18:12", "19:28"],
   "2025-12-31": ["04:17", "06:05", "11:58", "15:24", "18:12", "19:28"],
+            // ... (rest of your prayer times data) ...
         };
 
         function getPrayerTimes(date) {
@@ -849,11 +872,31 @@
             }
         }
 
-        // Initialize prayer times
-        displayPrayerTimes();
-        
-        // Update prayer times every minute
-        setInterval(displayPrayerTimes, 60000);
+        // Initialize all functions when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateClock();
+            updateDate();
+            displayPrayerTimes();
+            
+            // Update date every day at midnight
+            const now = new Date();
+            const midnight = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate() + 1,
+                0, 0, 0
+            );
+            const timeToMidnight = midnight - now;
+            
+            setTimeout(function() {
+                updateDate();
+                // Update every 24 hours after first midnight
+                setInterval(updateDate, 24 * 60 * 60 * 1000);
+            }, timeToMidnight);
+            
+            // Update prayer times every minute
+            setInterval(displayPrayerTimes, 60000);
+        });
     </script>
 </body>
 </html>
