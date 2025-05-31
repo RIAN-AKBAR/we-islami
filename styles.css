@@ -273,38 +273,6 @@ h1 {
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
 
-.jam-digital-malasngoding {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.kotak {
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 0 10px;
-    text-align: center;
-    font-size: 24px;
-}
-
-.jadwal-sholat {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.jadwal-sholat th, .jadwal-sholat td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.jadwal-sholat td {
-    background-color: #e0f7fa;
-}
-
 /* Footer Styles */
 footer {
     background: linear-gradient(135deg, #2c3e50, #1e2a38);
