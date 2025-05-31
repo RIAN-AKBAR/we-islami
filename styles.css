@@ -65,14 +65,14 @@ main {
     width: 100%;
 }
 
-/* Rest of your existing styles remain the same */
+/* Container styles */
 .container {
     background: white;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 800px; /* Updated from 400px to 800px for comment section */
     margin: 20px auto;
 }
 
@@ -81,6 +81,88 @@ h1 {
     text-align: center;
     color: #333;
 }
+
+/* Comment section styles */
+.comment-section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.comment-form {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.rating-section {
+    margin: 15px 0;
+}
+
+.stars {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffc107;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.comment-list {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.comment-list h2 {
+    margin-bottom: 15px;
+}
+
 /* Tech Login Animation Styles */
 @keyframes form-entry {
     0% {
@@ -95,9 +177,9 @@ h1 {
 
 .tech-login form {
     animation: form-entry 3s ease-in-out;
-    background: linear-gradient(135deg, #2c3e50, #1e2a38); /* Same as navbar */
-    border: 6px solid #3498db; /* Matching the navbar's accent color */
-    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7); /* Blue tint instead of cyan */
+    background: linear-gradient(135deg, #2c3e50, #1e2a38);
+    border: 6px solid #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
     border-radius: 5px;
     display: inline-block;
     height: 220px;
@@ -122,8 +204,8 @@ h1 {
     width: 80%;
     margin: 10px auto;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.1); /* Lighter input background */
-    border: 1px solid #3498db; /* Blue border */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #3498db;
     border-radius: 3px;
     color: #fff;
 }
@@ -133,7 +215,7 @@ h1 {
     width: 85%;
     margin: 20px auto;
     padding: 10px;
-    background: #3498db; /* Blue button */
+    background: #3498db;
     border: none;
     border-radius: 3px;
     color: #fff;
@@ -142,7 +224,7 @@ h1 {
 }
 
 .tech-login button:hover {
-    background: #2980b9; /* Darker blue on hover */
+    background: #2980b9;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
 
@@ -153,9 +235,9 @@ h1 {
 }
 
 .kotak {
-    background-color: #f0f0f0; /* Warna latar belakang kotak jam */
-    border: 2px solid #ccc; /* Warna border kotak */
-    border-radius: 5px; /* Sudut melengkung */
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
     padding: 20px;
     margin: 0 10px;
     text-align: center;
@@ -169,35 +251,15 @@ h1 {
 }
 
 .jadwal-sholat th, .jadwal-sholat td {
-    border: 1px solid #ccc; /* Border untuk tabel */
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
 }
 
 .jadwal-sholat td {
-    background-color: #e0f7fa; /* Warna latar belakang untuk waktu sholat */
+    background-color: #e0f7fa;
 }
-/* ... (keep all your other existing styles) ... */
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    body {
-        padding-top: 120px; /* More space for wrapped navbar */
-    }
-    
-    nav ul {
-        justify-content: space-around;
-    }
-    
-    nav ul li {
-        margin: 5px;
-    }
-    
-    nav ul li a {
-        padding: 8px 10px;
-        font-size: 14px;
-    }
-}
 /* Footer Styles */
 footer {
     background: linear-gradient(135deg, #2c3e50, #1e2a38);
@@ -220,4 +282,35 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 120px;
+    }
+    
+    nav ul {
+        justify-content: space-around;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .tech-login form {
+        width: 90%;
+        height: auto;
+        margin: 100px auto 0;
+    }
 }
