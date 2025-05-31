@@ -6,55 +6,106 @@
     <title>Rating Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-   <header>
+<body>
+    <header>
         <nav>
             <ul>
                 <li><a href="index1.html">Doa Pendek</a></li>
                 <li><a href="tahlil.html">Bacaan Zikir</a></li>
                 <li><a href="zikir pagi.html">Zikir Pagi</a></li>
                 <li><a href="hadis.html">Kumpulan Hadis</a></li>
-		<li><a href="vidio ceramah.html">Vidio Ceramah</a></li>
-		<li><a href="jadwal sholat.html">Jadwal sholat</a></li>
+                <li><a href="vidio ceramah.html">Vidio Ceramah</a></li>
+                <li><a href="jadwal sholat.html">Jadwal sholat</a></li>
                 <li><a href="rating.html">Comment</a></li>
-		<li><a href="contact.html">Contact</a></li>
-		<li><a href="index.html">Exit</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Exit</a></li>
             </ul>
         </nav>
     </header><br>	
-<body>
     <main>
-        <h1>Halaman Komen</h1> 
-        <p><strong> Ayo Di Comment :</strong></p>
-        <div class="commentForm">  
-            <form id="commentForm">  
-                <label for="name">Nama:</label>  
-                <input type="text" id="name" name="name" required>  
-                <br>  
-                <label for="comment">Komen:</label>  
-                <textarea id="comment" name="comment" required></textarea>  
-                <br>  
-                <button type="submit">Kirim Komen</button>  
-            </form>  
+        <div class="container">
+            <h1>Halaman Komen</h1>
+            <p><strong>Ayo Berikan Komentar Anda:</strong></p>
+            
+            <div class="comment-section">
+                <div class="comment-form">
+                    <form id="commentForm">  
+                        <div class="form-group">
+                            <label for="name">Nama:</label>  
+                            <input type="text" id="name" name="name" required>  
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment">Komen:</label>  
+                            <textarea id="comment" name="comment" rows="4" required></textarea>  
+                        </div>
+                        
+                        <div class="rating-section">
+                            <label>Rating:</label>
+                            <div class="stars">
+                                <span class="star" data-value="5">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="1">★</span>
+                            </div>
+                            <input type="hidden" id="rating" name="rating" value="0">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Kirim Komen</button>  
+                    </form>  
+                </div>
+                
+                <div class="comment-list">
+                    <h2>Komentar Terbaru</h2>
+                    <!-- Komentar akan muncul di sini -->
+                </div>
+            </div>
         </div>
-            <script>  
-                document.getElementById('commentForm').addEventListener('submit', function(event) {  
-                    event.preventDefault(); // Mencegah form untuk melakukan submit secara default  
+
+        <script>  
+            // Fungsi untuk rating bintang
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    document.getElementById('rating').value = value;
                     
-                    const name = document.getElementById('name').value;  
-                    const comment = document.getElementById('comment').value;  
-        
-                    // Menentukan nomor WhatsApp tujuan  
-                    const phoneNumber = '6285167089251'; // Ganti dengan nomor Anda  
-                    
-                    // Membuat pesan untuk WhatsApp  
-                    const message = `Komentar dari ${name}: ${comment}`;  
-                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;  
-        
-                    // Mengarahkan pengguna ke WhatsApp  
-                    window.location.href = whatsappUrl;  
-                });  
-            </script>  
-        </section>
+                    // Update tampilan bintang
+                    document.querySelectorAll('.star').forEach(s => {
+                        if (s.getAttribute('data-value') <= value) {
+                            s.style.color = '#ffc107';
+                        } else {
+                            s.style.color = '#ccc';
+                        }
+                    });
+                });
+            });
+            
+            // Fungsi untuk mengirim komentar ke WhatsApp
+            document.getElementById('commentForm').addEventListener('submit', function(event) {  
+                event.preventDefault();
+                
+                const name = document.getElementById('name').value;  
+                const comment = document.getElementById('comment').value;
+                const rating = document.getElementById('rating').value;
+                
+                // Validasi rating
+                if (rating === "0") {
+                    alert("Silakan berikan rating terlebih dahulu!");
+                    return;
+                }
+                
+                // Menentukan nomor WhatsApp tujuan  
+                const phoneNumber = '6285167089251'; // Ganti dengan nomor Anda  
+                
+                // Membuat pesan untuk WhatsApp  
+                const message = `Komentar dari ${name} (Rating: ${rating}/5):\n${comment}`;  
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;  
+    
+                // Mengarahkan pengguna ke WhatsApp  
+                window.location.href = whatsappUrl;  
+            });  
+        </script>
     </main><br>
 
     <footer>
