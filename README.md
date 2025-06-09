@@ -1,6 +1,6 @@
 # We Islami - Aplikasi Islami Berbasis Web 🌙
 
-![We Islami Banner]([https://rian-akbar.github.io/we-islami](https://files.catbox.moe/72oe5k.jpg))
+![We Islami Banner]((https://files.catbox.moe/72oe5k.jpg))
 
 **We Islami** adalah platform digital yang menyediakan berbagai fitur islami untuk mendukung ibadah harian Muslim. Dibangun dengan antarmuka yang modern dan responsif.
 
