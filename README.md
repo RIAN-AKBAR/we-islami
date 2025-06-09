@@ -1,6 +1,6 @@
 # We Islami - Aplikasi Islami Berbasis Web 🌙
 
-![We Islami Banner](https://rian-akbar.github.io/we-islami)
+![We Islami Banner]([https://rian-akbar.github.io/we-islami](https://files.catbox.moe/72oe5k.jpg))
 
 **We Islami** adalah platform digital yang menyediakan berbagai fitur islami untuk mendukung ibadah harian Muslim. Dibangun dengan antarmuka yang modern dan responsif.
 
@@ -12,7 +12,13 @@
 | 🕌 **Jadwal Sholat** | Jadwal sholat otomatis berdasarkan lokasi pengguna |
 | 📅 **Kalender Hijriyah** | Konversi tanggal Hijriyah-Masehi yang akurat |
 | 📿 **Dzikir Harian** | Kumpulan dzikir pagi dan petang |
+| 📚 **Koleksi Hadis** | Menampilkan hadis-hadis pilihan dari kitab shahih dengan: |
+|  | - Tampilan kartu yang elegan |
+|  | - Klasifikasi berdasarkan tema (akhlak, ibadah, muamalah) |
+|  | - Informasi sumber (Bukhari, Muslim, dll) |
+| 🎙 **Koleksi Ceramah** | Kumpulan audio ceramah ulama terpercaya |
 | 📌 **Widget Doa** | Kumpulan doa-doa harian dengan tampilan kartu yang interaktif |
+| ✍️ **Tulis Komentar** | Formulir interaktif untuk berbagi pendapat |
 
 ## 🛠 Teknologi
 
