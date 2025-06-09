@@ -270,6 +270,8 @@ footer {
     padding: 25px 0;
     position: relative;
     margin-top: 50px;
+    width: 100%; /* Ensure footer takes full width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 footer::before {
@@ -287,6 +289,28 @@ footer::before {
     margin: 0 auto;
     padding: 0 20px;
 }
+
+/* Responsive Adjustments for Footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 0; /* Adjust padding for smaller screens */
+    }
+    
+    .footer-content {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 15px 0; /* Further adjust padding for very small screens */
+    }
+    
+    .footer-content {
+        padding: 0 5px; /* Minimal padding for very small screens */
+    }
+}
+
 
 /* Animations */
 @keyframes fadeIn {
