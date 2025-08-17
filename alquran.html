@@ -191,15 +191,14 @@
     <div class="flex flex-wrap items-center justify-between px-4 py-2 max-w-5xl mx-auto">
       <div class="flex flex-wrap gap-x-2 gap-y-1">
         <a href="alquran.html" class="navbar-link"><i class="fa-solid fa-book-open navbar-icon"></i>Al-Quran</a>
-                    <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-                    <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-                    <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-                    <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-                    <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-                    <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-                    <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>       
+        <a href="index.html" class="navbar-link"><i class="fas fa-hands-praying navbar-icon"></i>Doa Pendek</a>
+        <a href="tahlil.html" class="navbar-link"><i class="fas fa-dharmachakra navbar-icon"></i>Zikir</a>
+        <a href="zikir pagi.html" class="navbar-link"><i class="fas fa-sun navbar-icon"></i>Zikir Pagi</a>
+        <a href="hadis.html" class="navbar-link"><i class="fas fa-book-quran navbar-icon"></i>Hadis</a>
+        <a href="vidio ceramah.html" class="navbar-link"><i class="fas fa-video navbar-icon"></i>Ceramah</a>
+        <a href="jadwal sholat.html" class="navbar-link"><i class="fas fa-mosque navbar-icon"></i>Jadwal Sholat</a>
+        <a href="rating.html" class="navbar-link"><i class="fas fa-comment navbar-icon"></i>Komentar</a>
+        <a href="contact.html" class="navbar-link"><i class="fas fa-envelope navbar-icon"></i>Kontak</a>
       </div>
     </div>
   </nav>
@@ -222,123 +221,123 @@
     </section>
   </main>
   <script>
-    // Surah static list for demo (fill up to 114 for full data)
-const surahList = [
-  { number: 1, name: 'Al-Fatihah', arabic: 'الفاتحة', totalAyah: 7, type: 'Makkiyah' },
-  { number: 2, name: 'Al-Baqarah', arabic: 'البقرة', totalAyah: 286, type: 'Madaniyah' },
-  { number: 3, name: 'Ali Imran', arabic: 'آل عمران', totalAyah: 200, type: 'Madaniyah' },
-  { number: 4, name: 'An-Nisa', arabic: 'النساء', totalAyah: 176, type: 'Madaniyah' },
-  { number: 5, name: 'Al-Ma\'idah', arabic: 'المائدة', totalAyah: 120, type: 'Madaniyah' },
-  { number: 6, name: 'Al-An\'am', arabic: 'الأنعام', totalAyah: 165, type: 'Makkiyah' },
-  { number: 7, name: 'Al-A\'raf', arabic: 'الأعراف', totalAyah: 206, type: 'Makkiyah' },
-  { number: 8, name: 'Al-Anfal', arabic: 'الأنفال', totalAyah: 75, type: 'Madaniyah' },
-  { number: 9, name: 'At-Tawbah', arabic: 'التوبة', totalAyah: 129, type: 'Madaniyah' },
-  { number: 10, name: 'Yunus', arabic: 'يونس', totalAyah: 109, type: 'Makkiyah' },
-  { number: 11, name: 'Hud', arabic: 'هود', totalAyah: 123, type: 'Makkiyah' },
-  { number: 12, name: 'Yusuf', arabic: 'يوسف', totalAyah: 111, type: 'Makkiyah' },
-  { number: 13, name: 'Ar-Ra\'d', arabic: 'الرعد', totalAyah: 43, type: 'Madaniyah' },
-  { number: 14, name: 'Ibrahim', arabic: 'ابراهيم', totalAyah: 52, type: 'Makkiyah' },
-  { number: 15, name: 'Al-Hijr', arabic: 'الحجر', totalAyah: 99, type: 'Makkiyah' },
-  { number: 16, name: 'An-Nahl', arabic: 'النحل', totalAyah: 128, type: 'Makkiyah' },
-  { number: 17, name: 'Al-Isra', arabic: 'الإسراء', totalAyah: 111, type: 'Makkiyah' },
-  { number: 18, name: 'Al-Kahfi', arabic: 'الكهف', totalAyah: 110, type: 'Makkiyah' },
-  { number: 19, name: 'Maryam', arabic: 'مريم', totalAyah: 98, type: 'Makkiyah' },
-  { number: 20, name: 'Ta-Ha', arabic: 'طه', totalAyah: 135, type: 'Makkiyah' },
-  { number: 21, name: 'Al-Anbiya', arabic: 'الأنبياء', totalAyah: 112, type: 'Makkiyah' },
-  { number: 22, name: 'Al-Hajj', arabic: 'الحج', totalAyah: 78, type: 'Madaniyah' },
-  { number: 23, name: 'Al-Mu\'minun', arabic: 'المؤمنون', totalAyah: 118, type: 'Makkiyah' },
-  { number: 24, name: 'An-Nur', arabic: 'النور', totalAyah: 64, type: 'Madaniyah' },
-  { number: 25, name: 'Al-Furqan', arabic: 'الفرقان', totalAyah: 77, type: 'Makkiyah' },
-  { number: 26, name: 'Ash-Shu\'ara', arabic: 'الشعراء', totalAyah: 227, type: 'Makkiyah' },
-  { number: 27, name: 'An-Naml', arabic: 'النمل', totalAyah: 93, type: 'Makkiyah' },
-  { number: 28, name: 'Al-Qasas', arabic: 'القصص', totalAyah: 88, type: 'Makkiyah' },
-  { number: 29, name: 'Al-Ankabut', arabic: 'العنكبوت', totalAyah: 69, type: 'Makkiyah' },
-  { number: 30, name: 'Ar-Rum', arabic: 'الروم', totalAyah: 60, type: 'Makkiyah' },
-  { number: 31, name: 'Luqman', arabic: 'لقمان', totalAyah: 34, type: 'Makkiyah' },
-  { number: 32, name: 'As-Sajdah', arabic: 'السجدة', totalAyah: 30, type: 'Makkiyah' },
-  { number: 33, name: 'Al-Ahzab', arabic: 'الأحزاب', totalAyah: 73, type: 'Madaniyah' },
-  { number: 34, name: 'Saba', arabic: 'سبأ', totalAyah: 54, type: 'Makkiyah' },
-  { number: 35, name: 'Fatir', arabic: 'فاطر', totalAyah: 45, type: 'Makkiyah' },
-  { number: 36, name: 'Ya-Sin', arabic: 'يس', totalAyah: 83, type: 'Makkiyah' },
-  { number: 37, name: 'As-Saffat', arabic: 'الصافات', totalAyah: 182, type: 'Makkiyah' },
-  { number: 38, name: 'Sad', arabic: 'ص', totalAyah: 88, type: 'Makkiyah' },
-  { number: 39, name: 'Az-Zumar', arabic: 'الزمر', totalAyah: 75, type: 'Makkiyah' },
-  { number: 40, name: 'Ghafir', arabic: 'غافر', totalAyah: 85, type: 'Makkiyah' },
-  { number: 41, name: 'Fussilat', arabic: 'فصلت', totalAyah: 54, type: 'Makkiyah' },
-  { number: 42, name: 'Ash-Shura', arabic: 'الشورى', totalAyah: 53, type: 'Makkiyah' },
-  { number: 43, name: 'Az-Zukhruf', arabic: 'الزخرف', totalAyah: 89, type: 'Makkiyah' },
-  { number: 44, name: 'Ad-Dukhan', arabic: 'الدخان', totalAyah: 59, type: 'Makkiyah' },
-  { number: 45, name: 'Al-Jathiyah', arabic: 'الجاثية', totalAyah: 37, type: 'Makkiyah' },
-  { number: 46, name: 'Al-Ahqaf', arabic: 'الأحقاف', totalAyah: 35, type: 'Makkiyah' },
-  { number: 47, name: 'Muhammad', arabic: 'محمد', totalAyah: 38, type: 'Madaniyah' },
-  { number: 48, name: 'Al-Fath', arabic: 'الفتح', totalAyah: 29, type: 'Madaniyah' },
-  { number: 49, name: 'Al-Hujurat', arabic: 'الحجرات', totalAyah: 18, type: 'Madaniyah' },
-  { number: 50, name: 'Qaf', arabic: 'ق', totalAyah: 45, type: 'Makkiyah' },
-  { number: 51, name: 'Adh-Dhariyat', arabic: 'الذاريات', totalAyah: 60, type: 'Makkiyah' },
-  { number: 52, name: 'At-Tur', arabic: 'الطور', totalAyah: 49, type: 'Makkiyah' },
-  { number: 53, name: 'An-Najm', arabic: 'النجم', totalAyah: 62, type: 'Makkiyah' },
-  { number: 54, name: 'Al-Qamar', arabic: 'القمر', totalAyah: 55, type: 'Makkiyah' },
-  { number: 55, name: 'Ar-Rahman', arabic: 'الرحمن', totalAyah: 78, type: 'Madaniyah' },
-  { number: 56, name: 'Al-Waqi\'ah', arabic: 'الواقعة', totalAyah: 96, type: 'Makkiyah' },
-  { number: 57, name: 'Al-Hadid', arabic: 'الحديد', totalAyah: 29, type: 'Madaniyah' },
-  { number: 58, name: 'Al-Mujadila', arabic: 'المجادلة', totalAyah: 22, type: 'Madaniyah' },
-  { number: 59, name: 'Al-Hashr', arabic: 'الحشر', totalAyah: 24, type: 'Madaniyah' },
-  { number: 60, name: 'Al-Mumtahanah', arabic: 'الممتحنة', totalAyah: 13, type: 'Madaniyah' },
-  { number: 61, name: 'As-Saff', arabic: 'الصف', totalAyah: 14, type: 'Madaniyah' },
-  { number: 62, name: 'Al-Jumu\'ah', arabic: 'الجمعة', totalAyah: 11, type: 'Madaniyah' },
-  { number: 63, name: 'Al-Munafiqun', arabic: 'المنافقون', totalAyah: 11, type: 'Madaniyah' },
-  { number: 64, name: 'At-Taghabun', arabic: 'التغابن', totalAyah: 18, type: 'Madaniyah' },
-  { number: 65, name: 'At-Talaq', arabic: 'الطلاق', totalAyah: 12, type: 'Madaniyah' },
-  { number: 66, name: 'At-Tahrim', arabic: 'التحريم', totalAyah: 12, type: 'Madaniyah' },
-  { number: 67, name: 'Al-Mulk', arabic: 'الملك', totalAyah: 30, type: 'Makkiyah' },
-  { number: 68, name: 'Al-Qalam', arabic: 'القلم', totalAyah: 52, type: 'Makkiyah' },
-  { number: 69, name: 'Al-Haqqah', arabic: 'الحاقة', totalAyah: 52, type: 'Makkiyah' },
-  { number: 70, name: 'Al-Ma\'arij', arabic: 'المعارج', totalAyah: 44, type: 'Makkiyah' },
-  { number: 71, name: 'Nuh', arabic: 'نوح', totalAyah: 28, type: 'Makkiyah' },
-  { number: 72, name: 'Al-Jinn', arabic: 'الجن', totalAyah: 28, type: 'Makkiyah' },
-  { number: 73, name: 'Al-Muzzammil', arabic: 'المزمل', totalAyah: 20, type: 'Makkiyah' },
-  { number: 74, name: 'Al-Muddaththir', arabic: 'المدثر', totalAyah: 56, type: 'Makkiyah' },
-  { number: 75, name: 'Al-Qiyamah', arabic: 'القيامة', totalAyah: 40, type: 'Makkiyah' },
-  { number: 76, name: 'Al-Insan', arabic: 'الانسان', totalAyah: 31, type: 'Madaniyah' },
-  { number: 77, name: 'Al-Mursalat', arabic: 'المرسلات', totalAyah: 50, type: 'Makkiyah' },
-  { number: 78, name: 'An-Naba', arabic: 'النبأ', totalAyah: 40, type: 'Makkiyah' },
-  { number: 79, name: 'An-Nazi\'at', arabic: 'النازعات', totalAyah: 46, type: 'Makkiyah' },
-  { number: 80, name: '\'Abasa', arabic: 'عبس', totalAyah: 42, type: 'Makkiyah' },
-  { number: 81, name: 'At-Takwir', arabic: 'التكوير', totalAyah: 29, type: 'Makkiyah' },
-  { number: 82, name: 'Al-Infitar', arabic: 'الإنفطار', totalAyah: 19, type: 'Makkiyah' },
-  { number: 83, name: 'Al-Mutaffifin', arabic: 'المطففين', totalAyah: 36, type: 'Makkiyah' },
-  { number: 84, name: 'Al-Inshiqaq', arabic: 'الإنشقاق', totalAyah: 25, type: 'Makkiyah' },
-  { number: 85, name: 'Al-Buruj', arabic: 'البروج', totalAyah: 22, type: 'Makkiyah' },
-  { number: 86, name: 'At-Tariq', arabic: 'الطارق', totalAyah: 17, type: 'Makkiyah' },
-  { number: 87, name: 'Al-A\'la', arabic: 'الأعلى', totalAyah: 19, type: 'Makkiyah' },
-  { number: 88, name: 'Al-Ghashiyah', arabic: 'الغاشية', totalAyah: 26, type: 'Makkiyah' },
-  { number: 89, name: 'Al-Fajr', arabic: 'الفجر', totalAyah: 30, type: 'Makkiyah' },
-  { number: 90, name: 'Al-Balad', arabic: 'البلد', totalAyah: 20, type: 'Makkiyah' },
-  { number: 91, name: 'Ash-Shams', arabic: 'الشمس', totalAyah: 15, type: 'Makkiyah' },
-  { number: 92, name: 'Al-Lail', arabic: 'الليل', totalAyah: 21, type: 'Makkiyah' },
-  { number: 93, name: 'Adh-Dhuha', arabic: 'الضحى', totalAyah: 11, type: 'Makkiyah' },
-  { number: 94, name: 'Ash-Sharh', arabic: 'الشرح', totalAyah: 8, type: 'Makkiyah' },
-  { number: 95, name: 'At-Tin', arabic: 'التين', totalAyah: 8, type: 'Makkiyah' },
-  { number: 96, name: 'Al-\'Alaq', arabic: 'العلق', totalAyah: 19, type: 'Makkiyah' },
-  { number: 97, name: 'Al-Qadr', arabic: 'القدر', totalAyah: 5, type: 'Makkiyah' },
-  { number: 98, name: 'Al-Bayyinah', arabic: 'البينة', totalAyah: 8, type: 'Madaniyah' },
-  { number: 99, name: 'Az-Zalzalah', arabic: 'الزلزلة', totalAyah: 8, type: 'Madaniyah' },
-  { number: 100, name: 'Al-\'Adiyat', arabic: 'العاديات', totalAyah: 11, type: 'Makkiyah' },
-  { number: 101, name: 'Al-Qari\'ah', arabic: 'القارعة', totalAyah: 11, type: 'Makkiyah' },
-  { number: 102, name: 'At-Takathur', arabic: 'التكاثر', totalAyah: 8, type: 'Makkiyah' },
-  { number: 103, name: 'Al-\'Asr', arabic: 'العصر', totalAyah: 3, type: 'Makkiyah' },
-  { number: 104, name: 'Al-Humazah', arabic: 'الهمزة', totalAyah: 9, type: 'Makkiyah' },
-  { number: 105, name: 'Al-Fil', arabic: 'الفيل', totalAyah: 5, type: 'Makkiyah' },
-  { number: 106, name: 'Quraysh', arabic: 'قريش', totalAyah: 4, type: 'Makkiyah' },
-  { number: 107, name: 'Al-Ma\'un', arabic: 'الماعون', totalAyah: 7, type: 'Makkiyah' },
-  { number: 108, name: 'Al-Kawthar', arabic: 'الكوثر', totalAyah: 3, type: 'Makkiyah' },
-  { number: 109, name: 'Al-Kafirun', arabic: 'الكافرون', totalAyah: 6, type: 'Makkiyah' },
-  { number: 110, name: 'An-Nasr', arabic: 'النصر', totalAyah: 3, type: 'Madaniyah' },
-  { number: 111, name: 'Al-Masad', arabic: 'المسد', totalAyah: 5, type: 'Makkiyah' },
-  { number: 112, name: 'Al-Ikhlas', arabic: 'الإخلاص', totalAyah: 4, type: 'Makkiyah' },
-  { number: 113, name: 'Al-Falaq', arabic: 'الفلق', totalAyah: 5, type: 'Makkiyah' },
-  { number: 114, name: 'An-Nas', arabic: 'الناس', totalAyah: 6, type: 'Makkiyah' }
-];
+    // Surah static list (114 surah, sudah benar)
+    const surahList = [
+      { number: 1, name: 'Al-Fatihah', arabic: 'الفاتحة', totalAyah: 7, type: 'Makkiyah' },
+      { number: 2, name: 'Al-Baqarah', arabic: 'البقرة', totalAyah: 286, type: 'Madaniyah' },
+      { number: 3, name: 'Ali Imran', arabic: 'آل عمران', totalAyah: 200, type: 'Madaniyah' },
+      { number: 4, name: 'An-Nisa', arabic: 'النساء', totalAyah: 176, type: 'Madaniyah' },
+      { number: 5, name: 'Al-Ma\'idah', arabic: 'المائدة', totalAyah: 120, type: 'Madaniyah' },
+      { number: 6, name: 'Al-An\'am', arabic: 'الأنعام', totalAyah: 165, type: 'Makkiyah' },
+      { number: 7, name: 'Al-A\'raf', arabic: 'الأعراف', totalAyah: 206, type: 'Makkiyah' },
+      { number: 8, name: 'Al-Anfal', arabic: 'الأنفال', totalAyah: 75, type: 'Madaniyah' },
+      { number: 9, name: 'At-Tawbah', arabic: 'التوبة', totalAyah: 129, type: 'Madaniyah' },
+      { number: 10, name: 'Yunus', arabic: 'يونس', totalAyah: 109, type: 'Makkiyah' },
+      { number: 11, name: 'Hud', arabic: 'هود', totalAyah: 123, type: 'Makkiyah' },
+      { number: 12, name: 'Yusuf', arabic: 'يوسف', totalAyah: 111, type: 'Makkiyah' },
+      { number: 13, name: 'Ar-Ra\'d', arabic: 'الرعد', totalAyah: 43, type: 'Madaniyah' },
+      { number: 14, name: 'Ibrahim', arabic: 'ابراهيم', totalAyah: 52, type: 'Makkiyah' },
+      { number: 15, name: 'Al-Hijr', arabic: 'الحجر', totalAyah: 99, type: 'Makkiyah' },
+      { number: 16, name: 'An-Nahl', arabic: 'النحل', totalAyah: 128, type: 'Makkiyah' },
+      { number: 17, name: 'Al-Isra', arabic: 'الإسراء', totalAyah: 111, type: 'Makkiyah' },
+      { number: 18, name: 'Al-Kahfi', arabic: 'الكهف', totalAyah: 110, type: 'Makkiyah' },
+      { number: 19, name: 'Maryam', arabic: 'مريم', totalAyah: 98, type: 'Makkiyah' },
+      { number: 20, name: 'Ta-Ha', arabic: 'طه', totalAyah: 135, type: 'Makkiyah' },
+      { number: 21, name: 'Al-Anbiya', arabic: 'الأنبياء', totalAyah: 112, type: 'Makkiyah' },
+      { number: 22, name: 'Al-Hajj', arabic: 'الحج', totalAyah: 78, type: 'Madaniyah' },
+      { number: 23, name: 'Al-Mu\'minun', arabic: 'المؤمنون', totalAyah: 118, type: 'Makkiyah' },
+      { number: 24, name: 'An-Nur', arabic: 'النور', totalAyah: 64, type: 'Madaniyah' },
+      { number: 25, name: 'Al-Furqan', arabic: 'الفرقان', totalAyah: 77, type: 'Makkiyah' },
+      { number: 26, name: 'Ash-Shu\'ara', arabic: 'الشعراء', totalAyah: 227, type: 'Makkiyah' },
+      { number: 27, name: 'An-Naml', arabic: 'النمل', totalAyah: 93, type: 'Makkiyah' },
+      { number: 28, name: 'Al-Qasas', arabic: 'القصص', totalAyah: 88, type: 'Makkiyah' },
+      { number: 29, name: 'Al-Ankabut', arabic: 'العنكبوت', totalAyah: 69, type: 'Makkiyah' },
+      { number: 30, name: 'Ar-Rum', arabic: 'الروم', totalAyah: 60, type: 'Makkiyah' },
+      { number: 31, name: 'Luqman', arabic: 'لقمان', totalAyah: 34, type: 'Makkiyah' },
+      { number: 32, name: 'As-Sajdah', arabic: 'السجدة', totalAyah: 30, type: 'Makkiyah' },
+      { number: 33, name: 'Al-Ahzab', arabic: 'الأحزاب', totalAyah: 73, type: 'Madaniyah' },
+      { number: 34, name: 'Saba', arabic: 'سبأ', totalAyah: 54, type: 'Makkiyah' },
+      { number: 35, name: 'Fatir', arabic: 'فاطر', totalAyah: 45, type: 'Makkiyah' },
+      { number: 36, name: 'Ya-Sin', arabic: 'يس', totalAyah: 83, type: 'Makkiyah' },
+      { number: 37, name: 'As-Saffat', arabic: 'الصافات', totalAyah: 182, type: 'Makkiyah' },
+      { number: 38, name: 'Sad', arabic: 'ص', totalAyah: 88, type: 'Makkiyah' },
+      { number: 39, name: 'Az-Zumar', arabic: 'الزمر', totalAyah: 75, type: 'Makkiyah' },
+      { number: 40, name: 'Ghafir', arabic: 'غافر', totalAyah: 85, type: 'Makkiyah' },
+      { number: 41, name: 'Fussilat', arabic: 'فصلت', totalAyah: 54, type: 'Makkiyah' },
+      { number: 42, name: 'Ash-Shura', arabic: 'الشورى', totalAyah: 53, type: 'Makkiyah' },
+      { number: 43, name: 'Az-Zukhruf', arabic: 'الزخرف', totalAyah: 89, type: 'Makkiyah' },
+      { number: 44, name: 'Ad-Dukhan', arabic: 'الدخان', totalAyah: 59, type: 'Makkiyah' },
+      { number: 45, name: 'Al-Jathiyah', arabic: 'الجاثية', totalAyah: 37, type: 'Makkiyah' },
+      { number: 46, name: 'Al-Ahqaf', arabic: 'الأحقاف', totalAyah: 35, type: 'Makkiyah' },
+      { number: 47, name: 'Muhammad', arabic: 'محمد', totalAyah: 38, type: 'Madaniyah' },
+      { number: 48, name: 'Al-Fath', arabic: 'الفتح', totalAyah: 29, type: 'Madaniyah' },
+      { number: 49, name: 'Al-Hujurat', arabic: 'الحجرات', totalAyah: 18, type: 'Madaniyah' },
+      { number: 50, name: 'Qaf', arabic: 'ق', totalAyah: 45, type: 'Makkiyah' },
+      { number: 51, name: 'Adh-Dhariyat', arabic: 'الذاريات', totalAyah: 60, type: 'Makkiyah' },
+      { number: 52, name: 'At-Tur', arabic: 'الطور', totalAyah: 49, type: 'Makkiyah' },
+      { number: 53, name: 'An-Najm', arabic: 'النجم', totalAyah: 62, type: 'Makkiyah' },
+      { number: 54, name: 'Al-Qamar', arabic: 'القمر', totalAyah: 55, type: 'Makkiyah' },
+      { number: 55, name: 'Ar-Rahman', arabic: 'الرحمن', totalAyah: 78, type: 'Madaniyah' },
+      { number: 56, name: 'Al-Waqi\'ah', arabic: 'الواقعة', totalAyah: 96, type: 'Makkiyah' },
+      { number: 57, name: 'Al-Hadid', arabic: 'الحديد', totalAyah: 29, type: 'Madaniyah' },
+      { number: 58, name: 'Al-Mujadila', arabic: 'المجادلة', totalAyah: 22, type: 'Madaniyah' },
+      { number: 59, name: 'Al-Hashr', arabic: 'الحشر', totalAyah: 24, type: 'Madaniyah' },
+      { number: 60, name: 'Al-Mumtahanah', arabic: 'الممتحنة', totalAyah: 13, type: 'Madaniyah' },
+      { number: 61, name: 'As-Saff', arabic: 'الصف', totalAyah: 14, type: 'Madaniyah' },
+      { number: 62, name: 'Al-Jumu\'ah', arabic: 'الجمعة', totalAyah: 11, type: 'Madaniyah' },
+      { number: 63, name: 'Al-Munafiqun', arabic: 'المنافقون', totalAyah: 11, type: 'Madaniyah' },
+      { number: 64, name: 'At-Taghabun', arabic: 'التغابن', totalAyah: 18, type: 'Madaniyah' },
+      { number: 65, name: 'At-Talaq', arabic: 'الطلاق', totalAyah: 12, type: 'Madaniyah' },
+      { number: 66, name: 'At-Tahrim', arabic: 'التحريم', totalAyah: 12, type: 'Madaniyah' },
+      { number: 67, name: 'Al-Mulk', arabic: 'الملك', totalAyah: 30, type: 'Makkiyah' },
+      { number: 68, name: 'Al-Qalam', arabic: 'القلم', totalAyah: 52, type: 'Makkiyah' },
+      { number: 69, name: 'Al-Haqqah', arabic: 'الحاقة', totalAyah: 52, type: 'Makkiyah' },
+      { number: 70, name: 'Al-Ma\'arij', arabic: 'المعارج', totalAyah: 44, type: 'Makkiyah' },
+      { number: 71, name: 'Nuh', arabic: 'نوح', totalAyah: 28, type: 'Makkiyah' },
+      { number: 72, name: 'Al-Jinn', arabic: 'الجن', totalAyah: 28, type: 'Makkiyah' },
+      { number: 73, name: 'Al-Muzzammil', arabic: 'المزمل', totalAyah: 20, type: 'Makkiyah' },
+      { number: 74, name: 'Al-Muddaththir', arabic: 'المدثر', totalAyah: 56, type: 'Makkiyah' },
+      { number: 75, name: 'Al-Qiyamah', arabic: 'القيامة', totalAyah: 40, type: 'Makkiyah' },
+      { number: 76, name: 'Al-Insan', arabic: 'الانسان', totalAyah: 31, type: 'Madaniyah' },
+      { number: 77, name: 'Al-Mursalat', arabic: 'المرسلات', totalAyah: 50, type: 'Makkiyah' },
+      { number: 78, name: 'An-Naba', arabic: 'النبأ', totalAyah: 40, type: 'Makkiyah' },
+      { number: 79, name: 'An-Nazi\'at', arabic: 'النازعات', totalAyah: 46, type: 'Makkiyah' },
+      { number: 80, name: '\'Abasa', arabic: 'عبس', totalAyah: 42, type: 'Makkiyah' },
+      { number: 81, name: 'At-Takwir', arabic: 'التكوير', totalAyah: 29, type: 'Makkiyah' },
+      { number: 82, name: 'Al-Infitar', arabic: 'الإنفطار', totalAyah: 19, type: 'Makkiyah' },
+      { number: 83, name: 'Al-Mutaffifin', arabic: 'المطففين', totalAyah: 36, type: 'Makkiyah' },
+      { number: 84, name: 'Al-Inshiqaq', arabic: 'الإنشقاق', totalAyah: 25, type: 'Makkiyah' },
+      { number: 85, name: 'Al-Buruj', arabic: 'البروج', totalAyah: 22, type: 'Makkiyah' },
+      { number: 86, name: 'At-Tariq', arabic: 'الطارق', totalAyah: 17, type: 'Makkiyah' },
+      { number: 87, name: 'Al-A\'la', arabic: 'الأعلى', totalAyah: 19, type: 'Makkiyah' },
+      { number: 88, name: 'Al-Ghashiyah', arabic: 'الغاشية', totalAyah: 26, type: 'Makkiyah' },
+      { number: 89, name: 'Al-Fajr', arabic: 'الفجر', totalAyah: 30, type: 'Makkiyah' },
+      { number: 90, name: 'Al-Balad', arabic: 'البلد', totalAyah: 20, type: 'Makkiyah' },
+      { number: 91, name: 'Ash-Shams', arabic: 'الشمس', totalAyah: 15, type: 'Makkiyah' },
+      { number: 92, name: 'Al-Lail', arabic: 'الليل', totalAyah: 21, type: 'Makkiyah' },
+      { number: 93, name: 'Adh-Dhuha', arabic: 'الضحى', totalAyah: 11, type: 'Makkiyah' },
+      { number: 94, name: 'Ash-Sharh', arabic: 'الشرح', totalAyah: 8, type: 'Makkiyah' },
+      { number: 95, name: 'At-Tin', arabic: 'التين', totalAyah: 8, type: 'Makkiyah' },
+      { number: 96, name: 'Al-\'Alaq', arabic: 'العلق', totalAyah: 19, type: 'Makkiyah' },
+      { number: 97, name: 'Al-Qadr', arabic: 'القدر', totalAyah: 5, type: 'Makkiyah' },
+      { number: 98, name: 'Al-Bayyinah', arabic: 'البينة', totalAyah: 8, type: 'Madaniyah' },
+      { number: 99, name: 'Az-Zalzalah', arabic: 'الزلزلة', totalAyah: 8, type: 'Madaniyah' },
+      { number: 100, name: 'Al-\'Adiyat', arabic: 'العاديات', totalAyah: 11, type: 'Makkiyah' },
+      { number: 101, name: 'Al-Qari\'ah', arabic: 'القارعة', totalAyah: 11, type: 'Makkiyah' },
+      { number: 102, name: 'At-Takathur', arabic: 'التكاثر', totalAyah: 8, type: 'Makkiyah' },
+      { number: 103, name: 'Al-\'Asr', arabic: 'العصر', totalAyah: 3, type: 'Makkiyah' },
+      { number: 104, name: 'Al-Humazah', arabic: 'الهمزة', totalAyah: 9, type: 'Makkiyah' },
+      { number: 105, name: 'Al-Fil', arabic: 'الفيل', totalAyah: 5, type: 'Makkiyah' },
+      { number: 106, name: 'Quraysh', arabic: 'قريش', totalAyah: 4, type: 'Makkiyah' },
+      { number: 107, name: 'Al-Ma\'un', arabic: 'الماعون', totalAyah: 7, type: 'Makkiyah' },
+      { number: 108, name: 'Al-Kawthar', arabic: 'الكوثر', totalAyah: 3, type: 'Makkiyah' },
+      { number: 109, name: 'Al-Kafirun', arabic: 'الكافرون', totalAyah: 6, type: 'Makkiyah' },
+      { number: 110, name: 'An-Nasr', arabic: 'النصر', totalAyah: 3, type: 'Madaniyah' },
+      { number: 111, name: 'Al-Masad', arabic: 'المسد', totalAyah: 5, type: 'Makkiyah' },
+      { number: 112, name: 'Al-Ikhlas', arabic: 'الإخلاص', totalAyah: 4, type: 'Makkiyah' },
+      { number: 113, name: 'Al-Falaq', arabic: 'الفلق', totalAyah: 5, type: 'Makkiyah' },
+      { number: 114, name: 'An-Nas', arabic: 'الناس', totalAyah: 6, type: 'Makkiyah' }
+    ];
 
     function showSurahList() {
       document.getElementById('surah-list').style.display = 'block';
@@ -395,7 +394,9 @@ const surahList = [
           const latinAyat = data.data[2].ayahs;
           let versesHTML = '';
           arabicAyat.forEach((ayah, idx) => {
-            if (surah.number !== 1 && surah.number !== 9 && idx === 0) return; // skip ayat pertama jika bismillah di atas
+            // Untuk Al-Fatihah (nomor 1) dan At-Taubah (nomor 9), tampilkan semua ayat (termasuk ayat 1)
+            // Untuk surah lain, tampilkan semua ayat, kecuali ayat pertama (karena bismillah sudah di atas)
+            if (surah.number !== 1 && surah.number !== 9 && idx === 0) return;
             versesHTML += `
               <div class="mb-8 p-4 rounded-lg bg-gradient-to-l from-green-50 to-white shadow">
                 <div class="ar-text mb-1">${ayah.text} <span class="aya-number">${ayah.numberInSurah}</span></div>
@@ -413,10 +414,7 @@ const surahList = [
       }
     }
 
-    // Initial
     document.addEventListener('DOMContentLoaded', showSurahList);
   </script>
 </body>
 </html>
-
-
