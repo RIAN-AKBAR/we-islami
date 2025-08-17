@@ -377,7 +377,7 @@
       document.getElementById('surah-meta').innerHTML = `${surah.type} <span>&bull;</span> ${surah.totalAyah} Ayat`;
 
       // Bismillah logic
-      if (surah.number !== 1 && surah.number !== 9) {
+     if (surah.number !== 9) {
         document.getElementById('bismillah').classList.remove('hidden');
       } else {
         document.getElementById('bismillah').classList.add('hidden');
@@ -418,3 +418,4 @@
   </script>
 </body>
 </html>
+
