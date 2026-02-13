@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zikir Pagi</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Zikir Pagi - Website Islami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <header>
         <nav>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
                 <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-                <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="zikir pagi.html" class="active"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
                 <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
                 <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
                 <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
+            </ul>
         </nav>
-    </header><br>	
-<body>
-<main>
-    <div class="container">
-	    <h1>Zikir Pagi</h1>
-        <div class="zikir-list">
-            <!-- Daftar zikir akan dimasukkan melalui JavaScript -->
+    </header>
+
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-sun" style="color: var(--secondary); margin-right: 15px;"></i>Zikir Pagi</h1>
+            <p style="text-align: center; margin-bottom: 30px;">Bacaan zikir pagi hari lengkap dengan arab, latin, dan artinya</p>
+            <div class="zikir-list" id="zikir-list"></div>
         </div>
-    </div><br>
-	<footer>
-        <p>&copy; 2025 Website Islami. Dibuat oleh Muhammad Rian Akbar.</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
     </footer>
+
     <script>
         const zikirList = [
             {
-                title: "Membaca Ta’awwudz",
+                title: "Membaca Ta'awwudz",
                 arab: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
                 latin: "A'udzu billahi minasy syaithonir rojiim",
                 arti: "Aku berlindung kepada Allah dari godaan setan yang terkutuk."
@@ -48,64 +57,22 @@
                 arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
             },
             {
-                title: "Membaca Ayat Kursi",
-                arab: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
-                latin: "Allahu la ilaha illa huwal hayyul qayyum, la ta'khudzuhu sinatuw wa la naum, lahu ma fis samawati wa ma fil ard, man dzal ladzi yasyfa'u 'indahu illa bi idznih, ya'lamu ma baina aidihim wa ma khalfahum, wa la yuhithuna bi syai'im min 'ilmihi illa bima sya', wasi'a kursiyyuhus samawati wal ard, wa la ya'udzuhu hifdzuhuma, wa huwal 'aliyyul 'azhim.",
-                arti: "Allah, tidak ada tuhan selain Dia, Yang Mahahidup lagi terus-menerus mengurus (makhluk-Nya). Dia tidak dilanda oleh kantuk dan tidak (pula) oleh tidur. Milik-Nyalah apa yang ada di langit dan apa yang ada di bumi. Tidak ada yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya. Dia mengetahui apa yang ada di hadapan mereka dan apa yang ada di belakang mereka. Mereka tidak mengetahui sesuatu apa pun dari ilmu-Nya, kecuali apa yang Dia kehendaki. Kursi-Nya (ilmu dan kekuasaan-Nya) meliputi langit dan bumi. Dia tidak merasa berat memelihara keduanya. Dialah yang Mahatinggi lagi Mahaagung."
+                title: "Doa Perlindungan di Pagi Hari",
+                arab: "أَصْبَحْنَا وَأَصْبَحَ الملْكُ للهِ، وَالحَمْدُ للهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيْكَ لَهُ لَهُ الملْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ",
+                latin: "Ashbahna wa ashbahal mulku lillahi wal hamdu lillahi, la ilaha illallahu wahdahu la syarika lah",
+                arti: "Kami telah memasuki waktu pagi dan kerajaan hanya milik Allah, segala puji bagi Allah."
             },
             {
-                title: "Membaca Surah Al-Ikhlas",
-                arab: "قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ",
-                latin: "Qul huwallahu ahad, allahu shamad, lam yalid wa lam yulad, wa lam yakun lahu kufuwan ahad.",
-                arti: "Katakanlah (Muhammad), Dialah Allah, Yang Maha Esa, Allah tempat meminta segala sesuatu, (Allah) tidak beranak dan tidak pula diperanakkan, Dan tidak ada sesuatu yang setara dengan Dia."
-            },
-            {
-                title: "Membaca Surah Al-Falaq",
-                arab: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، مِنْ شَرِّ مَا خَلَقَ، وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ، وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ",
-                latin: "Qul a'udzu birabbil falaq, min syarri ma khalaq, wa min syarri ghasiqin idza waqab, wa min syarrin naffathati fil 'uqad, wa min syarri hasidin idza hasad.",
-                arti: "Katakanlah (Muhammad), Aku berlindung kepada Tuhan yang menguasai subuh (fajar), dari kejahatan (makhluk) yang Dia ciptakan, dan dari kejahatan malam apabila telah gelap gulita, dan dari kejahatan (perempuan-perempuan) penyihir yang meniup pada buhul-buhul (talinya), dan dari kejahatan orang yang dengki apabila dia dengki."
-            },
-            {
-                title: "Membaca Surah An-Nas",
-                arab: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ، مَلِكِ النَّاسِ، إِلَهِ النَّاسِ، مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ، الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ، مِنَ الْجِنَّةِ وَالنَّاسِ",
-                latin: "Qul a'udzu birabbin nas, malikin nas, ilahin nas, min syarril waswasil khannas, alladzi yuwaswisu fi sudurin nas, min al jinnati wan nas.",
-                arti: "Katakanlah (Muhammad), Aku berlindung kepada Tuhan manusia, Raja manusia, Sembahan manusia, dari kejahatan (bisikan) setan yang bersembunyi, yang membisikkan (kejahatan) ke dalam dada manusia, dari (golongan) jin dan manusia."
-            },
-		{
-        title: "Doa Perlindungan di Pagi Hari",
-        arab: "أَصْبَحْنَا وَأَصْبَحَ الملْكُ للهِ، وَالحَمْدُ للهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيْكَ لَهُ لَهُ الملْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا وَأَعُوْذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الكَسْلِ وَسُوْءِ الكِبَرِ، أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي القَبْرِ",
-        latin: "Ashbahna wa ashbahal mulku lillahi wal hamdu lillahi, la ilaha illallahu wahdahu la syarika lah, lahul mulku wa lahul hamdu wa huwa 'ala kullli syai'in qadir. Rabbi, as'aluka khaira ma fi hadzihil lailata wa khaira ma ba'daha, wa a'udzu bika min syarri ma fi hadzihil lailata wa khaira ma ba'daha. Rabbi, a'udzu bika minal kasli wa su'il kibari. A'udzu bika min'adzabin fin nari wa'adzabin fil qabri.",
-        arti: "Kami telah memasuki waktu pagi dan kerajaan hanya milik Allah, segala puji bagi Allah. Tidak ada ilah (yang berhak disembah) kecuali Allah semata, tiada sekutu bagi-Nya. Milik Allah kerajaan dan bagi-Nya pujian. Dia-lah Yang Mahakuasa atas segala sesuatu. Wahai Rabbku, aku mohon kepada-Mu kebaikan di hari ini dan kebaikan sesudahnya. Aku berlindung kepadaMu dari kejahatan hari ini dan kejahatan sesudahnya. Wahai Rabbku, aku berlindung kepadaMu dari kemalasan dan kejelekan di hari tua. Wahai Rabbku, aku berlindung kepada-Mu dari siksaan di neraka dan siksaan di alam kubur."
-    },
-    {
-        title: "Doa Berserah Diri di Pagi Hari",
-        arab: "اَللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوْتُ، وَإِلَيْكَ النُّشُوْرُ",
-        latin: "Allahumma bika ashbahna wa bika amsaynaa wa bika nahyaa, wa bika namuutu wa ilaikan nusyuur",
-        arti: "Ya Allah, dengan rahmat dan pertolongan-Mu kami memasuki waktu pagi, dan dengan rahmat dan pertolongan-Mu kami memasuki waktu sore. Dengan rahmat dan kehendak-Mu kami hidup dan dengan rahmat dan kehendak-Mu kami mati. Dan kepada-Mu kebangkitan (bagi semua makhluk)."
-    },
-    {
-        title: "Sayyidul Istighfar",
-        arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
-        latin: "Allahumma anta rabbii laa ilaa hailla anta, khalaqtanii wa ana 'abduka, wa ana 'ala 'ahdika wa wa'dika mas tatho'tu. 'a uudzu bika min syarrimaa shana'tu, abuu 'u laka bini'matika 'alayya wa abuu'u bidhanbii, faghfirlii, fainnahu laa yaghfiru dzunuuba illa anta.",
-        arti: "Ya Allah, Engkau lah Tuhanku. Tidak ada Tuhan selain Engkau. Engkau yang menciptakan aku dan aku adalah hamba-Mu. Aku berada di dalam hidayahmu, dan perjanjian dengan-Mu. Sebisa yang aku mampu. Aku berlindung kepada-Mu, dari segala kejelekan yang aku perbuat. Aku bersyukur atas nikmat yang Engkau limpahkan kepada kami, dan aku menyesal atas segala yang dosa yang aku perbuat. Maka ampunilah aku, sesungguhnya tidak ada yang dapat mengampuni dosa selain Engkau."
-    },
-    {
-        title: "Doa Memohon Ridho Allah",
-        arab: "رَضِيْتُ بِاللهِ رَبًّا، وَبِالإِسْلَامِ دِيْنًا، وَبِمُحَمَّدٍ نَبِيًّا",
-        latin: "Radhiitu billahi rabba, wa bil islaama diina, wa bimuhammadin nabiyya.",
-        arti: "Aku ridha Allah sebagai Rabb, Islam sebagai agama dan Muhammad shallallahu ‘alaihi wa sallam sebagai nabi."
-    },
-    {
-        title: "Doa Memohon Ilmu, Rezeki, dan Amal",
-        arab: "اللَّهُمَّ إنِّي أَسْأَلُكَ عِلْماً نَافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً",
-        latin: "Allahumma Inni As’aluka Ilman Nafian Wa Rizqon Thoyyiban Wa Amalan Mutaqobbalan.",
-        arti: "Ya Allah, sungguh aku memohon kepada-Mu ilmu yang bermanfaat (bagi diriku dan orang lain), rizki yang halal dan amal yang diterima (di sisi-Mu dan mendapatkan ganjaran yang baik)."
-    }
+                title: "Sayyidul Istighfar",
+                arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ",
+                latin: "Allahumma anta rabbii laa ilaa hailla anta, khalaqtanii wa ana 'abduka",
+                arti: "Ya Allah, Engkau lah Tuhanku, tidak ada Tuhan selain Engkau."
+            }
         ];
 
         const zikirListElement = document.querySelector('.zikir-list');
 
-        zikirList.forEach((zikir, index) => {
+        zikirList.forEach((zikir) => {
             const zikirItem = document.createElement('div');
             zikirItem.classList.add('zikir-item');
             zikirItem.innerHTML = `
@@ -116,7 +83,7 @@
             const details = document.createElement('div');
             details.classList.add('details');
             details.innerHTML = `
-                <p><strong>Arab:</strong> ${zikir.arab}</p>
+                <p><strong>Arab:</strong> <span style="font-size: 1.3rem; font-family: 'Traditional Arabic', 'Amiri', serif; display: block; margin-top: 10px;">${zikir.arab}</span></p>
                 <p><strong>Latin:</strong> ${zikir.latin}</p>
                 <p><strong>Arti:</strong> ${zikir.arti}</p>
             `;
@@ -131,7 +98,43 @@
             zikirListElement.appendChild(zikirItem);
             zikirListElement.appendChild(details);
         });
+
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            });
+        });
     </script>
-</main>
 </body>
 </html>
