@@ -3,45 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rating Website</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Rating & Komentar - Website Islami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <header>
         <nav>
-           <ul class="nav-links" id="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
                 <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
                 <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
                 <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
                 <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="rating.html" class="active"><i class="fas fa-comment"></i> Komentar</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
+            </ul>
         </nav>
-    </header><br>	
+    </header>
+
     <main>
-        <div class="container">
-            <h1>Halaman Komen</h1>
-            <p><strong>Ayo Berikan Komentar Anda:</strong></p>
+        <div class="container fade-in">
+            <div class="comment-header">
+                <h1><i class="fas fa-comment" style="color: var(--secondary); margin-right: 15px;"></i>Beri Komentar</h1>
+                <div class="rating-summary">
+                    <span class="rating-average">4.8</span>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span style="color: var(--gray);">(120+ ulasan)</span>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">Bagikan pengalaman dan saran Anda untuk pengembangan website ini</p>
             
             <div class="comment-section">
                 <div class="comment-form">
                     <form id="commentForm">  
                         <div class="form-group">
-                            <label for="name">Nama:</label>  
-                            <input type="text" id="name" name="name" required>  
+                            <label for="name"><i class="fas fa-user" style="margin-right: 8px; color: var(--secondary);"></i> Nama Lengkap</label>  
+                            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>  
                         </div>
                         
                         <div class="form-group">
-                            <label for="comment">Komen:</label>  
-                            <textarea id="comment" name="comment" rows="4" required></textarea>  
+                            <label for="comment"><i class="fas fa-pen" style="margin-right: 8px; color: var(--secondary);"></i> Komentar / Saran</label>  
+                            <textarea id="comment" name="comment" rows="5" placeholder="Tulis komentar Anda di sini..." required></textarea>  
                         </div>
                         
                         <div class="rating-section">
-                            <label>Rating:</label>
+                            <label><i class="fas fa-star" style="margin-right: 8px; color: var(--secondary);"></i> Rating Pengalaman</label>
                             <div class="stars">
                                 <span class="star" data-value="5">★</span>
                                 <span class="star" data-value="4">★</span>
@@ -50,63 +70,149 @@
                                 <span class="star" data-value="1">★</span>
                             </div>
                             <input type="hidden" id="rating" name="rating" value="0">
+                            <p id="rating-text" style="margin-top: 8px; font-size: 0.9rem; color: var(--gray);">Pilih rating</p>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Kirim Komen</button>  
+                        <button type="submit" class="submit-btn">
+                            <i class="fab fa-whatsapp"></i> Kirim Komentar via WhatsApp
+                        </button>  
                     </form>  
                 </div>
             </div>
         </div>
+    </main>
 
-        <script>  
-            // Fungsi untuk rating bintang
-            document.querySelectorAll('.star').forEach(star => {
-                star.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    document.getElementById('rating').value = value;
-                    
-                    // Update tampilan bintang
-                    document.querySelectorAll('.star').forEach(s => {
-                        if (s.getAttribute('data-value') <= value) {
-                            s.style.color = '#ffc107';
-                        } else {
-                            s.style.color = '#ccc';
-                        }
-                    });
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
+    </footer>
+
+    <script>  
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+        const ratingText = document.getElementById('rating-text');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                ratingInput.value = value;
+                
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= value) {
+                        s.classList.add('active');
+                        s.style.color = '#d4af37';
+                    } else {
+                        s.classList.remove('active');
+                        s.style.color = '#ccc';
+                    }
+                });
+                
+                const ratingLabels = ['Buruk', 'Kurang', 'Cukup', 'Baik', 'Sangat Baik'];
+                ratingText.textContent = `${value}/5 - ${ratingLabels[value-1]}`;
+            });
+            
+            star.addEventListener('mouseenter', function() {
+                const value = this.getAttribute('data-value');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= value) {
+                        s.style.color = '#e5c75b';
+                    }
                 });
             });
             
-            // Fungsi untuk mengirim komentar ke WhatsApp
-            document.getElementById('commentForm').addEventListener('submit', function(event) {  
-                event.preventDefault();
-                
-                const name = document.getElementById('name').value;  
-                const comment = document.getElementById('comment').value;
-                const rating = document.getElementById('rating').value;
-                
-                // Validasi rating
-                if (rating === "0") {
-                    alert("Silakan berikan rating terlebih dahulu!");
-                    return;
-                }
-                
-                // Menentukan nomor WhatsApp tujuan  
-                const phoneNumber = '6285167089251'; // Ganti dengan nomor Anda  
-                
-                // Membuat pesan untuk WhatsApp  
-                const message = `Komentar dari ${name} (Rating: ${rating}/5):\n${comment}`;  
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;  
-    
-                // Mengarahkan pengguna ke WhatsApp  
-                window.location.href = whatsappUrl;  
-            });  
-        </script>
-    </main><br>
+            star.addEventListener('mouseleave', function() {
+                const currentRating = ratingInput.value;
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= currentRating) {
+                        s.style.color = '#d4af37';
+                    } else {
+                        s.style.color = '#ccc';
+                    }
+                });
+            });
+        });
+        
+        document.getElementById('commentForm').addEventListener('submit', function(event) {  
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;  
+            const comment = document.getElementById('comment').value;
+            const rating = document.getElementById('rating').value;
+            
+            if (rating === "0") {
+                alert('Silakan berikan rating terlebih dahulu!');
+                return;
+            }
+            
+            if (!name.trim()) {
+                alert('Silakan masukkan nama Anda!');
+                return;
+            }
+            
+            if (!comment.trim()) {
+                alert('Silakan tulis komentar Anda!');
+                return;
+            }
+            
+            const ratingLabels = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'];
+            const phoneNumber = '6285167089251';  
+            const message = `*KOMENTAR BARU WEBSITE ISLAMI*
+            
+👤 *Nama:* ${name}
+⭐ *Rating:* ${ratingLabels[rating-1]} (${rating}/5)
 
-    <footer>
-        <p>&copy; 2025 Website Islami. Dibuat oleh Muhammad Rian Akbar.</p>
-    </footer>
+💬 *Komentar:*
+${comment}
+
+------------------------
+Dikirim via Website Islami`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;  
+            
+            alert('Terima kasih atas komentar dan rating Anda! Anda akan diarahkan ke WhatsApp.');
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 500);
+        });
+        
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-
