@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Ceramah Islami</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Video Ceramah Islami - Website Islami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <header>
         <nav>
-             <ul class="nav-links" id="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
                 <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
                 <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
                 <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-                <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="vidio ceramah.html" class="active"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
                 <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
+            </ul>
         </nav>
-    </header><br>	
-    
+    </header>
+
     <main>
-        <div class="container">
-            <h1>Kumpulan Video Ceramah</h1>
+        <div class="container fade-in" style="max-width: 1200px;">
+            <h1><i class="fas fa-video" style="color: var(--secondary); margin-right: 15px;"></i>Kumpulan Video Ceramah</h1>
+            <p style="text-align: center; margin-bottom: 30px;">Ceramah islami dari para ulama terpercaya</p>
             
             <div class="video-section">
                 <div class="video-item">
@@ -50,29 +56,23 @@
                 </div>
                 
                 <div class="video-item">
-                    <h2>Kalau Hidupmu Susah Banyaklah Beribadah | Ustadz Abdul Somad</h2>
+                    <h2>Kalau Hidupmu Susah Banyaklah Beribadah - Ustadz Abdul Somad</h2>
                     <div class="video-container">
                         <iframe src="https://youtube.com/embed/zU54a8aJbss?si=c4QBlvYkDeDKFpxH" allowfullscreen></iframe>
                     </div>
+                </div>
 
-                     <div class="video-item">
-                    <h2>CARA BERSYUKUR | Masjid Nurul Qomar, Balikpapan | Ustadz Abdul Somad</h2>
+                <div class="video-item">
+                    <h2>Cara Bersyukur - Ustadz Abdul Somad</h2>
                     <div class="video-container">
                         <iframe src="https://youtube.com/embed/-nBomyRVgG4?si=rKIVLcjyVlQLrVRU" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                      <div class="video-item">
-                    <h2>Bersihkan Hati dari Sifat Hasad (Iri, Dengki) | Ustadz Abdul Somad</h2>
+                <div class="video-item">
+                    <h2>Bersihkan Hati dari Sifat Hasad - Ustadz Abdul Somad</h2>
                     <div class="video-container">
                         <iframe src="https://youtube.com/embed/xpthzd0J-HM?si=raA4qxXk8x10lQiB" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                      <div class="video-item">
-                    <h2>8 Keutamaan Orang Bersedekah, Masjid Sufri Bolkiah, Brunei Darussalam | Ustadz Abdul Somad</h2>
-                    <div class="video-container">
-                        <iframe src="https://youtube.com/embed/XygILkwvBls?si=7lbojFA0IdDXO9-H" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,48 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Website Islami. Dibuat oleh Muhammad Rian Akbar.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
     </footer>
+
+    <script>
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
