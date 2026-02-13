@@ -3,149 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacaan Tahlil</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Bacaan Zikir - Website Islami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<header>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <header>
         <nav>
-           <ul class="nav-links" id="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="tahlil.html" class="active"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
                 <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
                 <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
                 <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
                 <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
+            </ul>
         </nav>
-    </header><br>	
+    </header>
+
     <main>
-        <div class="container">
-            <h1>Bacaan Zikir</h1>
-            <p>Berikut adalah Bacaan-Bacaan Zikir:</p>
-            <div class="zikir-list">
-                <!-- Daftar zikir akan dimasukkan melalui JavaScript -->
-            </div>
-        </div><br>
-        <script>
-            const zikirList = [
-                {
-                    title: "Zikir Setelah Sholat",
-                    items: [
-                        {
-                            arab: "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
-                            latin: "Bismillahir Rahmanir Rahim",
-                            arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang"
-                        },
-                        {
-                            arab: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
-                            latin: "Alhamdulillah Rabbil Alamin",
-                            arti: "Segala puji bagi Allah, Tuhan semesta alam"
-                        },
-                        {
-                            arab: "اللَّهُ أَكْبَرُ",
-                            latin: "Allahu Akbar",
-                            arti: "Allah Maha Besar"
-                        },
-                        {
-                            arab: "سُبْحَانَ اللَّهِ",
-                            latin: "Subhanallah",
-                            arti: "Maha Suci Allah"
-                        },
-                        {
-                            arab: "الْحَمْدُ لِلَّهِ",
-                            latin: "Alhamdulillah",
-                            arti: "Segala puji bagi Allah"
-                        },
-                        {
-                            arab: "أَسْتَغْفِرُ اللَّهَ رَبِّي وَأَتُوبُ إِلَيْهِ",
-                            latin: "Astaghfirullah Rabbiy wa atubu ilayh",
-                            arti: "Aku mohon ampun kepada Allah, Tuhanku, dan aku bertaubat kepada-Nya"
-                        },
-                        {
-                            arab: "اللَّهُمَّ أَعِزَّ الْإِسْلَامَ وَالْمُسْلِمِينَ",
-                            latin: "Allahumma aizzal Islam wal Muslimin",
-                            arti: "Ya Allah, muliakanlah Islam dan kaum Muslimin"
-                        }
-                    ]
-                },
-                {
-                    title: "Zikir Pagi",
-                    items: [
-                        {
-                            arab: "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ",
-                            latin: "Asbaha alnaa ala fitratil Islam",
-                            arti: "Kami masuk pagi dalam fitrah Islam"
-                        },
-                        {
-                            arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا",
-                            latin: "Allahumma inni as'aluka ilma nafian",
-                            arti: "Ya Allah, sesungguhnya aku memohon kepada-Mu ilmu yang bermanfaat"
-                        }
-                    ]
-                },
-                {
-                    title: "Zikir Petang",
-                    items: [
-                        {
-                            arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَزَعِ الْوَجَعِ",
-                            latin: "Allahumma inni a'udhu bika min jazaa'il wajah",
-                            arti: "Ya Allah, aku berlindung kepada-Mu dari rasa putus asa"
-                        },
-                        {
-                            arab: "اللَّهُمَّ أَحْطِني بِرَحْمَتِكَ",
-                            latin: "Allahumma ahti ni bi rahmatika",
-                            arti: "Ya Allah, lindungilah aku dengan rahmat-Mu"
-                        }
-                    ]
-                }
-            ];
-
-            const zikirListElement = document.querySelector('.zikir-list');
-
-            zikirList.forEach((zikirGroup, index) => {
-                // Create group header
-                const groupHeader = document.createElement('h2');
-                groupHeader.textContent = zikirGroup.title;
-                zikirListElement.appendChild(groupHeader);
-
-                // Create items for each group
-                zikirGroup.items.forEach((zikir, itemIndex) => {
-                    const zikirItem = document.createElement('div');
-                    zikirItem.classList.add('zikir-item');
-                    zikirItem.innerHTML = `
-                        <span>${zikir.arab}</span>
-                        <i class="fas fa-chevron-down"></i>
-                    `;
-
-                    const details = document.createElement('div');
-                    details.classList.add('details');
-                    details.innerHTML = `
-                        <p><strong>Latin:</strong> ${zikir.latin}</p>
-                        <p><strong>Arti:</strong> ${zikir.arti}</p>
-                    `;
-
-                    zikirItem.addEventListener('click', () => {
-                        details.classList.toggle('show');
-                        zikirItem.classList.toggle('completed');
-                        const icon = zikirItem.querySelector('i');
-                        icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-                    });
-
-                    zikirListElement.appendChild(zikirItem);
-                    zikirListElement.appendChild(details);
-                });
-            });
-        </script>
+        <div class="container fade-in">
+            <h1><i class="fas fa-dharmachakra" style="color: var(--secondary); margin-right: 15px;"></i>Bacaan Zikir</h1>
+            <p style="text-align: center; margin-bottom: 30px;">Kumpulan zikir setelah sholat, pagi, dan petang</p>
+            <div class="zikir-list" id="zikir-list"></div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Website Islami. Dibuat oleh Muhammad Rian Akbar.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
     </footer>
+
+    <script>
+        const zikirGroups = [
+            {
+                title: "Zikir Setelah Sholat",
+                items: [
+                    { arab: "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ", latin: "Bismillahir Rahmanir Rahim", arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang" },
+                    { arab: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", latin: "Alhamdulillah Rabbil Alamin", arti: "Segala puji bagi Allah, Tuhan semesta alam" },
+                    { arab: "اللَّهُ أَكْبَرُ", latin: "Allahu Akbar", arti: "Allah Maha Besar" },
+                    { arab: "سُبْحَانَ اللَّهِ", latin: "Subhanallah", arti: "Maha Suci Allah" },
+                    { arab: "الْحَمْدُ لِلَّهِ", latin: "Alhamdulillah", arti: "Segala puji bagi Allah" }
+                ]
+            },
+            {
+                title: "Zikir Pagi",
+                items: [
+                    { arab: "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ", latin: "Asbaha alnaa ala fitratil Islam", arti: "Kami masuk pagi dalam fitrah Islam" },
+                    { arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا", latin: "Allahumma inni as'aluka ilma nafian", arti: "Ya Allah, aku memohon ilmu yang bermanfaat" }
+                ]
+            },
+            {
+                title: "Zikir Petang",
+                items: [
+                    { arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَزَعِ الْوَجَعِ", latin: "Allahumma inni a'udhu bika min jazaa'il wajah", arti: "Ya Allah, aku berlindung dari rasa putus asa" },
+                    { arab: "اللَّهُمَّ أَحْطِني بِرَحْمَتِكَ", latin: "Allahumma ahti ni bi rahmatika", arti: "Ya Allah, lindungilah aku dengan rahmat-Mu" }
+                ]
+            }
+        ];
+
+        const zikirListElement = document.querySelector('.zikir-list');
+
+        zikirGroups.forEach((group) => {
+            const groupHeader = document.createElement('h2');
+            groupHeader.textContent = group.title;
+            zikirListElement.appendChild(groupHeader);
+
+            group.items.forEach((zikir) => {
+                const zikirItem = document.createElement('div');
+                zikirItem.classList.add('zikir-item');
+                zikirItem.innerHTML = `
+                    <span>${zikir.arab}</span>
+                    <i class="fas fa-chevron-down"></i>
+                `;
+
+                const details = document.createElement('div');
+                details.classList.add('details');
+                details.innerHTML = `
+                    <p><strong>Latin:</strong> ${zikir.latin}</p>
+                    <p><strong>Arti:</strong> ${zikir.arti}</p>
+                `;
+
+                zikirItem.addEventListener('click', () => {
+                    details.classList.toggle('show');
+                    zikirItem.classList.toggle('completed');
+                    const icon = zikirItem.querySelector('i');
+                    icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+
+                zikirListElement.appendChild(zikirItem);
+                zikirListElement.appendChild(details);
+            });
+        });
+
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            }
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon?.classList.remove('fa-times');
+                    icon?.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-
