@@ -55,6 +55,7 @@ body {
     padding-top: 90px;
     min-height: 100vh;
     position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
@@ -67,6 +68,7 @@ header {
     box-shadow: var(--shadow-lg);
     border-bottom: 4px solid var(--secondary);
     backdrop-filter: blur(10px);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 nav {
@@ -162,6 +164,7 @@ nav ul li a.active {
     font-size: 1.3rem;
     align-items: center;
     justify-content: center;
+    transition: background 0.3s ease;
 }
 
 main {
@@ -204,6 +207,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary);
     font-weight: 600;
     line-height: 1.3;
+    transition: color 0.3s ease;
 }
 
 h1 {
@@ -740,6 +744,7 @@ footer {
     position: relative;
     margin-top: 80px;
     width: 100%;
+    transition: background 0.3s ease;
 }
 
 footer::before {
@@ -891,6 +896,7 @@ footer p {
     padding: 25px;
     margin-bottom: 30px;
     border: 1px solid rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .mode-buttons {
@@ -1038,6 +1044,7 @@ footer p {
     border-radius: var(--border-radius-lg);
     padding: 25px;
     margin-bottom: 30px;
+    transition: background-color 0.3s ease;
 }
 
 .slider-container {
@@ -1117,10 +1124,16 @@ body.dark-mode {
 
 body.dark-mode .container,
 body.dark-mode .profile-card,
-body.dark-mode .prayer-container,
+body.dark-mode .prayer-times-container,
+body.dark-mode .video-item,
+body.dark-mode .doa-item,
+body.dark-mode .zikir-item,
+body.dark-mode .hadis-item,
 body.dark-mode .mode-toggle,
 body.dark-mode .font-size-control,
-body.dark-mode .theme-card {
+body.dark-mode .theme-card,
+body.dark-mode .clock-box,
+body.dark-mode .info-box {
     background: #2d2d2d;
     color: #f0f0f0;
     border-color: #404040;
@@ -1128,11 +1141,16 @@ body.dark-mode .theme-card {
 
 body.dark-mode h1,
 body.dark-mode h2,
-body.dark-mode h3 {
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
     color: #d4af37;
 }
 
-body.dark-mode p {
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode .info-content {
     color: #ccc;
 }
 
@@ -1140,6 +1158,22 @@ body.dark-mode .mode-btn {
     background: #3d3d3d;
     color: #f0f0f0;
     border-color: #555;
+}
+
+body.dark-mode .details {
+    background: #3d3d3d;
+    border-color: #404040;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode textarea {
+    background: #3d3d3d;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+body.dark-mode .rating-summary {
+    background: #3d3d3d;
 }
 
 /* Tema Klasik */
@@ -1156,8 +1190,19 @@ body.theme-classic {
     font-family: 'Playfair Display', 'Poppins', serif;
 }
 
-body.theme-classic .container::before {
+body.theme-classic .container::before,
+body.theme-classic footer::before {
     background: linear-gradient(135deg, #dbb067 0%, #e5c285 100%);
+}
+
+body.theme-classic header {
+    border-bottom-color: #dbb067;
+}
+
+body.theme-classic .doa-item i,
+body.theme-classic .zikir-item i,
+body.theme-classic .hadis-item i {
+    background: rgba(219, 176, 103, 0.1);
 }
 
 /* Tema Modern */
@@ -1194,12 +1239,18 @@ body.theme-estetik .container {
     box-shadow: 0 10px 30px rgba(232, 180, 184, 0.2);
 }
 
-body.theme-estetik .container::before {
+body.theme-estetik .container::before,
+body.theme-estetik footer::before {
     background: linear-gradient(135deg, #e8b4b8 0%, #f2c9cc 100%);
 }
 
+body.theme-estetik header {
+    border-bottom-color: #e8b4b8;
+}
+
 body.theme-estetik h1,
-body.theme-estetik h2 {
+body.theme-estetik h2,
+body.theme-estetik h3 {
     color: #2c3e50;
 }
 
@@ -1214,6 +1265,13 @@ body.theme-estetik .doa-item:hover,
 body.theme-estetik .zikir-item:hover,
 body.theme-estetik .hadis-item:hover {
     background: linear-gradient(to right, rgba(232, 180, 184, 0.1), rgba(168, 216, 234, 0.1));
+}
+
+body.theme-estetik .doa-item i,
+body.theme-estetik .zikir-item i,
+body.theme-estetik .hadis-item i {
+    background: rgba(232, 180, 184, 0.2);
+    color: #2c3e50;
 }
 
 @media (max-width: 1200px) {
