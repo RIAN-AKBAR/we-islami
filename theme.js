@@ -1,4 +1,5 @@
-// theme.js - File untuk mengelola tema di SEMUA halaman
+
+// theme.js - Pengaturan tema untuk semua halaman
 (function() {
     // Fungsi untuk menerapkan tema
     function applyTheme() {
@@ -23,8 +24,23 @@
         console.log('Theme applied:', { mode, theme, fontSize });
     }
 
+    // Fungsi untuk update active class di navigasi
+    function updateActiveNav() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+
     // Terapkan tema saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', applyTheme);
+    document.addEventListener('DOMContentLoaded', function() {
+        applyTheme();
+        updateActiveNav();
+    });
 
     // Dengarkan perubahan localStorage dari halaman lain
     window.addEventListener('storage', function(e) {
@@ -32,17 +48,4 @@
             applyTheme();
         }
     });
-
-    // Fungsi untuk update active class di navigasi
-    function updateActiveNav() {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', updateActiveNav);
 })();
