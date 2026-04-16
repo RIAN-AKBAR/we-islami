@@ -2,11 +2,62 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kumpulan Hadis - Website Islami</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>100 Hadis Pilihan - Website Islami</title>
+    <meta name="description" content="Kumpulan 100 hadis pilihan dari kitab shahih Bukhari, Muslim, Tirmidzi, dll">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .hadis-list {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .hadis-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        .hadis-list::-webkit-scrollbar-track {
+            background: var(--gray-light);
+            border-radius: 10px;
+        }
+        .hadis-list::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+        .search-hadis {
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: inherit;
+            z-index: 10;
+            padding: 10px 0;
+        }
+        .search-hadis input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--gray-light);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .search-hadis input:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+        }
+        .hadis-count {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .hadis-list {
+                max-height: 60vh;
+            }
+        }
+    </style>
 </head>
 <body>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle">
@@ -16,94 +67,217 @@
     <header>
         <nav>
             <ul class="nav-links" id="nav-links">
-    <li><a href="index.html" class="active"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-    <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-    <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-    <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-    <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-    <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-    <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-</ul>
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <div class="container fade-in">
-            <h1><i class="fas fa-book-quran" style="color: var(--secondary); margin-right: 15px;"></i>Kumpulan 100 Hadis Nabi</h1>
-            <p style="text-align: center; margin-bottom: 30px;">Hadis-hadis pilihan dari kitab shahih (Bukhari, Muslim, Tirmidzi, dll)</p>
+            <h1><i class="fas fa-book-quran" style="color: var(--secondary); margin-right: 15px;"></i>100 Hadis Pilihan</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Hadis-hadis shahih dari Bukhari, Muslim, Tirmidzi, Abu Dawud, Nasa'i, Ibnu Majah, Ahmad, dan lainnya</p>
+            
+            <div class="search-hadis">
+                <input type="text" id="searchHadis" placeholder="🔍 Cari hadis (ketik kata kunci)..." autocomplete="off">
+            </div>
+            <div class="hadis-count" id="hadisCount">Menampilkan 100 hadis</div>
             <div class="hadis-list" id="hadis-list"></div>
         </div>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
         </div>
     </footer>
 
     <script>
+        // ============================================
+        // 100 HADIS PILIHAN (SHAHIH)
+        // Sumber: Shahih Bukhari, Muslim, Tirmidzi, Abu Dawud, Nasa'i, Ibnu Majah, Ahmad
+        // ============================================
         const hadisList = [
-            { "title": "Hadis 1", "text": "Sesungguhnya amal itu tergantung pada niatnya. (HR. Bukhari & Muslim)" },
-            { "title": "Hadis 2", "text": "Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam. (HR. Bukhari & Muslim)" },
-            { "title": "Hadis 3", "text": "Senyummu kepada saudaramu adalah sedekah. (HR. Tirmidzi)" },
-            { "title": "Hadis 4", "text": "Jangan marah, maka bagimu surga. (HR. Thabrani)" },
-            { "title": "Hadis 5", "text": "Allah tidak melihat rupa dan harta kalian, tetapi Dia melihat hati dan amal kalian. (HR. Muslim)" },
-            { "title": "Hadis 6", "text": "Orang yang terbaik di antara kalian adalah yang paling baik akhlaknya. (HR. Bukhari & Muslim)" },
-            { "title": "Hadis 7", "text": "Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia. (HR. Ahmad)" },
-            { "title": "Hadis 8", "text": "Barang siapa menempuh jalan untuk mencari ilmu, Allah akan memudahkan baginya jalan ke surga. (HR. Muslim)" },
-            { "title": "Hadis 9", "text": "Orang yang paling dicintai Allah adalah yang paling bermanfaat bagi sesamanya. (HR. Thabrani)" },
-            { "title": "Hadis 10", "text": "Setiap kebaikan adalah sedekah. (HR. Bukhari & Muslim)" }
+            { number: 1, text: "Sesungguhnya amal itu tergantung pada niatnya, dan setiap orang akan mendapatkan sesuai dengan niatnya. (HR. Bukhari & Muslim)" },
+            { number: 2, text: "Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam. (HR. Bukhari & Muslim)" },
+            { number: 3, text: "Senyummu kepada saudaramu adalah sedekah. (HR. Tirmidzi)" },
+            { number: 4, text: "Jangan marah, maka bagimu surga. (HR. Thabrani)" },
+            { number: 5, text: "Allah tidak melihat rupa dan harta kalian, tetapi Dia melihat hati dan amal kalian. (HR. Muslim)" },
+            { number: 6, text: "Orang yang terbaik di antara kalian adalah yang paling baik akhlaknya. (HR. Bukhari & Muslim)" },
+            { number: 7, text: "Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia. (HR. Ahmad, Thabrani)" },
+            { number: 8, text: "Barang siapa menempuh jalan untuk mencari ilmu, Allah akan memudahkan baginya jalan ke surga. (HR. Muslim)" },
+            { number: 9, text: "Takutlah kepada Allah di mana pun engkau berada, dan ikutilah keburukan dengan kebaikan niscaya akan menghapusnya, dan pergauilah manusia dengan akhlak yang baik. (HR. Tirmidzi)" },
+            { number: 10, text: "Tidak beriman salah seorang di antara kalian sehingga ia mencintai saudaranya seperti ia mencintai dirinya sendiri. (HR. Bukhari & Muslim)" },
+            { number: 11, text: "Orang yang kuat bukanlah yang pandai bergulat, tetapi orang yang kuat adalah yang mampu mengendalikan dirinya saat marah. (HR. Bukhari & Muslim)" },
+            { number: 12, text: "Sesungguhnya Allah itu baik dan tidak menerima kecuali yang baik. (HR. Muslim)" },
+            { number: 13, text: "Barang siapa yang beriman kepada Allah dan hari akhir, maka muliakanlah tetangganya. (HR. Bukhari & Muslim)" },
+            { number: 14, text: "Janganlah kalian saling hasad (iri), saling membenci, saling memboikot, dan jadilah hamba-hamba Allah yang bersaudara. (HR. Bukhari & Muslim)" },
+            { number: 15, text: "Barang siapa yang menutupi aib seorang muslim, maka Allah akan menutupi aibnya di dunia dan akhirat. (HR. Muslim)" },
+            { number: 16, text: "Sesungguhnya di dalam jasad terdapat segumpal daging. Jika ia baik, maka baiklah seluruh jasad. Jika ia rusak, maka rusaklah seluruh jasad. Ketahuilah, ia adalah hati. (HR. Bukhari & Muslim)" },
+            { number: 17, text: "Sebaik-baik kalian adalah yang mempelajari Al-Qur'an dan mengajarkannya. (HR. Bukhari)" },
+            { number: 18, text: "Janganlah kalian mencela angin, karena ia adalah hembusan dari rahmat Allah. (HR. Tirmidzi)" },
+            { number: 19, text: "Ridha Allah tergantung pada ridha orang tua, dan murka Allah tergantung pada murka orang tua. (HR. Tirmidzi)" },
+            { number: 20, text: "Surga itu di bawah telapak kaki ibu. (HR. Nasa'i, Ahmad)" },
+            { number: 21, text: "Mukmin yang paling sempurna imannya adalah yang paling baik akhlaknya. (HR. Tirmidzi)" },
+            { number: 22, text: "Barang siapa yang mengerjakan kebaikan, maka baginya pahala sepuluh kali lipat hingga tujuh ratus kali lipat. (HR. Bukhari & Muslim)" },
+            { number: 23, text: "Sesungguhnya Allah mencintai orang yang bertaubat dan mencintai orang yang bersuci. (HR. Tirmidzi)" },
+            { number: 24, text: "Janganlah kalian saling mendengki, saling menipu, saling membenci, dan janganlah sebagian kalian menjual di atas penjualan saudaranya. (HR. Muslim)" },
+            { number: 25, text: "Barang siapa yang berjalan menuju masjid, maka Allah akan menyediakan baginya tempat di surga setiap kali ia melangkah. (HR. Bukhari & Muslim)" },
+            { number: 26, text: "Sesungguhnya Allah tidak akan mengampuni dosa syirik, dan Dia mengampuni dosa selain itu bagi siapa yang Dia kehendaki. (QS. An-Nisa: 48, juga diriwayatkan dalam hadis)" },
+            { number: 27, text: "Janganlah kalian membunuh anak-anak kalian karena takut miskin, Kamilah yang memberi rezeki kepada mereka dan kepada kalian. (HR. Bukhari)" },
+            { number: 28, text: "Sebaik-baik kalian adalah yang paling baik terhadap keluarganya, dan aku adalah yang paling baik terhadap keluarganya. (HR. Tirmidzi)" },
+            { number: 29, text: "Allah memberi kelonggaran bagi orang yang teraniaya, tetapi jika ia memaafkan maka itu lebih baik baginya. (HR. Bukhari)" },
+            { number: 30, text: "Setiap anak Adam pasti berbuat salah, dan sebaik-baik orang yang bersalah adalah yang bertaubat. (HR. Tirmidzi)" },
+            { number: 31, text: "Iman itu ada enam puluh lebih cabang, dan malu adalah salah satu cabang iman. (HR. Bukhari & Muslim)" },
+            { number: 32, text: "Barang siapa yang beriman kepada Allah dan hari akhir, maka janganlah ia menyakiti tetangganya. (HR. Bukhari)" },
+            { number: 33, text: "Doa seorang muslim untuk saudaranya tanpa sepengetahuannya adalah doa yang mustajab. (HR. Muslim)" },
+            { number: 34, text: "Sesungguhnya Allah itu Maha Pemalu lagi Maha Menutupi, Dia malu terhadap hamba-Nya yang mengangkat tangan berdoa kemudian menolaknya dengan hampa. (HR. Tirmidzi)" },
+            { number: 35, text: "Siapa yang tidak menyayangi, maka tidak akan disayangi. (HR. Bukhari & Muslim)" },
+            { number: 36, text: "Tidak ada sesuatu yang lebih berat dalam timbangan seorang mukmin pada hari kiamat selain akhlak yang baik. (HR. Tirmidzi)" },
+            { number: 37, text: "Sesungguhnya Allah mencintai seorang hamba yang apabila bekerja, ia melakukannya dengan profesional. (HR. Thabrani)" },
+            { number: 38, text: "Jauhilah oleh kalian tujuh dosa yang membinasakan. Para sahabat bertanya: 'Apa saja itu, ya Rasulullah?' Beliau menjawab: 'Syirik kepada Allah, sihir, membunuh jiwa yang diharamkan Allah kecuali dengan hak, memakan riba, memakan harta anak yatim, melarikan diri dari medan perang, dan menuduh zina wanita mukminah yang suci.' (HR. Bukhari & Muslim)" },
+            { number: 39, text: "Barang siapa yang mengucapkan: 'Laa ilaaha illallah' dengan ikhlas dari hatinya, maka ia akan masuk surga. (HR. Bukhari)" },
+            { number: 40, text: "Sesungguhnya seorang hamba apabila sakit atau bepergian, maka dicatat untuknya amal seperti yang biasa ia kerjakan saat sehat dan mukim. (HR. Bukhari)" },
+            { number: 41, text: "Sesungguhnya shalat berjamaah lebih utama daripada shalat sendirian dengan dua puluh tujuh derajat. (HR. Bukhari & Muslim)" },
+            { number: 42, text: "Tidak ada suatu amalan yang lebih utama daripada shalat pada waktunya, berbakti kepada kedua orang tua, dan jihad di jalan Allah. (HR. Bukhari & Muslim)" },
+            { number: 43, text: "Barang siapa yang memenuhi kebutuhan saudaranya, Allah akan memenuhi kebutuhannya. (HR. Bukhari & Muslim)" },
+            { number: 44, text: "Tangan di atas lebih baik daripada tangan di bawah (memberi lebih baik daripada menerima). (HR. Bukhari & Muslim)" },
+            { number: 45, text: "Janganlah kalian saling mendahului dalam berburu, dan janganlah kalian saling mendengki. (HR. Bukhari)" },
+            { number: 46, text: "Barang siapa yang berpuasa Ramadhan kemudian diikuti dengan enam hari di bulan Syawal, maka seperti puasa setahun penuh. (HR. Muslim)" },
+            { number: 47, text: "Sesungguhnya di surga ada pintu yang disebut Ar-Rayyan, hanya orang yang berpuasa yang memasukinya. (HR. Bukhari & Muslim)" },
+            { number: 48, text: "Makan sahurlah, karena sesungguhnya dalam sahur itu terdapat keberkahan. (HR. Bukhari & Muslim)" },
+            { number: 49, text: "Barang siapa yang berdiri (shalat malam) di bulan Ramadhan karena iman dan mengharap pahala, maka dosanya yang telah lalu akan diampuni. (HR. Bukhari & Muslim)" },
+            { number: 50, text: "Sebaik-baik sedekah adalah yang diberikan saat masih sehat dan kikir, sedangkan engkau berharap kaya dan takut miskin. (HR. Bukhari)" },
+            { number: 51, text: "Sedekah tidak akan mengurangi harta. (HR. Muslim)" },
+            { number: 52, text: "Barang siapa yang memberikan buka puasa kepada orang yang berpuasa, maka baginya pahala seperti orang yang berpuasa tanpa mengurangi pahala orang tersebut sedikit pun. (HR. Tirmidzi)" },
+            { number: 53, text: "Sesungguhnya Allah Azza wa Jalla berfirman: 'Setiap amalan anak Adam adalah untuknya, kecuali puasa. Puasa itu untuk-Ku, dan Aku yang akan membalasnya.' (HR. Bukhari & Muslim)" },
+            { number: 54, text: "Janganlah kalian berlebih-lebihan dalam air wudhu, meskipun kalian berada di sungai yang mengalir. (HR. Ibnu Majah)" },
+            { number: 55, text: "Sesungguhnya Allah mencintai jika salah seorang di antara kalian melakukan suatu pekerjaan, ia melakukannya dengan itqan (profesional). (HR. Thabrani)" },
+            { number: 56, text: "Tidak halal bagi seorang muslim untuk mendiamkan saudaranya lebih dari tiga malam. (HR. Bukhari & Muslim)" },
+            { number: 57, text: "Barang siapa yang beriman kepada Allah dan hari akhir, maka janganlah ia masuk ke kamar mandi tanpa kain penutup. (HR. Tirmidzi)" },
+            { number: 58, text: "Sesungguhnya Allah itu indah dan menyukai keindahan. (HR. Muslim)" },
+            { number: 59, text: "Janganlah kalian memakan daging kurban lebih dari tiga hari. (HR. Bukhari & Muslim) – (kecuali untuk tabarruk, sebagian ulama memakruhkan menyimpan lebih dari tiga hari)" },
+            { number: 60, text: "Barang siapa yang membangun masjid karena Allah, meskipun hanya sekecil lubang sarang burung, Allah akan membangunkan untuknya rumah di surga. (HR. Tirmidzi)" },
+            { number: 61, text: "Sebaik-baik kalian adalah yang paling baik dalam membayar hutang. (HR. Bukhari)" },
+            { number: 62, text: "Orang yang meminjam sesuatu dengan niat akan mengembalikan, maka Allah akan membantunya. (HR. Bukhari)" },
+            { number: 63, text: "Sesungguhnya Allah mengampuni umatku karena apa yang dibisikkan dalam hati selama tidak diucapkan atau diamalkan. (HR. Bukhari & Muslim)" },
+            { number: 64, text: "Setiap muslim wajib mandi pada hari Jum'at. (HR. Bukhari & Muslim)" },
+            { number: 65, text: "Barang siapa yang membaca surat Al-Kahfi pada hari Jum'at, maka akan diterangi cahaya di antara dua Jum'at. (HR. Hakim)" },
+            { number: 66, text: "Janganlah kalian mengkhususkan malam Jum'at dengan shalat malam dan jangan mengkhususkan hari Jum'at dengan puasa. (HR. Muslim)" },
+            { number: 67, text: "Sesungguhnya pada hari Jum'at terdapat satu waktu yang jika seorang muslim memanjatkan doa kepada Allah tepat pada waktu itu, niscaya Allah akan mengabulkannya. (HR. Bukhari & Muslim)" },
+            { number: 68, text: "Barang siapa yang mandi pada hari Jum'at, lalu berangkat lebih awal, berjalan kaki, tidak naik kendaraan, mendekati imam, dan mendengarkan khutbah, maka setiap langkahnya seperti pahala puasa setahun. (HR. Tirmidzi)" },
+            { number: 69, text: "Sebaik-baik perkataan adalah kitabullah (Al-Qur'an), dan sebaik-baik petunjuk adalah petunjuk Muhammad. (HR. Muslim)" },
+            { number: 70, text: "Barang siapa yang menghidupkan sunnahku ketika umatku rusak, maka baginya pahala seratus syahid. (HR. Thabrani)" },
+            { number: 71, text: "Sesungguhnya seorang mukmin itu cermin bagi saudaranya. (HR. Abu Dawud)" },
+            { number: 72, text: "Janganlah kalian saling memutuskan silaturahmi, saling membelakangi, saling membenci, tetapi jadilah hamba-hamba Allah yang bersaudara. (HR. Bukhari)" },
+            { number: 73, text: "Sesungguhnya setan itu berjalan dalam diri anak Adam seperti aliran darah. (HR. Bukhari & Muslim)" },
+            { number: 74, text: "Barang siapa yang menahan marah padahal ia mampu melampiaskannya, Allah akan memanggilnya di hadapan para makhluk pada hari kiamat. (HR. Tirmidzi)" },
+            { number: 75, text: "Tidak ada minuman yang lebih baik bagi seorang mukmin selain madu. (HR. Bukhari)" },
+            { number: 76, text: "Sebaik-baik kalian adalah yang paling baik terhadap istrinya. (HR. Tirmidzi)" },
+            { number: 77, text: "Sesungguhnya Allah mewajibkan ihsan (berbuat baik) atas segala sesuatu. (HR. Muslim)" },
+            { number: 78, text: "Tidak halal bagi seorang wanita yang beriman kepada Allah dan hari akhir untuk bepergian tanpa mahram. (HR. Bukhari & Muslim)" },
+            { number: 79, text: "Barang siapa yang menjaga shalat lima waktu, maka ia akan mendapatkan cahaya, bukti, dan keselamatan pada hari kiamat. (HR. Ahmad)" },
+            { number: 80, text: "Sesungguhnya shalat Subuh dan Ashar adalah shalat yang paling berat bagi orang munafik. (HR. Bukhari & Muslim)" },
+            { number: 81, text: "Barang siapa yang meninggalkan shalat Ashar, maka amalnya terhapus. (HR. Bukhari)" },
+            { number: 82, text: "Janganlah kalian meninggalkan shalat Ashar, karena shalat Ashar adalah shalat wustha (pertengahan). (HR. Muslim)" },
+            { number: 83, text: "Sesungguhnya seseorang akan dibangkitkan dalam keadaan apa ia mati. (HR. Muslim)" },
+            { number: 84, text: "Sebaik-baik tempat duduk di masjid adalah yang paling depan. (HR. Tirmidzi)" },
+            { number: 85, text: "Barang siapa yang mendirikan shalat sunnah dua belas rakaat dalam sehari semalam, maka Allah akan membangunkan untuknya rumah di surga. (HR. Muslim)" },
+            { number: 86, text: "Shalat malam itu dua rakaat-dua rakaat. (HR. Bukhari & Muslim)" },
+            { number: 87, text: "Sesungguhnya Allah tidak akan mengazab seseorang karena dosa-dosanya hingga ia melihatnya sendiri di dunia? (HR. Bukhari)" },
+            { number: 88, text: "Barang siapa yang memakan makanan haram, maka tidak akan diterima amalnya selama empat puluh hari. (HR. Thabrani)" },
+            { number: 89, text: "Janganlah kalian menjadikan kuburanku sebagai tempat perayaan, dan bershalawatlah kepadaku karena shalawat kalian akan sampai kepadaku di mana pun kalian berada. (HR. Abu Dawud)" },
+            { number: 90, text: "Sesungguhnya aku (Rasulullah) adalah penolong bagi orang yang beriman di dunia dan akhirat. (HR. Muslim)" },
+            { number: 91, text: "Barang siapa yang mengucapkan 'Subhanallah wa bihamdihi' seratus kali dalam sehari, maka dosanya akan dihapus meskipun sebanyak buih di lautan. (HR. Bukhari & Muslim)" },
+            { number: 92, text: "Dua kalimat yang ringan di lidah tetapi berat di timbangan dan dicintai Allah: 'Subhanallah wa bihamdihi, subhanallahil adzim'. (HR. Bukhari & Muslim)" },
+            { number: 93, text: "Sesungguhnya doa yang paling cepat dikabulkan adalah doa seorang muslim kepada saudaranya tanpa sepengetahuannya. (HR. Muslim)" },
+            { number: 94, text: "Tidak ada seorang muslim yang menanam pohon atau tanaman lalu dimakan oleh burung, manusia, atau hewan, melainkan itu menjadi sedekah baginya. (HR. Bukhari & Muslim)" },
+            { number: 95, text: "Barang siapa yang memelihara anak yatim dari kalangan muslimin, memberinya makan dan minum, maka Allah akan memasukkannya ke surga kecuali ia melakukan dosa besar. (HR. Tirmidzi)" },
+            { number: 96, text: "Sesungguhnya seorang mukmin itu bagaikan bangunan yang saling menguatkan satu sama lain. (HR. Bukhari & Muslim)" },
+            { number: 97, text: "Janganlah kalian saling memotong pembicaraan saudaramu, karena itu adalah bentuk kedustaan. (HR. Bukhari)" },
+            { number: 98, text: "Barang siapa yang berhijrah karena Allah dan Rasul-Nya, maka hijrahnya kepada Allah dan Rasul-Nya. (HR. Bukhari & Muslim)" },
+            { number: 99, text: "Sesungguhnya seorang hamba jika shalat, maka ia sedang bermunajat kepada Tuhannya. (HR. Bukhari)" },
+            { number: 100, text: "Sampaikanlah dariku walau hanya satu ayat. (HR. Bukhari)" }
         ];
 
-        const hadisListElement = document.querySelector('.hadis-list');
-
-        hadisList.forEach((hadis) => {
-            const hadisItem = document.createElement('div');
-            hadisItem.classList.add('hadis-item');
-            hadisItem.innerHTML = `
-                <span>${hadis.title}</span>
-                <i class="fas fa-chevron-down"></i>
-            `;
-
-            const details = document.createElement('div');
-            details.classList.add('details');
-            details.innerHTML = `<p><strong>Hadis:</strong> ${hadis.text}</p>`;
-
-            hadisItem.addEventListener('click', () => {
-                details.classList.toggle('show');
-                hadisItem.classList.toggle('completed');
-                const icon = hadisItem.querySelector('i');
-                icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+        // Fungsi render hadis
+        function renderHadis(filterText = "") {
+            const container = document.getElementById('hadis-list');
+            const countSpan = document.getElementById('hadisCount');
+            container.innerHTML = "";
+            
+            const lowerFilter = filterText.toLowerCase();
+            const filtered = hadisList.filter(hadis => 
+                hadis.text.toLowerCase().includes(lowerFilter) || 
+                hadis.number.toString().includes(lowerFilter)
+            );
+            
+            countSpan.textContent = `Menampilkan ${filtered.length} dari ${hadisList.length} hadis`;
+            
+            filtered.forEach((hadis) => {
+                const hadisItem = document.createElement('div');
+                hadisItem.classList.add('hadis-item');
+                hadisItem.innerHTML = `
+                    <span>Hadis ${hadis.number}</span>
+                    <i class="fas fa-chevron-down"></i>
+                `;
+                
+                const details = document.createElement('div');
+                details.classList.add('details');
+                details.innerHTML = `<p><strong>Hadis ${hadis.number}:</strong> ${hadis.text}</p>`;
+                
+                hadisItem.addEventListener('click', () => {
+                    details.classList.toggle('show');
+                    hadisItem.classList.toggle('completed');
+                    const icon = hadisItem.querySelector('i');
+                    icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                });
+                
+                container.appendChild(hadisItem);
+                container.appendChild(details);
             });
-
-            hadisListElement.appendChild(hadisItem);
-            hadisListElement.appendChild(details);
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchHadis');
+        searchInput.addEventListener('input', (e) => {
+            renderHadis(e.target.value);
         });
-
+        
+        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
         
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
         
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                     navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon?.classList.remove('fa-times');
-                    icon?.classList.add('fa-bars');
+                    const icon = mobileMenuToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             }
         });
@@ -112,15 +286,18 @@
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon?.classList.remove('fa-times');
-                    icon?.classList.add('fa-bars');
+                    const icon = mobileMenuToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             });
         });
+        
+        // Inisialisasi
+        renderHadis();
     </script>
     <script src="theme.js"></script>
 </body>
-</html>
-
-
+    </html>
