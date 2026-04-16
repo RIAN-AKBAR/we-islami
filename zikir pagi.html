@@ -2,8 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Zikir Pagi - Website Islami</title>
+    <meta name="description" content="Bacaan zikir pagi hari lengkap dengan arab, latin, dan artinya">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -15,17 +16,17 @@
     
     <header>
         <nav>
-     <ul class="nav-links" id="nav-links">
-    <li><a href="index.html" class="active"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-    <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-    <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-    <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-    <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-    <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-    <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-</ul>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -39,7 +40,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
         </div>
     </footer>
 
@@ -59,15 +60,21 @@
             },
             {
                 title: "Doa Perlindungan di Pagi Hari",
-                arab: "أَصْبَحْنَا وَأَصْبَحَ الملْكُ للهِ، وَالحَمْدُ للهِ، لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيْكَ لَهُ لَهُ الملْكُ وَلَهُ الحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ",
+                arab: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
                 latin: "Ashbahna wa ashbahal mulku lillahi wal hamdu lillahi, la ilaha illallahu wahdahu la syarika lah",
-                arti: "Kami telah memasuki waktu pagi dan kerajaan hanya milik Allah, segala puji bagi Allah."
+                arti: "Kami telah memasuki waktu pagi dan kerajaan hanya milik Allah, segala puji bagi Allah, tiada Tuhan selain Allah Yang Maha Esa, tidak ada sekutu bagi-Nya."
             },
             {
                 title: "Sayyidul Istighfar",
                 arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ",
-                latin: "Allahumma anta rabbii laa ilaa hailla anta, khalaqtanii wa ana 'abduka",
-                arti: "Ya Allah, Engkau lah Tuhanku, tidak ada Tuhan selain Engkau."
+                latin: "Allahumma anta rabbii laa ilaha illa anta, khalaqtanii wa ana 'abduka",
+                arti: "Ya Allah, Engkau lah Tuhanku, tidak ada Tuhan selain Engkau, Engkau yang menciptakanku dan aku adalah hamba-Mu."
+            },
+            {
+                title: "Doa Memohon Kesehatan",
+                arab: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+                latin: "Allahumma inni as'alukal 'afiyah fid dunya wal akhirah",
+                arti: "Ya Allah, aku memohon kepada-Mu keselamatan di dunia dan akhirat."
             }
         ];
 
@@ -103,25 +110,29 @@
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
         
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
         
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                     navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon?.classList.remove('fa-times');
-                    icon?.classList.add('fa-bars');
+                    const icon = mobileMenuToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             }
         });
@@ -130,12 +141,15 @@
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    icon?.classList.remove('fa-times');
-                    icon?.classList.add('fa-bars');
+                    const icon = mobileMenuToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 }
             });
         });
     </script>
+    <script src="theme.js"></script>
 </body>
 </html>
