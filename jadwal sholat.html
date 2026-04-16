@@ -2,365 +2,80 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Sholat 2026 - Realtime & Estetik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Jadwal Sholat 2026 - Website Islami</title>
+    <meta name="description" content="Jadwal sholat lengkap tahun 2026 untuk wilayah Jakarta dan sekitarnya">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-            min-height: 100vh;
-            padding: 20px;
-            padding-top: 100px;
-            color: #2c3e50;
-        }
-
-        /* ===== HEADER & NAVIGASI ===== */
-        header {
-            background: linear-gradient(135deg, #0b3b3c 0%, #1e5556 100%);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-bottom: 4px solid #d4af37;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 15px 0;
-            margin: 0;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 18px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            background: rgba(255,255,255,0.05);
-        }
-
-        nav ul li a i {
-            margin-right: 10px;
-            color: #e5c75b;
-        }
-
-        nav ul li a:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212,175,55,0.3);
-        }
-
-        nav ul li a.active {
-            background: rgba(212, 175, 55, 0.25);
-            border-bottom: 3px solid #d4af37;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1001;
-            background: linear-gradient(135deg, #0b3b3c 0%, #1e5556 100%);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-size: 1.3rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Header Content */
-        .header {
-            background: linear-gradient(135deg, #0b3b3c 0%, #1e5556 100%);
-            color: white;
-            padding: 30px 20px;
-            border-radius: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(11, 59, 60, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '☪️';
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            font-size: 150px;
-            opacity: 0.1;
-            transform: rotate(15deg);
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header h1 i {
-            color: #d4af37;
-            margin: 0 15px;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            letter-spacing: 2px;
-        }
-
-        .date-badge {
-            background: rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 20px;
-            border: 2px solid #d4af37;
-        }
-
-        /* Digital Clock */
         .clock-container {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-bottom: 40px;
+            margin: 30px 0 40px;
             flex-wrap: wrap;
         }
-
         .clock-box {
             background: white;
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 25px 35px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center;
             min-width: 150px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
         }
-
         .clock-box:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(212, 175, 55, 0.2);
-            border-color: #d4af37;
+            border-color: var(--secondary);
         }
-
         .clock-box p {
             margin: 0;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            color: #0b3b3c;
+            color: var(--primary);
             line-height: 1;
         }
-
         .clock-label {
-            font-size: 1rem;
-            color: #6c757d;
+            font-size: 0.9rem;
+            color: var(--gray);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-top: 10px;
-            font-weight: 500;
         }
-
-        /* Info Cards */
         .info-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
-
         .info-card {
             background: white;
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
-
         .info-card:hover {
             transform: translateY(-5px);
-            border-color: #d4af37;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: var(--secondary);
         }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #d4af37, #0b3b3c);
-        }
-
         .info-icon {
             font-size: 2.5rem;
-            color: #d4af37;
+            color: var(--secondary);
             margin-bottom: 15px;
         }
-
         .info-card h3 {
-            color: #0b3b3c;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
-
         .info-value {
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #0b3b3c;
-            margin-bottom: 5px;
+            color: var(--primary);
         }
-
-        .info-sub {
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-
-        /* Prayer Times Table */
-        .prayer-container {
-            background: white;
-            border-radius: 30px;
-            padding: 35px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .prayer-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed #d4af37;
-        }
-
-        .prayer-header h2 {
-            font-size: 2.2rem;
-            color: #0b3b3c;
-            margin-bottom: 10px;
-        }
-
-        .prayer-header h2 i {
-            color: #d4af37;
-            margin-right: 15px;
-        }
-
-        .location-tag {
-            background: linear-gradient(135deg, #0b3b3c, #1e5556);
-            color: white;
-            padding: 10px 30px;
-            border-radius: 50px;
-            display: inline-block;
-            font-size: 1.2rem;
-            border: 2px solid #d4af37;
-        }
-
-        .prayer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .prayer-card {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            border-radius: 20px;
-            padding: 25px 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        .prayer-card.current {
-            border-color: #d4af37;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(11, 59, 60, 0.05));
-            transform: scale(1.02);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
-        }
-
-        .prayer-card.current::after {
-            content: 'Sekarang';
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background: #d4af37;
-            color: #0b3b3c;
-            padding: 5px 20px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .prayer-icon {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-
-        .prayer-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #0b3b3c;
-            margin-bottom: 10px;
-        }
-
-        .prayer-time {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0b3b3c;
-            font-family: 'Amiri', serif;
-        }
-
-        /* Calendar Navigation */
         .calendar-nav {
             display: flex;
             justify-content: center;
@@ -368,278 +83,225 @@
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
-
-        .month-btn {
+        .month-btn, .date-picker {
             background: white;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--gray-light);
             padding: 12px 25px;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: #6c757d;
+            font-family: var(--font-family);
         }
-
-        .month-btn:hover {
-            border-color: #d4af37;
-            color: #0b3b3c;
+        .month-btn:hover, .date-picker:hover {
+            border-color: var(--secondary);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
         }
-
         .month-btn.active {
-            background: linear-gradient(135deg, #0b3b3c, #1e5556);
+            background: var(--gradient-primary);
             color: white;
-            border-color: #d4af37;
+            border-color: var(--secondary);
         }
-
-        .date-picker {
+        .prayer-container {
             background: white;
-            border: 2px solid #e9ecef;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .date-picker:focus {
-            border-color: #d4af37;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #0b3b3c, #1e5556);
-            color: white;
-            padding: 30px;
             border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .prayer-header {
             text-align: center;
-            margin-top: 40px;
-            border: 2px solid #d4af37;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--secondary);
         }
-
-        .footer i {
-            color: #d4af37;
-            margin: 0 5px;
+        .prayer-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border-bottom: none;
         }
-
-        /* Loading */
-        .loading {
+        .prayer-header h2::after {
+            display: none;
+        }
+        .location-tag {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1rem;
+            border: 2px solid var(--secondary);
+        }
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .prayer-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 20px;
+            padding: 20px 15px;
             text-align: center;
-            padding: 60px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
         }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(212, 175, 55, 0.2);
-            border-top-color: #d4af37;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+        .prayer-card.current {
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(11, 59, 60, 0.05));
+            transform: scale(1.02);
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .prayer-card.current::after {
+            content: 'Sekarang';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .prayer-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
         }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
+        .prayer-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            body { padding-top: 80px; }
+        .prayer-time {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Amiri', serif;
         }
-
         @media (max-width: 768px) {
-            body { padding-top: 70px; }
-            
-            .mobile-menu-toggle { 
-                display: flex; 
+            .prayer-grid {
+                grid-template-columns: 1fr;
             }
-            
-            nav ul {
-                position: fixed;
-                top: 0;
-                left: -280px;
-                width: 280px;
-                height: 100vh;
-                background: linear-gradient(135deg, #0b3b3c 0%, #1e5556 100%);
-                flex-direction: column;
-                padding: 80px 20px 30px;
-                transition: left 0.4s ease;
-                z-index: 1000;
-                overflow-y: auto;
-                box-shadow: 2px 0 10px rgba(0,0,0,0.3);
-            }
-            
-            nav ul.active { 
-                left: 0; 
-            }
-            
-            nav ul li a {
-                width: 100%;
-                justify-content: center;
+            .clock-box {
+                min-width: 100px;
                 padding: 15px;
-                font-size: 1rem;
             }
-
-            .header h1 { font-size: 2rem; }
-            .clock-box { min-width: 120px; padding: 20px; }
-            .clock-box p { font-size: 2.5rem; }
-            .prayer-grid { grid-template-columns: 1fr; }
-            .prayer-container { padding: 20px; }
-        }
-
-        @media (max-width: 576px) {
-            .header h1 { font-size: 1.6rem; }
-            .clock-box { min-width: 100%; }
-            .clock-box p { font-size: 2rem; }
+            .clock-box p {
+                font-size: 2rem;
+            }
+            .prayer-container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" id="mobile-menu-toggle">
         <i class="fas fa-bars"></i>
     </button>
     
-    <!-- Header Navigation -->
     <header>
         <nav>
-           <ul class="nav-links" id="nav-links">
-    <li><a href="index.html" class="active"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-    <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-    <li><a href="zikir pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-    <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-    <li><a href="vidio ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-    <li><a href="jadwal sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-    <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-    <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-</ul>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <!-- Header -->
-        <div class="header fade-in">
-            <div class="header-content">
-                <h1>
-                    <i class="fas fa-mosque"></i>
-                    Jadwal Sholat 2026
-                    <i class="fas fa-moon"></i>
-                </h1>
-                <p>Jakarta & Sekitarnya • Realtime • Hijriyah</p>
-                <div class="date-badge" id="currentDateDisplay">
-                    <i class="fas fa-calendar-alt"></i> Memuat tanggal...
+    <main>
+        <div class="container fade-in" style="max-width: 1200px;">
+            <h1><i class="fas fa-mosque" style="color: var(--secondary); margin-right: 15px;"></i>Jadwal Sholat 2026</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Jakarta & Sekitarnya • Realtime • Hijriyah</p>
+            
+            <div class="clock-container">
+                <div class="clock-box">
+                    <p id="jam">00</p>
+                    <div class="clock-label">Jam</div>
+                </div>
+                <div class="clock-box">
+                    <p id="menit">00</p>
+                    <div class="clock-label">Menit</div>
+                </div>
+                <div class="clock-box">
+                    <p id="detik">00</p>
+                    <div class="clock-label">Detik</div>
+                </div>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt info-icon"></i>
+                    <h3>Tanggal Masehi</h3>
+                    <div class="info-value" id="masehiDate">-</div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-moon info-icon"></i>
+                    <h3>Tanggal Hijriyah</h3>
+                    <div class="info-value" id="hijriDate">-</div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock info-icon"></i>
+                    <h3>Waktu Sekarang</h3>
+                    <div class="info-value" id="currentTime">-</div>
+                </div>
+            </div>
+
+            <div class="calendar-nav">
+                <button class="month-btn" onclick="jumpToToday()">
+                    <i class="fas fa-calendar-check"></i> Hari Ini
+                </button>
+                <select id="monthSelector" class="date-picker" onchange="changeMonth()">
+                    <option value="0">Januari 2026</option>
+                    <option value="1">Februari 2026</option>
+                    <option value="2">Maret 2026</option>
+                    <option value="3">April 2026</option>
+                    <option value="4">Mei 2026</option>
+                    <option value="5">Juni 2026</option>
+                    <option value="6">Juli 2026</option>
+                    <option value="7">Agustus 2026</option>
+                    <option value="8">September 2026</option>
+                    <option value="9">Oktober 2026</option>
+                    <option value="10">November 2026</option>
+                    <option value="11">Desember 2026</option>
+                </select>
+                <select id="dateSelector" class="date-picker" onchange="changeDate()">
+                    <option value="1">1</option>
+                </select>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-header">
+                    <h2><i class="fas fa-clock"></i> Waktu Sholat</h2>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia
+                    </div>
+                </div>
+                <div class="prayer-grid" id="prayerGrid">
+                    <div style="text-align: center; padding: 40px;">Memuat data...</div>
                 </div>
             </div>
         </div>
+    </main>
 
-        <!-- Digital Clock -->
-        <div class="clock-container fade-in">
-            <div class="clock-box">
-                <p id="jam">00</p>
-                <div class="clock-label">Jam</div>
-            </div>
-            <div class="clock-box">
-                <p id="menit">00</p>
-                <div class="clock-label">Menit</div>
-            </div>
-            <div class="clock-box">
-                <p id="detik">00</p>
-                <div class="clock-label">Detik</div>
-            </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
         </div>
-
-        <!-- Info Cards -->
-        <div class="info-cards fade-in">
-            <div class="info-card">
-                <i class="fas fa-calendar-alt info-icon"></i>
-                <h3>Tanggal Masehi</h3>
-                <div class="info-value" id="masehiDate">-</div>
-                <div class="info-sub" id="masehiDay">-</div>
-            </div>
-            <div class="info-card">
-                <i class="fas fa-moon info-icon"></i>
-                <h3>Tanggal Hijriyah</h3>
-                <div class="info-value" id="hijriDate">-</div>
-                <div class="info-sub" id="hijriDay">-</div>
-            </div>
-            <div class="info-card">
-                <i class="fas fa-clock info-icon"></i>
-                <h3>Waktu Sekarang</h3>
-                <div class="info-value" id="currentTime">-</div>
-                <div class="info-sub" id="timeStatus">-</div>
-            </div>
-        </div>
-
-        <!-- Calendar Navigation -->
-        <div class="calendar-nav fade-in">
-            <button class="month-btn active" onclick="jumpToToday()">
-                <i class="fas fa-calendar-check"></i> Hari Ini
-            </button>
-            <select id="monthSelector" class="date-picker" onchange="changeMonth()">
-                <option value="0">Januari 2026</option>
-                <option value="1">Februari 2026</option>
-                <option value="2">Maret 2026</option>
-                <option value="3">April 2026</option>
-                <option value="4">Mei 2026</option>
-                <option value="5">Juni 2026</option>
-                <option value="6">Juli 2026</option>
-                <option value="7">Agustus 2026</option>
-                <option value="8">September 2026</option>
-                <option value="9">Oktober 2026</option>
-                <option value="10">November 2026</option>
-                <option value="11">Desember 2026</option>
-            </select>
-            <select id="dateSelector" class="date-picker" onchange="changeDate()">
-                <option value="1">1</option>
-            </select>
-        </div>
-
-        <!-- Prayer Times Table -->
-        <div class="prayer-container fade-in" id="prayerContainer">
-            <div class="prayer-header">
-                <h2>
-                    <i class="fas fa-clock"></i>
-                    Waktu Sholat
-                </h2>
-                <div class="location-tag">
-                    <i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia
-                </div>
-            </div>
-            <div class="prayer-grid" id="prayerGrid">
-                <!-- Akan diisi JavaScript -->
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>
-                <i class="fas fa-heart"></i>
-                Developed with cinta by Muhammad Rian Akbar
-                <i class="fas fa-heart"></i>
-            </p>
-            <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9rem;">
-                Sumber data: Jadwal Sholat 2026 • 30 Juz • Imsak • Subuh • Terbit • Dhuha • Dzuhur • Ashar • Maghrib • Isya
-            </p>
-        </div>
-    </div>
+    </footer>
 
     <script>
-        // ============================================
-        // DATABASE JADWAL SHOLAT 2026 LENGKAP
-        // ============================================
+        // Data jadwal sholat 2026 (lengkap)
         const prayerTimesData = {
-            // JANUARI 2026 (31 hari)
             "2026-01-01": ["04:07", "04:17", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"],
             "2026-01-02": ["04:08", "04:18", "05:39", "06:03", "11:58", "15:24", "18:12", "19:28"],
             "2026-01-03": ["04:09", "04:19", "05:40", "06:04", "11:58", "15:25", "18:12", "19:28"],
@@ -671,8 +333,6 @@
             "2026-01-29": ["04:23", "04:33", "05:51", "06:15", "12:07", "15:28", "18:19", "19:32"],
             "2026-01-30": ["04:23", "04:33", "05:51", "06:15", "12:07", "15:28", "18:19", "19:32"],
             "2026-01-31": ["04:24", "04:34", "05:52", "06:16", "12:07", "15:28", "18:19", "19:32"],
-
-            // FEBRUARI 2026 (28 hari)
             "2026-02-01": ["04:24", "04:34", "05:52", "06:16", "12:07", "15:28", "18:19", "19:32"],
             "2026-02-02": ["04:25", "04:35", "05:52", "06:16", "12:08", "15:28", "18:19", "19:32"],
             "2026-02-03": ["04:25", "04:35", "05:53", "06:17", "12:08", "15:27", "18:19", "19:32"],
@@ -701,8 +361,6 @@
             "2026-02-26": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:14", "18:14", "19:25"],
             "2026-02-27": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:13", "18:14", "19:24"],
             "2026-02-28": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:12", "18:14", "19:24"],
-
-            // MARET 2026 (31 hari)
             "2026-03-01": ["04:32", "04:42", "05:56", "06:20", "12:07", "15:11", "18:13", "19:23"],
             "2026-03-02": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:10", "18:13", "19:23"],
             "2026-03-03": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:09", "18:13", "19:22"],
@@ -734,8 +392,6 @@
             "2026-03-29": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:01", "19:10"],
             "2026-03-30": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:01", "19:10"],
             "2026-03-31": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:00", "19:09"],
-
-            // APRIL 2026 (30 hari)
             "2026-04-01": ["04:30", "04:40", "05:53", "06:17", "11:58", "15:13", "18:00", "19:09"],
             "2026-04-02": ["04:29", "04:39", "05:53", "06:17", "11:58", "15:13", "17:59", "19:08"],
             "2026-04-03": ["04:29", "04:39", "05:53", "06:17", "11:58", "15:13", "17:59", "19:08"],
@@ -766,8 +422,6 @@
             "2026-04-28": ["04:25", "04:35", "05:50", "06:14", "11:52", "15:13", "17:49", "19:00"],
             "2026-04-29": ["04:25", "04:35", "05:50", "06:14", "11:52", "15:13", "17:49", "19:00"],
             "2026-04-30": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "19:00"],
-
-            // MEI 2026 (31 hari)
             "2026-05-01": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "18:59"],
             "2026-05-02": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "18:59"],
             "2026-05-03": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:13", "17:48", "18:59"],
@@ -799,8 +453,6 @@
             "2026-05-29": ["04:25", "04:35", "05:54", "06:18", "11:51", "15:13", "17:45", "18:59"],
             "2026-05-30": ["04:25", "04:35", "05:54", "06:18", "11:51", "15:14", "17:45", "18:59"],
             "2026-05-31": ["04:25", "04:35", "05:54", "06:18", "11:52", "15:14", "17:45", "18:59"],
-
-            // JUNI 2026 (30 hari)
             "2026-06-01": ["04:25", "04:35", "05:54", "06:18", "11:52", "15:14", "17:45", "19:00"],
             "2026-06-02": ["04:26", "04:36", "05:54", "06:18", "11:52", "15:14", "17:45", "19:00"],
             "2026-06-03": ["04:26", "04:36", "05:55", "06:19", "11:52", "15:14", "17:46", "19:00"],
@@ -831,8 +483,6 @@
             "2026-06-28": ["04:31", "04:41", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
             "2026-06-29": ["04:31", "04:41", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
             "2026-06-30": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:05"],
-
-            // JULI 2026 (31 hari)
             "2026-07-01": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
             "2026-07-02": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
             "2026-07-03": ["04:32", "04:42", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
@@ -864,8 +514,6 @@
             "2026-07-29": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:56", "19:08"],
             "2026-07-30": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:56", "19:08"],
             "2026-07-31": ["04:34", "04:44", "06:01", "06:25", "12:01", "15:23", "17:56", "19:08"],
-
-            // AGUSTUS 2026 (31 hari)
             "2026-08-01": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
             "2026-08-02": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
             "2026-08-03": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
@@ -897,8 +545,6 @@
             "2026-08-29": ["04:29", "04:39", "05:53", "06:17", "11:56", "15:15", "17:55", "19:05"],
             "2026-08-30": ["04:29", "04:39", "05:53", "06:17", "11:56", "15:15", "17:55", "19:05"],
             "2026-08-31": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:05"],
-
-            // SEPTEMBER 2026 (30 hari)
             "2026-09-01": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:04"],
             "2026-09-02": ["04:27", "04:37", "05:51", "06:15", "11:55", "15:13", "17:55", "19:04"],
             "2026-09-03": ["04:27", "04:37", "05:51", "06:15", "11:55", "15:13", "17:54", "19:04"],
@@ -929,8 +575,6 @@
             "2026-09-28": ["04:15", "04:25", "05:38", "06:02", "11:46", "14:54", "17:50", "18:59"],
             "2026-09-29": ["04:14", "04:24", "05:37", "06:01", "11:45", "14:53", "17:50", "18:59"],
             "2026-09-30": ["04:14", "04:24", "05:37", "06:01", "11:45", "14:52", "17:50", "18:59"],
-
-            // OKTOBER 2026 (31 hari)
             "2026-10-01": ["04:13", "04:23", "05:36", "06:00", "11:45", "14:51", "17:49", "18:59"],
             "2026-10-02": ["04:13", "04:23", "05:36", "06:00", "11:44", "14:51", "17:49", "18:58"],
             "2026-10-03": ["04:12", "04:22", "05:35", "05:59", "11:44", "14:50", "17:49", "18:58"],
@@ -962,8 +606,6 @@
             "2026-10-29": ["04:00", "04:10", "05:25", "05:49", "11:39", "14:53", "17:48", "18:59"],
             "2026-10-30": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:53", "17:48", "18:59"],
             "2026-10-31": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:54", "17:48", "19:00"],
-
-            // NOVEMBER 2026 (30 hari)
             "2026-11-01": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:54", "17:48", "19:00"],
             "2026-11-02": ["03:58", "04:08", "05:25", "05:49", "11:38", "14:55", "17:48", "19:00"],
             "2026-11-03": ["03:58", "04:08", "05:24", "05:48", "11:38", "14:55", "17:48", "19:00"],
@@ -994,8 +636,6 @@
             "2026-11-28": ["03:55", "04:05", "05:25", "05:49", "11:42", "15:07", "17:56", "19:11"],
             "2026-11-29": ["03:55", "04:05", "05:25", "05:49", "11:43", "15:08", "17:56", "19:11"],
             "2026-11-30": ["03:56", "04:06", "05:26", "05:50", "11:43", "15:08", "17:56", "19:12"],
-
-            // DESEMBER 2026 (31 hari)
             "2026-12-01": ["03:56", "04:06", "05:26", "05:50", "11:43", "15:09", "17:57", "19:12"],
             "2026-12-02": ["03:56", "04:06", "05:26", "05:50", "11:44", "15:09", "17:57", "19:13"],
             "2026-12-03": ["03:56", "04:06", "05:26", "05:50", "11:44", "15:10", "17:58", "19:13"],
@@ -1029,22 +669,15 @@
             "2026-12-31": ["04:08", "04:18", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"]
         };
 
-        // ============================================
-        // FUNGSI UTILITY
-        // ============================================
-
-        // Update digital clock
         function updateClock() {
             const now = new Date();
             document.getElementById('jam').textContent = now.getHours().toString().padStart(2, '0');
             document.getElementById('menit').textContent = now.getMinutes().toString().padStart(2, '0');
             document.getElementById('detik').textContent = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('currentTime').textContent = 
-                now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('id-ID');
             setTimeout(updateClock, 1000);
         }
 
-        // Format tanggal
         function formatDate(date) {
             const year = date.getFullYear();
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -1052,51 +685,16 @@
             return `${year}-${month}-${day}`;
         }
 
-        // Dapatkan nama hari Indonesia
         function getDayName(date) {
             const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
             return days[date.getDay()];
         }
 
-        // Dapatkan nama bulan Indonesia
         function getMonthName(month) {
             const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             return months[month];
         }
 
-        // Update tampilan tanggal
-        function updateDateDisplay() {
-            const now = new Date();
-            const dayName = getDayName(now);
-            const monthName = getMonthName(now.getMonth());
-            document.getElementById('currentDateDisplay').innerHTML = 
-                `<i class="fas fa-calendar-alt"></i> ${dayName}, ${now.getDate()} ${monthName} ${now.getFullYear()}`;
-            document.getElementById('masehiDate').textContent = 
-                `${now.getDate()} ${monthName} ${now.getFullYear()}`;
-            document.getElementById('masehiDay').textContent = dayName;
-            document.getElementById('timeStatus').textContent = 
-                now.getHours() < 12 ? 'Pagi' : now.getHours() < 15 ? 'Siang' : now.getHours() < 18 ? 'Sore' : 'Malam';
-        }
-
-        // Hitung tanggal Hijriyah sederhana (approximation)
-        function getHijriDate() {
-            const now = new Date();
-            const gregorianYear = now.getFullYear();
-            const gregorianMonth = now.getMonth() + 1;
-            const gregorianDay = now.getDate();
-            
-            // Approximasi sederhana (untuk tampilan, bukan akurat)
-            const hijriYear = Math.floor((gregorianYear - 622) * (33/32));
-            const hijriMonths = ['Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir', 'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban', 'Ramadhan', 'Syawwal', 'Dzulqa\'dah', 'Dzulhijjah'];
-            const dayOfYear = Math.floor((now - new Date(gregorianYear, 0, 0)) / (1000 * 60 * 60 * 24));
-            const hijriMonthIndex = Math.floor(dayOfYear / 30) % 12;
-            const hijriDay = (dayOfYear % 30) + 1;
-            
-            document.getElementById('hijriDate').textContent = `${hijriDay} ${hijriMonths[hijriMonthIndex]} ${hijriYear}`;
-            document.getElementById('hijriDay').textContent = hijriMonths[hijriMonthIndex];
-        }
-
-        // Render jadwal sholat
         function renderPrayerTimes(dateStr) {
             const times = prayerTimesData[dateStr];
             if (!times) {
@@ -1114,11 +712,13 @@
             times.forEach((time, index) => {
                 const [hours, minutes] = time.split(':').map(Number);
                 const prayerTimeMinutes = hours * 60 + minutes;
-                const isCurrent = (index === 1 && currentTime >= prayerTimeMinutes && currentTime < times[2]) || // Subuh
-                                 (index === 4 && currentTime >= prayerTimeMinutes && currentTime < times[5]) || // Dzuhur
-                                 (index === 5 && currentTime >= prayerTimeMinutes && currentTime < times[6]) || // Ashar
-                                 (index === 6 && currentTime >= prayerTimeMinutes && currentTime < times[7]) || // Maghrib
-                                 (index === 7 && (currentTime >= prayerTimeMinutes || currentTime < times[1])); // Isya
+                let isCurrent = false;
+                
+                if (index === 1 && currentTime >= prayerTimeMinutes && currentTime < (times[2] ? times[2].split(':').map(Number)[0]*60 + times[2].split(':').map(Number)[1] : 24*60)) isCurrent = true;
+                if (index === 4 && currentTime >= prayerTimeMinutes && currentTime < (times[5] ? times[5].split(':').map(Number)[0]*60 + times[5].split(':').map(Number)[1] : 24*60)) isCurrent = true;
+                if (index === 5 && currentTime >= prayerTimeMinutes && currentTime < (times[6] ? times[6].split(':').map(Number)[0]*60 + times[6].split(':').map(Number)[1] : 24*60)) isCurrent = true;
+                if (index === 6 && currentTime >= prayerTimeMinutes && currentTime < (times[7] ? times[7].split(':').map(Number)[0]*60 + times[7].split(':').map(Number)[1] : 24*60)) isCurrent = true;
+                if (index === 7 && (currentTime >= prayerTimeMinutes || currentTime < (times[1] ? times[1].split(':').map(Number)[0]*60 + times[1].split(':').map(Number)[1] : 24*60))) isCurrent = true;
                 
                 html += `
                     <div class="prayer-card ${isCurrent ? 'current' : ''}">
@@ -1132,12 +732,21 @@
             document.getElementById('prayerGrid').innerHTML = html;
         }
 
-        // Load data berdasarkan tanggal
         function loadDate(date) {
             const dateStr = formatDate(date);
             renderPrayerTimes(dateStr);
-            updateDateDisplay();
-            getHijriDate();
+            
+            const dayName = getDayName(date);
+            const monthName = getMonthName(date.getMonth());
+            document.getElementById('masehiDate').textContent = `${dayName}, ${date.getDate()} ${monthName} ${date.getFullYear()}`;
+            
+            // Hijriyah approximation
+            const hijriMonths = ['Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir', 'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban', 'Ramadhan', 'Syawwal', 'Dzulqa\'dah', 'Dzulhijjah'];
+            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const hijriMonthIndex = Math.floor(dayOfYear / 29.5) % 12;
+            const hijriDay = Math.floor(dayOfYear % 29.5) + 1;
+            const hijriYear = Math.floor((date.getFullYear() - 622) * 0.97);
+            document.getElementById('hijriDate').textContent = `${hijriDay} ${hijriMonths[hijriMonthIndex]} ${hijriYear}`;
             
             // Update selectors
             document.getElementById('monthSelector').value = date.getMonth();
@@ -1149,15 +758,13 @@
             }
         }
 
-        // Ganti bulan
         function changeMonth() {
             const month = parseInt(document.getElementById('monthSelector').value);
-            const year = 2026;
-            const date = new Date(year, month, 1);
+            const day = parseInt(document.getElementById('dateSelector').value);
+            const date = new Date(2026, month, day);
             loadDate(date);
         }
 
-        // Ganti tanggal
         function changeDate() {
             const month = parseInt(document.getElementById('monthSelector').value);
             const day = parseInt(document.getElementById('dateSelector').value);
@@ -1165,10 +772,8 @@
             loadDate(date);
         }
 
-        // Kembali ke hari ini
         function jumpToToday() {
             const today = new Date();
-            // Set ke tahun 2026 (data yang tersedia)
             today.setFullYear(2026);
             loadDate(today);
         }
@@ -1185,7 +790,19 @@
             });
         }
 
-        // Initialize
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileToggle?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+        });
+
         window.onload = function() {
             updateClock();
             jumpToToday();
