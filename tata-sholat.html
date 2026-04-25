@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Tata Cara Sholat Lengkap - Website Islami</title>
+    <meta name="description" content="Panduan lengkap tata cara sholat fardhu dan sunnah sesuai sunnah Rasulullah SAW">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .prayer-guide { display: flex; flex-direction: column; gap: 30px; }
+        .prayer-step { background: var(--bg-light); border-radius: 20px; padding: 25px; border-left: 5px solid var(--secondary); transition: all 0.3s ease; }
+        .prayer-step:hover { transform: translateX(8px); box-shadow: var(--shadow-md); }
+        .prayer-step h3 { color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
+        .prayer-step h3 i { color: var(--secondary); font-size: 1.5rem; }
+        .prayer-step .arab { font-size: 1.3rem; font-family: 'Amiri', 'Traditional Arabic', serif; margin: 15px 0; text-align: right; color: var(--primary); background: rgba(212, 175, 55, 0.1); padding: 12px 20px; border-radius: 12px; }
+        .prayer-step .latin { font-style: italic; margin: 10px 0; color: var(--text-color); }
+        .prayer-step .arti { color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; }
+        .prayer-note { background: rgba(212, 175, 55, 0.15); border-radius: 15px; padding: 20px; margin-top: 20px; text-align: center; }
+        .prayer-note i { color: var(--secondary); margin-right: 8px; }
+        @media (max-width: 768px) { .prayer-step .arab { font-size: 1rem; } .prayer-step { padding: 18px; } }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+    <header><nav><ul class="nav-links" id="nav-links">
+        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+    </ul></nav></header>
+
+    <main><div class="container fade-in">
+        <h1><i class="fas fa-praying-hands" style="color: var(--secondary); margin-right: 15px;"></i>Tata Cara Sholat Lengkap</h1>
+        <p style="text-align: center; margin-bottom: 30px;">Panduan lengkap tata cara sholat fardhu dan sunnah sesuai sunnah Rasulullah SAW</p>
+        
+        <div class="prayer-guide" id="prayer-guide"></div>
+        
+        <div class="prayer-note"><i class="fas fa-info-circle"></i> Tata cara ini berdasarkan sunnah Rasulullah SAW. Perbedaan pendapat di kalangan ulama adalah rahmat. Yang terpenting adalah niat yang ikhlas dan berusaha untuk terus memperbaiki kualitas sholat.</div>
+    </div></main>
+
+    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
+
+    <script>
+        const prayerSteps = [
+            { step: 1, title: "Niat", icon: "fas fa-heart", desc: "Niat dalam hati untuk melaksanakan sholat fardhu/sunnah. Niat adalah syarat sah sholat.", arab: "أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ مُسْتَقْبِلَ الْقِبْلَةِ أَدَاءً لِلَّهِ تَعَالَى", latin: "Ushalli fardhadz dzuhri arba'a raka'atin mustaqbilal qiblati ada'an lillahi ta'ala", arti: "Aku berniat sholat fardhu dzuhur empat rakaat menghadap kiblat karena Allah Ta'ala" },
+            { step: 2, title: "Takbiratul Ihram", icon: "fas fa-hand-peace", desc: "Mengangkat kedua tangan sejajar telinga (pria) atau bahu (wanita), lalu mengucapkan 'Allahu Akbar'.", arab: "اللَّهُ أَكْبَرُ", latin: "Allahu Akbar", arti: "Allah Maha Besar" },
+            { step: 3, title: "Doa Iftitah", icon: "fas fa-hands-praying", desc: "Doa pembuka yang dibaca setelah takbiratul ihram sebelum Al-Fatihah.", arab: "اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ", latin: "Allahumma ba'id baini wa baina khathayaya kama ba'adta bainal masyriqi wal maghribi", arti: "Ya Allah, jauhkanlah antara aku dan kesalahanku sebagaimana Engkau jauhkan antara timur dan barat" },
+            { step: 4, title: "Membaca Surat Al-Fatihah", icon: "fas fa-book-quran", desc: "Rukun sholat yang wajib dibaca pada setiap rakaat.", arab: "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ (1) الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ (2) الرَّحْمَنِ الرَّحِيمِ (3) مَالِكِ يَوْمِ الدِّينِ (4) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (5) اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ (6) صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ (7)", latin: "Bismillahirrahmanirrahim. Alhamdulillahi rabbil 'alamin. Arrahmanirrahim. Maliki yaumiddin. Iyyaka na'budu wa iyyaka nasta'in. Ihdinash shirathal mustaqim. Shirathalladzina an'amta 'alaihim ghairil maghdhubi 'alaihim waladh dhallin.", arti: "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang. Segala puji bagi Allah, Tuhan seluruh alam..." },
+            { step: 5, title: "Membaca Surat Pendek", icon: "fas fa-book", desc: "Setelah Al-Fatihah, sunnah membaca surat pendek dari Al-Qur'an.", arab: "قُلْ هُوَ اللَّهُ أَحَدٌ (1) اللَّهُ الصَّمَدُ (2) لَمْ يَلِدْ وَلَمْ يُولَدْ (3) وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ (4)", latin: "Qul huwallahu ahad. Allahush shamad. Lam yalid wa lam yulad. Wa lam yakullahu kufuwan ahad.", arti: "Katakanlah: Dialah Allah, Yang Maha Esa. Allah adalah tempat bergantung. Dia tidak beranak dan tidak diperanakkan. Dan tidak ada yang setara dengan Dia." },
+            { step: 6, title: "Rukuk", icon: "fas fa-arrow-down", desc: "Membungkukkan badan dengan punggung rata, tangan memegang lutut.", arab: "سُبْحَانَ رَبِّيَ الْعَظِيمِ", latin: "Subhana rabbiyal 'adzim", arti: "Maha Suci Tuhanku Yang Maha Agung (3x)" },
+            { step: 7, title: "I'tidal (Berdiri dari Rukuk)", icon: "fas fa-arrow-up", desc: "Berdiri kembali dengan mengangkat kedua tangan lalu membaca doa.", arab: "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ - رَبَّنَا وَلَكَ الْحَمْدُ", latin: "Sami'allahu liman hamidah - Rabbana wa lakal hamdu", arti: "Allah mendengar orang yang memuji-Nya - Ya Tuhan kami, bagi-Mu segala pujian" },
+            { step: 8, title: "Sujud", icon: "fas fa-procedures", desc: "Meletakkan dahi, hidung, telapak tangan, lutut, dan ujung kaki ke lantai.", arab: "سُبْحَانَ رَبِّيَ الْأَعْلَى", latin: "Subhana rabbiyal a'la", arti: "Maha Suci Tuhanku Yang Maha Tinggi (3x)" },
+            { step: 9, title: "Duduk di Antara Dua Sujud", icon: "fas fa-chair", desc: "Duduk sejenak di antara dua sujud sambil membaca doa.", arab: "رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي", latin: "Rabbighfir li, rabbighfir li", arti: "Ya Tuhanku, ampunilah aku, ya Tuhanku, ampunilah aku" },
+            { step: 10, title: "Sujud Kedua", icon: "fas fa-procedures", desc: "Sujud kembali seperti sujud pertama.", arab: "سُبْحَانَ رَبِّيَ الْأَعْلَى", latin: "Subhana rabbiyal a'la", arti: "Maha Suci Tuhanku Yang Maha Tinggi (3x)" },
+            { step: 11, title: "Tasyahud Akhir", icon: "fas fa-gripfire", desc: "Duduk tahiyat akhir pada rakaat terakhir.", arab: "التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ", latin: "Attahiyyatul mubarakatus shalawatut thayyibatu lillah, assalamu 'alaika ayyuhan nabiyyu wa rahmatullahi wa barakatuh, assalamu 'alaina wa 'ala 'ibadillahish shalihin", arti: "Segala kehormatan, keberkahan, kebahagiaan, dan kebaikan adalah milik Allah. Semoga keselamatan tercurah kepadamu wahai Nabi, beserta rahmat Allah dan berkah-Nya. Semoga keselamatan tercurah kepada kami dan hamba-hamba Allah yang saleh." },
+            { step: 12, title: "Salam", icon: "fas fa-hand-peace", desc: "Mengucapkan salam dengan menoleh ke kanan lalu ke kiri.", arab: "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ", latin: "Assalamu'alaikum warahmatullahi wabarakatuh", arti: "Semoga keselamatan, rahmat Allah, dan berkah-Nya tercurah kepada kalian" }
+        ];
+
+        const container = document.getElementById('prayer-guide');
+        prayerSteps.forEach(step => {
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'prayer-step';
+            stepDiv.innerHTML = `<h3><i class="${step.icon}"></i> ${step.step}. ${step.title}</h3>
+                <p>${step.desc}</p>
+                <div class="arab">${step.arab}</div>
+                <div class="latin"><strong>Latin:</strong> ${step.latin}</div>
+                <div class="arti"><strong>Artinya:</strong> ${step.arti}</div>`;
+            container.appendChild(stepDiv);
+        });
+
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle?.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            }
+        });
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>
