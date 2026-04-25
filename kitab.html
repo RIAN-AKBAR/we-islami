@@ -3,6 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Kitab Hadis Lengkap - 500 Hadis per Kitab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f9f7f3; color: #2c3e2f; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: #0b3b2f; color: white; position: sticky; top: 0; z-index: 1000; }
+        .nav-links { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; padding: 0; }
+        .nav-links li a { display: inline-block; padding: 14px 18px; color: white; text-decoration: none; font-weight: 500; }
+        .nav-links li a:hover { background: #c99e2e; border-radius: 8px; }
+        .mobile-menu-toggle { display: none; background: #c99e2e; border: none; padding: 10px 15px; position: fixed; top: 10px; left: 10px; z-index: 1100; border-radius: 8px; cursor: pointer; }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; width: 100%; background: #0b3b2f; position: absolute; top: 60px; left: 0; }
+            .nav-links.active { display: flex; }
+        }
+        footer { background: #0b3b2f; color: white; text-align: center; padding: 25px; margin-top: 40px; font-size: 0.9rem; }
+        .kitab-selector { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
+        .kitab-btn { background: white; border: 2px solid #c99e2e; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .kitab-btn.active, .kitab-btn:hover { background: #c99e2e; color: white; }
+        .stats-info { text-align: center; margin: 15px 0; padding: 12px; background: #e8e0d0; border-radius: 50px; font-size: 0.85rem; }
+        .search-box { margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .search-box input { flex: 1; padding: 14px 20px; border: 2px solid #ddd; border-radius: 50px; font-size: 1rem; }
+        .pagination { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 25px 0; }
+        .page-btn { background: white; border: 1px solid #c99e2e; padding: 8px 15px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        .page-btn.active, .page-btn:hover { background: #c99e2e; color: white; }
+        .hadis-card { background: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; border-left: 5px solid #c99e2e; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .hadis-nomor { background: #0b3b2f; color: white; display: inline-block; padding: 4px 15px; border-radius: 30px; font-size: 0.7rem; margin-bottom: 12px; }
+        .hadis-arab { font-family: 'Amiri', serif; font-size: 1.2rem; line-height: 1.8; direction: rtl; text-align: right; background: #fef8ed; padding: 20px; border-radius: 16px; margin: 10px 0; }
+        .hadis-terjemah { font-style: italic; padding: 12px; background: #f0f5ee; border-radius: 12px; margin: 10px 0; }
+        .hadis-penjelasan { padding: 12px; background: #f9f6f0; border-radius: 12px; margin: 10px 0; font-size: 0.85rem; border-left: 3px solid #c99e2e; }
+        .badge-bab { display: inline-block; background: #c99e2e20; color: #8a6e1a; padding: 2px 10px; border-radius: 20px; font-size: 0.7rem; margin-left: 10px; }
+        .loading { text-align: center; padding: 40px; }
+        h1 { text-align: center; color: #0b3b2f; font-size: 1.5rem; }
+        @media (max-width: 600px) { .hadis-arab { font-size: 1rem; } .kitab-btn { padding: 8px 14px; font-size: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i> Menu</button>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Sholat</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1><i class="fas fa-book-quran" style="color: #c99e2e;"></i> 500 Hadis Full per Kitab</h1>
+            <p style="text-align: center; margin-bottom: 15px;">✅ 6 Kitab Utama (Kutubus Sittah) | ✅ 500 Hadis per Kitab | ✅ Total 3.000 Hadis | ✅ Teks Arab + Terjemah + Penjelasan + Sanad</p>
+            
+            <div class="kitab-selector" id="kitabSelector"></div>
+            <div class="stats-info" id="statsInfo">Memuat database hadis...</div>
+            <div class="search-box">
+                <input type="text" id="searchHadis" placeholder="🔍 Cari hadis (teks Arab, terjemah, atau penjelasan)...">
+            </div>
+            <div id="hadisContainer"></div>
+            <div id="paginationContainer" class="pagination"></div>
+        </div>
+    </footer>
+        <p><i class="fas fa-mosque"></i> Sumber: Shahih Bukhari, Shahih Muslim, Sunan Abu Dawud, Jami' At-Tirmidzi, Sunan An-Nasa'i, Sunan Ibnu Majah</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">📖 Total 3.000 hadis shahih lengkap dengan sanad dan syarah | Data dari database-kitab.js</p>
+    </footer>
+
+    <script src="database-kitab.js"></script>
+    <script>
+        // ========== MAIN APPLICATION ==========
+        
+        let currentKitab = "Shahih Bukhari";
+        let currentPage = 1;
+        let currentSearch = "";
+        const itemsPerPage = 15;
+
+        // Hitung total hadis dari database yang di-import
+        let grandTotal = 0;
+        if (typeof KITAB_DATABASE !== 'undefined') {
+            for (const kitab of Object.values(KITAB_DATABASE)) {
+                grandTotal += kitab.hadis.length;
+            }
+        }
+
+        function getFilteredHadis() {
+            if (typeof KITAB_DATABASE === 'undefined') return [];
+            let hadis = KITAB_DATABASE[currentKitab].hadis;
+            if (currentSearch.trim() !== "") {
+                const searchLower = currentSearch.toLowerCase();
+                hadis = hadis.filter(h => 
+                    h.terjemah.toLowerCase().includes(searchLower) || 
+                    h.arab.toLowerCase().includes(searchLower) ||
+                    h.penjelasan.toLowerCase().includes(searchLower) ||
+                    h.bab.toLowerCase().includes(searchLower)
+                );
+            }
+            return hadis;
+        }
+
+        function renderKitabSelector() {
+            if (typeof KITAB_DATABASE === 'undefined') {
+                document.getElementById('kitabSelector').innerHTML = '<p style="color:red;">Error: database-kitab.js tidak ditemukan!</p>';
+                return;
+            }
+            const container = document.getElementById('kitabSelector');
+            container.innerHTML = "";
+            for (const [key, data] of Object.entries(KITAB_DATABASE)) {
+                const btn = document.createElement('button');
+                btn.className = `kitab-btn ${currentKitab === key ? 'active' : ''}`;
+                btn.innerHTML = `${data.nama} <span style="font-size:0.7rem;">(${data.hadis.length} hadis)</span>`;
+                btn.onclick = () => {
+                    currentKitab = key;
+                    currentPage = 1;
+                    currentSearch = "";
+                    document.getElementById('searchHadis').value = "";
+                    renderKitabSelector();
+                    renderHadis();
+                };
+                container.appendChild(btn);
+            }
+        }
+
+        function renderHadis() {
+            if (typeof KITAB_DATABASE === 'undefined') return;
+            const container = document.getElementById('hadisContainer');
+            const paginationContainer = document.getElementById('paginationContainer');
+            const statsInfo = document.getElementById('statsInfo');
+            
+            const filtered = getFilteredHadis();
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const currentHadis = filtered.slice(startIndex, startIndex + itemsPerPage);
+            
+            statsInfo.innerHTML = `📚 ${KITAB_DATABASE[currentKitab].nama} | ${KITAB_DATABASE[currentKitab].imam} | 📖 Database: ${KITAB_DATABASE[currentKitab].hadis.length} hadis | 🔍 Ditampilkan: ${totalItems} hadis | 📄 Halaman ${currentPage} dari ${totalPages} | 🏆 Total 6 kitab: ${grandTotal} hadis`;
+            
+            if (currentHadis.length === 0) {
+                container.innerHTML = '<div class="loading">⚠️ Tidak ditemukan hadis dengan kata kunci tersebut.</div>';
+                paginationContainer.innerHTML = "";
+                return;
+            }
+            
+            container.innerHTML = currentHadis.map(h => `
+                <div class="hadis-card">
+                    <div class="hadis-nomor">
+                        <i class="fas fa-hashtag"></i> Hadis No. ${h.nomor} 
+                        <span class="badge-bab"><i class="fas fa-folder-open"></i> ${h.bab}</span>
+                        <span class="badge-bab" style="background:#0b3b2f20;"><i class="fas fa-check-circle"></i> ${h.derajat || 'Shahih'}</span>
+                    </div>
+                    <div class="hadis-arab">${h.arab}</div>
+                    <div class="hadis-terjemah"><i class="fas fa-language"></i> <strong>Terjemah:</strong> ${h.terjemah}</div>
+                    <div class="hadis-penjelasan"><i class="fas fa-graduation-cap"></i> <strong>Penjelasan:</strong> ${h.penjelasan}</div>
+                    <div style="font-size: 0.7rem; color: #6c757d; margin-top: 10px; padding-top: 8px; border-top: 1px solid #eee;">
+                        <i class="fas fa-link"></i> Sanad: ${h.sanad}
+                    </div>
+                </div>
+            `).join('');
+            
+            // Pagination
+            let paginationHtml = `<button class="page-btn" onclick="changePage(${currentPage-1})" ${currentPage===1 ? 'disabled' : ''}>◀ Sebelumnya</button>`;
+            
+            let startPage = Math.max(1, currentPage - 3);
+            let endPage = Math.min(totalPages, currentPage + 3);
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHtml += `<button class="page-btn ${i===currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+            
+            paginationHtml += `<button class="page-btn" onclick="changePage(${currentPage+1})" ${currentPage===totalPages ? 'disabled' : ''}>Berikutnya ▶</button>`;
+            paginationHtml += `<span style="margin-left: 15px;">📌 Total ${totalItems} hadis | ${currentPage}/${totalPages}</span>`;
+            paginationContainer.innerHTML = paginationHtml;
+        }
+
+        function changePage(page) {
+            const filtered = getFilteredHadis();
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderHadis();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Event listener search
+        document.getElementById('searchHadis').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            currentPage = 1;
+            renderHadis();
+        });
+
+        // Initialize setelah database load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof KITAB_DATABASE !== 'undefined') {
+                renderKitabSelector();
+                renderHadis();
+            } else {
+                document.getElementById('statsInfo').innerHTML = '❌ Error: File database-kitab.js tidak ditemukan. Pastikan file tersebut ada di folder yang sama.';
+            }
+        });
+
+        window.changePage = changePage;
+
+        // Mobile menu
+        const toggleBtn = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && navLinks && !navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Kitab Hadis Imam Besar - Website Islami</title>
     <meta name="description" content="Mengenal kitab-kitab hadis lengkap dari para imam besar seperti Bukhari, Muslim, Tirmidzi, dan lainnya">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
