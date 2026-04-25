@@ -9,300 +9,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .clock-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 30px 0 40px;
-            flex-wrap: wrap;
-        }
-        .clock-box {
-            background: white;
-            border-radius: 20px;
-            padding: 25px 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
-            min-width: 150px;
-            transition: all 0.3s ease;
-        }
-        .clock-box:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-        }
-        .clock-box p {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1;
-        }
-        .clock-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 10px;
-        }
-        .info-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        .info-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        .info-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-        }
-        .info-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .info-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-        .info-value {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .calendar-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .month-btn, .date-picker {
-            background: white;
-            border: 2px solid var(--gray-light);
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: var(--font-family);
-        }
-        .month-btn:hover, .date-picker:hover {
-            border-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        .month-btn.active {
-            background: var(--gradient-primary);
-            color: white;
-            border-color: var(--secondary);
-        }
-        .prayer-container {
-            background: white;
-            border-radius: 30px;
-            padding: 35px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-        }
-        .prayer-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed var(--secondary);
-        }
-        .prayer-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            border-bottom: none;
-        }
-        .prayer-header h2::after {
-            display: none;
-        }
-        .location-tag {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 10px 30px;
-            border-radius: 50px;
-            display: inline-block;
-            font-size: 1rem;
-            border: 2px solid var(--secondary);
-        }
-        .prayer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-        .prayer-card {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            border-radius: 20px;
-            padding: 20px 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-        }
-        .prayer-card.current {
-            border-color: var(--secondary);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(11, 59, 60, 0.05));
-            transform: scale(1.02);
-        }
-        .prayer-card.current::after {
-            content: 'Sekarang';
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-        .prayer-icon {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-        .prayer-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        .prayer-time {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-family: 'Amiri', serif;
-        }
-        @media (max-width: 768px) {
-            .prayer-grid {
-                grid-template-columns: 1fr;
-            }
-            .clock-box {
-                min-width: 100px;
-                padding: 15px;
-            }
-            .clock-box p {
-                font-size: 2rem;
-            }
-            .prayer-container {
-                padding: 20px;
-            }
-        }
+        .clock-container { display: flex; justify-content: center; gap: 25px; margin: 30px 0 40px; flex-wrap: wrap; }
+        .clock-box { background: var(--bg-white); border-radius: 20px; padding: 25px 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; min-width: 150px; transition: all 0.3s ease; border: 1px solid var(--border-color); }
+        .clock-box:hover { transform: translateY(-10px); border-color: var(--secondary); }
+        .clock-box p { margin: 0; font-size: 3rem; font-weight: 700; color: var(--primary); line-height: 1; }
+        .clock-label { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .info-card { background: var(--bg-white); border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color); }
+        .info-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+        .info-icon { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+        .info-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--primary); }
+        .info-value { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        .calendar-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .month-btn, .date-picker { background: var(--bg-white); border: 2px solid var(--border-color); padding: 12px 25px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-family); color: var(--text-color); }
+        .month-btn:hover, .date-picker:hover { border-color: var(--secondary); transform: translateY(-3px); }
+        .prayer-container { background: var(--bg-white); border-radius: 30px; padding: 35px; box-shadow: 0 25px 50px rgba(0,0,0,0.1); margin-bottom: 40px; border: 1px solid var(--border-color); }
+        .prayer-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px dashed var(--secondary); }
+        .prayer-header h2 { font-size: 1.8rem; margin-bottom: 10px; border-bottom: none; }
+        .prayer-header h2::after { display: none; }
+        .location-tag { background: var(--gradient-primary); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-size: 1rem; border: 2px solid var(--secondary); }
+        .prayer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .prayer-card { background: var(--bg-light); border-radius: 20px; padding: 20px 15px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
+        .prayer-card.current { border-color: var(--secondary); background: rgba(212, 175, 55, 0.1); transform: scale(1.02); position: relative; }
+        .prayer-card.current::after { content: 'Sekarang'; position: absolute; top: -10px; right: 20px; background: var(--secondary); color: var(--primary); padding: 5px 15px; border-radius: 30px; font-size: 0.7rem; font-weight: 700; }
+        .prayer-icon { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; }
+        .prayer-name { font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+        .prayer-time { font-size: 1.6rem; font-weight: 700; color: var(--primary); font-family: 'Amiri', serif; }
+        @media (max-width: 768px) { .prayer-grid { grid-template-columns: 1fr; } .clock-box { min-width: 100px; padding: 15px; } .clock-box p { font-size: 2rem; } .prayer-container { padding: 20px; } }
     </style>
 </head>
 <body>
-    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <header>
-        <nav>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-            </ul>
-        </nav>
-    </header>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+    <header><nav><ul class="nav-links" id="nav-links">
+        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+    </ul></nav></header>
 
-    <main>
-        <div class="container fade-in" style="max-width: 1200px;">
-            <h1><i class="fas fa-mosque" style="color: var(--secondary); margin-right: 15px;"></i>Jadwal Sholat 2026</h1>
-            <p style="text-align: center; margin-bottom: 20px;">Jakarta & Sekitarnya • Realtime • Hijriyah</p>
-            
-            <div class="clock-container">
-                <div class="clock-box">
-                    <p id="jam">00</p>
-                    <div class="clock-label">Jam</div>
-                </div>
-                <div class="clock-box">
-                    <p id="menit">00</p>
-                    <div class="clock-label">Menit</div>
-                </div>
-                <div class="clock-box">
-                    <p id="detik">00</p>
-                    <div class="clock-label">Detik</div>
-                </div>
-            </div>
+    <main><div class="container fade-in" style="max-width: 1200px;">
+        <h1><i class="fas fa-mosque" style="color: var(--secondary); margin-right: 15px;"></i>Jadwal Sholat 2026</h1>
+        <p style="text-align: center; margin-bottom: 20px;">Jakarta & Sekitarnya • Realtime • Hijriyah</p>
+        
+        <div class="clock-container"><div class="clock-box"><p id="jam">00</p><div class="clock-label">Jam</div></div>
+        <div class="clock-box"><p id="menit">00</p><div class="clock-label">Menit</div></div>
+        <div class="clock-box"><p id="detik">00</p><div class="clock-label">Detik</div></div></div>
 
-            <div class="info-cards">
-                <div class="info-card">
-                    <i class="fas fa-calendar-alt info-icon"></i>
-                    <h3>Tanggal Masehi</h3>
-                    <div class="info-value" id="masehiDate">-</div>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-moon info-icon"></i>
-                    <h3>Tanggal Hijriyah</h3>
-                    <div class="info-value" id="hijriDate">-</div>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-clock info-icon"></i>
-                    <h3>Waktu Sekarang</h3>
-                    <div class="info-value" id="currentTime">-</div>
-                </div>
-            </div>
+        <div class="info-cards"><div class="info-card"><i class="fas fa-calendar-alt info-icon"></i><h3>Tanggal Masehi</h3><div class="info-value" id="masehiDate">-</div></div>
+        <div class="info-card"><i class="fas fa-moon info-icon"></i><h3>Tanggal Hijriyah</h3><div class="info-value" id="hijriDate">-</div></div>
+        <div class="info-card"><i class="fas fa-clock info-icon"></i><h3>Waktu Sekarang</h3><div class="info-value" id="currentTime">-</div></div></div>
 
-            <div class="calendar-nav">
-                <button class="month-btn" onclick="jumpToToday()">
-                    <i class="fas fa-calendar-check"></i> Hari Ini
-                </button>
-                <select id="monthSelector" class="date-picker" onchange="changeMonth()">
-                    <option value="0">Januari 2026</option>
-                    <option value="1">Februari 2026</option>
-                    <option value="2">Maret 2026</option>
-                    <option value="3">April 2026</option>
-                    <option value="4">Mei 2026</option>
-                    <option value="5">Juni 2026</option>
-                    <option value="6">Juli 2026</option>
-                    <option value="7">Agustus 2026</option>
-                    <option value="8">September 2026</option>
-                    <option value="9">Oktober 2026</option>
-                    <option value="10">November 2026</option>
-                    <option value="11">Desember 2026</option>
-                </select>
-                <select id="dateSelector" class="date-picker" onchange="changeDate()">
-                    <option value="1">1</option>
-                </select>
-            </div>
+        <div class="calendar-nav"><button class="month-btn" onclick="jumpToToday()"><i class="fas fa-calendar-check"></i> Hari Ini</button>
+        <select id="monthSelector" class="date-picker" onchange="changeMonth()"><option value="0">Januari 2026</option><option value="1">Februari 2026</option><option value="2">Maret 2026</option><option value="3">April 2026</option><option value="4">Mei 2026</option><option value="5">Juni 2026</option><option value="6">Juli 2026</option><option value="7">Agustus 2026</option><option value="8">September 2026</option><option value="9">Oktober 2026</option><option value="10">November 2026</option><option value="11">Desember 2026</option></select>
+        <select id="dateSelector" class="date-picker" onchange="changeDate()"><option value="1">1</option></select></div>
 
-            <div class="prayer-container">
-                <div class="prayer-header">
-                    <h2><i class="fas fa-clock"></i> Waktu Sholat</h2>
-                    <div class="location-tag">
-                        <i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia
-                    </div>
-                </div>
-                <div class="prayer-grid" id="prayerGrid">
-                    <div style="text-align: center; padding: 40px;">Memuat data...</div>
-                </div>
-            </div>
-        </div>
-    </main>
+        <div class="prayer-container"><div class="prayer-header"><h2><i class="fas fa-clock"></i> Waktu Sholat</h2><div class="location-tag"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</div></div>
+        <div class="prayer-grid" id="prayerGrid"><div style="text-align: center; padding: 40px;">Memuat data...</div></div></div>
+    </div></main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
-        </div>
-    </footer>
+    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
 
     <script>
-        // Data jadwal sholat 2026 (lengkap)
         const prayerTimesData = {
-            "2026-01-01": ["04:07", "04:17", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"],
+           "2026-01-01": ["04:07", "04:17", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"],
             "2026-01-02": ["04:08", "04:18", "05:39", "06:03", "11:58", "15:24", "18:12", "19:28"],
             "2026-01-03": ["04:09", "04:19", "05:40", "06:04", "11:58", "15:25", "18:12", "19:28"],
             "2026-01-04": ["04:09", "04:19", "05:40", "06:04", "11:58", "15:25", "18:13", "19:29"],
@@ -669,144 +446,60 @@
             "2026-12-31": ["04:08", "04:18", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"]
         };
 
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('jam').textContent = now.getHours().toString().padStart(2, '0');
-            document.getElementById('menit').textContent = now.getMinutes().toString().padStart(2, '0');
-            document.getElementById('detik').textContent = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('currentTime').textContent = now.toLocaleTimeString('id-ID');
-            setTimeout(updateClock, 1000);
-        }
+        function updateClock() { const now = new Date(); document.getElementById('jam').textContent = now.getHours().toString().padStart(2,'0'); document.getElementById('menit').textContent = now.getMinutes().toString().padStart(2,'0'); document.getElementById('detik').textContent = now.getSeconds().toString().padStart(2,'0'); document.getElementById('currentTime').textContent = now.toLocaleTimeString('id-ID'); setTimeout(updateClock,1000); }
 
-        function formatDate(date) {
-            const year = date.getFullYear();
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const day = date.getDate().toString().padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-
-        function getDayName(date) {
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            return days[date.getDay()];
-        }
-
-        function getMonthName(month) {
-            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            return months[month];
-        }
+        function formatDate(date) { return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')}`; }
+        function getDayName(date) { return ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][date.getDay()]; }
+        function getMonthName(month) { return ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'][month]; }
 
         function renderPrayerTimes(dateStr) {
             const times = prayerTimesData[dateStr];
-            if (!times) {
-                document.getElementById('prayerGrid').innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;">Data tidak tersedia untuk tanggal ini</div>';
-                return;
-            }
-
-            const prayerNames = ['Imsak', 'Subuh', 'Terbit', 'Dhuha', 'Dzuhur', 'Ashar', 'Maghrib', 'Isya'];
-            const prayerIcons = ['fa-moon', 'fa-sun', 'fa-sun', 'fa-sun', 'fa-sun', 'fa-cloud-sun', 'fa-sunset', 'fa-moon'];
-            
+            if(!times) { document.getElementById('prayerGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:50px;">Data tidak tersedia</div>'; return; }
+            const names = ['Imsak','Subuh','Terbit','Dhuha','Dzuhur','Ashar','Maghrib','Isya'];
+            const icons = ['fa-moon','fa-sun','fa-sun','fa-sun','fa-sun','fa-cloud-sun','fa-sunset','fa-moon'];
             const now = new Date();
-            const currentTime = now.getHours() * 60 + now.getMinutes();
-            
+            const current = now.getHours()*60 + now.getMinutes();
             let html = '';
-            times.forEach((time, index) => {
-                const [hours, minutes] = time.split(':').map(Number);
-                const prayerTimeMinutes = hours * 60 + minutes;
+            times.forEach((time,i) => {
+                const [h,m] = time.split(':').map(Number);
+                const prayerTime = h*60 + m;
                 let isCurrent = false;
-                
-                if (index === 1 && currentTime >= prayerTimeMinutes && currentTime < (times[2] ? times[2].split(':').map(Number)[0]*60 + times[2].split(':').map(Number)[1] : 24*60)) isCurrent = true;
-                if (index === 4 && currentTime >= prayerTimeMinutes && currentTime < (times[5] ? times[5].split(':').map(Number)[0]*60 + times[5].split(':').map(Number)[1] : 24*60)) isCurrent = true;
-                if (index === 5 && currentTime >= prayerTimeMinutes && currentTime < (times[6] ? times[6].split(':').map(Number)[0]*60 + times[6].split(':').map(Number)[1] : 24*60)) isCurrent = true;
-                if (index === 6 && currentTime >= prayerTimeMinutes && currentTime < (times[7] ? times[7].split(':').map(Number)[0]*60 + times[7].split(':').map(Number)[1] : 24*60)) isCurrent = true;
-                if (index === 7 && (currentTime >= prayerTimeMinutes || currentTime < (times[1] ? times[1].split(':').map(Number)[0]*60 + times[1].split(':').map(Number)[1] : 24*60))) isCurrent = true;
-                
-                html += `
-                    <div class="prayer-card ${isCurrent ? 'current' : ''}">
-                        <div class="prayer-icon"><i class="fas ${prayerIcons[index]}"></i></div>
-                        <div class="prayer-name">${prayerNames[index]}</div>
-                        <div class="prayer-time">${time}</div>
-                    </div>
-                `;
+                if(i===1 && current>=prayerTime && current<(times[2]?times[2].split(':').map(Number)[0]*60+times[2].split(':').map(Number)[1]:24*60)) isCurrent=true;
+                if(i===4 && current>=prayerTime && current<(times[5]?times[5].split(':').map(Number)[0]*60+times[5].split(':').map(Number)[1]:24*60)) isCurrent=true;
+                if(i===5 && current>=prayerTime && current<(times[6]?times[6].split(':').map(Number)[0]*60+times[6].split(':').map(Number)[1]:24*60)) isCurrent=true;
+                if(i===6 && current>=prayerTime && current<(times[7]?times[7].split(':').map(Number)[0]*60+times[7].split(':').map(Number)[1]:24*60)) isCurrent=true;
+                if(i===7 && (current>=prayerTime || current<(times[1]?times[1].split(':').map(Number)[0]*60+times[1].split(':').map(Number)[1]:24*60))) isCurrent=true;
+                html += `<div class="prayer-card ${isCurrent?'current':''}"><div class="prayer-icon"><i class="fas ${icons[i]}"></i></div><div class="prayer-name">${names[i]}</div><div class="prayer-time">${time}</div></div>`;
             });
-            
             document.getElementById('prayerGrid').innerHTML = html;
         }
 
         function loadDate(date) {
             const dateStr = formatDate(date);
             renderPrayerTimes(dateStr);
-            
-            const dayName = getDayName(date);
-            const monthName = getMonthName(date.getMonth());
-            document.getElementById('masehiDate').textContent = `${dayName}, ${date.getDate()} ${monthName} ${date.getFullYear()}`;
-            
-            // Hijriyah approximation
-            const hijriMonths = ['Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir', 'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban', 'Ramadhan', 'Syawwal', 'Dzulqa\'dah', 'Dzulhijjah'];
-            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-            const hijriMonthIndex = Math.floor(dayOfYear / 29.5) % 12;
-            const hijriDay = Math.floor(dayOfYear % 29.5) + 1;
-            const hijriYear = Math.floor((date.getFullYear() - 622) * 0.97);
-            document.getElementById('hijriDate').textContent = `${hijriDay} ${hijriMonths[hijriMonthIndex]} ${hijriYear}`;
-            
-            // Update selectors
+            document.getElementById('masehiDate').textContent = `${getDayName(date)}, ${date.getDate()} ${getMonthName(date.getMonth())} ${date.getFullYear()}`;
+            const hijriMonths = ['Muharram','Safar','Rabiul Awal','Rabiul Akhir','Jumadil Awal','Jumadil Akhir','Rajab','Sya\'ban','Ramadhan','Syawwal','Dzulqa\'dah','Dzulhijjah'];
+            const dayOfYear = Math.floor((date - new Date(date.getFullYear(),0,0))/(1000*60*60*24));
+            const hijriMonth = Math.floor(dayOfYear/29.5)%12;
+            const hijriDay = Math.floor(dayOfYear%29.5)+1;
+            const hijriYear = Math.floor((date.getFullYear()-622)*0.97);
+            document.getElementById('hijriDate').textContent = `${hijriDay} ${hijriMonths[hijriMonth]} ${hijriYear}`;
             document.getElementById('monthSelector').value = date.getMonth();
             const dateSelect = document.getElementById('dateSelector');
             dateSelect.innerHTML = '';
-            const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-            for (let i = 1; i <= daysInMonth; i++) {
-                dateSelect.innerHTML += `<option value="${i}" ${i === date.getDate() ? 'selected' : ''}>${i}</option>`;
-            }
+            const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+            for(let i=1; i<=daysInMonth; i++) dateSelect.innerHTML += `<option value="${i}" ${i===date.getDate()?'selected':''}>${i}</option>`;
         }
 
-        function changeMonth() {
-            const month = parseInt(document.getElementById('monthSelector').value);
-            const day = parseInt(document.getElementById('dateSelector').value);
-            const date = new Date(2026, month, day);
-            loadDate(date);
-        }
+        function changeMonth() { loadDate(new Date(2026, parseInt(document.getElementById('monthSelector').value), parseInt(document.getElementById('dateSelector').value))); }
+        function changeDate() { loadDate(new Date(2026, parseInt(document.getElementById('monthSelector').value), parseInt(document.getElementById('dateSelector').value))); }
+        function jumpToToday() { const today = new Date(); today.setFullYear(2026); loadDate(today); }
 
-        function changeDate() {
-            const month = parseInt(document.getElementById('monthSelector').value);
-            const day = parseInt(document.getElementById('dateSelector').value);
-            const date = new Date(2026, month, day);
-            loadDate(date);
-        }
-
-        function jumpToToday() {
-            const today = new Date();
-            today.setFullYear(2026);
-            loadDate(today);
-        }
-
-        // Mobile menu
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            });
-        }
-
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    const icon = mobileToggle?.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            }
-        });
-
-        window.onload = function() {
-            updateClock();
-            jumpToToday();
-        };
+        if(mobileToggle) mobileToggle.addEventListener('click',()=>{ navLinks.classList.toggle('active'); const icon=mobileToggle.querySelector('i'); icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); });
+        document.addEventListener('click',(e)=>{ if(window.innerWidth<=768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)){ navLinks.classList.remove('active'); const icon=mobileToggle?.querySelector('i'); if(icon){ icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } } });
+        window.onload = function() { updateClock(); jumpToToday(); };
     </script>
     <script src="theme.js"></script>
 </body>
