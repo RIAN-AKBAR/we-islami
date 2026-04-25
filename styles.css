@@ -1,4 +1,3 @@
-
 :root {
     --primary: #0b3b3c;
     --primary-light: #1e5556;
@@ -11,6 +10,12 @@
     --dark: #1e2a2e;
     --gray: #6c757d;
     --gray-light: #e9ecef;
+    --text-color: #1e2a2e;
+    --text-muted: #6c757d;
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --border-color: #e9ecef;
+    
     --success: #28a745;
     --danger: #dc3545;
     --warning: #ffc107;
@@ -51,7 +56,7 @@ html {
 body {
     font-family: var(--font-family);
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-    color: var(--dark);
+    color: var(--text-color);
     line-height: 1.7;
     padding-top: 90px;
     min-height: 100vh;
@@ -144,7 +149,7 @@ main {
 }
 
 .container {
-    background: white;
+    background: var(--bg-white);
     padding: 35px;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-md);
@@ -154,6 +159,7 @@ main {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
 .container::before {
@@ -172,11 +178,11 @@ main {
 }
 
 /* Headings */
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
-    color: var(--primary);
     font-weight: 600;
     line-height: 1.3;
+    color: var(--primary);
 }
 
 h1 {
@@ -203,20 +209,24 @@ h2 {
     font-size: 1.8rem;
     margin-top: 30px;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--gray-light);
+    border-bottom: 2px solid var(--border-color);
+}
+
+h2 i, h1 i {
+    color: var(--secondary);
 }
 
 /* List Items */
-.doa-list, .zikir-list, .hadis-list {
+.doa-list, .zikir-list, .hadis-list, .kitab-list, .kisah-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-top: 25px;
 }
 
-.doa-item, .zikir-item, .hadis-item {
-    background: white;
-    border: 1px solid var(--gray-light);
+.doa-item, .zikir-item, .hadis-item, .kitab-item, .kisah-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
     padding: 20px 25px;
     cursor: pointer;
@@ -227,19 +237,19 @@ h2 {
     box-shadow: var(--shadow-sm);
 }
 
-.doa-item:hover, .zikir-item:hover, .hadis-item:hover {
+.doa-item:hover, .zikir-item:hover, .hadis-item:hover, .kitab-item:hover, .kisah-item:hover {
     border-color: var(--secondary);
     transform: translateX(10px);
     box-shadow: var(--shadow-md);
 }
 
-.doa-item span, .zikir-item span, .hadis-item span {
+.doa-item span, .zikir-item span, .hadis-item span, .kitab-item span, .kisah-item span {
     font-weight: 600;
     color: var(--primary);
     font-size: 1.1rem;
 }
 
-.doa-item i, .zikir-item i, .hadis-item i {
+.doa-item i, .zikir-item i, .hadis-item i, .kitab-item i, .kisah-item i {
     color: var(--secondary);
     font-size: 1.2rem;
     transition: var(--transition-normal);
@@ -252,14 +262,9 @@ h2 {
     border-radius: var(--border-radius-circle);
 }
 
-.doa-item.completed, .zikir-item.completed, .hadis-item.completed {
-    background: linear-gradient(to right, rgba(40, 167, 69, 0.05), rgba(212, 175, 55, 0.05));
-    border-left: 5px solid var(--success);
-}
-
 .details {
     display: none;
-    background: var(--light);
+    background: var(--bg-light);
     padding: 25px;
     border-radius: var(--border-radius-md);
     margin: 10px 0 20px 20px;
@@ -275,6 +280,7 @@ h2 {
 .details p {
     margin-bottom: 15px;
     line-height: 1.8;
+    color: var(--text-color);
 }
 
 .details p:last-child {
@@ -297,11 +303,12 @@ h2 {
 }
 
 .video-item {
-    background: white;
+    background: var(--bg-white);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
+    border: 1px solid var(--border-color);
 }
 
 .video-item:hover {
@@ -314,6 +321,7 @@ h2 {
     padding: 20px;
     margin: 0;
     border-bottom: none;
+    color: var(--primary);
 }
 
 .video-item h2::after {
@@ -336,6 +344,62 @@ h2 {
     border: none;
 }
 
+/* Prayer Guide */
+.prayer-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.prayer-step {
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+    padding: 25px;
+    border-left: 5px solid var(--secondary);
+    transition: var(--transition-normal);
+}
+
+.prayer-step:hover {
+    transform: translateX(8px);
+}
+
+.prayer-step h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prayer-step h3 i {
+    color: var(--secondary);
+    font-size: 1.5rem;
+}
+
+.prayer-step .arab {
+    font-size: 1.3rem;
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    margin: 15px 0;
+    text-align: right;
+    color: var(--primary);
+    background: rgba(212, 175, 55, 0.1);
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.prayer-step .latin {
+    font-style: italic;
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+.prayer-step .arti {
+    color: var(--text-muted);
+    border-top: 1px dashed var(--border-color);
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
 /* Comment Form */
 .comment-section {
     margin-top: 30px;
@@ -350,7 +414,7 @@ h2 {
 }
 
 .rating-summary {
-    background: var(--light);
+    background: var(--bg-light);
     padding: 15px 25px;
     border-radius: var(--border-radius-md);
     display: inline-flex;
@@ -384,11 +448,13 @@ input[type="text"],
 textarea {
     width: 100%;
     padding: 14px 18px;
-    border: 2px solid var(--gray-light);
+    border: 2px solid var(--border-color);
     border-radius: var(--border-radius-md);
     font-size: 1rem;
     transition: var(--transition-normal);
     font-family: var(--font-family);
+    background: var(--bg-white);
+    color: var(--text-color);
 }
 
 input[type="text"]:focus,
@@ -454,7 +520,7 @@ textarea:focus {
 
 /* Profile Card */
 .profile-card {
-    background: white;
+    background: var(--bg-white);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
     display: flex;
@@ -465,6 +531,7 @@ textarea:focus {
     transition: var(--transition-normal);
     max-width: 900px;
     margin: 0 auto;
+    border: 1px solid var(--border-color);
 }
 
 .profile-card:hover {
@@ -493,7 +560,7 @@ textarea:focus {
 }
 
 .profile-subtitle {
-    color: var(--gray);
+    color: var(--text-muted);
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
@@ -501,7 +568,7 @@ textarea:focus {
 .bio-text {
     margin: 20px 0;
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-color);
     max-width: 600px;
     line-height: 1.8;
 }
@@ -526,7 +593,7 @@ textarea:focus {
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--gray);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -540,12 +607,12 @@ textarea:focus {
 }
 
 .info-box {
-    background: white;
+    background: var(--bg-white);
     border-radius: var(--border-radius-md);
     padding: 25px;
     box-shadow: var(--shadow-sm);
     transition: var(--transition-normal);
-    border: 1px solid var(--gray-light);
+    border: 1px solid var(--border-color);
 }
 
 .info-box:hover {
@@ -569,7 +636,7 @@ textarea:focus {
 
 .info-content {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--text-color);
 }
 
 .social-media {
@@ -587,7 +654,7 @@ textarea:focus {
     width: 55px;
     height: 55px;
     border-radius: 50%;
-    background: var(--light);
+    background: var(--bg-light);
     color: var(--primary);
     font-size: 1.5rem;
     transition: var(--transition-normal);
@@ -607,10 +674,11 @@ textarea:focus {
 }
 
 .mode-toggle, .font-size-control {
-    background: var(--light);
+    background: var(--bg-light);
     border-radius: var(--border-radius-lg);
     padding: 25px;
     margin-bottom: 30px;
+    border: 1px solid var(--border-color);
 }
 
 .mode-buttons {
@@ -623,8 +691,8 @@ textarea:focus {
 .mode-btn {
     flex: 1;
     padding: 15px;
-    border: 2px solid var(--gray-light);
-    background: white;
+    border: 2px solid var(--border-color);
+    background: var(--bg-white);
     border-radius: var(--border-radius-md);
     cursor: pointer;
     transition: var(--transition-normal);
@@ -632,6 +700,7 @@ textarea:focus {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    color: var(--text-color);
 }
 
 .mode-btn i {
@@ -653,7 +722,7 @@ textarea:focus {
 }
 
 .theme-card {
-    background: white;
+    background: var(--bg-white);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     cursor: pointer;
@@ -722,10 +791,11 @@ textarea:focus {
 .theme-info h3 {
     margin-bottom: 5px;
     font-size: 1.1rem;
+    color: var(--primary);
 }
 
 .theme-info p {
-    color: var(--gray);
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -746,7 +816,7 @@ input[type=range] {
     flex: 1;
     height: 8px;
     -webkit-appearance: none;
-    background: var(--gray-light);
+    background: var(--border-color);
     border-radius: 10px;
     outline: none;
 }
@@ -817,10 +887,14 @@ footer::before {
     padding: 0 20px;
 }
 
-/* Dark Mode */
+.footer-content p {
+    color: white;
+}
+
+/* DARK MODE */
 body.dark-mode {
-    background: #1a1a1a;
-    color: #f0f0f0;
+    background: #121212;
+    color: #e0e0e0;
 }
 
 body.dark-mode .container,
@@ -829,77 +903,94 @@ body.dark-mode .video-item,
 body.dark-mode .doa-item,
 body.dark-mode .zikir-item,
 body.dark-mode .hadis-item,
+body.dark-mode .kitab-item,
+body.dark-mode .kisah-item,
 body.dark-mode .mode-toggle,
 body.dark-mode .font-size-control,
 body.dark-mode .theme-card,
-body.dark-mode .info-box {
-    background: #2d2d2d;
-    color: #f0f0f0;
-    border-color: #404040;
+body.dark-mode .info-box,
+body.dark-mode .prayer-step {
+    background: #1e1e1e;
+    border-color: #333333;
 }
 
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3 {
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
     color: #d4af37;
 }
 
+body.dark-mode p, 
+body.dark-mode li, 
+body.dark-mode .info-content,
+body.dark-mode .bio-text,
+body.dark-mode .stat-label,
+body.dark-mode .profile-subtitle {
+    color: #e0e0e0;
+}
+
 body.dark-mode .details {
-    background: #3d3d3d;
+    background: #2a2a2a;
+}
+
+body.dark-mode .details p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .details strong {
+    color: #d4af37;
 }
 
 body.dark-mode input[type="text"],
 body.dark-mode textarea {
-    background: #3d3d3d;
-    color: #f0f0f0;
-    border-color: #555;
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444;
 }
 
 body.dark-mode .rating-summary {
-    background: #3d3d3d;
+    background: #2a2a2a;
 }
 
-/* Theme Variations */
+body.dark-mode .mode-btn {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .hadis-item span,
+body.dark-mode .doa-item span,
+body.dark-mode .zikir-item span,
+body.dark-mode .kitab-item span,
+body.dark-mode .kisah-item span {
+    color: #d4af37;
+}
+
+/* TEMA CLASSIC */
 body.theme-classic {
     --primary: #1e3c3f;
     --secondary: #dbb067;
+    --text-color: #2c1810;
+    --text-muted: #5a3a2a;
+    --bg-white: #fef7e8;
+    --bg-light: #f5e6d3;
+    --border-color: #e0c8a8;
     font-family: 'Playfair Display', 'Poppins', serif;
 }
 
-body.theme-classic .container::before,
-body.theme-classic footer::before {
-    background: linear-gradient(135deg, #dbb067 0%, #e5c285 100%);
-}
-
-body.theme-classic header {
-    border-bottom-color: #dbb067;
-}
-
+/* TEMA ESTETIK */
 body.theme-estetik {
     --primary: #2c3e50;
     --secondary: #e8b4b8;
+    --text-color: #4a4a4a;
+    --text-muted: #7a7a7a;
+    --bg-white: #fff9f7;
+    --bg-light: #fae1dd;
+    --border-color: #e8b4b8;
     font-family: 'Amiri', 'Poppins', serif;
-}
-
-body.theme-estetik .container {
-    background: #fae1dd;
-    border: 2px solid #e8b4b8;
-}
-
-body.theme-estetik .container::before,
-body.theme-estetik footer::before {
-    background: linear-gradient(135deg, #e8b4b8 0%, #f2c9cc 100%);
-}
-
-body.theme-estetik header {
-    border-bottom-color: #e8b4b8;
-}
-
-body.theme-estetik .doa-item,
-body.theme-estetik .zikir-item,
-body.theme-estetik .hadis-item {
-    background: #fff9f7;
-    border: 2px solid #e8b4b8;
 }
 
 /* Animations */
@@ -930,44 +1021,15 @@ body.theme-estetik .hadis-item {
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
-    nav ul li a {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-}
-
 @media (max-width: 992px) {
-    body {
-        padding-top: 80px;
-    }
-    
-    nav ul {
-        gap: 5px;
-    }
-    
-    nav ul li a {
-        padding: 10px 12px;
-        font-size: 0.85rem;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    .container {
-        padding: 25px;
-    }
+    body { padding-top: 80px; }
+    h1 { font-size: 2rem; }
+    .container { padding: 25px; }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
+    body { padding-top: 70px; }
+    .mobile-menu-toggle { display: flex; }
     
     nav ul {
         position: fixed;
@@ -983,86 +1045,21 @@ body.theme-estetik .hadis-item {
         overflow-y: auto;
     }
     
-    nav ul.active {
-        left: 0;
-    }
+    nav ul.active { left: 0; }
+    nav ul li a { width: 100%; justify-content: center; padding: 15px; font-size: 1rem; }
     
-    nav ul li a {
-        width: 100%;
-        justify-content: center;
-        padding: 15px;
-        font-size: 1rem;
-    }
-    
-    .video-section {
-        grid-template-columns: 1fr;
-    }
-    
-    .profile-card {
-        padding: 30px 20px;
-    }
-    
-    .profile-img {
-        width: 130px;
-        height: 130px;
-        font-size: 3.5rem;
-    }
-    
-    .info-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .profile-stats {
-        gap: 15px;
-    }
-    
-    .stat-value {
-        font-size: 1.4rem;
-    }
-    
-    .comment-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    
-    .theme-grid {
-        grid-template-columns: 1fr;
-    }
+    .video-section { grid-template-columns: 1fr; }
+    .profile-card { padding: 30px 20px; }
+    .profile-img { width: 130px; height: 130px; font-size: 3.5rem; }
+    .info-container { grid-template-columns: 1fr; }
+    .theme-grid { grid-template-columns: 1fr; }
+    .mode-buttons { flex-direction: column; }
 }
 
 @media (max-width: 576px) {
-    body {
-        padding-top: 60px;
-    }
-    
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    .container {
-        padding: 20px;
-        border-radius: var(--border-radius-md);
-    }
-    
-    .doa-item, .zikir-item, .hadis-item {
-        padding: 15px 20px;
-    }
-    
-    .doa-item span, .zikir-item span, .hadis-item span {
-        font-size: 1rem;
-    }
-    
-    .details {
-        padding: 18px;
-        margin-left: 10px;
-    }
-    
-    .mode-buttons {
-        flex-direction: column;
-    }
-    
-    .slider-container {
-        flex-wrap: wrap;
-    }
+    body { padding-top: 60px; }
+    h1 { font-size: 1.6rem; }
+    .container { padding: 20px; }
+    .doa-item, .zikir-item, .hadis-item, .kitab-item, .kisah-item { padding: 15px 20px; }
+    .details { padding: 18px; margin-left: 10px; }
 }
