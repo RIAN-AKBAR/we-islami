@@ -1,30 +1,37 @@
-
 // theme.js - Pengaturan tema untuk semua halaman
 (function() {
-    // Fungsi untuk menerapkan tema
     function applyTheme() {
         const mode = localStorage.getItem('websiteMode') || 'light';
         const theme = localStorage.getItem('websiteTheme') || 'modern';
         const fontSize = localStorage.getItem('websiteFontSize') || '16';
 
-        // Hapus semua class tema dan mode
         document.body.classList.remove('dark-mode', 'theme-classic', 'theme-modern', 'theme-estetik');
         
-        // Terapkan mode
         if (mode === 'dark') {
             document.body.classList.add('dark-mode');
         }
         
-        // Terapkan tema
         document.body.classList.add(`theme-${theme}`);
-        
-        // Terapkan ukuran font
         document.documentElement.style.fontSize = fontSize + 'px';
         
-        console.log('Theme applied:', { mode, theme, fontSize });
+        let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (!metaThemeColor) {
+            metaThemeColor = document.createElement('meta');
+            metaThemeColor.setAttribute('name', 'theme-color');
+            document.head.appendChild(metaThemeColor);
+        }
+        
+        if (mode === 'dark') {
+            metaThemeColor.setAttribute('content', '#1a1a1a');
+        } else if (theme === 'classic') {
+            metaThemeColor.setAttribute('content', '#1e3c3f');
+        } else if (theme === 'estetik') {
+            metaThemeColor.setAttribute('content', '#2c3e50');
+        } else {
+            metaThemeColor.setAttribute('content', '#0b3b3c');
+        }
     }
 
-    // Fungsi untuk update active class di navigasi
     function updateActiveNav() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.nav-links a').forEach(link => {
@@ -36,13 +43,11 @@
         });
     }
 
-    // Terapkan tema saat halaman dimuat
     document.addEventListener('DOMContentLoaded', function() {
         applyTheme();
         updateActiveNav();
     });
 
-    // Dengarkan perubahan localStorage dari halaman lain
     window.addEventListener('storage', function(e) {
         if (e.key === 'websiteMode' || e.key === 'websiteTheme' || e.key === 'websiteFontSize') {
             applyTheme();
