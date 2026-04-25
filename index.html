@@ -21,6 +21,9 @@
                 <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
                 <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
                 <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
                 <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
                 <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
@@ -47,139 +50,52 @@
 
     <script>
         const doaList = [
-            {
-                title: "Doa Sebelum Makan",
-                arab: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
-                latin: "Allahumma barik lana fima razaqtana wa qina 'adzabannar.",
-                arti: "Ya Allah, berkahilah kami dalam rezeki yang Engkau berikan kepada kami dan lindungilah kami dari siksa api neraka."
-            },
-            {
-                title: "Doa Setelah Makan",
-                arab: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
-                latin: "Alhamdulillahilladzi ath'amana wa saqana wa ja'alana muslimin.",
-                arti: "Segala puji bagi Allah yang telah memberi kami makan dan minum serta menjadikan kami sebagai orang Islam."
-            },
-            {
-                title: "Doa Sebelum Tidur",
-                arab: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
-                latin: "Bismika Allahumma amutu wa ahya.",
-                arti: "Dengan nama-Mu, ya Allah, aku mati dan hidup."
-            },
-            {
-                title: "Doa Bangun Tidur",
-                arab: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
-                latin: "Alhamdulillahil ladzi ahyana ba’da ma amatana wa ilaihin nusyur.",
-                arti: "Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami, dan kepada-Nya kami dibangkitkan."
-            },
-            {
-                title: "Doa Masuk Kamar Mandi",
-                arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ",
-                latin: "Allahumma inni a’udzu bika minal khubutsi wal khaba’its.",
-                arti: "Ya Allah, aku berlindung kepada-Mu dari godaan setan laki-laki dan setan perempuan."
-            },
-            {
-                title: "Doa Keluar Kamar Mandi",
-                arab: "غُفْرَانَكَ",
-                latin: "Ghufranaka.",
-                arti: "Aku memohon ampunan-Mu."
-            },
-            {
-                title: "Doa Masuk Rumah",
-                arab: "بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا",
-                latin: "Bismillahi walajna wa bismillahi kharajna wa ‘ala rabbina tawakkalna.",
-                arti: "Dengan nama Allah kami masuk, dengan nama Allah kami keluar, dan kepada Tuhan kami, kami bertawakkal."
-            },
-            {
-                title: "Doa Keluar Rumah",
-                arab: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
-                latin: "Bismillahi tawakkaltu ‘alallah, la haula wa la quwwata illa billah.",
-                arti: "Dengan nama Allah, aku bertawakkal kepada Allah, tiada daya dan kekuatan kecuali dengan pertolongan Allah."
-            },
-            {
-                title: "Doa Sebelum Belajar",
-                arab: "رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا",
-                latin: "Rabbi zidni ‘ilma warzuqni fahma.",
-                arti: "Ya Tuhanku, tambahkanlah ilmu kepadaku dan berilah aku pemahaman."
-            },
-            {
-                title: "Doa Sesudah Belajar",
-                arab: "الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ",
-                latin: "Alhamdulillahi ‘ala kulli hal.",
-                arti: "Segala puji bagi Allah dalam setiap keadaan."
-            }
+            { title: "Doa Sebelum Makan", arab: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ", latin: "Allahumma barik lana fima razaqtana wa qina 'adzabannar.", arti: "Ya Allah, berkahilah kami dalam rezeki yang Engkau berikan kepada kami dan lindungilah kami dari siksa api neraka." },
+            { title: "Doa Setelah Makan", arab: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ", latin: "Alhamdulillahilladzi ath'amana wa saqana wa ja'alana muslimin.", arti: "Segala puji bagi Allah yang telah memberi kami makan dan minum serta menjadikan kami sebagai orang Islam." },
+            { title: "Doa Sebelum Tidur", arab: "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا", latin: "Bismika Allahumma amutu wa ahya.", arti: "Dengan nama-Mu, ya Allah, aku mati dan hidup." },
+            { title: "Doa Bangun Tidur", arab: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ", latin: "Alhamdulillahil ladzi ahyana ba’da ma amatana wa ilaihin nusyur.", arti: "Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami, dan kepada-Nya kami dibangkitkan." },
+            { title: "Doa Masuk Kamar Mandi", arab: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبْثِ وَالْخَبَائِثِ", latin: "Allahumma inni a’udzu bika minal khubutsi wal khaba’its.", arti: "Ya Allah, aku berlindung kepada-Mu dari godaan setan laki-laki dan setan perempuan." },
+            { title: "Doa Keluar Kamar Mandi", arab: "غُفْرَانَكَ", latin: "Ghufranaka.", arti: "Aku memohon ampunan-Mu." },
+            { title: "Doa Masuk Rumah", arab: "بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا", latin: "Bismillahi walajna wa bismillahi kharajna wa ‘ala rabbina tawakkalna.", arti: "Dengan nama Allah kami masuk, dengan nama Allah kami keluar, dan kepada Tuhan kami, kami bertawakkal." },
+            { title: "Doa Keluar Rumah", arab: "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", latin: "Bismillahi tawakkaltu ‘alallah, la haula wa la quwwata illa billah.", arti: "Dengan nama Allah, aku bertawakkal kepada Allah, tiada daya dan kekuatan kecuali dengan pertolongan Allah." },
+            { title: "Doa Sebelum Belajar", arab: "رَبِّ زِدْنِي عِلْمًا وَارْزُقْنِي فَهْمًا", latin: "Rabbi zidni ‘ilma warzuqni fahma.", arti: "Ya Tuhanku, tambahkanlah ilmu kepadaku dan berilah aku pemahaman." },
+            { title: "Doa Sesudah Belajar", arab: "الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ", latin: "Alhamdulillahi ‘ala kulli hal.", arti: "Segala puji bagi Allah dalam setiap keadaan." }
         ];
 
-        const doaListElement = document.querySelector('.doa-list');
-
+        const container = document.querySelector('.doa-list');
         doaList.forEach((doa) => {
-            const doaItem = document.createElement('div');
-            doaItem.classList.add('doa-item');
-            doaItem.innerHTML = `
-                <span>${doa.title}</span>
-                <i class="fas fa-chevron-down"></i>
-            `;
-
+            const item = document.createElement('div');
+            item.classList.add('doa-item');
+            item.innerHTML = `<span>${doa.title}</span><i class="fas fa-chevron-down"></i>`;
             const details = document.createElement('div');
             details.classList.add('details');
-            details.innerHTML = `
-                <p><strong>Arab:</strong> <span style="font-size: 1.3rem; font-family: 'Traditional Arabic', 'Amiri', serif; display: block; margin-top: 10px;">${doa.arab}</span></p>
-                <p><strong>Latin:</strong> ${doa.latin}</p>
-                <p><strong>Arti:</strong> ${doa.arti}</p>
-            `;
-
-            doaItem.addEventListener('click', () => {
+            details.innerHTML = `<p><strong>Arab:</strong> <span style="font-size: 1.3rem; font-family: 'Amiri', serif; display: block; margin-top: 10px;">${doa.arab}</span></p><p><strong>Latin:</strong> ${doa.latin}</p><p><strong>Arti:</strong> ${doa.arti}</p>`;
+            item.addEventListener('click', () => {
                 details.classList.toggle('show');
-                doaItem.classList.toggle('completed');
-                const icon = doaItem.querySelector('i');
+                item.classList.toggle('completed');
+                const icon = item.querySelector('i');
                 icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
-
-            doaListElement.appendChild(doaItem);
-            doaListElement.appendChild(details);
+            container.appendChild(item);
+            container.appendChild(details);
         });
 
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                const icon = mobileMenuToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             });
         }
-        
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle?.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
+            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle?.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
             }
-        });
-        
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                    const icon = mobileMenuToggle?.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            });
         });
     </script>
     <script src="theme.js"></script>
