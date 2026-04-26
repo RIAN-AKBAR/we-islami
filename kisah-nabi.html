@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Kisah Nabi & Sahabat - Website Islami</title>
-    <meta name="description" content="Kisah lengkap 25 nabi dan para sahabat nabi sebagai teladan umat Islam">
+    <title>Kisah Nabi & Sahabat Lengkap - 25 Nabi, Sahabat, Sahabiyah</title>
+    <meta name="description" content="Kisah lengkap 25 nabi dan rasul, para sahabat nabi, serta sahabiyah sebagai teladan umat Islam">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --primary: #1e4a2f;
+            --secondary: #d4a017;
+            --accent: #2c7a4d;
+            --bg-white: #ffffff;
+            --bg-light: #f8f5f0;
+            --text-color: #2c3e2f;
+            --text-muted: #6c757d;
+            --border-color: #e8e0d5;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 35px rgba(0,0,0,0.12);
+            --gradient-primary: linear-gradient(135deg, #1e4a2f, #2c7a4d);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f9f7f3; color: var(--text-color); line-height: 1.7; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        header { background: var(--primary); color: white; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-md); }
+        .nav-links { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+        .nav-links li a { display: inline-block; padding: 14px 18px; color: white; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links li a:hover { background: var(--secondary); border-radius: 8px; color: var(--primary); }
+        .mobile-menu-toggle { display: none; background: var(--secondary); border: none; color: var(--primary); font-size: 1.5rem; padding: 10px 15px; position: fixed; top: 10px; left: 10px; z-index: 1100; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; width: 100%; background: var(--primary); position: absolute; top: 60px; left: 0; }
+            .nav-links.active { display: flex; }
+        }
+        footer { background: var(--primary); color: white; text-align: center; padding: 25px; margin-top: 40px; }
+        h1 { text-align: center; margin-bottom: 10px; color: var(--primary); font-size: 1.8rem; }
         .kisah-tabs { display: flex; gap: 15px; margin-bottom: 30px; justify-content: center; flex-wrap: wrap; }
         .tab-btn { padding: 12px 25px; border: 2px solid var(--secondary); background: transparent; color: var(--primary); border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
-        .tab-btn.active { background: var(--gradient-primary); color: white; border-color: var(--secondary); }
-        .tab-btn:hover { transform: translateY(-3px); }
+        .tab-btn.active, .tab-btn:hover { background: var(--gradient-primary); color: white; border-color: var(--secondary); transform: translateY(-3px); }
         .kisah-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
         .kisah-card { background: var(--bg-white); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; border: 1px solid var(--border-color); cursor: pointer; }
         .kisah-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
@@ -24,142 +51,236 @@
         .read-more { padding: 12px 20px; background: var(--bg-light); text-align: center; color: var(--secondary); font-weight: 600; font-size: 0.85rem; border-top: 1px solid var(--border-color); transition: all 0.3s ease; }
         .read-more i { margin-left: 5px; transition: transform 0.3s ease; }
         .kisah-card:hover .read-more i { transform: translateX(5px); }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--bg-white); max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 20px; position: relative; animation: fadeIn 0.3s ease; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: var(--bg-white); max-width: 850px; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 20px; position: relative; animation: fadeIn 0.3s ease; }
         .modal-header { background: var(--gradient-primary); padding: 20px; color: white; position: sticky; top: 0; z-index: 10; }
         .modal-header h3 { color: white; margin: 0; padding-right: 30px; }
         .modal-body { padding: 25px; line-height: 1.9; color: var(--text-color); }
         .modal-body p { margin-bottom: 15px; text-align: justify; }
         .modal-body h4 { color: var(--primary); margin: 20px 0 10px 0; font-size: 1.2rem; }
-        .modal-body .arab-quote { font-family: 'Amiri', serif; font-size: 1.3rem; text-align: right; margin: 15px 0; padding: 10px; background: rgba(212, 175, 55, 0.1); border-radius: 10px; color: var(--primary); }
+        .modal-body .arab-quote { font-family: 'Amiri', serif; font-size: 1.3rem; text-align: right; margin: 15px 0; padding: 10px; background: rgba(212, 160, 23, 0.1); border-radius: 10px; color: var(--primary); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: white; background: rgba(0,0,0,0.3); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
         .close-modal:hover { background: var(--secondary); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { .kisah-grid { grid-template-columns: 1fr; } .modal-content { max-width: 95%; } .modal-body { padding: 18px; font-size: 0.9rem; } }
         body.dark-mode .modal-content { background: #1e1e1e; }
         body.dark-mode .modal-body { color: #e0e0e0; }
         body.dark-mode .modal-body h4 { color: #d4af37; }
-        body.dark-mode .tab-btn { color: #e0e0e0; }
-        body.dark-mode .tab-btn.active { color: white; }
     </style>
 </head>
 <body>
-    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
-    <header><nav><ul class="nav-links" id="nav-links">
-        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
-        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
-        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
-        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-    </ul></nav></header>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i> Menu</button>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main><div class="container fade-in">
-        <h1><i class="fas fa-landmark" style="color: var(--secondary); margin-right: 15px;"></i>Kisah Nabi & Sahabat</h1>
-        <p style="text-align: center; margin-bottom: 20px;">Kisah-kisah lengkap 25 nabi dan para sahabat nabi sebagai teladan umat Islam</p>
-        <div class="kisah-tabs">
-            <button class="tab-btn active" data-tab="nabi">📖 Kisah 25 Nabi</button>
-            <button class="tab-btn" data-tab="sahabat">⭐ Kisah Para Sahabat</button>
-            <button class="tab-btn" data-tab="sahabiyah">🌸 Kisah Sahabiyah</button>
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-landmark" style="color: var(--secondary); margin-right: 15px;"></i>Kisah Nabi & Sahabat Lengkap</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Kisah lengkap 25 nabi dan rasul, para sahabat nabi, serta para sahabiyah sebagai teladan umat Islam</p>
+            <div class="kisah-tabs">
+                <button class="tab-btn active" data-tab="nabi">📖 25 Nabi & Rasul</button>
+                <button class="tab-btn" data-tab="sahabat">⭐ 15 Sahabat Nabi</button>
+                <button class="tab-btn" data-tab="sahabiyah">🌸 10 Sahabiyah</button>
+            </div>
+            <div id="nabi-container" class="kisah-grid"></div>
+            <div id="sahabat-container" class="kisah-grid" style="display: none;"></div>
+            <div id="sahabiyah-container" class="kisah-grid" style="display: none;"></div>
         </div>
-        <div id="nabi-container"></div>
-        <div id="sahabat-container" style="display: none;"></div>
-        <div id="sahabiyah-container" style="display: none;"></div>
-    </div></main>
+    </main>
 
-    <div id="modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="modal-title"></h3><span class="close-modal">&times;</span></div><div class="modal-body" id="modal-body"></div></div></div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
 
-    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">📖 Sumber: Al-Qur'an, Hadis Shahih, dan Kitab Tarikh</p>
+        </div>
+    </footer>
 
     <script>
-        // KISAH 25 NABI LENGKAP
+        // =====================================================
+        // KISAH LENGKAP 25 NABI & RASUL
+        // =====================================================
         const kisahNabi = [
-            { title: "Nabi Adam AS - Manusia Pertama", preview: "Kisah penciptaan Nabi Adam AS dari tanah, masa di surga, turun ke bumi, dan taubatnya...", full: "<h4>📖 Penciptaan Nabi Adam AS</h4><p>Allah SWT berkehendak menciptakan khalifah di bumi. Allah berfirman kepada malaikat: 'Sesungguhnya Aku hendak menjadikan seorang khalifah di muka bumi.' (QS. Al-Baqarah: 30). Allah menciptakan Adam dari tanah liat kering yang dibentuk, lalu meniupkan ruh ke dalamnya. Allah mengajarkan Adam nama-nama segala sesuatu, kemudian memerintahkan malaikat bersujud kepada Adam. Semua sujud kecuali Iblis yang sombong. Iblis dikutuk Allah dan menjadi setan.</p><h4>🏝️ Adam di Surga</h4><p>Allah menempatkan Adam di surga dan menciptakan Hawa sebagai pendampingnya. Allah berfirman: 'Hai Adam, diamilah surga bersama istrimu, dan makanlah makanan yang banyak di mana saja yang kamu suka, tetapi janganlah kamu dekati pohon ini.' (QS. Al-Baqarah: 35).</p><div class='arab-quote'>وَلَا تَقْرَبَا هَٰذِهِ الشَّجَرَةَ فَتَكُونَا مِنَ الظَّالِمِينَ</div><h4>🍎 Tipu Daya Iblis</h4><p>Iblis membisiki Adam dan Hawa: 'Tuhanmu hanya melarangmu dari pohon ini, agar kamu tidak menjadi malaikat atau tidak menjadi orang yang kekal.' (QS. Al-A'raf: 20). Mereka tergoda dan memakan buah itu. Seketika telanjanglah mereka dan mulai menutup diri dengan daun-daunan surga.</p><h4>😢 Taubat dan Turun ke Bumi</h4><p>Allah berfirman: 'Turunlah kamu sekalian, sebagian kamu menjadi musuh bagi yang lain.' (QS. Al-A'raf: 24). Adam berdoa: 'Ya Tuhan kami, kami telah menzalimi diri kami sendiri. Jika Engkau tidak mengampuni kami niscaya kami termasuk orang-orang yang rugi.' (QS. Al-A'raf: 23). Allah menerima taubat Adam. Adam diturunkan di India, Hawa di Jeddah, dan bertemu kembali di Padang Arafah. Dari mereka lah semua manusia berasal. Adam wafat pada usia 930 tahun.</p><p><strong>🌟 Pelajaran:</strong> Pentingnya taubat, bahaya kesombongan, dan kasih sayang Allah Yang Maha Pengampun.</p>" },
-            { title: "Nabi Idris AS - Orang Pertama Menulis", preview: "Nabi Idris AS dikenal sebagai nabi yang cerdas, orang pertama yang pandai menulis...", full: "<h4>📜 Silsilah dan Keistimewaan Idris</h4><p>Nabi Idris AS adalah putra dari Yarid, bin Mihla'il, bin Qinan, bin Anusy, bin Syits, bin Adam AS. Idris berarti 'pandai' karena banyak belajar. Beliau adalah orang pertama yang diberi keahlian menulis dan membaca. Idris juga yang pertama membuat pakaian berjahit dan mengajarkan ilmu perbintangan serta matematika. Allah berfirman: 'Dan ceritakanlah tentang Idris di dalam Kitab. Sesungguhnya ia adalah seorang yang sangat mencintai kebenaran lagi seorang nabi. Dan Kami telah mengangkatnya ke tempat yang tinggi.' (QS. Maryam: 56-57).</p><h4>🌟 Diangkat ke Tempat Tinggi</h4><p>Para mufassir berbeda pendapat tentang 'tempat yang tinggi' tersebut. Ada yang mengatakan Idris diangkat ke langit, ada yang mengatakan derajatnya sangat tinggi di sisi Allah. Dalam Isra' Mi'raj, Nabi Muhammad SAW bertemu dengan Idris di langit keempat. Idris wafat pada usia sekitar 82 tahun dan dimakamkan di Mesir.</p><p><strong>🌟 Pelajaran:</strong> Pentingnya menuntut ilmu, kreatif dalam kebaikan, dan ketekunan beribadah.</p>" },
-            { title: "Nabi Nuh AS - Kesabaran 950 Tahun", preview: "Nabi Nuh AS diutus kepada kaum penyembah berhala, berdakwah selama 950 tahun...", full: "<h4>📜 Pengutusan Nabi Nuh AS</h4><p>Nuh bin Lamik adalah rasul pertama yang diutus Allah setelah manusia menyembah berhala Wadd, Suwa', Yaghuts, Ya'uq, dan Nasr. Allah berfirman: 'Sesungguhnya Kami telah mengutus Nuh kepada kaumnya: sembahlah Allah, tak ada Tuhan bagimu selain-Nya.' (QS. Al-A'raf: 59).</p><h4>🗣️ Dakwah 950 Tahun</h4><p>Nuh berdakwah siang malam, sembunyi-sembunyi dan terang-terangan selama 950 tahun. Namun hanya sekitar 80 orang yang beriman. Kaumnya mengejek dan menyiksa Nuh. Allah berfirman: 'Dia berkata: Ya Tuhanku, sesungguhnya aku telah menyeru kaumku malam dan siang, namun seruanku tidak menambah mereka kecuali lari dari kebenaran.' (QS. Nuh: 5-6).</p><div class='arab-quote'>قَالَ رَبِّ إِنِّي دَعَوْتُ قَوْمِي لَيْلًا وَنَهَارًا</div><h4>🚢 Perintah Membuat Bahtera</h4><p>Allah memerintahkan Nuh membuat bahtera besar. Nuh membuat kapal di tempat yang jauh dari laut. Kaumnya mengejek: 'Apakah kamu menjadi tukang kayu?' Nuh menjawab: 'Kelak kamu akan tahu.'</p><h4>🌊 Banjir Besar</h4><p>Allah berfirman: 'Apabila perintah Kami datang dan dapur telah memancarkan air, maka masukkanlah ke dalam bahtera itu sepasang dari setiap jenis hewan dan keluargamu.' (QS. Hud: 40). Air memancar dari bumi dan hujan lebat turun. Nuh memasukkan setiap jenis hewan sepasang.</p><h4>😢 Anak Nuh yang Tenggelam</h4><p>Anak Nuh bernama Kan'an tidak mau naik ke bahtera. Nuh memanggil: 'Wahai anakku, naiklah bersama kami.' Anaknya menjawab: 'Aku akan berlindung ke gunung.' Nuh berkata: 'Tidak ada pelindung hari ini dari azab Allah.' Anaknya tenggelam. Nuh bersedih, lalu Allah mengingatkannya bahwa anaknya bukan termasuk keluarganya yang selamat karena ia kafir.</p><h4>⛰️ Berlabuh di Gunung Judi</h4><p>Bahtera berlabuh di Gunung Judi (Turki). Nuh dan orang beriman turun memulai hidup baru. Nuh wafat pada usia 950 tahun.</p><p><strong>🌟 Pelajaran:</strong> Kesabaran dalam dakwah, tidak putus asa, dan bahwa hubungan darah tidak menjamin keselamatan tanpa iman.</p>" }
+            { title: "Nabi Adam AS - Manusia Pertama", preview: "Kisah penciptaan Nabi Adam AS dari tanah, masa di surga, turun ke bumi, dan taubatnya...", full: "<h4>📖 Penciptaan Nabi Adam AS</h4><p>Allah SWT berkehendak menciptakan khalifah di bumi. Allah berfirman kepada malaikat: 'Sesungguhnya Aku hendak menjadikan seorang khalifah di muka bumi.' (QS. Al-Baqarah: 30). Allah menciptakan Adam dari tanah liat kering yang dibentuk, lalu meniupkan ruh ke dalamnya. Allah mengajarkan Adam nama-nama segala sesuatu, kemudian memerintahkan malaikat bersujud kepada Adam. Semua sujud kecuali Iblis yang sombong. Iblis dikutuk Allah dan menjadi setan.</p><div class='arab-quote'>وَإِذْ قُلْنَا لِلْمَلَائِكَةِ اسْجُدُوا لِآدَمَ فَسَجَدُوا إِلَّا إِبْلِيسَ أَبَىٰ وَاسْتَكْبَرَ</div><h4>🏝️ Adam di Surga</h4><p>Allah menempatkan Adam di surga dan menciptakan Hawa sebagai pendampingnya. Allah berfirman: 'Hai Adam, diamilah surga bersama istrimu, dan makanlah makanan yang banyak di mana saja yang kamu suka, tetapi janganlah kamu dekati pohon ini.' (QS. Al-Baqarah: 35).</p><h4>🍎 Tipu Daya Iblis</h4><p>Iblis membisiki Adam dan Hawa dan mereka tergoda memakan buah itu. Allah berfirman: 'Turunlah kamu sekalian, sebagian kamu menjadi musuh bagi yang lain.' (QS. Al-A'raf: 24). Adam berdoa: 'Ya Tuhan kami, kami telah menzalimi diri kami sendiri. Jika Engkau tidak mengampuni kami niscaya kami termasuk orang-orang yang rugi.' (QS. Al-A'raf: 23). Allah menerima taubat Adam. Adam wafat pada usia 930 tahun.</p><p><strong>🌟 Pelajaran:</strong> Pentingnya taubat, bahaya kesombongan, dan kasih sayang Allah Yang Maha Pengampun.</p>" },
+            { title: "Nabi Idris AS - Orang Pertama Menulis", preview: "Nabi Idris AS dikenal sebagai nabi yang cerdas, orang pertama yang pandai menulis dan menjahit...", full: "<h4>📜 Silsilah dan Keistimewaan Idris</h4><p>Nabi Idris AS adalah putra dari Yarid, bin Mihla'il, bin Qinan, bin Anusy, bin Syits, bin Adam AS. Idris berarti 'pandai' karena banyak belajar. Beliau adalah orang pertama yang diberi keahlian menulis dan membaca. Idris juga yang pertama membuat pakaian berjahit dan mengajarkan ilmu perbintangan serta matematika. Allah berfirman: 'Dan ceritakanlah tentang Idris di dalam Kitab. Sesungguhnya ia adalah seorang yang sangat mencintai kebenaran lagi seorang nabi. Dan Kami telah mengangkatnya ke tempat yang tinggi.' (QS. Maryam: 56-57).</p><div class='arab-quote'>وَاذْكُرْ فِي الْكِتَابِ إِدْرِيسَ ۚ إِنَّهُ كَانَ صِدِّيقًا نَّبِيًّا</div><h4>🌟 Diangkat ke Tempat Tinggi</h4><p>Dalam Isra' Mi'raj, Nabi Muhammad SAW bertemu dengan Idris di langit keempat. Idris wafat pada usia sekitar 82 tahun dan dimakamkan di Mesir.</p><p><strong>🌟 Pelajaran:</strong> Pentingnya menuntut ilmu, kreatif dalam kebaikan, dan ketekunan beribadah.</p>" },
+            { title: "Nabi Nuh AS - Kesabaran 950 Tahun", preview: "Nabi Nuh AS diutus kepada kaum penyembah berhala, berdakwah selama 950 tahun...", full: "<h4>📜 Pengutusan Nabi Nuh AS</h4><p>Nuh bin Lamik adalah rasul pertama yang diutus Allah setelah manusia menyembah berhala. Allah berfirman: 'Sesungguhnya Kami telah mengutus Nuh kepada kaumnya: sembahlah Allah, tak ada Tuhan bagimu selain-Nya.' (QS. Al-A'raf: 59).</p><h4>🗣️ Dakwah 950 Tahun</h4><p>Nuh berdakwah siang malam selama 950 tahun. Namun hanya sekitar 80 orang yang beriman. Kaumnya mengejek dan menyiksa Nuh.</p><h4>🚢 Perintah Membuat Bahtera</h4><p>Allah memerintahkan Nuh membuat bahtera besar. Air memancar dari bumi dan hujan lebat turun. Nuh memasukkan setiap jenis hewan sepasang. Anak Nuh bernama Kan'an tidak mau naik dan tenggelam. Bahtera berlabuh di Gunung Judi (Turki). Nuh wafat pada usia 950 tahun.</p><p><strong>🌟 Pelajaran:</strong> Kesabaran dalam dakwah, tidak putus asa, dan bahwa hubungan darah tidak menjamin keselamatan tanpa iman.</p>" },
+            { title: "Nabi Hud AS - Kaum 'Ad", preview: "Nabi Hud AS diutus kepada kaum 'Ad yang sombong dan kuat...", full: "<h4>📜 Nabi Hud AS</h4><p>Nabi Hud AS diutus kepada kaum 'Ad yang tinggal di Al-Ahqaf (Yaman). Mereka adalah bangsa yang kuat, bertubuh tinggi, dan pandai membangun istana megah. Namun mereka menyembah berhala dan sombong. Hud berkata: 'Hai kaumku, sembahlah Allah, sekali-kali tidak ada Tuhan bagimu selain-Nya.' (QS. Hud: 50). Kaum 'Ad menolak dan menantang azab. Allah mengirimkan angin topan yang dahsyat selama 7 malam 8 hari. Kaum 'Ad binasa total, hanya Nabi Hud dan pengikutnya yang selamat.</p><div class='arab-quote'>فَأَرْسَلْنَا عَلَيْهِمْ رِيحًا صَرْصَرًا فِي أَيَّامٍ نَّحِسَاتٍ</div><p><strong>🌟 Pelajaran:</strong> Jangan sombong dengan kekuatan duniawi, karena kekuatan Allah lebih besar.</p>" },
+            { title: "Nabi Shaleh AS - Unta Mukjizat", preview: "Nabi Shaleh AS diutus kepada kaum Tsamud yang meminta mukjizat unta...", full: "<h4>📜 Nabi Shaleh AS</h4><p>Nabi Shaleh AS diutus kepada kaum Tsamud yang tinggal di antara Hijaz dan Tabuk. Mereka adalah bangsa yang pandai memahat gunung menjadi rumah. Kaum Tsamud meminta mukjizat: 'Keluarkan untuk kami seekor unta betina dari batu.' Allah mengeluarkan unta betina dari batu besar. Unta itu memiliki hak minum bergantian dengan mereka. Namun mereka membunuh unta tersebut. Nabi Shaleh berkata: 'Bersukarialah kalian di rumahmu selama tiga hari.' Azab datang: suara keras dari langit yang memusnahkan mereka.</p><p><strong>🌟 Pelajaran:</strong> Jangan melanggar perjanjian dengan Allah dan jangan membunuh hewan yang dilindungi.</p>" },
+            { title: "Nabi Ibrahim AS - Bapak Para Nabi", preview: "Kisah perjuangan Nabi Ibrahim AS melawan Raja Namrud dan pembakaran api...", full: "<h4>📜 Nabi Ibrahim AS</h4><p>Nabi Ibrahim AS adalah 'bapak para nabi' karena banyak nabi keturunannya. Beliau lahir di Babilonia (Irak) pada masa Raja Namrud yang zalim. Ibrahim menghancurkan berhala-berhala kaumnya. Ia dilemparkan ke api, namun api menjadi dingin dan selamat. Ibrahim kemudian hijrah ke Palestina, Mesir, dan Mekkah. Allah memerintahkan Ibrahim menyembelih putranya Ismail, namun diganti dengan domba. Ibrahim membangun Ka'bah bersama Ismail. Beliau dijuluki 'Khalilullah' (kekasih Allah).</p><div class='arab-quote'>قُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَىٰ إِبْرَاهِيمَ</div><p><strong>🌟 Pelajaran:</strong> Ketaatan total kepada Allah, keberanian melawan kemusyrikan, dan kesabaran dalam ujian.</p>" },
+            { title: "Nabi Luth AS - Kaum Sodom", preview: "Nabi Luth AS diutus kepada kaum yang melakukan homoseksual dan perampokan...", full: "<h4>📜 Nabi Luth AS</h4><p>Nabi Luth AS adalah keponakan Nabi Ibrahim. Beliau diutus kepada kaum Sodom (Sodom dan Gomorah) yang melakukan perbuatan keji (homoseksual) dan merampok musafir. Luth berkata: 'Mengapa kamu mendatangi jenis kelamin laki-laki di antara manusia?' (QS. Asy-Syu'ara: 165). Mereka menolak dan mengancam mengusir Luth. Allah mengutus malaikat yang menghancurkan kaum Sodom. Kota mereka dibalik dan dihujani batu dari tanah yang terbakar. Hanya Luth dan keluarganya yang selamat, kecuali istrinya yang ikut binasa.</p><p><strong>🌟 Pelajaran:</strong> Larangan keras homoseksual, pentingnya menjaga kesucian, dan taat pada perintah Allah.</p>" },
+            { title: "Nabi Ishaq AS - Putra Ibrahim", preview: "Nabi Ishaq AS adalah putra Ibrahim dari Sarah, lahir di usia tua...", full: "<h4>📜 Nabi Ishaq AS</h4><p>Nabi Ishaq AS adalah putra Nabi Ibrahim dari istrinya Sarah. Beliau lahir saat Ibrahim berusia 100 tahun dan Sarah 90 tahun yang mandul. Allah berfirman: 'Maka Kami beri dia kabar gembira dengan (kelahiran) Ishaq dan dari Ishaq (akan lahir) Ya'qub.' (QS. Hud: 71). Ishaq menjadi nabi di Palestina. Beliau memiliki putra bernama Ya'qub (Israel). Ishaq wafat pada usia 180 tahun dan dimakamkan di Makam Para Patriark, Hebron.</p><p><strong>🌟 Pelajaran:</strong> Kekuasaan Allah memberikan keturunan di luar nalar manusia, dan pentingnya kesabaran.</p>" },
+            { title: "Nabi Ya'qub AS - Israel", preview: "Nabi Ya'qub AS adalah putra Ishaq, memiliki 12 putra yang menjadi cikal bakal Bani Israel...", full: "<h4>📜 Nabi Ya'qub AS</h4><p>Nabi Ya'qub AS adalah putra Ishaq, cucu Ibrahim. Beliau juga disebut 'Israel'. Ya'qub memiliki 12 putra yang menjadi cikal bakal 12 suku Bani Israel. Putra kesayangannya adalah Yusuf. Ya'qub sangat sedih ketika Yusuf hilang dan matanya menjadi buta karena menangis. Setelah bertahun-tahun, Yusuf ditemukan di Mesir dalam posisi tinggi. Ya'qub datang ke Mesir dan matanya kembali normal. Ya'qub wafat di Mesir dan berwasiat dikebumikan di samping Ibrahim di Palestina.</p><div class='arab-quote'>إِنَّمَا أَشْكُو بَثِّي وَحُزْنِي إِلَى اللَّهِ</div><p><strong>🌟 Pelajaran:</strong> Kesabaran dalam musibah, kekuatan doa, dan kasih sayang orang tua kepada anak.</p>" },
+            { title: "Nabi Yusuf AS - Majikan Mesir", preview: "Kisah Nabi Yusuf yang dibenci saudara, dijual, dipenjara, menjadi raja Mesir...", full: "<h4>📜 Nabi Yusuf AS</h4><p>Nabi Yusuf AS adalah putra Ya'qub yang paling dicintai. Saudara-saudaranya iri lalu membuangnya ke sumur. Yusuf ditemukan kafilah dan dijual ke Mesir. Istri Al-Aziz (Zulaikha) menggoda Yusuf namun ditolak. Yusuf dipenjara karena fitnah. Di penjara, Yusuf menakwilkan mimpi. Raja bermimpi dan Yusuf dibebaskan. Yusuf menjadi bendahara Mesir. Saudaranya datang ke Mesir dan Yusuf memaafkan mereka. Keluarga Ya'qub pindah ke Mesir. Allah berfirman: 'Sesungguhnya dalam kisah mereka terdapat pelajaran bagi orang-orang yang mempunyai akal.' (QS. Yusuf: 111).</p><div class='arab-quote'>إِنَّهُ رَبِّي أَحْسَنَ مَثْوَايَ</div><p><strong>🌟 Pelajaran:</strong> Memaafkan saudara, menjaga kesucian, dan yakin Allah bersama orang sabar.</p>" },
+            { title: "Nabi Ayyub AS - Kesabaran Luar Biasa", preview: "Nabi Ayyub AS diuji dengan penyakit dan kehilangan harta, namun tetap sabar...", full: "<h4>📜 Nabi Ayyub AS</h4><p>Nabi Ayyub AS adalah nabi yang kaya raya, memiliki harta, anak, dan kesehatan. Allah mengujinya dengan kehilangan semua harta, anak-anaknya meninggal, dan tubuhnya penuh penyakit, ditinggalkan semua orang kecuali istrinya. Ayyub tetap sabar dan berzikir. Setelah 18 tahun, Allah menyembuhkannya dan menggandakan hartanya. Allah berfirman: 'Dan ingatlah hamba Kami Ayyub ketika ia menyeru Tuhannya: Sesungguhnya aku diganggu setan dengan kepayahan dan siksaan.' (QS. Shad: 41).</p><div class='arab-quote'>أَنِّي مَسَّنِيَ الشَّيْطَانُ بِنُصْبٍ وَعَذَابٍ</div><p><strong>🌟 Pelajaran:</strong> Kesabaran dalam ujian berat, jangan putus asa dari rahmat Allah.</p>" },
+            { title: "Nabi Syu'aib AS - Kaum Madyan", preview: "Nabi Syu'aib AS diutus kepada kaum Madyan yang curang dalam timbangan...", full: "<h4>📜 Nabi Syu'aib AS</h4><p>Nabi Syu'aib AS diutus kepada kaum Madyan dan Aikah (penduduk hutan). Mereka terkenal curang dalam takaran dan timbangan. Syu'aib berkata: 'Sempurnakanlah takaran dan janganlah kamu merugikan manusia.' (QS. Hud: 85). Mereka menolak dan mengancam. Allah mengirim azab berupa suara keras yang memusnahkan mereka. Syu'aib dijuluki 'Khatibul Anbiya' (juru bicara para nabi) karena kepandaiannya berpidato.</p><p><strong>🌟 Pelajaran:</strong> Kejujuran dalam berdagang, tidak curang, dan menegakkan keadilan ekonomi.</p>" },
+            { title: "Nabi Harun AS - Pendamping Musa", preview: "Nabi Harun AS adalah saudara Musa, membantu dakwah dan menjadi imam Bani Israel...", full: "<h4>📜 Nabi Harun AS</h4><p>Nabi Harun AS adalah putra Imran, saudara kandung Nabi Musa. Harun fasih berbicara, sehingga Musa memohon agar Harun menjadi pembantunya saat menghadap Firaun. Harun setia menemani Musa di lembah Thuwa, saat menghadapi Firaun, dan di padang pasir. Saat Musa pergi ke Gunung Thursina, Harun ditinggal menjaga Bani Israel. Namun Samiri membuat patung anak sapi dan Bani Israel menyembahnya. Harun melarang namun tidak didengar. Harun wafat sebelum Musa di Gunung Hor.</p><p><strong>🌟 Pelajaran:</strong> Kerjasama dalam kebaikan, keberanian menegur kemungkaran, dan tanggung jawab pemimpin.</p>" },
+            { title: "Nabi Musa AS - Penyelamat Bani Israel", preview: "Kisah Nabi Musa AS melawan Firaun, mukjizat tongkat, dan membelah laut...", full: "<h4>📜 Nabi Musa AS</h4><p>Nabi Musa AS adalah 'Kalimullah' (yang diajak bicara Allah). Lahir saat Bani Israel dibunuh. Ditemukan istri Firaun dan dibesarkan di istana. Musa membunuh orang Mesir lalu lari ke Madyan. Di Bukit Thursina, Allah berbicara langsung dan memberinya mukjizat: tongkat menjadi ular dan tangan bercahaya. Musa menghadap Firaun dengan Harun. Firaun menolak. Allah mengirim 9 mukjizat (banjir, belalang, kutu, katak, darah, tongkat ular, tangan bercahaya, badai, dan laut terbelah). Bani Israel keluar Mesir, laut terbelah, Firaun tenggelam. Musa menerima Taurat di Bukit Thursina.</p><div class='arab-quote'>فَأَوْحَيْنَا إِلَىٰ مُوسَىٰ أَنِ اضْرِب بِّعَصَاكَ الْبَحْرَ</div><p><strong>🌟 Pelajaran:</strong> Keberanian melawan kezaliman, keyakinan pada pertolongan Allah, dan kepemimpinan.</p>" },
+            { title: "Nabi Ilyas AS - Kaum Ba'labak", preview: "Nabi Ilyas AS diutus kepada kaum penyembah berhala Ba'al...", full: "<h4>📜 Nabi Ilyas AS</h4><p>Nabi Ilyas AS diutus kepada kaum di Ba'labak (Lebanon) yang menyembah berhala Ba'al. Ilyas berkata: 'Mengapa kamu menyembah Ba'al dan meninggalkan sebaik-baik Pencipta?' (QS. Ash-Shaffat: 125). Mereka menolak. Allah menghukum mereka dengan kekeringan. Ilyas berdoa dan hujan turun. Ilyas kemudian diangkat Allah. Ada yang berpendapat Ilyas masih hidup hingga bertemu dengan Nabi Muhammad SAW.</p><p><strong>🌟 Pelajaran:</strong> Tauhid murni hanya menyembah Allah, bukan berhala.</p>" },
+            { title: "Nabi Ilyasa AS - Penerus Ilyas", preview: "Nabi Ilyasa AS melanjutkan dakwah setelah Ilyas diangkat...", full: "<h4>📜 Nabi Ilyasa AS</h4><p>Nabi Ilyasa AS adalah putra paman Nabi Ilyas. Beliau mengikuti dan belajar dari Ilyas. Setelah Ilyas diangkat, Ilyasa meneruskan dakwah kepada Bani Israel. Allah berfirman: 'Dan ingatlah Ismail, Ilyasa, dan Dzulkifli. Semua termasuk orang-orang yang paling baik.' (QS. Shad: 48). Ilyasa memimpin Bani Israel dan membawa mereka kembali ke jalan yang benar. Beliau memiliki mukjizat menghidupkan orang mati atas izin Allah.</p><p><strong>🌟 Pelajaran:</strong> Meneruskan perjuangan orang shaleh dan tidak meninggalkan dakwah setelah para pemimpin pergi.</p>" },
+            { title: "Nabi Dzulkifli AS", preview: "Nabi Dzulkifli AS dikenal sebagai nabi yang sabar dan menepati janji...", full: "<h4>📜 Nabi Dzulkifli AS</h4><p>Nabi Dzulkifli AS ('Dzulkifli' berarti 'pemilik beban/tanggung jawab'). Beliau adalah nabi yang sangat sabar dan menepati janji. Suatu ketika beliau berjanji akan berpuasa siang hari, shalat malam, dan tidak marah. Beliau konsisten melakukannya. Allah menyebutnya dalam Al-Qur'an: 'Dan Ismail, Idris, dan Dzulkifli. Semua termasuk orang-orang yang sabar.' (QS. Al-Anbiya: 85). Makam Dzulkifli dipercaya berada di dekat Damaskus, Suriah.</p><p><strong>🌟 Pelajaran:</strong> Menepati janji, sabar menahan amarah, dan konsisten dalam ibadah.</p>" },
+            { title: "Nabi Daud AS - Pemburu Raksasa", preview: "Nabi Daud AS membunuh Jalut, menjadi raja, ahli ibadah dan suara merdu...", full: "<h4>📜 Nabi Daud AS</h4><p>Nabi Daud AS adalah seorang gembala yang kemudian menjadi prajurit Thalut. Ia membunuh Jalut (Goliath) dengan ketapel. Daud menjadi raja menggantikan Thalut. Allah memberinya kitab Zabur dan keahlian besi (membuat baju besi). Daud juga memiliki suara merdu, gunung dan burung bertasbih bersamanya. Daud sangat rajin beribadah, puasa sehari dan berbuka sehari. Allah berfirman: 'Dan sungguh telah Kami berikan kepada Daud karunia dari Kami. Hai gunung-gunung dan burung-burung, bertasbihlah bersama Daud.' (QS. Saba': 10).</p><div class='arab-quote'>يَا جِبَالُ أَوِّبِي مَعَهُ وَالطَّيْرَ</div><p><strong>🌟 Pelajaran:</strong> Kekuatan iman, keahlian kerja keras, dan ketaatan beribadah.</p>" },
+            { title: "Nabi Sulaiman AS - Raja Segala Makhluk", preview: "Nabi Sulaiman AS diberi kekuasaan atas jin, angin, dan hewan...", full: "<h4>📜 Nabi Sulaiman AS</h4><p>Nabi Sulaiman AS adalah putra Daud. Allah memberinya mukjizat: memahami bahasa hewan, menguasai angin, memerintah jin dan setan. Ia memiliki pasukan manusia, jin, dan burung. Sulaiman membangun Baitul Maqdis. Ratu Balqis dari Saba' datang dan masuk Islam. Sulaiman wafat saat bersandar pada tongkatnya, dan jin baru tahu setelah tongkat dimakan rayap. Allah berfirman: 'Dan Kami tundukkan angin untuk Sulaiman.' (QS. Al-Anbiya: 81).</p><div class='arab-quote'>وَحُشِرَ لِسُلَيْمَانَ جُنُودُهُ مِنَ الْجِنِّ وَالْإِنْسِ وَالطَّيْرِ</div><p><strong>🌟 Pelajaran:</strong> Kekuasaan adalah amanah, jadilah pemimpin yang adil dan bijaksana.</p>" },
+            { title: "Nabi Yunus AS - Dalam Perut Ikan", preview: "Nabi Yunus AS meninggalkan kaumnya tanpa izin, ditelan ikan paus...", full: "<h4>📜 Nabi Yunus AS</h4><p>Nabi Yunus AS (Jonah) diutus kepada penduduk Nineveh (Irak). Mereka menolak, Yunus pergi dengan kapal. Kapal hampir tenggelam, lalu Yunus dilempar ke laut dan ditelan ikan paus. Dalam perut ikan, Yunus berdoa: 'Laa ilaaha illa anta subhanaka inni kuntu minazh-zhalimin.' Allah menyelamatkannya setelah 40 hari. Kaum Nineveh kemudian bertobat dan beriman. Allah berfirman: 'Maka Kami kabulkan doanya dan Kami selamatkan dari kesusahan.' (QS. Al-Anbiya: 88).</p><div class='arab-quote'>لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ</div><p><strong>🌟 Pelajaran:</strong> Jangan putus asa berdakwah, segera bertaubat jika salah, dan doa dalam kesulitan.</p>" },
+            { title: "Nabi Zakaria AS - Doa di Usia Tua", preview: "Nabi Zakaria AS berdoa untuk keturunan di usia lanjut, dikaruniai Yahya...", full: "<h4>📜 Nabi Zakaria AS</h4><p>Nabi Zakaria AS adalah pemimpin Bani Israel, penjaga Baitul Maqdis. Ia dan istrinya sudah tua dan mandul. Suatu hari, Zakaria melihat Maryam (ibu Isa) selalu mendapat makanan dari Allah. Zakaria berdoa: 'Ya Tuhanku, berilah aku keturunan yang baik.' (QS. Ali Imran: 38). Allah mengabulkan doanya. Ia diberi putra bernama Yahya. Zakaria diberi tanda tidak bisa bicara 3 hari. Allah berfirman: 'Wahai Zakaria, Kami memberi kabar gembira kepadamu dengan seorang anak bernama Yahya.'</p><p><strong>🌟 Pelajaran:</strong> Jangan pernah berputus asa dari rahmat Allah, terus berdoa meski secara logika mustahil.</p>" },
+            { title: "Nabi Yahya AS - Pertapa Mulia", preview: "Nabi Yahya AS adalah putra Zakaria, menjauhi dunia, dan tegas terhadap kemungkaran...", full: "<h4>📜 Nabi Yahya AS</h4><p>Nabi Yahya AS adalah putra Zakaria yang lahir di usia tua. Yahya menjadi nabi sejak kecil. Beliau menjauhi dunia, memakan daun-daunan, dan hidup sederhana. Yahya sangat tegas melarang kemungkaran. Ia dipenggal oleh Raja Herodes karena menolak pernikahan haram. Allah berfirman: 'Wahai Yahya, ambillah Kitab (Taurat) dengan sungguh-sungguh. Dan kami berikan kepadanya hikmah sejak kecil.' (QS. Maryam: 12). Yahya dimakamkan di Damaskus, Suriah.</p><p><strong>🌟 Pelajaran:</strong> Hidup sederhana, berani menegakkan kebenaran meski berisiko, dan menjaga kesucian.</p>" },
+            { title: "Nabi Isa AS - Putra Maryam", preview: "Nabi Isa AS lahir tanpa ayah, memiliki mukjizat menghidupkan orang mati, dan diangkat Allah...", full: "<h4>📜 Nabi Isa AS</h4><p>Nabi Isa AS adalah putra Maryam yang lahir tanpa ayah. Isa dapat berbicara saat bayi. Ia memiliki mukjizat: menghidupkan orang mati, menyembuhkan buta dan kusta, membuat burung dari tanah. Isa diutus kepada Bani Israel yang telah menyimpang. Kaunya menolak dan ingin menyalibnya, namun Allah mengangkat Isa ke langit. Allah berfirman: 'Wahai Isa, sesungguhnya Aku akan mematikanmu dan mengangkatmu kepada-Ku.' (QS. Ali Imran: 55). Isa akan turun kembali di akhir zaman.</p><div class='arab-quote'>إِنَّمَا الْمَسِيحُ عِيسَى ابْنُ مَرْيَمَ رَسُولُ اللَّهِ</div><p><strong>🌟 Pelajaran:</strong> Mukjizat Allah di luar nalar manusia, keimanan pada semua nabi, dan kesucian Maryam.</p>" },
+            { title: "Nabi Muhammad SAW - Penutup Para Nabi", preview: "Nabi terakhir, diutus untuk seluruh alam, menerima Al-Qur'an dan sunnah...", full: "<h4>📜 Nabi Muhammad SAW</h4><p>Nabi Muhammad SAW lahir di Mekkah tahun Gajah. Beliau diutus Allah sebagai rahmat bagi seluruh alam. Menerima wahyu pertama di Gua Hira'. Beliau berdakwah di Mekkah 13 tahun, lalu hijrah ke Madinah. Di Madinah, beliau membangun peradaban Islam. Beliau menerima Al-Qur'an dan menjadi suri teladan bagi umat manusia. Allah berfirman: 'Dan sesungguhnya kamu benar-benar berbudi pekerti yang agung.' (QS. Al-Qalam: 4). Rasulullah wafat di Madinah pada usia 63 tahun dan dimakamkan di Masjid Nabawi.</p><div class='arab-quote'>وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ</div><p><strong>🌟 Pelajaran:</strong> Meneladani akhlak Rasulullah, mencintai beliau, dan mengikuti sunnah-sunnahnya.</p>" }
         ];
 
-        // Tambahkan 22 nabi lainnya (saya akan lanjutkan di pesan berikutnya karena batasan karakter)
-        // Untuk sementara, ini adalah contoh. Dalam implementasi penuh, akan ada 25 nabi lengkap.
-
+        // =====================================================
+        // 15 SAHABAT NABI - LENGKAP
+        // =====================================================
         const kisahSahabat = [
-            { title: "Abu Bakar Ash-Shiddiq", preview: "Sahabat terdekat Rasulullah, khalifah pertama, selalu membenarkan Rasulullah...", full: "<h4>👤 Abu Bakar bin Abi Quhafah</h4><p>Abu Bakar adalah sahabat paling dekat dengan Rasulullah SAW. Nama aslinya Abdullah bin Abi Quhafah. Beliau masuk Islam pada usia 38 tahun, menjadi orang dewasa pertama yang masuk Islam. Abu Bakar dijuluki 'Ash-Shiddiq' karena selalu membenarkan setiap berita dari Nabi, termasuk peristiwa Isra' Mi'raj.</p><h4>💰 Kesederhanaan dan Kedermawanan</h4><p>Abu Bakar dikenal sangat dermawan. Ia pernah menghabiskan seluruh hartanya untuk perang Tabuk. Ketika Rasulullah bertanya: 'Apa yang kau tinggalkan untuk keluargamu?' Abu Bakar menjawab: 'Aku tinggalkan untuk mereka Allah dan Rasul-Nya.'</p><h4>👑 Khalifah pertama</h4><p>Setelah Rasulullah wafat, Abu Bakar dibaiat menjadi khalifah pertama. Pada masa pemerintahannya, ia berhasil memerangi kaum murtad, mengumpulkan Al-Qur'an, dan memberantas nabi palsu. Abu Bakar wafat pada tahun 13 H dan dimakamkan di samping Rasulullah.</p><p><strong>🌟 Pelajaran:</strong> Loyalitas, ketulusan, dan keberanian dalam membela kebenaran.</p>" },
-            { title: "Umar bin Khattab", preview: "Khalifah kedua yang tegas dan adil, di masanya Islam mengalami perluasan wilayah pesat...", full: "<h4>👤 Umar bin Khattab</h4><p>Umar bin Khattab awalnya memusuhi Islam, bahkan berniat membunuh Rasulullah. Namun setelah mendengar adiknya membaca Al-Qur'an, hatinya lunak dan masuk Islam. Keislaman Umar membawa kekuatan bagi umat Islam.</p><h4>⚔️ Keberanian dan Keadilan</h4><p>Umar dikenal sangat tegas dan adil. Beliau sering berpatroli malam untuk memastikan rakyatnya sejahtera. Pada masa pemerintahannya, wilayah Islam meluas hingga Persia, Syam, dan Mesir. Beliau juga menetapkan kalender Hijriyah.</p><h4>💔 Syahid</h4><p>Umar wafat dibunuh oleh Abu Lu'luah al-Majusi saat memimpin shalat Subuh. Beliau dimakamkan di samping Abu Bakar dan Rasulullah. Umar berkata sebelum wafat: 'Tidak ada yang lebih aku cintai selain bertemu Allah.'</p><p><strong>🌟 Pelajaran:</strong> Ketegasan dalam kebenaran, keadilan tanpa pandang bulu, dan kepedulian pada rakyat.</p>" }
+            { title: "Abu Bakar Ash-Shiddiq", preview: "Sahabat terdekat Rasulullah, khalifah pertama, dijuluki Ash-Shiddiq karena selalu membenarkan...", full: "<h4>👤 Abu Bakar bin Abi Quhafah</h4><p>Abu Bakar adalah sahabat paling dekat dengan Rasulullah SAW. Nama aslinya Abdullah bin Abi Quhafah. Beliau masuk Islam pada usia 38 tahun, menjadi orang dewasa pertama yang masuk Islam. Abu Bakar dijuluki 'Ash-Shiddiq' karena selalu membenarkan setiap berita dari Nabi, termasuk peristiwa Isra' Mi'raj.</p><div class='arab-quote'>لَوْ كُنْتُ مُتَّخِذًا خَلِيلًا لَاتَّخَذْتُ أَبَا بَكْرٍ خَلِيلًا</div><h4>💰 Kesederhanaan dan Kedermawanan</h4><p>Abu Bakar pernah menghabiskan seluruh hartanya untuk perang Tabuk. Ketika Rasulullah bertanya: 'Apa yang kau tinggalkan untuk keluargamu?' Abu Bakar menjawab: 'Aku tinggalkan untuk mereka Allah dan Rasul-Nya.'</p><h4>👑 Khalifah pertama</h4><p>Setelah Rasulullah wafat, Abu Bakar dibaiat menjadi khalifah. Pada masa pemerintahannya, ia berhasil memerangi kaum murtad, mengumpulkan Al-Qur'an, dan memberantas nabi palsu. Abu Bakar wafat pada tahun 13 H dan dimakamkan di samping Rasulullah.</p><p><strong>🌟 Pelajaran:</strong> Loyalitas, ketulusan, kedermawanan, dan keberanian dalam membela kebenaran.</p>" },
+            { title: "Umar bin Khattab", preview: "Khalifah kedua yang tegas, adil, di masanya Islam berkembang pesat...", full: "<h4>👤 Umar bin Khattab</h4><p>Umar bin Khattab awalnya memusuhi Islam, bahkan berniat membunuh Rasulullah. Namun setelah mendengar adiknya membaca Al-Qur'an, hatinya lunak dan masuk Islam. Keislaman Umar membawa kekuatan bagi umat Islam.</p><div class='arab-quote'>لَوْ كَانَ بَعْدِي نَبِيٌّ لَكَانَ عُمَرَ</div><h4>⚔️ Keberanian dan Keadilan</h4><p>Umar dikenal sangat tegas dan adil. Beliau sering berpatroli malam untuk memastikan rakyatnya sejahtera. Pada masa pemerintahannya, wilayah Islam meluas hingga Persia, Syam, dan Mesir. Beliau juga menetapkan kalender Hijriyah.</p><h4>💔 Syahid</h4><p>Umar wafat dibunuh oleh Abu Lu'luah al-Majusi saat memimpin shalat Subuh. Beliau dimakamkan di samping Abu Bakar dan Rasulullah.</p><p><strong>🌟 Pelajaran:</strong> Ketegasan dalam kebenaran, keadilan tanpa pandang bulu, dan kepedulian pada rakyat.</p>" },
+            { title: "Utsman bin Affan", preview: "Khalifah ketiga, penggubah Al-Qur'an, dijuluki Dzun Nurain (pemilik dua cahaya)...", full: "<h4>👤 Utsman bin Affan</h4><p>Utsman bin Affan adalah khalifah ketiga, berasal dari Bani Umayyah yang kaya raya. Beliau dijuluki 'Dzun Nurain' karena menikahi dua putri Rasulullah: Ruqayyah dan Ummu Kulsum. Utsman masuk Islam atas ajakan Abu Bakar.</p><div class='arab-quote'>أَلَا أَسْتَحْيِي مِنْ رَجُلٍ تَسْتَحْيِي مِنْهُ الْمَلَائِكَةُ</div><h4>📖 Penggubahan Al-Qur'an</h4><p>Utsman memerintahkan penggandaan Al-Qur'an menjadi beberapa mushaf (Mushaf Utsmani) dan mengirimnya ke berbagai wilayah. Beliau juga memperluas Masjid Nabawi.</p><h4>💔 Wafat Syahid</h4><p>Utsman wafat dibunuh pemberontak saat membaca Al-Qur'an di rumahnya. Beliau syahid pada tahun 35 H.</p><p><strong>🌟 Pelajaran:</strong> Kedermawanan, kesabaran menghadapi fitnah, dan pengorbanan untuk memelihara Al-Qur'an.</p>" },
+            { title: "Ali bin Abi Thalib", preview: "Khalifah keempat, sepupu dan menantu Rasulullah, pintu gerbang ilmu...", full: "<h4>👤 Ali bin Abi Thalib</h4><p>Ali bin Abi Thalib adalah sepupu sekaligus menantu Rasulullah (suami Fatimah). Beliau masuk Islam saat masih anak-anak dan menjadi pemuda pertama yang masuk Islam. Ali dikenal sebagai 'Bab Kota Ilmu' (pintu gerbang ilmu).</p><div class='arab-quote'>أَنَا مَدِينَةُ الْعِلْمِ وَعَلِيٌّ بَابُهَا</div><h4>⚔️ Keberanian dalam Perang</h4><p>Ali ikut dalam semua perang kecuali Tabuk. Beliau terkenal dengan keberaniannya, terutama saat Perang Khaibar dan Khandaq. Ali menjadi khalifah pada tahun 35-40 H.</p><h4>💔 Wafat Syahid</h4><p>Ali wafat dibunuh oleh Abdurrahman bin Muljam saat shalat Subuh di Kufah. Beliau dimakamkan di Najaf, Irak.</p><p><strong>🌟 Pelajaran:</strong> Keberanian, keilmuan, dan keteguhan dalam membela kebenaran.</p>" },
+            { title: "Abdurrahman bin Auf", preview: "Saudagar kaya yang dermawan, salah satu sahabat yang dijamin surga...", full: "<h4>👤 Abdurrahman bin Auf</h4><p>Abdurrahman bin Auf adalah salah satu sahabat yang dijamin masuk surga ('Asyarah Mubasysyarah). Beliau adalah saudagar kaya yang sangat dermawan. Setelah masuk Islam, hartanya digunakan untuk membebaskan budak dan membiayai perang.</p><p>Suatu hari, Abdurrahman menyedekahkan 40.000 dirham perak dan 40.000 unta. Beliau juga menyedekahkan 500 kuda untuk perang. Rasulullah bersabda: 'Abdurrahman bin Auf di surga.'</p><p>Abdurrahman wafat pada tahun 32 H dan dimakamkan di Makkah.</p><p><strong>🌟 Pelajaran:</strong> Jadikan harta untuk kebaikan, kedermawanan adalah investasi akhirat.</p>" },
+            { title: "Sa'ad bin Abi Waqqash", preview: "Panglima perang yang membuka Persia, pemanah ulung, doanya mustajab...", full: "<h4>👤 Sa'ad bin Abi Waqqash</h4><p>Sa'ad bin Abi Waqqash adalah paman Rasulullah dari pihak ibu. Beliau adalah salah satu sahabat yang dijamin surga. Beliau terkenal sebagai pemanah ulung. Doa Sa'ad selalu mustajab. Sa'ad memimpin pasukan Muslim dalam Perang Qadisiyyah yang membuka pintu Persia. Rasulullah bersabda: 'Ya Allah, tepatkanlah panahnya dan kabulkan doanya.' Sa'ad wafat pada tahun 55 H di Madinah.</p><p><strong>🌟 Pelajaran:</strong> Keahlian memanah (olahraga perang), doa yang mustajab karena ketakwaan.</p>" },
+            { title: "Zubair bin Awwam", preview: "Panglima perang, keponakan Khadijah, sahabat yang rela mati syahid...", full: "<h4>👤 Zubair bin Awwam</h4><p>Zubair bin Awwam adalah keponakan Khadijah dan sepupu Rasulullah. Beliau masuk Islam di usia 15 tahun. Zubair adalah panglima perang yang pemberani. Dalam Perang Khandaq, beliau rela menjadi mata-mata. Zubair memiliki pedang yang patah saat Perang Yarmuk, lalu beliau bertempur dengan gagang pedang. Zubair wafat syahid pada tahun 36 H.</p><p><strong>🌟 Pelajaran:</strong> Keberanian, kesiapan berkorban untuk agama, dan ketulusan bertempur di jalan Allah.</p>" },
+            { title: "Thalhah bin Ubaidillah", preview: "Sahabat dermawan, tebus luka untuk Rasulullah, mati syahid...", full: "<h4>👤 Thalhah bin Ubaidillah</h4><p>Thalhah bin Ubaidillah termasuk 'Asyarah Mubasysyarah. Beliau sangat dermawan, pernah menyedekahkan seluruh kebunnya. Dalam Perang Uhud, Thalhah melindungi Rasulullah dengan tangannya hingga putus. Setelah itu, Rasulullah bersabda: 'Thalhah telah wajib surga.' Thalhah wafat syahid di Perang Jamal pada tahun 36 H.</p><p><strong>🌟 Pelajaran:</strong> Melindungi Rasulullah, kedermawanan total, dan rela berkorban.</p>" },
+            { title: "Sa'id bin Zaid", preview: "Sahabat yang masuk Islam sebelum rumah Daarul Arqam...", full: "<h4>👤 Sa'id bin Zaid</h4><p>Sa'id bin Zaid adalah suami dari Fatimah binti Khattab (adik Umar). Beliau termasuk orang-orang yang masuk Islam paling awal. Sa'id juga termasuk 'Asyarah Mubasysyarah. Beliau adalah sahabat yang rendah hati dan sangat taat beribadah. Sa'id wafat pada tahun 50 H.</p><p><strong>🌟 Pelajaran:</strong> Keistiqomahan dalam kebaikan, rendah hati, dan menyebarkan dakwah dalam keluarga.</p>" },
+            { title: "Abu Ubaidah bin Jarrah", preview: "Kepercayaan umat ini, panglima perang Suriah, saudagar dermawan...", full: "<h4>👤 Abu Ubaidah bin Jarrah</h4><p>Abu Ubaidah bin Jarrah adalah sahabat yang sangat jujur dan dipercaya. Rasulullah menjulukinya 'Aminu Hadzihil Ummah' (kepercayaan umat ini). Beliau memimpin penaklukan Suriah. Abu Ubaidah sangat dermawan, seluruh gajinya disedekahkan. Beliau wafat karena wabah Tha'un (penyakit menular) di Yordania tahun 18 H.</p><p><strong>🌟 Pelajaran:</strong> Kejujuran, amanah, dan rela berkorban di medan perang.</p>" },
+            { title: "Bilal bin Rabah", preview: "Muadzin pertama, budak yang dibebaskan Abu Bakar, suara merdu...", full: "<h4>👤 Bilal bin Rabah</h4><p>Bilal bin Rabah adalah mantan budak Habasyah yang disiksa karena keislamannya. Abu Bakar membelinya dan memerdekakannya. Bilal menjadi muadzin pertama Rasulullah dengan suaranya yang merdu. Suatu hari, Bilal tidak mau mengumandangkan adzan setelah Rasulullah wafat. Beliau kemudian hijrah ke Suriah dan wafat di sana. Sebelum wafat, Bilal mendengar suara Rasulullah dalam mimpi, lalu beliau adzan sekali lagi.</p><div class='arab-quote'>أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ، أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ</div><p><strong>🌟 Pelajaran:</strong> Kesabaran dalam ujian, kesetaraan derajat di hadapan Allah, dan kemuliaan bilal.</p>" },
+            { title: "Salman Al-Farisi", preview: "Sahabat dari Persia, pencari kebenaran, ide penggalian parit...", full: "<h4>👤 Salman Al-Farisi</h4><p>Salman Al-Farisi berasal dari Persia. Beliau meninggalkan kemewahan untuk mencari kebenaran. Setelah berkelana, beliau bertemu Rasulullah di Madinah dan masuk Islam. Salman dikenal sebagai 'Ahlul Bait' karena dianggap keluarga oleh Rasulullah. Beliau mengusulkan penggalian parit dalam Perang Khandaq. Salman wafat di Madain, Persia (Irak sekarang) setelah menjadi gubernur yang adil.</p><p><strong>🌟 Pelajaran:</strong> Mencari ilmu hingga ke negeri jauh, setia pada kebenaran, dan ide cemerlang.</p>" },
+            { title: "Ammar bin Yasir", preview: "Sahabat yang disiksa bersama keluarganya, mulia karena kesabaran...", full: "<h4>👤 Ammar bin Yasir</h4><p>Ammar bin Yasir bersama ayah dan ibunya (Yasir dan Sumayyah) disiksa kaum Quraisy karena Islam. Sumayyah menjadi syahid pertama dalam Islam. Ammar dipaksa mengatakan kekufuran, namun hatinya tetap iman. Rasulullah bersabda: 'Ammar penuh dengan iman dari ujung rambut sampai ujung kaki.' Ammar wafat syahid pada Perang Shiffin.</p><p><strong>🌟 Pelajaran:</strong> Kesabaran menghadapi siksaan, syahid di jalan Allah, dan keikhlasan hati.</p>" },
+            { title: "Abdullah bin Mas'ud", preview: "Sahabat yang paling tahu Al-Qur'an, mulia bacaannya...", full: "<h4>👤 Abdullah bin Mas'ud</h4><p>Abdullah bin Mas'ud adalah sahabat yang paling pandai membaca Al-Qur'an. Rasulullah bersabda: 'Ambillah Al-Qur'an dari empat orang: Abdullah bin Mas'ud, Salim, Mu'adz dan Ubay bin Ka'ab.' Beliau sangat rendah hati, kurus dan pendek, namun wibawanya luar biasa. Abdullah bin Mas'ud wafat pada tahun 32 H di Madinah.</p><p><strong>🌟 Pelajaran:</strong> Kecintaan pada Al-Qur'an, ketekunan belajar, dan kerendahan hati.</p>" },
+            { title: "Abu Dzarr Al-Ghifari", preview: "Sahabat yang paling jujur, zuhud, dan berani mengatakan kebenaran...", full: "<h4>👤 Abu Dzarr Al-Ghifari</h4><p>Abu Dzarr Al-Ghifari termasuk sahabat yang paling awal masuk Islam. Beliau dikenal sangat jujur dan zuhud. Abu Dzarr berani mengatakan kebenaran meskipun pahit. Rasulullah bersabda: 'Tidak ada yang lebih jujur daripada Abu Dzarr.' Beliau meninggal di padang pasir sendirian, dimakamkan oleh segelintir orang.</p><p><strong>🌟 Pelajaran:</strong> Kejujuran tanpa takut cela, zuhud (tidak terikat dunia), dan keberanian menyuarakan kebenaran.</p>" }
         ];
 
+        // =====================================================
+        // 10 SAHABIYAH (Wanita Sahabat)
+        // =====================================================
         const kisahSahabiyah = [
-            { title: "Khadijah binti Khuwailid", preview: "Istri pertama Rasulullah, wanita mulia yang menjadi sandaran dakwah Islam...", full: "<h4>🌸 Khadijah binti Khuwailid</h4><p>Khadijah adalah saudagar kaya yang kemudian menikah dengan Muhammad SAW. Beliau adalah wanita pertama yang masuk Islam dan menjadi sandaran Rasulullah di awal dakwah.</p><h4>💰 Dukungan Penuh untuk Dakwah</h4><p>Khadijah menghabiskan hartanya untuk mendukung dakwah Islam. Ia selalu menghibur dan menguatkan Rasulullah saat menghadapi tekanan kafir Quraisy. Semua anak Rasulullah selain Ibrahim lahir dari Khadijah.</p><h4>💔 Wafatnya Khadijah</h4><p>Khadijah wafat pada tahun 619 M, yang dikenal sebagai 'Tahun Kesedihan' ('Amul Huzni). Rasulullah sangat berduka dan selalu mengenang kebaikan Khadijah. Beliau bersabda: 'Khadijah beriman kepadaku saat manusia kafir, membenarkanku saat manusia mendustakanku, dan menghabiskan hartanya untukku saat manusia tidak memberiku apa-apa.'</p><p><strong>🌟 Pelajaran:</strong> Kesetiaan, pengorbanan, dan dukungan penuh untuk kebenaran.</p>" },
-            { title: "Aisyah binti Abu Bakar", preview: "Istri Rasulullah yang cerdas, banyak meriwayatkan hadis, dijuluki Ummul Mukminin...", full: "<h4>🌸 Aisyah binti Abu Bakar</h4><p>Aisyah adalah putri Abu Bakar yang dinikahi Rasulullah. Beliau adalah istri yang paling dicintai Rasulullah. Aisyah memiliki kecerdasan luar biasa dan hafalan yang kuat.</p><h4>📚 Perawi Hadis Terbanyak</h4><p>Aisyah meriwayatkan lebih dari 2.000 hadis. Banyak sahabat yang bertanya kepadanya tentang masalah fiqih karena pengetahuannya yang mendalam. Beliau juga terlibat dalam Perang Jamal.</p><h4>💫 Wafatnya Aisyah</h4><p>Aisyah wafat pada tahun 58 H di usia 67 tahun. Beliau dimakamkan di Baqi'. Sebelum wafat, beliau berwasiat: 'Janganlah kalian mengiringi jenazahku dengan api dan janganlah membaca Al-Qur'an di kuburku.'</p><p><strong>🌟 Pelajaran:</strong> Pentingnya ilmu, kecerdasan wanita, dan peran perempuan dalam menyebarkan agama.</p>" }
+            { title: "Khadijah binti Khuwailid", preview: "Istri pertama Rasulullah, wanita mulia, saudagar kaya yang menjadi sandaran dakwah...", full: "<h4>🌸 Khadijah binti Khuwailid</h4><p>Khadijah adalah saudagar kaya yang kemudian menikah dengan Muhammad SAW. Beliau adalah wanita pertama yang masuk Islam dan menjadi sandaran Rasulullah di awal dakwah.</p><div class='arab-quote'>خَيْرُ نِسَاءِ الْعَالَمِينَ خَدِيجَةُ بِنْتُ خُوَيْلِدٍ</div><h4>💰 Dukungan Penuh untuk Dakwah</h4><p>Khadijah menghabiskan hartanya untuk mendukung dakwah Islam. Beliau selalu menghibur dan menguatkan Rasulullah saat menghadapi tekanan kafir Quraisy. Semua anak Rasulullah selain Ibrahim lahir dari Khadijah.</p><h4>💔 Wafatnya Khadijah</h4><p>Khadijah wafat pada tahun 619 M ('Tahun Kesedihan'). Rasulullah sangat berduka dan selalu mengenang kebaikan Khadijah. Beliau bersabda: 'Khadijah beriman kepadaku saat manusia kafir, membenarkanku saat manusia mendustakanku, dan menghabiskan hartanya untukku.'</p><p><strong>🌟 Pelajaran:</strong> Kesetiaan, pengorbanan, dan dukungan penuh untuk kebenaran.</p>" },
+            { title: "Aisyah binti Abu Bakar", preview: "Istri Rasulullah yang cerdas, perawi hadis terbanyak, Ummul Mukminin...", full: "<h4>🌸 Aisyah binti Abu Bakar</h4><p>Aisyah adalah putri Abu Bakar yang dinikahi Rasulullah. Beliau adalah istri yang paling dicintai Rasulullah. Aisyah memiliki kecerdasan luar biasa dan hafalan yang kuat. Beliau meriwayatkan lebih dari 2.000 hadis. Banyak sahabat yang bertanya kepadanya tentang masalah fiqih karena pengetahuannya yang mendalam. Aisyah wafat pada tahun 58 H di usia 67 tahun. Beliau dimakamkan di Baqi'.</p><div class='arab-quote'>عَائِشَةُ تُفْضِلُ النِّسَاءَ كَمَا يُفْضِلُ الثَّرِيدُ سَائِرَ الطَّعَامِ</div><p><strong>🌟 Pelajaran:</strong> Pentingnya ilmu bagi wanita, kecerdasan, dan peran perempuan dalam menyebarkan agama.</p>" },
+            { title: "Fatimah Az-Zahra", preview: "Putri Rasulullah, pemimpin wanita surga, istri Ali, ibu Hasan dan Husain...", full: "<h4>🌸 Fatimah Az-Zahra</h4><p>Fatimah adalah putri bungsu Rasulullah dari Khadijah. Beliau dijuluki 'Az-Zahra' (yang bercahaya). Fatimah dinikahkan dengan Ali bin Abi Thalib. Rasulullah bersabda: 'Fatimah adalah pemimpin wanita surga.' Fatimah sangat sederhana, meskipun putri Rasulullah, beliau sendiri yang menggiling gandum dan mengasuh anak. Fatimah wafat 6 bulan setelah Rasulullah wafat dalam usia 29 tahun.</p><div class='arab-quote'>فَاطِمَةُ سَيِّدَةُ نِسَاءِ أَهْلِ الْجَنَّةِ</div><p><strong>🌟 Pelajaran:</strong> Kesederhanaan, ketakwaan, dan menjadi wanita mulia di sisi Allah.</p>" },
+            { title: "Asma binti Abu Bakar", preview: "Pemilik dua ikat pinggang, saudara Aisyah, wanita pemberani...", full: "<h4>🌸 Asma binti Abu Bakar</h4><p>Asma adalah putri Abu Bakar, saudara tiri Aisyah. Beliau dijuluki 'Dzatun Nithaqain' (pemilik dua ikat pinggang) karena membelah ikat pinggangnya untuk membawa makanan bagi Rasulullah saat hijrah. Asma sangat pemberani. Suatu hari, ia melawan Hajjaj bin Yusuf secara lisan. Asma wafat pada usia 100 tahun.</p><p><strong>🌟 Pelajaran:</strong> Keberanian wanita, pengorbanan, dan peran penting wanita dalam sejarah Islam.</p>" },
+            { title: "Sumayyah binti Khayyath", preview: "Syahid pertama dalam Islam, wanita mulia yang disiksa karena iman...", full: "<h4>🌸 Sumayyah binti Khayyath</h4><p>Sumayyah adalah istri Yasir dan ibu Ammar. Beliau termasuk orang yang masuk Islam paling awal bersama keluarganya. Kaum Quraisy menyiksa keluarga Yasir dengan kejam. Sumayyah ditusuk dengan tombak hingga syahid. Beliau menjadi syahid pertama dalam Islam. Rasulullah bersabda: 'Bersabarlah wahai keluarga Yasir, sesungguhnya janji Allah adalah surga.'</p><p><strong>🌟 Pelajaran:</strong> Keberanian mempertahankan iman, kesabaran menghadapi siksaan, dan kemuliaan syahid.</p>" },
+            { title: "Nusaybah binti Ka'ab", preview: "Pejuang wanita yang melindungi Rasulullah di Perang Uhud...", full: "<h4>🌸 Nusaybah binti Ka'ab (Ummu Umarah)</h4><p>Nusaybah adalah wanita pejuang yang ikut dalam Perang Uhud. Suatu ketika, Rasulullah hampir dibunuh musuh. Nusaybah maju melindungi Rasulullah dengan tubuhnya. Beliau mengalami banyak luka. Rasulullah bersabda: 'Tidak ada yang lebih baik darimu, wahai Ummu Umarah.' Nusaybah juga ikut dalam Perang Yamamah. Beliau kehilangan tangannya di medan perang.</p><p><strong>🌟 Pelajaran:</strong> Perempuan juga punya peran membela agama, keberanian di medan perang, dan cinta kepada Rasulullah.</p>" },
+            { title: "Ummu Sulaim binti Milhan", preview: "Wanita yang sabar ditinggal suami, anaknya Anas bin Malik...", full: "<h4>🌸 Ummu Sulaim binti Milhan</h4><p>Ummu Sulaim adalah ibu Anas bin Malik (pelayan Rasulullah). Beliau masuk Islam tanpa izin suami yang masih musyrik. Suaminya marah lalu pergi. Ummu Sulaim tetap sabar. Anaknya Anas dihadiahkan kepada Rasulullah untuk menjadi pelayan. Ummu Sulaim juga ikut dalam beberapa peperangan. Beliau membawa air dan merawat tentara yang terluka.</p><p><strong>🌟 Pelajaran:</strong> Mengutamakan iman di atas segalanya, kesabaran, dan pengabdian kepada Rasulullah.</p>" },
+            { title: "Ummu Haram binti Milhan", preview: "Wanita yang mendengar kabar jihad laut, wafat di Siprus...", full: "<h4>🌸 Ummu Haram binti Milhan</h4><p>Ummu Haram adalah bibi Anas bin Malik. Rasulullah pernah datang ke rumahnya. Beliau mendengar Rasulullah bersabda tentang jihad laut. Ummu Haram berdoa agar termasuk orang yang ikut jihad laut. Doanya dikabulkan. Di masa Mu'awiyah, Ummu Haram ikut ekspedisi laut ke Siprus. Beliau wafat dan dimakamkan di Siprus. Makamnya diziarahi sampai sekarang.</p><p><strong>🌟 Pelajaran:</strong> Semangat jihad, doa yang diijabah, dan keutamaan jihad laut bagi wanita.</p>" },
+            { title: "Rabi'ah binti Mu'awwidh", preview: "Sahabiyah yang meriwayatkan tata cara wudhu Rasulullah...", full: "<h4>🌸 Rabi'ah binti Mu'awwidh</h4><p>Rabi'ah adalah sahabiyah yang meriwayatkan tata cara wudhu Rasulullah secara detail. Beliau juga ikut dalam perang bersama Rasulullah. Beliau mengatakan: 'Kami ikut dalam perang bersama Rasulullah, kami memberi minum, merawat yang luka, dan mengembalikan yang syahid ke Madinah.'</p><p><strong>🌟 Pelajaran:</strong> Peran wanita dalam meriwayatkan hadis, membantu perang di belakang, dan kecermatan dalam ilmu.</p>" },
+            { title: "Asma binti Abi Bakar", preview: "Saudara Aisyah, wanita mulia dan pemberani...", full: "<h4>🌸 Asma binti Abu Bakar</h4><p>Asma binti Abu Bakar dikenal dengan keberanian dan kefasihan bicaranya. Beliau dijuluki 'Dzatun Nithaqain' karena dua ikat pinggangnya. Saat hijrah, beliau membawakan bekal untuk Rasulullah dan Abu Bakar. Asma juga berani melawan Hajjaj bin Yusuf di akhir masa kekuasaannya. Beliau wafat di usia 100 tahun dan dimakamkan di Makkah.</p><p><strong>🌟 Pelajaran:</strong> Keberanian menyuarakan kebenaran, pengorbanan, dan keridhaan pada Allah.</p>" }
         ];
 
-        let currentTab = 'nabi';
-
+        // Render functions
         function showModal(title, content) {
-            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-title').innerHTML = title;
             document.getElementById('modal-body').innerHTML = content;
             document.getElementById('modal').style.display = 'flex';
         }
 
         function renderKisah(items, containerId) {
             const container = document.getElementById(containerId);
+            if (!container) return;
             container.innerHTML = '';
             items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'kisah-card';
-                card.innerHTML = `<div class="kisah-card-header"><h3><i class="fas fa-${containerId === 'nabi-container' ? 'mosque' : 'user'}-circle"></i> ${item.title}</h3></div>
-                    <div class="kisah-card-preview"><p>${item.preview}</p></div>
-                    <div class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></div>`;
-                card.querySelector('.read-more').onclick = () => showModal(item.title, item.full);
+                card.innerHTML = `
+                    <div class="kisah-card-header">
+                        <h3><i class="fas fa-${containerId === 'nabi-container' ? 'mosque' : 'user'}-circle"></i> ${item.title}</h3>
+                    </div>
+                    <div class="kisah-card-preview">
+                        <p>${item.preview}</p>
+                    </div>
+                    <div class="read-more">
+                        Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                    </div>
+                `;
+                const readMoreBtn = card.querySelector('.read-more');
+                readMoreBtn.onclick = () => showModal(item.title, item.full);
                 container.appendChild(card);
             });
         }
 
+        // Tab switching
+        let currentTab = 'nabi';
+        
+        function switchTab(tab) {
+            currentTab = tab;
+            document.getElementById('nabi-container').style.display = tab === 'nabi' ? 'grid' : 'none';
+            document.getElementById('sahabat-container').style.display = tab === 'sahabat' ? 'grid' : 'none';
+            document.getElementById('sahabiyah-container').style.display = tab === 'sahabiyah' ? 'grid' : 'none';
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tab) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Initial render
         renderKisah(kisahNabi, 'nabi-container');
         renderKisah(kisahSahabat, 'sahabat-container');
         renderKisah(kisahSahabiyah, 'sahabiyah-container');
-
-        // Tab switching
+        
+        // Tab buttons
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const tab = btn.dataset.tab;
-                currentTab = tab;
-                document.getElementById('nabi-container').style.display = tab === 'nabi' ? 'block' : 'none';
-                document.getElementById('sahabat-container').style.display = tab === 'sahabat' ? 'block' : 'none';
-                document.getElementById('sahabiyah-container').style.display = tab === 'sahabiyah' ? 'block' : 'none';
+                switchTab(btn.dataset.tab);
             });
         });
 
         // Modal close
         const modal = document.getElementById('modal');
-        const closeModal = document.querySelector('.close-modal');
-        closeModal.onclick = () => modal.style.display = 'none';
-        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+        const closeModalBtn = document.querySelector('.close-modal');
+        if (closeModalBtn) {
+            closeModalBtn.onclick = () => modal.style.display = 'none';
+        }
+        window.onclick = (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        };
 
+        // Mobile menu toggle
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
         if (mobileToggle) {
             mobileToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 const icon = mobileToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
             });
         }
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+            if (window.innerWidth <= 768 && navLinks && !navLinks.contains(e.target) && mobileToggle && !mobileToggle.contains(e.target)) {
                 navLinks.classList.remove('active');
                 const icon = mobileToggle?.querySelector('i');
-                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         });
     </script>
-    <script src="theme.js"></script>
 </body>
 </html>
