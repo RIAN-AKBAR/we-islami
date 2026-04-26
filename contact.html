@@ -3,6 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Kontak Kami - Website Islami</title>
+    <meta name="description" content="Hubungi kami untuk informasi lebih lanjut">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border-color: var(--secondary);
+        }
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .contact-icon i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        .contact-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+        .contact-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--primary);
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+        }
+        .map-container {
+            margin-top: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+        .developer-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            text-align: center;
+        }
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 4px solid var(--secondary);
+        }
+        .developer-avatar i {
+            font-size: 3.5rem;
+            color: var(--secondary);
+        }
+        .developer-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .developer-bio {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-envelope" style="color: var(--secondary); margin-right: 15px;"></i>Hubungi Kami</h1>
+            <p style="text-align: center; margin-bottom: 40px;">Kami senang mendengar saran dan masukan dari Anda</p>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Alamat</h3>
+                    <p>Jakarta, Indonesia</p>
+                    <p>Kode Pos: 12345</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Telepon</h3>
+                    <p>+62 851-6708-9251</p>
+                    <p>Senin - Jumat, 09:00 - 17:00</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@websiteislami.com">info@websiteislami.com</a></p>
+                    <p><a href="mailto:support@websiteislami.com">support@websiteislami.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/6285167089251">+62 851-6708-9251</a></p>
+                    <p>Chat untuk informasi</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+            </div>
+
+            <div class="developer-section">
+                <div class="developer-avatar">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <h3 class="developer-name">Muhammad Rian Akbar</h3>
+                <p class="developer-bio">Seorang pengembang web yang berdedikasi untuk menyajikan konten Islami berkualitas. Website ini dibuat dengan niat untuk menyebarkan kebaikan dan membantu umat Islam dalam mengakses doa, zikir, dan ilmu agama dengan mudah.</p>
+                <div class="profile-stats" style="margin-top: 20px;">
+                    <div class="stat-item">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Halaman</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3000+</div>
+                        <div class="stat-label">Hadis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Doa & Zikir</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521160476509!2d106.828717!3d-6.208764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Semoga bermanfaat untuk dunia dan akhirat</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle?.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            }
+        });
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Pengaturan Tema - Website Islami</title>
     <meta name="description" content="Atur tampilan website sesuai preferensi Anda">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
