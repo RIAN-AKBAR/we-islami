@@ -70,7 +70,11 @@
                 <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
                 <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
                 <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="alquran.html"><i class="fas fa-book-quran"></i> Al-Quran</a></li>
+                <li><a href="hadis.html" class="active"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
                 <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
                 <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
                 <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
@@ -100,10 +104,6 @@
     </footer>
 
     <script>
-        // ============================================
-        // 100 HADIS PILIHAN (SHAHIH)
-        // Sumber: Shahih Bukhari, Muslim, Tirmidzi, Abu Dawud, Nasa'i, Ibnu Majah, Ahmad
-        // ============================================
         const hadisList = [
             { number: 1, text: "Sesungguhnya amal itu tergantung pada niatnya, dan setiap orang akan mendapatkan sesuai dengan niatnya. (HR. Bukhari & Muslim)" },
             { number: 2, text: "Barang siapa beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam. (HR. Bukhari & Muslim)" },
@@ -130,7 +130,7 @@
             { number: 23, text: "Sesungguhnya Allah mencintai orang yang bertaubat dan mencintai orang yang bersuci. (HR. Tirmidzi)" },
             { number: 24, text: "Janganlah kalian saling mendengki, saling menipu, saling membenci, dan janganlah sebagian kalian menjual di atas penjualan saudaranya. (HR. Muslim)" },
             { number: 25, text: "Barang siapa yang berjalan menuju masjid, maka Allah akan menyediakan baginya tempat di surga setiap kali ia melangkah. (HR. Bukhari & Muslim)" },
-            { number: 26, text: "Sesungguhnya Allah tidak akan mengampuni dosa syirik, dan Dia mengampuni dosa selain itu bagi siapa yang Dia kehendaki. (QS. An-Nisa: 48, juga diriwayatkan dalam hadis)" },
+            { number: 26, text: "Sesungguhnya Allah tidak akan mengampuni dosa syirik, dan Dia mengampuni dosa selain itu bagi siapa yang Dia kehendaki. (QS. An-Nisa: 48)" },
             { number: 27, text: "Janganlah kalian membunuh anak-anak kalian karena takut miskin, Kamilah yang memberi rezeki kepada mereka dan kepada kalian. (HR. Bukhari)" },
             { number: 28, text: "Sebaik-baik kalian adalah yang paling baik terhadap keluarganya, dan aku adalah yang paling baik terhadap keluarganya. (HR. Tirmidzi)" },
             { number: 29, text: "Allah memberi kelonggaran bagi orang yang teraniaya, tetapi jika ia memaafkan maka itu lebih baik baginya. (HR. Bukhari)" },
@@ -163,7 +163,7 @@
             { number: 56, text: "Tidak halal bagi seorang muslim untuk mendiamkan saudaranya lebih dari tiga malam. (HR. Bukhari & Muslim)" },
             { number: 57, text: "Barang siapa yang beriman kepada Allah dan hari akhir, maka janganlah ia masuk ke kamar mandi tanpa kain penutup. (HR. Tirmidzi)" },
             { number: 58, text: "Sesungguhnya Allah itu indah dan menyukai keindahan. (HR. Muslim)" },
-            { number: 59, text: "Janganlah kalian memakan daging kurban lebih dari tiga hari. (HR. Bukhari & Muslim) – (kecuali untuk tabarruk, sebagian ulama memakruhkan menyimpan lebih dari tiga hari)" },
+            { number: 59, text: "Janganlah kalian memakan daging kurban lebih dari tiga hari. (HR. Bukhari & Muslim)" },
             { number: 60, text: "Barang siapa yang membangun masjid karena Allah, meskipun hanya sekecil lubang sarang burung, Allah akan membangunkan untuknya rumah di surga. (HR. Tirmidzi)" },
             { number: 61, text: "Sebaik-baik kalian adalah yang paling baik dalam membayar hutang. (HR. Bukhari)" },
             { number: 62, text: "Orang yang meminjam sesuatu dengan niat akan mengembalikan, maka Allah akan membantunya. (HR. Bukhari)" },
@@ -207,7 +207,6 @@
             { number: 100, text: "Sampaikanlah dariku walau hanya satu ayat. (HR. Bukhari)" }
         ];
 
-        // Fungsi render hadis
         function renderHadis(filterText = "") {
             const container = document.getElementById('hadis-list');
             const countSpan = document.getElementById('hadisCount');
@@ -224,34 +223,26 @@
             filtered.forEach((hadis) => {
                 const hadisItem = document.createElement('div');
                 hadisItem.classList.add('hadis-item');
-                hadisItem.innerHTML = `
-                    <span>Hadis ${hadis.number}</span>
-                    <i class="fas fa-chevron-down"></i>
-                `;
-                
+                hadisItem.innerHTML = `<span>Hadis ${hadis.number}</span><i class="fas fa-chevron-down"></i>`;
                 const details = document.createElement('div');
                 details.classList.add('details');
                 details.innerHTML = `<p><strong>Hadis ${hadis.number}:</strong> ${hadis.text}</p>`;
-                
                 hadisItem.addEventListener('click', () => {
                     details.classList.toggle('show');
                     hadisItem.classList.toggle('completed');
                     const icon = hadisItem.querySelector('i');
                     icon.style.transform = details.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
                 });
-                
                 container.appendChild(hadisItem);
                 container.appendChild(details);
             });
         }
         
-        // Search functionality
         const searchInput = document.getElementById('searchHadis');
         searchInput.addEventListener('input', (e) => {
             renderHadis(e.target.value);
         });
         
-        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
         
@@ -295,9 +286,8 @@
             });
         });
         
-        // Inisialisasi
         renderHadis();
     </script>
     <script src="theme.js"></script>
 </body>
-    </html>
+</html>
