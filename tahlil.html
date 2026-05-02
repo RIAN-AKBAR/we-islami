@@ -25,28 +25,39 @@
 </head>
 <body>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
-    <header><nav><ul class="nav-links" id="nav-links">
-        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
-        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
-        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
-        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-    </ul></nav></header>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html" class="active"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="alquran.html"><i class="fas fa-book-quran"></i> Al-Quran</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main><div class="container fade-in">
-        <h1><i class="fas fa-dharmachakra" style="color: var(--secondary); margin-right: 15px;"></i>Bacaan Zikir & Tahlil</h1>
-        <p style="text-align: center; margin-bottom: 30px;">Kumpulan zikir setelah sholat, tahlil, dan doa arwah lengkap</p>
-        <div id="zikir-container"></div>
-    </div></main>
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-dharmachakra" style="color: var(--secondary); margin-right: 15px;"></i>Bacaan Zikir & Tahlil</h1>
+            <p style="text-align: center; margin-bottom: 30px;">Kumpulan zikir setelah sholat, tahlil, dan doa arwah lengkap</p>
+            <div id="zikir-container"></div>
+        </div>
+    </main>
 
-    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
+    </footer>
 
     <script>
         const zikirGroups = [
@@ -59,7 +70,7 @@
                 { arab: "اللَّهُ أَكْبَرُ (33x)", latin: "Allahu Akbar", arti: "Allah Maha Besar" },
                 { arab: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", latin: "La ilaha illallahu wahdahu la syarika lah, lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa 'ala kulli syai'in qadir", arti: "Tidak ada Tuhan selain Allah Yang Maha Esa, tidak ada sekutu bagi-Nya. Bagi-Nya kerajaan dan segala pujian, Dia menghidupkan dan mematikan, dan Dia Maha Kuasa atas segala sesuatu" }
             ]},
-            { title: "📖 Bacaan Tahlil & Yasin", items: [
+            { title: "📖 Bacaan Tahlil", items: [
                 { arab: "لَا إِلَهَ إِلَّا اللَّهُ", latin: "La ilaha illallah", arti: "Tidak ada Tuhan selain Allah (dibaca 100x atau 1000x)" },
                 { arab: "سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ", latin: "Subhanallah wal hamdulillah wa la ilaha illallah wallahu akbar", arti: "Maha Suci Allah, segala puji bagi Allah, tidak ada Tuhan selain Allah, Allah Maha Besar" },
                 { arab: "يَا حَيُّ يَا قَيُّومُ لَا إِلَهَ إِلَّا أَنْتَ", latin: "Ya Hayyu ya Qayyum la ilaha illa anta", arti: "Wahai Yang Maha Hidup, wahai Yang Maha Berdiri Sendiri, tidak ada Tuhan selain Engkau" }
