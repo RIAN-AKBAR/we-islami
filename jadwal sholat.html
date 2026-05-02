@@ -3,503 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Jadwal Sholat 2026 - Website Islami</title>
-    <meta name="description" content="Jadwal sholat lengkap tahun 2026 untuk wilayah Jakarta dan sekitarnya">
+    <title>Jadwal Sholat Seluruh Indonesia - Website Islami</title>
+    <meta name="description" content="Jadwal sholat lengkap seluruh Indonesia, data resmi dari Kementerian Agama RI">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .clock-container { display: flex; justify-content: center; gap: 25px; margin: 30px 0 40px; flex-wrap: wrap; }
-        .clock-box { background: var(--bg-white); border-radius: 20px; padding: 25px 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; min-width: 150px; transition: all 0.3s ease; border: 1px solid var(--border-color); }
-        .clock-box:hover { transform: translateY(-10px); border-color: var(--secondary); }
-        .clock-box p { margin: 0; font-size: 3rem; font-weight: 700; color: var(--primary); line-height: 1; }
-        .clock-label { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
-        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .info-card { background: var(--bg-white); border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid var(--border-color); }
-        .info-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
-        .info-icon { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
-        .info-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--primary); }
-        .info-value { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
-        .calendar-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-        .month-btn, .date-picker { background: var(--bg-white); border: 2px solid var(--border-color); padding: 12px 25px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-family); color: var(--text-color); }
-        .month-btn:hover, .date-picker:hover { border-color: var(--secondary); transform: translateY(-3px); }
-        .prayer-container { background: var(--bg-white); border-radius: 30px; padding: 35px; box-shadow: 0 25px 50px rgba(0,0,0,0.1); margin-bottom: 40px; border: 1px solid var(--border-color); }
-        .prayer-header { text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px dashed var(--secondary); }
-        .prayer-header h2 { font-size: 1.8rem; margin-bottom: 10px; border-bottom: none; }
-        .prayer-header h2::after { display: none; }
-        .location-tag { background: var(--gradient-primary); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-size: 1rem; border: 2px solid var(--secondary); }
-        .prayer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-        .prayer-card { background: var(--bg-light); border-radius: 20px; padding: 20px 15px; text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
-        .prayer-card.current { border-color: var(--secondary); background: rgba(212, 175, 55, 0.1); transform: scale(1.02); position: relative; }
-        .prayer-card.current::after { content: 'Sekarang'; position: absolute; top: -10px; right: 20px; background: var(--secondary); color: var(--primary); padding: 5px 15px; border-radius: 30px; font-size: 0.7rem; font-weight: 700; }
-        .prayer-icon { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; }
-        .prayer-name { font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-        .prayer-time { font-size: 1.6rem; font-weight: 700; color: var(--primary); font-family: 'Amiri', serif; }
-        @media (max-width: 768px) { .prayer-grid { grid-template-columns: 1fr; } .clock-box { min-width: 100px; padding: 15px; } .clock-box p { font-size: 2rem; } .prayer-container { padding: 20px; } }
+        .search-section {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .double-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 15px;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 180px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            background: var(--bg-white);
+            color: var(--text-color);
+            font-family: var(--font-family);
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        .relative {
+            position: relative;
+        }
+        .suggestions {
+            background: var(--bg-white);
+            border-radius: 12px;
+            margin-top: 0.4rem;
+            max-height: 240px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            position: absolute;
+            width: 100%;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .suggestion-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.15s;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+        }
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        .suggestion-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0 1rem;
+        }
+        .prayer-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 1rem 0.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+        .prayer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
+        }
+        .prayer-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        .prayer-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        .prayer-time {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            font-family: 'Amiri', monospace;
+        }
+        .extra-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 6px;
+        }
+        .location-info {
+            text-align: center;
+            margin-top: 1rem;
+            background: var(--bg-light);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 2rem;
+            color: var(--secondary);
+        }
+        .error-message {
+            background: #FEF2F2;
+            color: #B91C1C;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        .info-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+        .search-btn {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-family);
+            margin-top: 28px;
+        }
+        .search-btn:hover {
+            background: var(--gradient-secondary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .small-note {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .prayer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .prayer-time {
+                font-size: 1rem;
+            }
+            .double-group {
+                flex-direction: column;
+            }
+            .search-btn {
+                margin-top: 0;
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
-    <header><nav><ul class="nav-links" id="nav-links">
-        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
-        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
-        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
-        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-    </ul></nav></header>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="alquran.html"><i class="fas fa-book-quran"></i> Al-Quran</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html" class="active"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main><div class="container fade-in" style="max-width: 1200px;">
-        <h1><i class="fas fa-mosque" style="color: var(--secondary); margin-right: 15px;"></i>Jadwal Sholat 2026</h1>
-        <p style="text-align: center; margin-bottom: 20px;">Jakarta & Sekitarnya • Realtime • Hijriyah</p>
-        
-        <div class="clock-container"><div class="clock-box"><p id="jam">00</p><div class="clock-label">Jam</div></div>
-        <div class="clock-box"><p id="menit">00</p><div class="clock-label">Menit</div></div>
-        <div class="clock-box"><p id="detik">00</p><div class="clock-label">Detik</div></div></div>
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-mosque" style="color: var(--secondary); margin-right: 15px;"></i>Jadwal Sholat Seluruh Indonesia</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Data resmi Kementerian Agama RI — Seluruh kota di Nusantara</p>
 
-        <div class="info-cards"><div class="info-card"><i class="fas fa-calendar-alt info-icon"></i><h3>Tanggal Masehi</h3><div class="info-value" id="masehiDate">-</div></div>
-        <div class="info-card"><i class="fas fa-moon info-icon"></i><h3>Tanggal Hijriyah</h3><div class="info-value" id="hijriDate">-</div></div>
-        <div class="info-card"><i class="fas fa-clock info-icon"></i><h3>Waktu Sekarang</h3><div class="info-value" id="currentTime">-</div></div></div>
+            <div class="search-section">
+                <div class="input-group">
+                    <label><i class="fas fa-globe-asia"></i> Pilih Kota / Kabupaten</label>
+                    <select id="citySelect">
+                        <option value="">-- Memuat daftar kota dari API --</option>
+                    </select>
+                </div>
 
-        <div class="calendar-nav"><button class="month-btn" onclick="jumpToToday()"><i class="fas fa-calendar-check"></i> Hari Ini</button>
-        <select id="monthSelector" class="date-picker" onchange="changeMonth()"><option value="0">Januari 2026</option><option value="1">Februari 2026</option><option value="2">Maret 2026</option><option value="3">April 2026</option><option value="4">Mei 2026</option><option value="5">Juni 2026</option><option value="6">Juli 2026</option><option value="7">Agustus 2026</option><option value="8">September 2026</option><option value="9">Oktober 2026</option><option value="10">November 2026</option><option value="11">Desember 2026</option></select>
-        <select id="dateSelector" class="date-picker" onchange="changeDate()"><option value="1">1</option></select></div>
+                <div class="double-group">
+                    <div class="input-group relative" style="flex:2;">
+                        <label><i class="fas fa-search"></i> Atau cari kota lain</label>
+                        <input type="text" id="cityInput" placeholder="Ketik nama kota (contoh: Jakarta, Surabaya, Medan)" autocomplete="off">
+                        <div id="suggestionsBox" class="suggestions" style="display: none;"></div>
+                    </div>
+                    <div class="input-group" style="flex:1;">
+                        <label><i class="far fa-calendar-alt"></i> Tanggal</label>
+                        <input type="date" id="datePicker">
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-end;">
+                        <button id="searchBtn" class="search-btn"><i class="fas fa-search"></i> Lihat Jadwal</button>
+                    </div>
+                </div>
+                <div class="small-note">
+                    <i class="fas fa-check-circle"></i> Daftar kota diambil langsung dari API myQuran → semua ID valid.
+                </div>
+            </div>
 
-        <div class="prayer-container"><div class="prayer-header"><h2><i class="fas fa-clock"></i> Waktu Sholat</h2><div class="location-tag"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</div></div>
-        <div class="prayer-grid" id="prayerGrid"><div style="text-align: center; padding: 40px;">Memuat data...</div></div></div>
-    </div></main>
+            <div id="resultArea">
+                <div class="loader" id="loadingIndicator" style="display: none;">
+                    <i class="fas fa-spinner fa-pulse"></i> Mengambil jadwal sholat...
+                </div>
+                <div id="scheduleDisplay">
+                    <div class="info-loading"><i class="fas fa-cloud-download-alt"></i> Sedang memuat daftar kota dari server...</div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+            <p style="margin-top: 8px; font-size: 0.75rem;">⏰ Sumber: myQuran API v2 — Kementerian Agama RI</p>
+        </div>
+    </footer>
 
     <script>
-        const prayerTimesData = {
-           "2026-01-01": ["04:07", "04:17", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"],
-            "2026-01-02": ["04:08", "04:18", "05:39", "06:03", "11:58", "15:24", "18:12", "19:28"],
-            "2026-01-03": ["04:09", "04:19", "05:40", "06:04", "11:58", "15:25", "18:12", "19:28"],
-            "2026-01-04": ["04:09", "04:19", "05:40", "06:04", "11:58", "15:25", "18:13", "19:29"],
-            "2026-01-05": ["04:10", "04:20", "05:41", "06:05", "11:59", "15:26", "18:13", "19:29"],
-            "2026-01-06": ["04:10", "04:20", "05:41", "06:05", "11:59", "15:26", "18:14", "19:29"],
-            "2026-01-07": ["04:11", "04:21", "05:42", "06:06", "12:00", "15:26", "18:14", "19:30"],
-            "2026-01-08": ["04:12", "04:22", "05:42", "06:06", "12:00", "15:27", "18:14", "19:30"],
-            "2026-01-09": ["04:12", "04:22", "05:43", "06:07", "12:01", "15:27", "18:15", "19:30"],
-            "2026-01-10": ["04:13", "04:23", "05:43", "06:07", "12:01", "15:27", "18:15", "19:30"],
-            "2026-01-11": ["04:13", "04:23", "05:44", "06:08", "12:02", "15:27", "18:15", "19:31"],
-            "2026-01-12": ["04:14", "04:24", "05:44", "06:08", "12:02", "15:28", "18:16", "19:31"],
-            "2026-01-13": ["04:14", "04:24", "05:45", "06:09", "12:02", "15:28", "18:16", "19:31"],
-            "2026-01-14": ["04:15", "04:25", "05:45", "06:09", "12:03", "15:28", "18:16", "19:31"],
-            "2026-01-15": ["04:16", "04:26", "05:46", "06:10", "12:03", "15:28", "18:16", "19:31"],
-            "2026-01-16": ["04:16", "04:26", "05:46", "06:10", "12:03", "15:28", "18:17", "19:32"],
-            "2026-01-17": ["04:17", "04:27", "05:46", "06:10", "12:04", "15:28", "18:17", "19:32"],
-            "2026-01-18": ["04:17", "04:27", "05:47", "06:11", "12:04", "15:29", "18:17", "19:32"],
-            "2026-01-19": ["04:18", "04:28", "05:47", "06:11", "12:04", "15:29", "18:17", "19:32"],
-            "2026-01-20": ["04:18", "04:28", "05:48", "06:12", "12:05", "15:29", "18:18", "19:32"],
-            "2026-01-21": ["04:19", "04:29", "05:48", "06:12", "12:05", "15:29", "18:18", "19:32"],
-            "2026-01-22": ["04:19", "04:29", "05:49", "06:13", "12:05", "15:29", "18:18", "19:32"],
-            "2026-01-23": ["04:20", "04:30", "05:49", "06:13", "12:06", "15:29", "18:18", "19:32"],
-            "2026-01-24": ["04:21", "04:31", "05:49", "06:13", "12:06", "15:29", "18:18", "19:32"],
-            "2026-01-25": ["04:21", "04:31", "05:50", "06:14", "12:06", "15:29", "18:18", "19:32"],
-            "2026-01-26": ["04:22", "04:32", "05:50", "06:14", "12:06", "15:29", "18:19", "19:32"],
-            "2026-01-27": ["04:22", "04:32", "05:50", "06:14", "12:07", "15:29", "18:19", "19:32"],
-            "2026-01-28": ["04:23", "04:33", "05:51", "06:15", "12:07", "15:29", "18:19", "19:32"],
-            "2026-01-29": ["04:23", "04:33", "05:51", "06:15", "12:07", "15:28", "18:19", "19:32"],
-            "2026-01-30": ["04:23", "04:33", "05:51", "06:15", "12:07", "15:28", "18:19", "19:32"],
-            "2026-01-31": ["04:24", "04:34", "05:52", "06:16", "12:07", "15:28", "18:19", "19:32"],
-            "2026-02-01": ["04:24", "04:34", "05:52", "06:16", "12:07", "15:28", "18:19", "19:32"],
-            "2026-02-02": ["04:25", "04:35", "05:52", "06:16", "12:08", "15:28", "18:19", "19:32"],
-            "2026-02-03": ["04:25", "04:35", "05:53", "06:17", "12:08", "15:27", "18:19", "19:32"],
-            "2026-02-04": ["04:26", "04:36", "05:53", "06:17", "12:08", "15:27", "18:19", "19:31"],
-            "2026-02-05": ["04:26", "04:36", "05:53", "06:17", "12:08", "15:27", "18:19", "19:31"],
-            "2026-02-06": ["04:26", "04:36", "05:53", "06:17", "12:08", "15:26", "18:19", "19:31"],
-            "2026-02-07": ["04:27", "04:37", "05:54", "06:18", "12:08", "15:26", "18:19", "19:31"],
-            "2026-02-08": ["04:27", "04:37", "05:54", "06:18", "12:08", "15:26", "18:18", "19:31"],
-            "2026-02-09": ["04:27", "04:37", "05:54", "06:18", "12:08", "15:25", "18:18", "19:30"],
-            "2026-02-10": ["04:28", "04:38", "05:54", "06:18", "12:08", "15:25", "18:18", "19:30"],
-            "2026-02-11": ["04:28", "04:38", "05:54", "06:18", "12:08", "15:24", "18:18", "19:30"],
-            "2026-02-12": ["04:28", "04:38", "05:55", "06:19", "12:08", "15:24", "18:18", "19:30"],
-            "2026-02-13": ["04:29", "04:39", "05:55", "06:19", "12:08", "15:23", "18:18", "19:29"],
-            "2026-02-14": ["04:29", "04:39", "05:55", "06:19", "12:08", "15:23", "18:18", "19:29"],
-            "2026-02-15": ["04:29", "04:39", "05:55", "06:19", "12:08", "15:22", "18:17", "19:29"],
-            "2026-02-16": ["04:29", "04:39", "05:55", "06:19", "12:08", "15:22", "18:17", "19:28"],
-            "2026-02-17": ["04:30", "04:40", "05:55", "06:19", "12:08", "15:21", "18:17", "19:28"],
-            "2026-02-18": ["04:30", "04:40", "05:55", "06:19", "12:08", "15:20", "18:17", "19:28"],
-            "2026-02-19": ["04:30", "04:40", "05:55", "06:19", "12:08", "15:20", "18:16", "19:27"],
-            "2026-02-20": ["04:30", "04:40", "05:55", "06:19", "12:08", "15:19", "18:16", "19:27"],
-            "2026-02-21": ["04:31", "04:41", "05:56", "06:20", "12:08", "15:18", "18:16", "19:27"],
-            "2026-02-22": ["04:31", "04:41", "05:56", "06:20", "12:08", "15:17", "18:16", "19:26"],
-            "2026-02-23": ["04:31", "04:41", "05:56", "06:20", "12:08", "15:17", "18:15", "19:26"],
-            "2026-02-24": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:16", "18:15", "19:25"],
-            "2026-02-25": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:15", "18:15", "19:25"],
-            "2026-02-26": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:14", "18:14", "19:25"],
-            "2026-02-27": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:13", "18:14", "19:24"],
-            "2026-02-28": ["04:31", "04:41", "05:56", "06:20", "12:07", "15:12", "18:14", "19:24"],
-            "2026-03-01": ["04:32", "04:42", "05:56", "06:20", "12:07", "15:11", "18:13", "19:23"],
-            "2026-03-02": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:10", "18:13", "19:23"],
-            "2026-03-03": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:09", "18:13", "19:22"],
-            "2026-03-04": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:08", "18:12", "19:22"],
-            "2026-03-05": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:07", "18:12", "19:22"],
-            "2026-03-06": ["04:32", "04:42", "05:56", "06:20", "12:06", "15:07", "18:12", "19:21"],
-            "2026-03-07": ["04:32", "04:42", "05:56", "06:20", "12:05", "15:08", "18:11", "19:21"],
-            "2026-03-08": ["04:32", "04:42", "05:55", "06:19", "12:05", "15:08", "18:11", "19:20"],
-            "2026-03-09": ["04:32", "04:42", "05:55", "06:19", "12:05", "15:08", "18:10", "19:20"],
-            "2026-03-10": ["04:32", "04:42", "05:55", "06:19", "12:05", "15:09", "18:10", "19:19"],
-            "2026-03-11": ["04:32", "04:42", "05:55", "06:19", "12:04", "15:09", "18:09", "19:19"],
-            "2026-03-12": ["04:32", "04:42", "05:55", "06:19", "12:04", "15:10", "18:09", "19:18"],
-            "2026-03-13": ["04:32", "04:42", "05:55", "06:19", "12:04", "15:10", "18:09", "19:18"],
-            "2026-03-14": ["04:32", "04:42", "05:55", "06:19", "12:04", "15:10", "18:08", "19:17"],
-            "2026-03-15": ["04:32", "04:42", "05:55", "06:19", "12:03", "15:11", "18:08", "19:17"],
-            "2026-03-16": ["04:32", "04:42", "05:55", "06:19", "12:03", "15:11", "18:07", "19:16"],
-            "2026-03-17": ["04:31", "04:41", "05:55", "06:19", "12:03", "15:11", "18:07", "19:16"],
-            "2026-03-18": ["04:31", "04:41", "05:55", "06:19", "12:02", "15:11", "18:06", "19:15"],
-            "2026-03-19": ["04:31", "04:41", "05:54", "06:18", "12:02", "15:12", "18:06", "19:15"],
-            "2026-03-20": ["04:31", "04:41", "05:54", "06:18", "12:02", "15:12", "18:05", "19:14"],
-            "2026-03-21": ["04:31", "04:41", "05:54", "06:18", "12:02", "15:12", "18:05", "19:14"],
-            "2026-03-22": ["04:31", "04:41", "05:54", "06:18", "12:01", "15:12", "18:04", "19:13"],
-            "2026-03-23": ["04:31", "04:41", "05:54", "06:18", "12:01", "15:12", "18:04", "19:13"],
-            "2026-03-24": ["04:31", "04:41", "05:54", "06:18", "12:01", "15:13", "18:03", "19:13"],
-            "2026-03-25": ["04:31", "04:41", "05:54", "06:18", "12:00", "15:13", "18:03", "19:12"],
-            "2026-03-26": ["04:30", "04:40", "05:54", "06:18", "12:00", "15:13", "18:03", "19:12"],
-            "2026-03-27": ["04:30", "04:40", "05:53", "06:17", "12:00", "15:13", "18:02", "19:11"],
-            "2026-03-28": ["04:30", "04:40", "05:53", "06:17", "12:00", "15:13", "18:02", "19:11"],
-            "2026-03-29": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:01", "19:10"],
-            "2026-03-30": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:01", "19:10"],
-            "2026-03-31": ["04:30", "04:40", "05:53", "06:17", "11:59", "15:13", "18:00", "19:09"],
-            "2026-04-01": ["04:30", "04:40", "05:53", "06:17", "11:58", "15:13", "18:00", "19:09"],
-            "2026-04-02": ["04:29", "04:39", "05:53", "06:17", "11:58", "15:13", "17:59", "19:08"],
-            "2026-04-03": ["04:29", "04:39", "05:53", "06:17", "11:58", "15:13", "17:59", "19:08"],
-            "2026-04-04": ["04:29", "04:39", "05:52", "06:16", "11:57", "15:14", "17:58", "19:08"],
-            "2026-04-05": ["04:29", "04:39", "05:52", "06:16", "11:57", "15:14", "17:58", "19:07"],
-            "2026-04-06": ["04:29", "04:39", "05:52", "06:16", "11:57", "15:14", "17:57", "19:07"],
-            "2026-04-07": ["04:29", "04:39", "05:52", "06:16", "11:57", "15:14", "17:57", "19:06"],
-            "2026-04-08": ["04:28", "04:38", "05:52", "06:16", "11:56", "15:14", "17:57", "19:06"],
-            "2026-04-09": ["04:28", "04:38", "05:52", "06:16", "11:56", "15:14", "17:56", "19:06"],
-            "2026-04-10": ["04:28", "04:38", "05:52", "06:16", "11:56", "15:14", "17:56", "19:05"],
-            "2026-04-11": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:05"],
-            "2026-04-12": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:04"],
-            "2026-04-13": ["04:28", "04:38", "05:51", "06:15", "11:55", "15:13", "17:54", "19:04"],
-            "2026-04-14": ["04:27", "04:37", "05:51", "06:15", "11:55", "15:13", "17:54", "19:04"],
-            "2026-04-15": ["04:27", "04:37", "05:51", "06:15", "11:54", "15:13", "17:54", "19:03"],
-            "2026-04-16": ["04:27", "04:37", "05:51", "06:15", "11:54", "15:13", "17:53", "19:03"],
-            "2026-04-17": ["04:27", "04:37", "05:51", "06:15", "11:54", "15:13", "17:53", "19:03"],
-            "2026-04-18": ["04:27", "04:37", "05:51", "06:15", "11:54", "15:13", "17:52", "19:02"],
-            "2026-04-19": ["04:27", "04:37", "05:51", "06:15", "11:53", "15:13", "17:52", "19:02"],
-            "2026-04-20": ["04:26", "04:36", "05:51", "06:15", "11:53", "15:13", "17:52", "19:02"],
-            "2026-04-21": ["04:26", "04:36", "05:51", "06:15", "11:53", "15:13", "17:51", "19:02"],
-            "2026-04-22": ["04:26", "04:36", "05:51", "06:15", "11:53", "15:13", "17:51", "19:01"],
-            "2026-04-23": ["04:26", "04:36", "05:51", "06:15", "11:53", "15:13", "17:51", "19:01"],
-            "2026-04-24": ["04:26", "04:36", "05:51", "06:15", "11:52", "15:13", "17:50", "19:01"],
-            "2026-04-25": ["04:26", "04:36", "05:51", "06:15", "11:52", "15:13", "17:50", "19:01"],
-            "2026-04-26": ["04:26", "04:36", "05:51", "06:15", "11:52", "15:13", "17:50", "19:00"],
-            "2026-04-27": ["04:25", "04:35", "05:51", "06:15", "11:52", "15:13", "17:49", "19:00"],
-            "2026-04-28": ["04:25", "04:35", "05:50", "06:14", "11:52", "15:13", "17:49", "19:00"],
-            "2026-04-29": ["04:25", "04:35", "05:50", "06:14", "11:52", "15:13", "17:49", "19:00"],
-            "2026-04-30": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "19:00"],
-            "2026-05-01": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "18:59"],
-            "2026-05-02": ["04:25", "04:35", "05:50", "06:14", "11:51", "15:13", "17:48", "18:59"],
-            "2026-05-03": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:13", "17:48", "18:59"],
-            "2026-05-04": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:13", "17:47", "18:59"],
-            "2026-05-05": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:13", "17:47", "18:59"],
-            "2026-05-06": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:13", "17:47", "18:59"],
-            "2026-05-07": ["04:25", "04:35", "05:51", "06:15", "11:51", "15:12", "17:47", "18:59"],
-            "2026-05-08": ["04:24", "04:34", "05:51", "06:15", "11:51", "15:12", "17:47", "18:58"],
-            "2026-05-09": ["04:24", "04:34", "05:51", "06:15", "11:51", "15:12", "17:46", "18:58"],
-            "2026-05-10": ["04:24", "04:34", "05:51", "06:15", "11:51", "15:12", "17:46", "18:58"],
-            "2026-05-11": ["04:24", "04:34", "05:51", "06:15", "11:51", "15:12", "17:46", "18:58"],
-            "2026-05-12": ["04:24", "04:34", "05:51", "06:15", "11:50", "15:12", "17:46", "18:58"],
-            "2026-05-13": ["04:24", "04:34", "05:51", "06:15", "11:50", "15:12", "17:46", "18:58"],
-            "2026-05-14": ["04:24", "04:34", "05:51", "06:15", "11:50", "15:12", "17:46", "18:58"],
-            "2026-05-15": ["04:24", "04:34", "05:51", "06:15", "11:50", "15:12", "17:46", "18:58"],
-            "2026-05-16": ["04:24", "04:34", "05:51", "06:15", "11:50", "15:13", "17:45", "18:58"],
-            "2026-05-17": ["04:24", "04:34", "05:52", "06:16", "11:50", "15:13", "17:45", "18:58"],
-            "2026-05-18": ["04:24", "04:34", "05:52", "06:16", "11:50", "15:13", "17:45", "18:58"],
-            "2026-05-19": ["04:24", "04:34", "05:52", "06:16", "11:51", "15:13", "17:45", "18:58"],
-            "2026-05-20": ["04:24", "04:34", "05:52", "06:16", "11:51", "15:13", "17:45", "18:58"],
-            "2026-05-21": ["04:24", "04:34", "05:52", "06:16", "11:51", "15:13", "17:45", "18:58"],
-            "2026-05-22": ["04:24", "04:34", "05:52", "06:16", "11:51", "15:13", "17:45", "18:58"],
-            "2026-05-23": ["04:25", "04:35", "05:52", "06:16", "11:51", "15:13", "17:45", "18:58"],
-            "2026-05-24": ["04:25", "04:35", "05:53", "06:17", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-25": ["04:25", "04:35", "05:53", "06:17", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-26": ["04:25", "04:35", "05:53", "06:17", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-27": ["04:25", "04:35", "05:53", "06:17", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-28": ["04:25", "04:35", "05:53", "06:17", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-29": ["04:25", "04:35", "05:54", "06:18", "11:51", "15:13", "17:45", "18:59"],
-            "2026-05-30": ["04:25", "04:35", "05:54", "06:18", "11:51", "15:14", "17:45", "18:59"],
-            "2026-05-31": ["04:25", "04:35", "05:54", "06:18", "11:52", "15:14", "17:45", "18:59"],
-            "2026-06-01": ["04:25", "04:35", "05:54", "06:18", "11:52", "15:14", "17:45", "19:00"],
-            "2026-06-02": ["04:26", "04:36", "05:54", "06:18", "11:52", "15:14", "17:45", "19:00"],
-            "2026-06-03": ["04:26", "04:36", "05:55", "06:19", "11:52", "15:14", "17:46", "19:00"],
-            "2026-06-04": ["04:26", "04:36", "05:55", "06:19", "11:52", "15:14", "17:46", "19:00"],
-            "2026-06-05": ["04:26", "04:36", "05:55", "06:19", "11:52", "15:14", "17:46", "19:00"],
-            "2026-06-06": ["04:26", "04:36", "05:55", "06:19", "11:53", "15:15", "17:46", "19:00"],
-            "2026-06-07": ["04:26", "04:36", "05:56", "06:20", "11:53", "15:15", "17:46", "19:01"],
-            "2026-06-08": ["04:26", "04:36", "05:56", "06:20", "11:53", "15:15", "17:46", "19:01"],
-            "2026-06-09": ["04:27", "04:37", "05:56", "06:20", "11:53", "15:15", "17:46", "19:01"],
-            "2026-06-10": ["04:27", "04:37", "05:56", "06:20", "11:53", "15:15", "17:46", "19:01"],
-            "2026-06-11": ["04:27", "04:37", "05:56", "06:20", "11:54", "15:15", "17:47", "19:01"],
-            "2026-06-12": ["04:27", "04:37", "05:57", "06:21", "11:54", "15:16", "17:47", "19:02"],
-            "2026-06-13": ["04:27", "04:37", "05:57", "06:21", "11:54", "15:16", "17:47", "19:02"],
-            "2026-06-14": ["04:28", "04:38", "05:57", "06:21", "11:54", "15:16", "17:47", "19:02"],
-            "2026-06-15": ["04:28", "04:38", "05:57", "06:21", "11:54", "15:16", "17:47", "19:02"],
-            "2026-06-16": ["04:28", "04:38", "05:58", "06:22", "11:55", "15:16", "17:47", "19:02"],
-            "2026-06-17": ["04:28", "04:38", "05:58", "06:22", "11:55", "15:17", "17:48", "19:03"],
-            "2026-06-18": ["04:28", "04:38", "05:58", "06:22", "11:55", "15:17", "17:48", "19:03"],
-            "2026-06-19": ["04:29", "04:39", "05:58", "06:22", "11:55", "15:17", "17:48", "19:03"],
-            "2026-06-20": ["04:29", "04:39", "05:59", "06:23", "11:55", "15:17", "17:48", "19:03"],
-            "2026-06-21": ["04:29", "04:39", "05:59", "06:23", "11:56", "15:18", "17:49", "19:03"],
-            "2026-06-22": ["04:29", "04:39", "05:59", "06:23", "11:56", "15:18", "17:49", "19:04"],
-            "2026-06-23": ["04:30", "04:40", "05:59", "06:23", "11:56", "15:18", "17:49", "19:04"],
-            "2026-06-24": ["04:30", "04:40", "05:59", "06:23", "11:56", "15:18", "17:49", "19:04"],
-            "2026-06-25": ["04:30", "04:40", "06:00", "06:24", "11:57", "15:18", "17:49", "19:04"],
-            "2026-06-26": ["04:30", "04:40", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
-            "2026-06-27": ["04:30", "04:40", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
-            "2026-06-28": ["04:31", "04:41", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
-            "2026-06-29": ["04:31", "04:41", "06:00", "06:24", "11:57", "15:19", "17:50", "19:05"],
-            "2026-06-30": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:05"],
-            "2026-07-01": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
-            "2026-07-02": ["04:31", "04:41", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
-            "2026-07-03": ["04:32", "04:42", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
-            "2026-07-04": ["04:32", "04:42", "06:01", "06:25", "11:58", "15:20", "17:51", "19:06"],
-            "2026-07-05": ["04:32", "04:42", "06:01", "06:25", "11:59", "15:21", "17:52", "19:06"],
-            "2026-07-06": ["04:32", "04:42", "06:02", "06:26", "11:59", "15:21", "17:52", "19:06"],
-            "2026-07-07": ["04:32", "04:42", "06:02", "06:26", "11:59", "15:21", "17:52", "19:07"],
-            "2026-07-08": ["04:33", "04:43", "06:02", "06:26", "11:59", "15:21", "17:52", "19:07"],
-            "2026-07-09": ["04:33", "04:43", "06:02", "06:26", "11:59", "15:21", "17:53", "19:07"],
-            "2026-07-10": ["04:33", "04:43", "06:02", "06:26", "11:59", "15:21", "17:53", "19:07"],
-            "2026-07-11": ["04:33", "04:43", "06:02", "06:26", "11:59", "15:22", "17:53", "19:07"],
-            "2026-07-12": ["04:33", "04:43", "06:02", "06:26", "12:00", "15:22", "17:53", "19:07"],
-            "2026-07-13": ["04:33", "04:43", "06:02", "06:26", "12:00", "15:22", "17:53", "19:07"],
-            "2026-07-14": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:22", "17:54", "19:08"],
-            "2026-07-15": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:22", "17:54", "19:08"],
-            "2026-07-16": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:22", "17:54", "19:08"],
-            "2026-07-17": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:22", "17:54", "19:08"],
-            "2026-07-18": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:22", "17:54", "19:08"],
-            "2026-07-19": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:23", "17:54", "19:08"],
-            "2026-07-20": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:23", "17:55", "19:08"],
-            "2026-07-21": ["04:34", "04:44", "06:02", "06:26", "12:00", "15:23", "17:55", "19:08"],
-            "2026-07-22": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-23": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-24": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-25": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-26": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-27": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:55", "19:08"],
-            "2026-07-28": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:56", "19:08"],
-            "2026-07-29": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:56", "19:08"],
-            "2026-07-30": ["04:34", "04:44", "06:02", "06:26", "12:01", "15:23", "17:56", "19:08"],
-            "2026-07-31": ["04:34", "04:44", "06:01", "06:25", "12:01", "15:23", "17:56", "19:08"],
-            "2026-08-01": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-02": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-03": ["04:35", "04:45", "06:02", "06:26", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-04": ["04:35", "04:45", "06:01", "06:25", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-05": ["04:35", "04:45", "06:01", "06:25", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-06": ["04:35", "04:45", "06:01", "06:25", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-07": ["04:34", "04:44", "06:01", "06:25", "12:01", "15:23", "17:57", "19:09"],
-            "2026-08-08": ["04:34", "04:44", "06:00", "06:24", "12:01", "15:22", "17:57", "19:09"],
-            "2026-08-09": ["04:34", "04:44", "06:00", "06:24", "12:00", "15:22", "17:57", "19:08"],
-            "2026-08-10": ["04:34", "04:44", "06:00", "06:24", "12:00", "15:22", "17:57", "19:08"],
-            "2026-08-11": ["04:34", "04:44", "06:00", "06:24", "12:00", "15:22", "17:57", "19:08"],
-            "2026-08-12": ["04:34", "04:44", "05:59", "06:23", "12:00", "15:22", "17:57", "19:08"],
-            "2026-08-13": ["04:34", "04:44", "05:59", "06:23", "12:00", "15:21", "17:57", "19:08"],
-            "2026-08-14": ["04:33", "04:43", "05:59", "06:23", "12:00", "15:21", "17:57", "19:08"],
-            "2026-08-15": ["04:33", "04:43", "05:58", "06:22", "11:59", "15:21", "17:57", "19:08"],
-            "2026-08-16": ["04:33", "04:43", "05:58", "06:22", "11:59", "15:21", "17:57", "19:07"],
-            "2026-08-17": ["04:33", "04:43", "05:58", "06:22", "11:59", "15:20", "17:56", "19:07"],
-            "2026-08-18": ["04:32", "04:42", "05:57", "06:21", "11:59", "15:20", "17:56", "19:07"],
-            "2026-08-19": ["04:32", "04:42", "05:57", "06:21", "11:59", "15:20", "17:56", "19:07"],
-            "2026-08-20": ["04:32", "04:42", "05:57", "06:21", "11:58", "15:19", "17:56", "19:07"],
-            "2026-08-21": ["04:32", "04:42", "05:56", "06:20", "11:58", "15:19", "17:56", "19:07"],
-            "2026-08-22": ["04:31", "04:41", "05:56", "06:20", "11:58", "15:18", "17:56", "19:06"],
-            "2026-08-23": ["04:31", "04:41", "05:56", "06:20", "11:58", "15:18", "17:56", "19:06"],
-            "2026-08-24": ["04:31", "04:41", "05:55", "06:19", "11:57", "15:18", "17:56", "19:06"],
-            "2026-08-25": ["04:30", "04:40", "05:55", "06:19", "11:57", "15:17", "17:56", "19:06"],
-            "2026-08-26": ["04:30", "04:40", "05:54", "06:18", "11:57", "15:17", "17:56", "19:06"],
-            "2026-08-27": ["04:30", "04:40", "05:54", "06:18", "11:57", "15:16", "17:55", "19:05"],
-            "2026-08-28": ["04:29", "04:39", "05:53", "06:17", "11:56", "15:16", "17:55", "19:05"],
-            "2026-08-29": ["04:29", "04:39", "05:53", "06:17", "11:56", "15:15", "17:55", "19:05"],
-            "2026-08-30": ["04:29", "04:39", "05:53", "06:17", "11:56", "15:15", "17:55", "19:05"],
-            "2026-08-31": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:05"],
-            "2026-09-01": ["04:28", "04:38", "05:52", "06:16", "11:55", "15:14", "17:55", "19:04"],
-            "2026-09-02": ["04:27", "04:37", "05:51", "06:15", "11:55", "15:13", "17:55", "19:04"],
-            "2026-09-03": ["04:27", "04:37", "05:51", "06:15", "11:55", "15:13", "17:54", "19:04"],
-            "2026-09-04": ["04:27", "04:37", "05:50", "06:14", "11:54", "15:12", "17:54", "19:04"],
-            "2026-09-05": ["04:26", "04:36", "05:50", "06:14", "11:54", "15:11", "17:54", "19:04"],
-            "2026-09-06": ["04:26", "04:36", "05:49", "06:13", "11:54", "15:11", "17:54", "19:03"],
-            "2026-09-07": ["04:25", "04:35", "05:49", "06:13", "11:53", "15:10", "17:54", "19:03"],
-            "2026-09-08": ["04:25", "04:35", "05:48", "06:12", "11:53", "15:10", "17:54", "19:03"],
-            "2026-09-09": ["04:24", "04:34", "05:48", "06:12", "11:53", "15:09", "17:53", "19:03"],
-            "2026-09-10": ["04:24", "04:34", "05:47", "06:11", "11:52", "15:08", "17:53", "19:02"],
-            "2026-09-11": ["04:23", "04:33", "05:47", "06:11", "11:52", "15:08", "17:53", "19:02"],
-            "2026-09-12": ["04:23", "04:33", "05:46", "06:10", "11:51", "15:07", "17:53", "19:02"],
-            "2026-09-13": ["04:22", "04:32", "05:46", "06:10", "11:51", "15:06", "17:53", "19:02"],
-            "2026-09-14": ["04:22", "04:32", "05:45", "06:09", "11:51", "15:05", "17:52", "19:02"],
-            "2026-09-15": ["04:21", "04:31", "05:45", "06:09", "11:50", "15:05", "17:52", "19:01"],
-            "2026-09-16": ["04:21", "04:31", "05:44", "06:08", "11:50", "15:04", "17:52", "19:01"],
-            "2026-09-17": ["04:20", "04:30", "05:44", "06:08", "11:50", "15:03", "17:52", "19:01"],
-            "2026-09-18": ["04:20", "04:30", "05:43", "06:07", "11:49", "15:02", "17:52", "19:01"],
-            "2026-09-19": ["04:19", "04:29", "05:43", "06:07", "11:49", "15:02", "17:51", "19:01"],
-            "2026-09-20": ["04:19", "04:29", "05:42", "06:06", "11:49", "15:01", "17:51", "19:00"],
-            "2026-09-21": ["04:18", "04:28", "05:42", "06:06", "11:48", "15:00", "17:51", "19:00"],
-            "2026-09-22": ["04:18", "04:28", "05:41", "06:05", "11:48", "14:59", "17:51", "19:00"],
-            "2026-09-23": ["04:17", "04:27", "05:40", "06:04", "11:48", "14:58", "17:51", "19:00"],
-            "2026-09-24": ["04:17", "04:27", "05:40", "06:04", "11:47", "14:58", "17:51", "19:00"],
-            "2026-09-25": ["04:16", "04:26", "05:39", "06:03", "11:47", "14:57", "17:50", "18:59"],
-            "2026-09-26": ["04:16", "04:26", "05:39", "06:03", "11:46", "14:56", "17:50", "18:59"],
-            "2026-09-27": ["04:15", "04:25", "05:38", "06:02", "11:46", "14:55", "17:50", "18:59"],
-            "2026-09-28": ["04:15", "04:25", "05:38", "06:02", "11:46", "14:54", "17:50", "18:59"],
-            "2026-09-29": ["04:14", "04:24", "05:37", "06:01", "11:45", "14:53", "17:50", "18:59"],
-            "2026-09-30": ["04:14", "04:24", "05:37", "06:01", "11:45", "14:52", "17:50", "18:59"],
-            "2026-10-01": ["04:13", "04:23", "05:36", "06:00", "11:45", "14:51", "17:49", "18:59"],
-            "2026-10-02": ["04:13", "04:23", "05:36", "06:00", "11:44", "14:51", "17:49", "18:58"],
-            "2026-10-03": ["04:12", "04:22", "05:35", "05:59", "11:44", "14:50", "17:49", "18:58"],
-            "2026-10-04": ["04:11", "04:21", "05:35", "05:59", "11:44", "14:49", "17:49", "18:58"],
-            "2026-10-05": ["04:11", "04:21", "05:34", "05:58", "11:44", "14:48", "17:49", "18:58"],
-            "2026-10-06": ["04:10", "04:20", "05:34", "05:58", "11:43", "14:47", "17:49", "18:58"],
-            "2026-10-07": ["04:10", "04:20", "05:33", "05:57", "11:43", "14:46", "17:48", "18:58"],
-            "2026-10-08": ["04:09", "04:19", "05:33", "05:57", "11:43", "14:45", "17:48", "18:58"],
-            "2026-10-09": ["04:09", "04:19", "05:33", "05:57", "11:42", "14:44", "17:48", "18:58"],
-            "2026-10-10": ["04:08", "04:18", "05:32", "05:56", "11:42", "14:43", "17:48", "18:58"],
-            "2026-10-11": ["04:08", "04:18", "05:32", "05:56", "11:42", "14:44", "17:48", "18:58"],
-            "2026-10-12": ["04:07", "04:17", "05:31", "05:55", "11:42", "14:45", "17:48", "18:58"],
-            "2026-10-13": ["04:07", "04:17", "05:31", "05:55", "11:41", "14:45", "17:48", "18:58"],
-            "2026-10-14": ["04:06", "04:16", "05:30", "05:54", "11:41", "14:46", "17:48", "18:58"],
-            "2026-10-15": ["04:06", "04:16", "05:30", "05:54", "11:41", "14:46", "17:48", "18:58"],
-            "2026-10-16": ["04:05", "04:15", "05:30", "05:54", "11:41", "14:47", "17:48", "18:58"],
-            "2026-10-17": ["04:05", "04:15", "05:29", "05:53", "11:40", "14:47", "17:48", "18:58"],
-            "2026-10-18": ["04:04", "04:14", "05:29", "05:53", "11:40", "14:48", "17:48", "18:58"],
-            "2026-10-19": ["04:04", "04:14", "05:28", "05:52", "11:40", "14:48", "17:48", "18:58"],
-            "2026-10-20": ["04:03", "04:13", "05:28", "05:52", "11:40", "14:49", "17:48", "18:58"],
-            "2026-10-21": ["04:03", "04:13", "05:28", "05:52", "11:40", "14:49", "17:48", "18:58"],
-            "2026-10-22": ["04:03", "04:13", "05:27", "05:51", "11:39", "14:50", "17:48", "18:58"],
-            "2026-10-23": ["04:02", "04:12", "05:27", "05:51", "11:39", "14:50", "17:48", "18:58"],
-            "2026-10-24": ["04:02", "04:12", "05:27", "05:51", "11:39", "14:50", "17:48", "18:58"],
-            "2026-10-25": ["04:01", "04:11", "05:26", "05:50", "11:39", "14:51", "17:48", "18:59"],
-            "2026-10-26": ["04:01", "04:11", "05:26", "05:50", "11:39", "14:51", "17:48", "18:59"],
-            "2026-10-27": ["04:00", "04:10", "05:26", "05:50", "11:39", "14:52", "17:48", "18:59"],
-            "2026-10-28": ["04:00", "04:10", "05:26", "05:50", "11:39", "14:52", "17:48", "18:59"],
-            "2026-10-29": ["04:00", "04:10", "05:25", "05:49", "11:39", "14:53", "17:48", "18:59"],
-            "2026-10-30": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:53", "17:48", "18:59"],
-            "2026-10-31": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:54", "17:48", "19:00"],
-            "2026-11-01": ["03:59", "04:09", "05:25", "05:49", "11:38", "14:54", "17:48", "19:00"],
-            "2026-11-02": ["03:58", "04:08", "05:25", "05:49", "11:38", "14:55", "17:48", "19:00"],
-            "2026-11-03": ["03:58", "04:08", "05:24", "05:48", "11:38", "14:55", "17:48", "19:00"],
-            "2026-11-04": ["03:58", "04:08", "05:24", "05:48", "11:38", "14:55", "17:48", "19:01"],
-            "2026-11-05": ["03:57", "04:07", "05:24", "05:48", "11:38", "14:56", "17:49", "19:01"],
-            "2026-11-06": ["03:57", "04:07", "05:24", "05:48", "11:38", "14:56", "17:49", "19:01"],
-            "2026-11-07": ["03:57", "04:07", "05:24", "05:48", "11:38", "14:57", "17:49", "19:01"],
-            "2026-11-08": ["03:57", "04:07", "05:24", "05:48", "11:38", "14:57", "17:49", "19:02"],
-            "2026-11-09": ["03:56", "04:06", "05:24", "05:48", "11:38", "14:58", "17:49", "19:02"],
-            "2026-11-10": ["03:56", "04:06", "05:24", "05:48", "11:39", "14:58", "17:50", "19:02"],
-            "2026-11-11": ["03:56", "04:06", "05:23", "05:47", "11:39", "14:59", "17:50", "19:03"],
-            "2026-11-12": ["03:56", "04:06", "05:23", "05:47", "11:39", "14:59", "17:50", "19:03"],
-            "2026-11-13": ["03:56", "04:06", "05:23", "05:47", "11:39", "15:00", "17:50", "19:04"],
-            "2026-11-14": ["03:56", "04:06", "05:23", "05:47", "11:39", "15:00", "17:51", "19:04"],
-            "2026-11-15": ["03:55", "04:05", "05:23", "05:47", "11:39", "15:01", "17:51", "19:04"],
-            "2026-11-16": ["03:55", "04:05", "05:23", "05:47", "11:39", "15:01", "17:51", "19:05"],
-            "2026-11-17": ["03:55", "04:05", "05:24", "05:48", "11:39", "15:02", "17:52", "19:05"],
-            "2026-11-18": ["03:55", "04:05", "05:24", "05:48", "11:40", "15:02", "17:52", "19:06"],
-            "2026-11-19": ["03:55", "04:05", "05:24", "05:48", "11:40", "15:03", "17:52", "19:06"],
-            "2026-11-20": ["03:55", "04:05", "05:24", "05:48", "11:40", "15:03", "17:52", "19:07"],
-            "2026-11-21": ["03:55", "04:05", "05:24", "05:48", "11:40", "15:04", "17:53", "19:07"],
-            "2026-11-22": ["03:55", "04:05", "05:24", "05:48", "11:41", "15:04", "17:53", "19:08"],
-            "2026-11-23": ["03:55", "04:05", "05:24", "05:48", "11:41", "15:05", "17:54", "19:08"],
-            "2026-11-24": ["03:55", "04:05", "05:24", "05:48", "11:41", "15:05", "17:54", "19:08"],
-            "2026-11-25": ["03:55", "04:05", "05:24", "05:48", "11:41", "15:06", "17:54", "19:09"],
-            "2026-11-26": ["03:55", "04:05", "05:25", "05:49", "11:42", "15:06", "17:55", "19:09"],
-            "2026-11-27": ["03:55", "04:05", "05:25", "05:49", "11:42", "15:07", "17:55", "19:10"],
-            "2026-11-28": ["03:55", "04:05", "05:25", "05:49", "11:42", "15:07", "17:56", "19:11"],
-            "2026-11-29": ["03:55", "04:05", "05:25", "05:49", "11:43", "15:08", "17:56", "19:11"],
-            "2026-11-30": ["03:56", "04:06", "05:26", "05:50", "11:43", "15:08", "17:56", "19:12"],
-            "2026-12-01": ["03:56", "04:06", "05:26", "05:50", "11:43", "15:09", "17:57", "19:12"],
-            "2026-12-02": ["03:56", "04:06", "05:26", "05:50", "11:44", "15:09", "17:57", "19:13"],
-            "2026-12-03": ["03:56", "04:06", "05:26", "05:50", "11:44", "15:10", "17:58", "19:13"],
-            "2026-12-04": ["03:56", "04:06", "05:27", "05:51", "11:44", "15:10", "17:58", "19:14"],
-            "2026-12-05": ["03:56", "04:06", "05:27", "05:51", "11:45", "15:11", "17:59", "19:14"],
-            "2026-12-06": ["03:57", "04:07", "05:27", "05:51", "11:45", "15:12", "17:59", "19:15"],
-            "2026-12-07": ["03:57", "04:07", "05:28", "05:52", "11:46", "15:12", "18:00", "19:15"],
-            "2026-12-08": ["03:57", "04:07", "05:28", "05:52", "11:46", "15:13", "18:00", "19:16"],
-            "2026-12-09": ["03:58", "04:08", "05:28", "05:52", "11:47", "15:13", "18:01", "19:17"],
-            "2026-12-10": ["03:58", "04:08", "05:29", "05:53", "11:47", "15:14", "18:01", "19:17"],
-            "2026-12-11": ["03:58", "04:08", "05:29", "05:53", "11:47", "15:14", "18:02", "19:18"],
-            "2026-12-12": ["03:59", "04:09", "05:30", "05:54", "11:48", "15:15", "18:02", "19:18"],
-            "2026-12-13": ["03:59", "04:09", "05:30", "05:54", "11:48", "15:15", "18:03", "19:19"],
-            "2026-12-14": ["03:59", "04:09", "05:30", "05:54", "11:49", "15:16", "18:03", "19:19"],
-            "2026-12-15": ["04:00", "04:10", "05:31", "05:55", "11:49", "15:16", "18:04", "19:20"],
-            "2026-12-16": ["04:00", "04:10", "05:31", "05:55", "11:50", "15:17", "18:04", "19:20"],
-            "2026-12-17": ["04:00", "04:10", "05:32", "05:56", "11:50", "15:17", "18:05", "19:21"],
-            "2026-12-18": ["04:01", "04:11", "05:32", "05:56", "11:51", "15:18", "18:05", "19:22"],
-            "2026-12-19": ["04:01", "04:11", "05:33", "05:57", "11:51", "15:19", "18:06", "19:22"],
-            "2026-12-20": ["04:02", "04:12", "05:33", "05:57", "11:52", "15:19", "18:06", "19:23"],
-            "2026-12-21": ["04:02", "04:12", "05:34", "05:58", "11:52", "15:20", "18:07", "19:23"],
-            "2026-12-22": ["04:03", "04:13", "05:34", "05:58", "11:53", "15:20", "18:07", "19:24"],
-            "2026-12-23": ["04:03", "04:13", "05:35", "05:59", "11:53", "15:21", "18:08", "19:24"],
-            "2026-12-24": ["04:04", "04:14", "05:35", "05:59", "11:54", "15:21", "18:08", "19:25"],
-            "2026-12-25": ["04:04", "04:14", "05:36", "06:00", "11:54", "15:22", "18:09", "19:25"],
-            "2026-12-26": ["04:05", "04:15", "05:36", "06:00", "11:55", "15:22", "18:09", "19:26"],
-            "2026-12-27": ["04:05", "04:15", "05:37", "06:01", "11:55", "15:22", "18:10", "19:26"],
-            "2026-12-28": ["04:06", "04:16", "05:37", "06:01", "11:56", "15:23", "18:10", "19:26"],
-            "2026-12-29": ["04:06", "04:16", "05:38", "06:02", "11:56", "15:23", "18:11", "19:27"],
-            "2026-12-30": ["04:07", "04:17", "05:38", "06:02", "11:57", "15:24", "18:11", "19:27"],
-            "2026-12-31": ["04:08", "04:18", "05:39", "06:03", "11:57", "15:24", "18:12", "19:28"]
-        };
+        let masterCities = [];
+        let selectedCity = null;
 
-        function updateClock() { const now = new Date(); document.getElementById('jam').textContent = now.getHours().toString().padStart(2,'0'); document.getElementById('menit').textContent = now.getMinutes().toString().padStart(2,'0'); document.getElementById('detik').textContent = now.getSeconds().toString().padStart(2,'0'); document.getElementById('currentTime').textContent = now.toLocaleTimeString('id-ID'); setTimeout(updateClock,1000); }
+        const citySelect = document.getElementById('citySelect');
+        const cityInput = document.getElementById('cityInput');
+        const suggestionsBox = document.getElementById('suggestionsBox');
+        const datePicker = document.getElementById('datePicker');
+        const searchBtn = document.getElementById('searchBtn');
+        const scheduleDisplayDiv = document.getElementById('scheduleDisplay');
+        const loadingIndicator = document.getElementById('loadingIndicator');
 
-        function formatDate(date) { return `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')}`; }
-        function getDayName(date) { return ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][date.getDay()]; }
-        function getMonthName(month) { return ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'][month]; }
+        const STORAGE_CITY = "sholat_selected_city";
+        const STORAGE_DATE = "sholat_selected_date";
 
-        function renderPrayerTimes(dateStr) {
-            const times = prayerTimesData[dateStr];
-            if(!times) { document.getElementById('prayerGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:50px;">Data tidak tersedia</div>'; return; }
-            const names = ['Imsak','Subuh','Terbit','Dhuha','Dzuhur','Ashar','Maghrib','Isya'];
-            const icons = ['fa-moon','fa-sun','fa-sun','fa-sun','fa-sun','fa-cloud-sun','fa-sunset','fa-moon'];
-            const now = new Date();
-            const current = now.getHours()*60 + now.getMinutes();
-            let html = '';
-            times.forEach((time,i) => {
-                const [h,m] = time.split(':').map(Number);
-                const prayerTime = h*60 + m;
-                let isCurrent = false;
-                if(i===1 && current>=prayerTime && current<(times[2]?times[2].split(':').map(Number)[0]*60+times[2].split(':').map(Number)[1]:24*60)) isCurrent=true;
-                if(i===4 && current>=prayerTime && current<(times[5]?times[5].split(':').map(Number)[0]*60+times[5].split(':').map(Number)[1]:24*60)) isCurrent=true;
-                if(i===5 && current>=prayerTime && current<(times[6]?times[6].split(':').map(Number)[0]*60+times[6].split(':').map(Number)[1]:24*60)) isCurrent=true;
-                if(i===6 && current>=prayerTime && current<(times[7]?times[7].split(':').map(Number)[0]*60+times[7].split(':').map(Number)[1]:24*60)) isCurrent=true;
-                if(i===7 && (current>=prayerTime || current<(times[1]?times[1].split(':').map(Number)[0]*60+times[1].split(':').map(Number)[1]:24*60))) isCurrent=true;
-                html += `<div class="prayer-card ${isCurrent?'current':''}"><div class="prayer-icon"><i class="fas ${icons[i]}"></i></div><div class="prayer-name">${names[i]}</div><div class="prayer-time">${time}</div></div>`;
+        function saveToLocalStorage() {
+            if (selectedCity && selectedCity.id) {
+                localStorage.setItem(STORAGE_CITY, JSON.stringify({
+                    id: selectedCity.id,
+                    nama: selectedCity.lokasi,
+                    daerah: selectedCity.daerah
+                }));
+            }
+            if (datePicker.value) localStorage.setItem(STORAGE_DATE, datePicker.value);
+        }
+
+        function loadFromLocalStorage() {
+            const savedCity = localStorage.getItem(STORAGE_CITY);
+            const savedDate = localStorage.getItem(STORAGE_DATE);
+            return { savedCity: savedCity ? JSON.parse(savedCity) : null, savedDate };
+        }
+
+        function setDefaultDate() {
+            const today = new Date();
+            return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        }
+
+        async function fetchJSON(url, timeout = 10000) {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            try {
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(id);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return await response.json();
+            } catch (err) {
+                clearTimeout(id);
+                throw err;
+            }
+        }
+
+        async function loadAllCitiesFromAPI() {
+            try {
+                scheduleDisplayDiv.innerHTML = `<div class="info-loading"><i class="fas fa-spinner fa-pulse"></i> Mengambil daftar 700+ kota dari server...</div>`;
+                const result = await fetchJSON("https://api.myquran.com/v2/sholat/kota/semua");
+                if (result.status === true && Array.isArray(result.data)) {
+                    masterCities = result.data.map(city => ({
+                        id: city.id,
+                        nama: city.lokasi,
+                        daerah: city.daerah || ""
+                    }));
+                    populateDropdown(masterCities);
+                    await setInitialCityAndDate();
+                } else {
+                    throw new Error("Format data kota tidak sesuai");
+                }
+            } catch (err) {
+                console.error(err);
+                scheduleDisplayDiv.innerHTML = `<div class="error-message"><i class="fas fa-network-wired"></i> Gagal memuat daftar kota: ${err.message}</div>`;
+                citySelect.innerHTML = '<option value="">-- Gagal memuat kota --</option>';
+            }
+        }
+
+        function populateDropdown(cities) {
+            citySelect.innerHTML = '<option value="">-- Pilih Kota / Kabupaten --</option>';
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city.id;
+                option.textContent = `${city.nama}${city.daerah ? ` (${city.daerah})` : ''}`;
+                option.setAttribute('data-nama', city.nama);
+                option.setAttribute('data-daerah', city.daerah);
+                citySelect.appendChild(option);
             });
-            document.getElementById('prayerGrid').innerHTML = html;
         }
 
-        function loadDate(date) {
-            const dateStr = formatDate(date);
-            renderPrayerTimes(dateStr);
-            document.getElementById('masehiDate').textContent = `${getDayName(date)}, ${date.getDate()} ${getMonthName(date.getMonth())} ${date.getFullYear()}`;
-            const hijriMonths = ['Muharram','Safar','Rabiul Awal','Rabiul Akhir','Jumadil Awal','Jumadil Akhir','Rajab','Sya\'ban','Ramadhan','Syawwal','Dzulqa\'dah','Dzulhijjah'];
-            const dayOfYear = Math.floor((date - new Date(date.getFullYear(),0,0))/(1000*60*60*24));
-            const hijriMonth = Math.floor(dayOfYear/29.5)%12;
-            const hijriDay = Math.floor(dayOfYear%29.5)+1;
-            const hijriYear = Math.floor((date.getFullYear()-622)*0.97);
-            document.getElementById('hijriDate').textContent = `${hijriDay} ${hijriMonths[hijriMonth]} ${hijriYear}`;
-            document.getElementById('monthSelector').value = date.getMonth();
-            const dateSelect = document.getElementById('dateSelector');
-            dateSelect.innerHTML = '';
-            const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
-            for(let i=1; i<=daysInMonth; i++) dateSelect.innerHTML += `<option value="${i}" ${i===date.getDate()?'selected':''}>${i}</option>`;
+        function findJakartaCity() {
+            let jakarta = masterCities.find(c => c.nama === "KOTA JAKARTA");
+            if (!jakarta) jakarta = masterCities.find(c => c.nama.toUpperCase().includes("JAKARTA"));
+            return jakarta;
         }
 
-        function changeMonth() { loadDate(new Date(2026, parseInt(document.getElementById('monthSelector').value), parseInt(document.getElementById('dateSelector').value))); }
-        function changeDate() { loadDate(new Date(2026, parseInt(document.getElementById('monthSelector').value), parseInt(document.getElementById('dateSelector').value))); }
-        function jumpToToday() { const today = new Date(); today.setFullYear(2026); loadDate(today); }
+        async function setInitialCityAndDate() {
+            const { savedCity, savedDate } = loadFromLocalStorage();
+            let targetCity = null;
+            let targetDate = savedDate || setDefaultDate();
+
+            if (savedCity && savedCity.id) {
+                const found = masterCities.find(c => c.id == savedCity.id);
+                if (found) targetCity = { id: found.id, lokasi: found.nama, daerah: found.daerah };
+            }
+            if (!targetCity) targetCity = findJakartaCity();
+            if (!targetCity && masterCities.length > 0) {
+                targetCity = { id: masterCities[0].id, lokasi: masterCities[0].nama, daerah: masterCities[0].daerah };
+            }
+
+            if (targetCity) {
+                selectedCity = targetCity;
+                citySelect.value = targetCity.id;
+                cityInput.value = `${targetCity.lokasi}${targetCity.daerah ? `, ${targetCity.daerah}` : ''}`;
+                datePicker.value = targetDate;
+                saveToLocalStorage();
+                await loadSchedule();
+            } else {
+                scheduleDisplayDiv.innerHTML = `<div class="error-message">Tidak ada data kota.</div>`;
+            }
+        }
+
+        citySelect.addEventListener('change', function() {
+            const opt = citySelect.options[citySelect.selectedIndex];
+            if (opt.value) {
+                selectedCity = {
+                    id: opt.value,
+                    lokasi: opt.getAttribute('data-nama'),
+                    daerah: opt.getAttribute('data-daerah')
+                };
+                cityInput.value = `${selectedCity.lokasi}${selectedCity.daerah ? `, ${selectedCity.daerah}` : ''}`;
+                suggestionsBox.style.display = 'none';
+                saveToLocalStorage();
+                loadSchedule();
+            }
+        });
+
+        datePicker.addEventListener('change', () => {
+            if (datePicker.value && selectedCity) {
+                saveToLocalStorage();
+                loadSchedule();
+            }
+        });
+
+        searchBtn.addEventListener('click', () => {
+            if (selectedCity) loadSchedule();
+            else if (citySelect.value) {
+                const opt = citySelect.options[citySelect.selectedIndex];
+                if (opt.value) {
+                    selectedCity = {
+                        id: opt.value,
+                        lokasi: opt.getAttribute('data-nama'),
+                        daerah: opt.getAttribute('data-daerah')
+                    };
+                    loadSchedule();
+                }
+            } else {
+                scheduleDisplayDiv.innerHTML = `<div class="error-message"><i class="fas fa-hand-point-right"></i> Silakan pilih kota terlebih dahulu</div>`;
+            }
+        });
+
+        let debounceTimer;
+        cityInput.addEventListener('input', function(e) {
+            const keyword = e.target.value.trim();
+            if (debounceTimer) clearTimeout(debounceTimer);
+            if (keyword.length < 2) {
+                suggestionsBox.style.display = 'none';
+                return;
+            }
+            debounceTimer = setTimeout(() => searchCities(keyword), 350);
+        });
+
+        async function searchCities(keyword) {
+            try {
+                const result = await fetchJSON(`https://api.myquran.com/v2/sholat/kota/cari/${encodeURIComponent(keyword)}`);
+                if (result.status === true && result.data?.length) {
+                    showSuggestions(result.data);
+                } else {
+                    suggestionsBox.style.display = 'none';
+                }
+            } catch (err) {
+                suggestionsBox.style.display = 'none';
+            }
+        }
+
+        function showSuggestions(cities) {
+            if (!cities.length) {
+                suggestionsBox.style.display = 'none';
+                return;
+            }
+            suggestionsBox.innerHTML = '';
+            cities.slice(0, 12).forEach(city => {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${city.lokasi} ${city.daerah ? `(${city.daerah})` : ''}`;
+                div.addEventListener('click', () => {
+                    selectedCity = { id: city.id, lokasi: city.lokasi, daerah: city.daerah || '' };
+                    cityInput.value = `${city.lokasi}${city.daerah ? `, ${city.daerah}` : ''}`;
+                    suggestionsBox.style.display = 'none';
+                    const opt = citySelect.querySelector(`option[value="${city.id}"]`);
+                    if (opt) citySelect.value = city.id;
+                    else citySelect.value = "";
+                    saveToLocalStorage();
+                    loadSchedule();
+                });
+                suggestionsBox.appendChild(div);
+            });
+            suggestionsBox.style.display = 'block';
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                suggestionsBox.style.display = 'none';
+            }
+        });
+
+        async function fetchPrayerSchedule(cityId, dateStr) {
+            const result = await fetchJSON(`https://api.myquran.com/v2/sholat/jadwal/${cityId}/${dateStr}`);
+            if (result.status === true && result.data?.jadwal) return result.data;
+            throw new Error(result.message || "Jadwal tidak ditemukan");
+        }
+
+        function renderSchedule(data) {
+            if (!data?.jadwal) {
+                scheduleDisplayDiv.innerHTML = `<div class="error-message">Data jadwal tidak lengkap.</div>`;
+                return;
+            }
+            const jadwal = data.jadwal;
+            const lokasi = data.lokasi || selectedCity?.lokasi || 'Kota';
+            const daerah = data.daerah ? ` - ${data.daerah}` : (selectedCity?.daerah ? ` - ${selectedCity.daerah}` : '');
+            const tanggal = jadwal.tanggal || '-';
+
+            const prayers = [
+                { name: 'Imsak', icon: 'fas fa-moon', time: jadwal.imsak, main: true },
+                { name: 'Subuh', icon: 'fas fa-cloud-moon', time: jadwal.subuh, main: true },
+                { name: 'Terbit', icon: 'fas fa-sun', time: jadwal.terbit, main: false },
+                { name: 'Dhuha', icon: 'fas fa-sun', time: jadwal.dhuha, main: false },
+                { name: 'Dzuhur', icon: 'fas fa-sun', time: jadwal.dzuhur, main: true },
+                { name: 'Ashar', icon: 'fas fa-cloud-sun', time: jadwal.ashar, main: true },
+                { name: 'Maghrib', icon: 'fas fa-moon', time: jadwal.maghrib, main: true },
+                { name: 'Isya', icon: 'fas fa-star-of-life', time: jadwal.isya, main: true }
+            ];
+
+            let html = `<div style="text-align:center;"><div class="location-info"><i class="fas fa-map-marker-alt"></i> <strong>${lokasi}${daerah}</strong> — ${tanggal}</div></div>`;
+            html += `<div class="prayer-grid">`;
+            for (const p of prayers) {
+                html += `
+                    <div class="prayer-card">
+                        <div class="prayer-icon"><i class="${p.icon}"></i></div>
+                        <div class="prayer-name">${p.name}</div>
+                        <div class="prayer-time">${p.time || '-'}</div>
+                        <div class="extra-time">${p.main ? '🕌 Wajib' : '✨ Sunnah'}</div>
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            scheduleDisplayDiv.innerHTML = html;
+        }
+
+        async function loadSchedule() {
+            if (!selectedCity?.id) {
+                scheduleDisplayDiv.innerHTML = `<div class="error-message">Silakan pilih kota terlebih dahulu</div>`;
+                return;
+            }
+            const targetDate = datePicker.value || setDefaultDate();
+            loadingIndicator.style.display = 'flex';
+            scheduleDisplayDiv.innerHTML = '';
+            try {
+                const data = await fetchPrayerSchedule(selectedCity.id, targetDate);
+                renderSchedule(data);
+                saveToLocalStorage();
+            } catch (err) {
+                scheduleDisplayDiv.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-circle"></i> ${err.message}</div>`;
+            } finally {
+                loadingIndicator.style.display = 'none';
+            }
+        }
 
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
-        if(mobileToggle) mobileToggle.addEventListener('click',()=>{ navLinks.classList.toggle('active'); const icon=mobileToggle.querySelector('i'); icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); });
-        document.addEventListener('click',(e)=>{ if(window.innerWidth<=768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)){ navLinks.classList.remove('active'); const icon=mobileToggle?.querySelector('i'); if(icon){ icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } } });
-        window.onload = function() { updateClock(); jumpToToday(); };
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = mobileToggle?.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            }
+        });
+
+        loadAllCitiesFromAPI();
     </script>
     <script src="theme.js"></script>
 </body>
