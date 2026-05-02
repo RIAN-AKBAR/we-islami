@@ -24,30 +24,41 @@
 </head>
 <body>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
-    <header><nav><ul class="nav-links" id="nav-links">
-        <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
-        <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
-        <li><a href="zikir%20pagi.html"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
-        <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
-        <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
-        <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
-        <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
-        <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
-        <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
-        <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
-        <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
-    </ul></nav></header>
+    <header>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-hands-praying"></i> Doa Pendek</a></li>
+                <li><a href="tahlil.html"><i class="fas fa-dharmachakra"></i> Zikir</a></li>
+                <li><a href="zikir%20pagi.html" class="active"><i class="fas fa-sun"></i> Zikir Pagi</a></li>
+                <li><a href="alquran.html"><i class="fas fa-book-quran"></i> Al-Quran</a></li>
+                <li><a href="hadis.html"><i class="fas fa-book-quran"></i> Hadis</a></li>
+                <li><a href="kitab.html"><i class="fas fa-book"></i> Kitab</a></li>
+                <li><a href="tata-sholat.html"><i class="fas fa-praying-hands"></i> Tata Sholat</a></li>
+                <li><a href="kisah-nabi.html"><i class="fas fa-landmark"></i> Kisah Nabi</a></li>
+                <li><a href="vidio%20ceramah.html"><i class="fas fa-video"></i> Ceramah</a></li>
+                <li><a href="jadwal%20sholat.html"><i class="fas fa-mosque"></i> Jadwal Sholat</a></li>
+                <li><a href="rating.html"><i class="fas fa-comment"></i> Komentar</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main><div class="container fade-in">
-        <h1><i class="fas fa-sun" style="color: var(--secondary); margin-right: 15px;"></i>Zikir Pagi & Petang</h1>
-        <p style="text-align: center; margin-bottom: 30px;">Bacaan zikir pagi dan petang lengkap dengan arab, latin, dan artinya sesuai sunnah</p>
-        
-        <div id="zikir-pagi-container"></div>
-        <div id="zikir-petang-container"></div>
-    </div></main>
+    <main>
+        <div class="container fade-in">
+            <h1><i class="fas fa-sun" style="color: var(--secondary); margin-right: 15px;"></i>Zikir Pagi & Petang</h1>
+            <p style="text-align: center; margin-bottom: 30px;">Bacaan zikir pagi dan petang lengkap dengan arab, latin, dan artinya sesuai sunnah</p>
+            
+            <div id="zikir-pagi-container"></div>
+            <div id="zikir-petang-container"></div>
+        </div>
+    </main>
 
-    <footer><div class="footer-content"><p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p></div></footer>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Website Islami. Developed with <i class="fas fa-heart" style="color: var(--secondary);"></i> by Muhammad Rian Akbar</p>
+        </div>
+    </footer>
 
     <script>
         const zikirPagi = [
